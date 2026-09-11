@@ -102,14 +102,19 @@
       },
       {
         "group": "Reference and support",
-        "pages": []
+        "pages": [
+          "reference/availability",
+          "reference/glossary",
+          "reference/support"
+        ]
       },
       {
         "group": "Dashboards and reporting",
         "pages": [
           "reporting/overview",
           "reporting/accountability",
-          "reporting/sales-pipeline"
+          "reporting/sales-pipeline",
+          "reporting/operations-platform"
         ]
       }
     ]
