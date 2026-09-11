@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "ArcSolar Documentation | The Solar Retailer Operating System",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -68,5 +68,6 @@
       "github": "https://github.com/mintlify",
       "linkedin": "https://linkedin.com/company/mintlify"
     }
-  }
+  },
+  "description": "ArcSolar Documentation | Australia's leading Solar Operating System's documentation, covering VOIP, Solar Roof Design, Estimates & Quotes, Financing and Customer Billing, Rebate Tracking and ServiceM8 Integration and more."
 }
