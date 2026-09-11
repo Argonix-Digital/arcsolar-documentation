@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "ArcSolar Documentation | The Solar Retailer Operating System",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#3D88F2",
+    "light": "#95C1FF",
+    "dark": "#3D88F2"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -69,5 +69,12 @@
       "linkedin": "https://linkedin.com/company/mintlify"
     }
   },
-  "description": "ArcSolar Documentation | Australia's leading Solar Operating System's documentation, covering VOIP, Solar Roof Design, Estimates & Quotes, Financing and Customer Billing, Rebate Tracking and ServiceM8 Integration and more."
+  "description": "ArcSolar Documentation | Australia's leading Solar Operating System's documentation, covering VOIP, Solar Roof Design, Estimates & Quotes, Financing and Customer Billing, Rebate Tracking and ServiceM8 Integration and more.",
+  "background": {
+    "decoration": "gradient",
+    "color": {
+      "light": "#FFF",
+      "dark": "#1C2433"
+    }
+  }
 }
