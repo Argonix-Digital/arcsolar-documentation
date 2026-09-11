@@ -7,7 +7,10 @@
     "light": "#95C1FF",
     "dark": "#E05E39"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/images/ArgonixConnectIcon.svg",
+    "dark": "/images/arcsolar-icon.svg"
+  },
   "navigation": {
     "pages": [
       {
@@ -34,8 +37,9 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/ArgonixConnectWordmark.svg",
+    "dark": "/images/ArgonixConnectIcon.svg",
+    "href": "https://www.arcsolar.com.au"
   },
   "navbar": {
     "links": [
