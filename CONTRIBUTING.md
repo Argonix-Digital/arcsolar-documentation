@@ -40,7 +40,15 @@ Initial content was inspected on 12 September 2026. The organisation onboarding 
 
 The six workflow PNGs in `images/` were recaptured from the compiled ArcSolar fictional demo on 12 September 2026 at a 1440 × 1000 CSS viewport and 2× device pixel ratio (2880 × 2000 native pixels). They retain simulation labels. The quote image shows the demo Actions menu, not an operational revision editor. Never substitute live customer screenshots.
 
-## Page metadata and capture standard
+## Voice and sales onboarding
+
+Write with quiet confidence: welcoming introductions, short sentences, precise screen labels and one clear next step. Premium means considered and easy to use, not superlatives or promises the product cannot support. Never talk down to a reader. Keep warnings calm and explicit.
+
+The sales onboarding course is a role-focused reading path, not an access restriction or learning-management system. Its seven lessons each have three self-checks stored under `arcsolar-sales-onboarding-v1` in the reader's browser. No names, customer data or manager sign-offs are collected. Keep storage failures usable and explain that device, domain or browser changes do not transfer progress. Change the storage version if lesson IDs or checkpoint meaning change.
+
+Every lesson must offer a concrete practice action, a checkpoint, a next lesson and a route back to the course. Preserve the practice-only boundary and manager approval before live customer work. Use source-matched demo screenshots or recordings; never manufacture interface demonstrations.
+
+## Metadata and images
 
 - Give every guide a relevant Font Awesome icon, short `sidebarTitle`, unique outcome-led title and description, and a small set of useful search `keywords`.
 - Keep the default layout and automatically generated social-preview image unless a page needs an explicit exception. Do not add decorative tags, hidden flags or external redirects to ordinary guides.
