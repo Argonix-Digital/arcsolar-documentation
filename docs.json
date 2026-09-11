@@ -30,7 +30,25 @@
       {
         "group": "Start here",
         "pages": [
-          "index",
+          "index"
+        ]
+      },
+      {
+        "group": "Sales rep onboarding",
+        "pages": [
+          "sales-onboarding",
+          "sales-onboarding/workspace",
+          "sales-onboarding/customer",
+          "sales-onboarding/conversation",
+          "sales-onboarding/assessment",
+          "sales-onboarding/quote",
+          "sales-onboarding/follow-through",
+          "sales-onboarding/ready"
+        ]
+      },
+      {
+        "group": "The customer journey",
+        "pages": [
           "quickstart"
         ]
       },
@@ -156,7 +174,7 @@
       }
     ]
   },
-  "description": "ArcSolar Documentation | Australia's leading Solar Operating System's documentation, covering VOIP, Solar Roof Design, Estimates & Quotes, Financing and Customer Billing, Rebate Tracking and ServiceM8 Integration and more.",
+  "description": "Your guide to a considered customer experience. Learn ArcSolar, prepare your team and move confidently from first enquiry to installation.",
   "background": {
     "decoration": "gradient",
     "color": {
@@ -168,7 +186,7 @@
     "family": "Geist"
   },
   "banner": {
-    "content": "Get in Touch Today at arcsolar.com.au",
+    "content": "Every detail. Every next step. Welcome to ArcSolar.",
     "dismissible": true
   },
   "thumbnails": {
