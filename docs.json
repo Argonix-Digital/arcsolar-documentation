@@ -167,14 +167,11 @@
   "fonts": {
     "family": "Geist"
   },
-  "banner": {
-    "content": "Get in Touch Today at arcsolar.com.au",
-    "dismissible": true
-  },
   "thumbnails": {
     "fonts": {
       "family": "Geist"
-    }
+    },
+    "background": "/images/u8498839783_A_monumental_cinematic_view_across_a_vast_Austral_68ade847-5cb9-4bf6-823a-5d3445c13696_1.png"
   },
   "seo": {
     "indexing": "all"
