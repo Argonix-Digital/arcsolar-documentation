@@ -80,5 +80,8 @@
       "light": "#FFF",
       "dark": "#0C0A09"
     }
+  },
+  "fonts": {
+    "family": "Geist"
   }
 }
