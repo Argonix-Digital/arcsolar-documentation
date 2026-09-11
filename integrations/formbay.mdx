@@ -1,0 +1,34 @@
+---
+title: "Connect Formbay"
+description: "Bring application progress and evidence into Projects & Jobs."
+---
+**Open:** **Retailer Settings → Integrations → Formbay**.
+
+1. Obtain an authorised Formbay bearer token for your business.
+2. Choose **Connect account** and paste it into **Auth bearer token**.
+3. Select **Verify token**.
+4. Confirm the company returned by verification.
+5. Choose **Connect** for that company.
+6. Open the relevant project and associate the correct Formbay application.
+
+Verify the company identity before connecting. If verification fails, check token validity and access with your Formbay administrator; do not post the token in a support message.
+
+## Link or import the right application
+
+When using the import controls, choose the scheme and inspect the available installation/application details. Search existing projects first. Review the provider reference and installation address before importing or associating a record.
+
+Open the linked application's details to inspect application status, Formbay job status and reported evidence. **Missing**, **Unknown** and **Complete** have different meanings. Unknown evidence is not proof that a requirement was met.
+
+## Maintain the connection
+
+Use **Replace token** when credentials change. Check the company again. Disconnecting stops sync and removes the saved token; previously synced information and projects are retained as described by the confirmation.
+
+If a status looks old, check its observation time and the last successful sync. Complete the provider-side work in Formbay when ArcSolar does not offer that action.
+
+<Frame caption="Simulated Formbay evidence: submitted, installed and complete evidence are separate states.">
+  ![Formbay application showing missing installer signature and expanded supporting evidence.](/images/formbay.png)
+</Frame>
+
+## ArgonixIntelligence in this workflow
+
+Treat provider evidence as the input for operational follow-up. Intelligence does not replace Formbay's application approval or certify missing evidence.

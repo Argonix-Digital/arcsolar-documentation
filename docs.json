@@ -12,29 +12,109 @@
     "dark": "/images/arcsolar-icon.svg"
   },
   "navigation": {
-    "pages": [
+    "global": {
+      "anchors": [
+        {
+          "anchor": "ArcSolar",
+          "href": "https://arcsolar.com.au",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Get support",
+          "href": "mailto:support@arcsolar.com.au",
+          "icon": "newspaper"
+        }
+      ]
+    },
+    "groups": [
       {
-        "group": "Getting Started",
+        "group": "Start here",
         "pages": [
           "index",
           "quickstart"
         ]
+      },
+      {
+        "group": "Set up your business",
+        "pages": [
+          "setup/onboarding",
+          "setup/payto",
+          "setup/team",
+          "setup/checklist",
+          "setup/retailer-settings",
+          "setup/notifications"
+        ]
+      },
+      {
+        "group": "Connect your tools",
+        "pages": [
+          "integrations/overview",
+          "integrations/stripe",
+          "integrations/greendeal",
+          "integrations/formbay",
+          "integrations/meta",
+          "integrations/servicem8"
+        ]
+      },
+      {
+        "group": "Customers and communications",
+        "pages": [
+          "customers/daily-routine",
+          "customers/records",
+          "customers/pipeline",
+          "customers/calls-sms",
+          "customers/call-intelligence",
+          "customers/tasks"
+        ]
+      },
+      {
+        "group": "Assess and quote",
+        "pages": [
+          "quoting/walkthrough",
+          "quoting/site-information",
+          "quoting/bill-analysis",
+          "quoting/savings",
+          "quoting/roof-design",
+          "quoting/incentives-stcs",
+          "quoting/payment-options",
+          "quoting/follow-ups",
+          "quoting/customer-view",
+          "quoting/revisions",
+          "quoting/energy-data"
+        ]
+      },
+      {
+        "group": "Deliver and get paid",
+        "pages": [
+          "delivery/projects",
+          "delivery/calendar",
+          "delivery/field-operations",
+          "delivery/catalogue",
+          "delivery/inventory",
+          "delivery/rebates",
+          "delivery/finance"
+        ]
+      },
+      {
+        "group": "Dashboards and reporting",
+        "pages": [
+          "reporting/overview",
+          "reporting/rep-overview",
+          "reporting/sales",
+          "reporting/sales-pipeline",
+          "reporting/accountability",
+          "reporting/operations-platform"
+        ]
+      },
+      {
+        "group": "Reference and support",
+        "pages": [
+          "reference/availability",
+          "reference/glossary",
+          "reference/support"
+        ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/images/ArgonixConnectWordmark.svg",
@@ -51,30 +131,30 @@
         "href": "mailto:support@arcsolar.com.au",
         "label": "Contact Support"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
-    }
+    ]
   },
   "contextual": {
     "options": [
       "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "view"
     ]
   },
   "footer": {
     "socials": {
       "linkedin": "https://linkedin.com/company/argonix-digital",
       "website": "https://www.argonix.net"
-    }
+    },
+    "links": [
+      {
+        "header": "ArcSolar support",
+        "items": [
+          {
+            "label": "support@arcsolar.com.au",
+            "href": "mailto:support@arcsolar.com.au"
+          }
+        ]
+      }
+    ]
   },
   "description": "ArcSolar Documentation | Australia's leading Solar Operating System's documentation, covering VOIP, Solar Roof Design, Estimates & Quotes, Financing and Customer Billing, Rebate Tracking and ServiceM8 Integration and more.",
   "background": {

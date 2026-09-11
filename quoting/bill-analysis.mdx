@@ -1,0 +1,41 @@
+---
+title: "Analyse an electricity bill"
+description: "Review extracted values before using them in the energy profile."
+---
+**Open:** the quote's energy-profile area and **Electricity bill**.
+
+<Steps>
+<Step title="Choose the correct bill">
+Upload the customer's bill through the supported attachment flow. If several bills are available, use **Choose electricity bill** to select the intended one.
+</Step>
+<Step title="Run the assessment">
+Choose **Assess bill with ArgonixIntelligence**. Wait for **Review bill assessment**.
+</Step>
+<Step title="Check each value">
+Compare the retailer, billing period, usage, rates, supply charge, export credit and any site/meter details against the actual bill. Read the evidence and assumption notes.
+</Step>
+<Step title="Apply the reviewed values">
+Use the offered controls to fill empty fields or apply selected values. Check an existing value before replacing it. Confirm site details separately before attaching them to the customer.
+</Step>
+<Step title="Confirm the savings inputs">
+Review the resulting energy profile and savings assumptions. A successful extraction is not the same as confirmed inputs.
+</Step>
+</Steps>
+
+## Common errors to catch
+
+| Check | Why it matters |
+| --- | --- |
+| Billing days | A quarterly bill should not be treated as a monthly amount |
+| Units | Cents per kWh and dollars per kWh differ by a factor of 100 |
+| Supply charge | This is a daily fixed charge, not a usage rate |
+| Multiple tariffs | Peak, shoulder and off-peak should not be flattened without explanation |
+| Grid imports | Purchased electricity excludes solar consumed at the property |
+| Feed-in tariff | Export credit is not the same as the import rate |
+| Site identity | A billing address may differ from the installation address |
+
+Manual entry remains available if the bill is unreadable or unsupported. Use source-backed values and label estimates honestly. Read [savings assumptions](/quoting/savings) before presenting the result.
+
+## ArgonixIntelligence in this workflow
+
+This is the bill-analysis tool itself. Its job is to extract and explain likely values. You decide which reviewed values to apply.
