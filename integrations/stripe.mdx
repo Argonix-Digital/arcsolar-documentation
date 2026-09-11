@@ -1,0 +1,40 @@
+---
+title: "Set up Stripe customer payments"
+description: "Connect your business so customers can pay against their issued quote."
+---
+**Open:** **Set up customer payments** during onboarding, or the Stripe card under **Retailer Settings → Integrations**, where available.
+
+## Complete setup
+
+1. Use the Stripe setup action for your organisation.
+2. Open the secure Stripe page.
+3. Submit the requested business, representative, identity and payout-bank details.
+4. Return to ArcSolar and check the account status.
+5. Finish any outstanding verification requirements.
+6. Confirm customer collection is enabled before asking a customer to pay.
+
+Submitting information can allow you into the workspace while Stripe reviews the account. It does not necessarily enable charges or payouts immediately.
+
+## How customer payment works
+
+The customer opens the secure quote, reviews the agreement and follows its acceptance/payment steps. The amount comes from the issued payment schedule. Available methods are those presented by the checkout.
+
+The organisation's subscription and [VoIP PayTo mandate](/setup/payto) are separate from this customer transaction.
+
+| Status or event | Meaning |
+| --- | --- |
+| Quote accepted or agreement signed | Customer agreed to the offer |
+| Checkout opened | Customer started payment |
+| Processing | Payment is not yet confirmed as settled |
+| Paid or successful payment | Provider confirmation has been recorded |
+| Refund | Money returned; it does not automatically unlock the quote |
+
+## Resolve problems
+
+If collection is disabled, finish Stripe's outstanding requirements. If the customer returned from checkout but ArcSolar still shows processing, check the payment record before sending a second link. Do not create a duplicate charge to resolve a display delay.
+
+For reconciliation, use [Finance](/delivery/finance), the customer record and the provider payment reference together.
+
+## ArgonixIntelligence in this workflow
+
+Intelligence may help identify a payment that needs attention. Only confirmed payment records establish that money was collected.

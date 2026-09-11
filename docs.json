@@ -1,13 +1,12 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "ArcSolar",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#E85D35",
+    "light": "#F47750",
+    "dark": "#D54C28"
   },
-  "favicon": "/favicon.svg",
   "navigation": {
     "pages": [
       {
@@ -31,42 +30,96 @@
           "icon": "newspaper"
         }
       ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    },
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "index",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Set up your business",
+        "pages": [
+          "setup/onboarding",
+          "setup/payto",
+          "setup/team",
+          "setup/notifications",
+          "setup/checklist",
+          "setup/retailer-settings"
+        ]
+      },
+      {
+        "group": "Connect your tools",
+        "pages": [
+          "integrations/overview",
+          "integrations/stripe",
+          "integrations/greendeal",
+          "integrations/formbay",
+          "integrations/meta",
+          "integrations/servicem8"
+        ]
+      },
+      {
+        "group": "Customers and communications",
+        "pages": [
+          "customers/daily-routine",
+          "customers/records",
+          "customers/pipeline",
+          "customers/calls-sms",
+          "customers/call-intelligence",
+          "customers/tasks"
+        ]
+      },
+      {
+        "group": "Deliver and get paid",
+        "pages": []
+      },
+      {
+        "group": "Assess and quote",
+        "pages": [
+          "quoting/bill-analysis",
+          "quoting/walkthrough",
+          "quoting/site-information"
+        ]
+      },
+      {
+        "group": "Reference and support",
+        "pages": []
+      },
+      {
+        "group": "Dashboards and reporting",
+        "pages": []
+      }
+    ]
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@arcsolar.com.au"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
-    }
+    ]
   },
   "contextual": {
     "options": [
       "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "view"
     ]
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
-  }
+    "links": [
+      {
+        "header": "ArcSolar support",
+        "items": [
+          {
+            "label": "support@arcsolar.com.au",
+            "href": "mailto:support@arcsolar.com.au"
+          }
+        ]
+      }
+    ]
+  },
+  "description": "Practical guides for setting up ArcSolar and managing every step from first enquiry to installation and payment."
 }
