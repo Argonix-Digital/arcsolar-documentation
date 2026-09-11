@@ -20,20 +20,20 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "anchor": "ArcSolar",
+          "href": "https://arcsolar.com.au",
           "icon": "book-open-cover"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "anchor": "Get support",
+          "href": "mailto:support@arcsolar.com.au",
           "icon": "newspaper"
         }
       ]
     },
     "groups": [
       {
-        "group": "Getting Started",
+        "group": "Start here",
         "pages": [
           "index",
           "quickstart"
