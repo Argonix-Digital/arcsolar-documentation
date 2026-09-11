@@ -38,6 +38,14 @@ These are design references, not a claim that a universal documentation rating e
 
 Initial content was inspected on 12 September 2026. The organisation onboarding flow was read from qa commit `a2782a00e1ceaeb3022d9a9999f6dd0f37b9b55a`. Other guides were checked against the available application source and selected demo screens. This is not an assertion that every provider flow was transacted end to end.
 
-The six images in `images/` are reviewed fictional examples from application verification assets. They deliberately retain simulation labels. Some show earlier labels or a retailer brand, which captions explain. Replace with current fictional screenshots as workflows change; never substitute live customer screenshots.
+The six workflow PNGs in `images/` were recaptured from the compiled ArcSolar fictional demo on 12 September 2026 at a 1440 × 1000 CSS viewport and 2× device pixel ratio (2880 × 2000 native pixels). They retain simulation labels. The quote image shows the demo Actions menu, not an operational revision editor. Never substitute live customer screenshots.
+
+## Page metadata and capture standard
+
+- Give every guide a relevant Font Awesome icon, short `sidebarTitle`, unique outcome-led title and description, and a small set of useful search `keywords`.
+- Keep the default layout and automatically generated social-preview image unless a page needs an explicit exception. Do not add decorative tags, hidden flags or external redirects to ordinary guides.
+- Capture lossless PNG at 2× density or better from a compiled demo with fictional data. Do not upscale, reconstruct or AI-edit interface screenshots.
+- Before capture, ensure no Next.js development indicator, Vercel feedback toolbar, browser chrome or error overlay is visible. Keep legitimate app controls, source attribution and simulation labels.
+- Wait for fonts, images and transitions to finish. Inspect the saved full-resolution image and ensure the caption and alt text describe the actual capture.
 
 The build metadata and source commits are maintenance evidence, not customer-facing product version claims.
