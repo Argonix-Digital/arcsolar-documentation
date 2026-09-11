@@ -1,11 +1,15 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "ArcSolar",
+  "name": "ArcSolar Documentation | The Solar Retailer Operating System",
   "colors": {
-    "primary": "#E85D35",
-    "light": "#F47750",
-    "dark": "#D54C28"
+    "primary": "#3D88F2",
+    "light": "#95C1FF",
+    "dark": "#E05E39"
+  },
+  "favicon": {
+    "light": "/images/ArgonixConnectIcon.svg",
+    "dark": "/images/arcsolar-icon.svg"
   },
   "navigation": {
     "global": {
@@ -112,11 +116,20 @@
       }
     ]
   },
+  "logo": {
+    "light": "/images/ArgonixConnectWordmark.svg",
+    "dark": "/images/ArgonixConnectIcon.svg",
+    "href": "https://www.arcsolar.com.au"
+  },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:support@arcsolar.com.au"
+        "href": "https://app.arcsolar.com.au",
+        "label": "Go to App"
+      },
+      {
+        "href": "mailto:support@arcsolar.com.au",
+        "label": "Contact Support"
       }
     ]
   },
@@ -127,6 +140,10 @@
     ]
   },
   "footer": {
+    "socials": {
+      "linkedin": "https://linkedin.com/company/argonix-digital",
+      "website": "https://www.argonix.net"
+    },
     "links": [
       {
         "header": "ArcSolar support",
@@ -139,5 +156,32 @@
       }
     ]
   },
-  "description": "Practical guides for setting up ArcSolar and managing every step from first enquiry to installation and payment."
+  "description": "ArcSolar Documentation | Australia's leading Solar Operating System's documentation, covering VOIP, Solar Roof Design, Estimates & Quotes, Financing and Customer Billing, Rebate Tracking and ServiceM8 Integration and more.",
+  "background": {
+    "decoration": "gradient",
+    "color": {
+      "light": "#FFF",
+      "dark": "#0C0A09"
+    }
+  },
+  "fonts": {
+    "family": "Geist"
+  },
+  "banner": {
+    "content": "Get in Touch Today at arcsolar.com.au",
+    "dismissible": true
+  },
+  "thumbnails": {
+    "fonts": {
+      "family": "Geist"
+    }
+  },
+  "seo": {
+    "indexing": "all"
+  },
+  "integrations": {
+    "telemetry": {
+      "enabled": true
+    }
+  }
 }
