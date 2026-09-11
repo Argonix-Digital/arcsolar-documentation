@@ -6,7 +6,34 @@ description: "Check the stock needed before promising an installation."
 
 Use the inventory view to inspect the equipment and availability information your workspace provides. Compare it with the project's exact model and quantity requirements.
 
-## Prepare a stock check
+## Find stock, orders and suppliers
+
+| Tab | What it contains |
+| --- | --- |
+| Stock on Hand | Configured stock positions and job allocations |
+| Purchase Orders | Ordered products, expected supply and procurement history |
+| Suppliers | Supplier contact and commercial details |
+| Movements | Posted stock movements |
+
+The summary separates **Stocked items**, **Allocated units**, **Incoming units** and **Need attention**. Incoming units are on open purchase orders; they are not stock already received.
+
+## Set up purchasing
+
+Use the header actions to add a supplier, add an inventory location and configure stock for catalogue products. The **First-use setup** notice identifies missing foundations. Creating a purchase order requires a supplier, destination location and products.
+
+## Create a purchase order
+
+1. Select **New purchase order**.
+2. Choose the **Supplier** and **Destination Location**.
+3. Enter the expected date and supplier reference if known.
+4. Add product lines with quantity and **Unit cost (AUD)**.
+5. Review tax treatment, any job allocation and notes.
+6. Review the order and select **Create Purchase Order**.
+7. Open it under **Purchase Orders** and check the saved lines.
+
+Purchase orders preserve product, cost, tax and allocation snapshots. Later catalogue changes do not rewrite this purchasing history. Creating the order does not itself prove receipt of goods; check posted stock movements and the relevant receiving controls.
+
+## Check material readiness
 
 1. Open the intended project/job.
 2. Read its confirmed BOM rather than a general package description.

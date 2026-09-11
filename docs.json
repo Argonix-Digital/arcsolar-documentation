@@ -8,15 +8,6 @@
     "dark": "#D54C28"
   },
   "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
     "global": {
       "anchors": [
         {
@@ -45,9 +36,9 @@
           "setup/onboarding",
           "setup/payto",
           "setup/team",
-          "setup/notifications",
           "setup/checklist",
-          "setup/retailer-settings"
+          "setup/retailer-settings",
+          "setup/notifications"
         ]
       },
       {
@@ -73,31 +64,42 @@
         ]
       },
       {
+        "group": "Assess and quote",
+        "pages": [
+          "quoting/walkthrough",
+          "quoting/site-information",
+          "quoting/bill-analysis",
+          "quoting/savings",
+          "quoting/roof-design",
+          "quoting/incentives-stcs",
+          "quoting/payment-options",
+          "quoting/follow-ups",
+          "quoting/customer-view",
+          "quoting/revisions",
+          "quoting/energy-data"
+        ]
+      },
+      {
         "group": "Deliver and get paid",
         "pages": [
           "delivery/projects",
           "delivery/calendar",
           "delivery/field-operations",
-          "delivery/inventory",
           "delivery/catalogue",
+          "delivery/inventory",
           "delivery/rebates",
           "delivery/finance"
         ]
       },
       {
-        "group": "Assess and quote",
+        "group": "Dashboards and reporting",
         "pages": [
-          "quoting/bill-analysis",
-          "quoting/walkthrough",
-          "quoting/site-information",
-          "quoting/savings",
-          "quoting/roof-design",
-          "quoting/payment-options",
-          "quoting/follow-ups",
-          "quoting/incentives-stcs",
-          "quoting/customer-view",
-          "quoting/revisions",
-          "quoting/energy-data"
+          "reporting/overview",
+          "reporting/rep-overview",
+          "reporting/sales",
+          "reporting/sales-pipeline",
+          "reporting/accountability",
+          "reporting/operations-platform"
         ]
       },
       {
@@ -106,15 +108,6 @@
           "reference/availability",
           "reference/glossary",
           "reference/support"
-        ]
-      },
-      {
-        "group": "Dashboards and reporting",
-        "pages": [
-          "reporting/overview",
-          "reporting/accountability",
-          "reporting/sales-pipeline",
-          "reporting/operations-platform"
         ]
       }
     ]
