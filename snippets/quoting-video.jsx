@@ -4,8 +4,8 @@ export const QuotingVideo = ({ label }) => (
     playsInline
     preload="metadata"
     style={{ width: "100%", height: "auto" }}
-    poster="/videos/quoting-walkthrough.jpg"
-    src="/videos/quoting-walkthrough.mp4"
+    poster="https://mintcdn.com/arc-solar/ECLoOeBu_2hQztaN/videos/quoting-walkthrough.jpg"
+    src="https://mintcdn.com/arc-solar/ECLoOeBu_2hQztaN/videos/quoting-walkthrough.mp4"
     aria-label={label}
     onPlay={(event) => {
       const video = event.currentTarget;
