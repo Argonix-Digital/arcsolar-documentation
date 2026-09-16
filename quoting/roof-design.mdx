@@ -1,27 +1,177 @@
 ---
+title: "Use Roof Design (Roof Vision)"
 icon: "solar-panel"
 sidebarTitle: "Roof design"
-keywords: ["Roof Vision","solar panels","roof layout"]
-title: "Use Roof Vision and roof design"
-description: "Turn selected solar equipment into a reviewed roof proposal."
+keywords:
+  - "Roof Design"
+  - "Roof Vision"
+  - "roof editor"
+  - "panel layout"
+  - "stringing"
+  - "solar design"
+description: "Lay out panels and stringing on a roof image, then attach the reviewed design to a quote."
 ---
-**Open:** the solar step's **Roof design** area, when included in your plan.
 
-1. Confirm the installation address.
-2. Select the intended solar package and exact panel model.
-3. Load the available roof view and proposed array.
-4. Review and refine panel placement using the offered controls.
-5. Check panel quantity, orientation, roof boundaries and visible obstacles.
-6. Confirm the proposal matches the quoted equipment.
+Roof Design — also called **Roof Vision** — is the roof editor inside a quote. You lay solar panels out on a roof image, mark how they are strung together, save a revision, then attach that reviewed layout to the quote so the customer sees it in their proposal.
 
-Changing the installation address can invalidate the previous roof context. Review the **Installation address changed** message and reassess the design rather than reusing another property's array.
+Roof Design is part of the standard product. It appears in a quote's solar step, and anyone whose role can revise quotes can use it. There is no separate switch to request and no plan upgrade needed.
 
-## What the design tells you
+## What you need first
 
-The design helps explain a proposed array and its relationship to the selected package. Imagery can be dated or incomplete. It does not prove structural suitability, electrical compliance, clearances or installer approval.
+- A saved quote draft. The **Roof Design** area only appears in a quote that already exists.
+- The installation address, with coordinates.
+- The solar package and the exact panel model you are quoting. One panel model only.
+- The customer and site, if you want to attach the design to a customer's quote.
 
-If roof coverage or the interactive view is unavailable, retain a clearly described proposal and arrange a site/installer assessment. Do not promise a layout that has not been checked.
+## Draw the layout
+
+<Visibility for="humans">
+  **Open:** the quote's solar step, then the **Roof Design** area.
+
+  1. Choose **Open Design Panel**. The editor opens inside ArcSolar.
+  2. Check the roof image against the installation address. Imagery can be dated or incomplete.
+  3. Place the panels and review the layout the editor proposes.
+  4. Save a revision.
+  5. Complete **both** layout images — the panel layout, and the stringing and component layout.
+  6. Return to the quote, review what you have drawn, then choose **Reviewed — attach to proposal**.
+
+  Choose **Open in separate window** if you want the editor on a second screen. Use **Expand** and **Restore size** to resize the panel.
+
+  If the design no longer matches the saved quote, change the quote's commercial package first, then reopen the design and review it again. Choose **Keep current design** to discard a design you do not want to attach.
+</Visibility>
+
+<Visibility for="agents">
+  **Where the feature lives.** The primary rep surface is the **Roof Design** section (`aria-label="Roof Design"`) in the quote builder's solar step. It renders only when a quote draft key exists. Its heading is **Roof Design**; its empty state reads `Open the design panel to prepare the panel and stringing layouts.`
+
+  **Exact controls, in render order.**
+
+  | Control | Label | Notes |
+  | --- | --- | --- |
+  | Open the modal | **Open Design Panel** | Disabled while busy |
+  | Separate window | **Open in separate window** | Opens a named window; the host path is `/` inside the embedded app |
+  | Dialog resize | **Expand** / **Restore size** | Toggles the dialog size |
+  | Dialog | Title **Roof Design**; description `Save a revision and complete both layouts before using it in this proposal.` | — |
+  | Attach | **Reviewed — attach to proposal** | Disabled while busy or when no quote draft id is resolved |
+  | Discard | **Keep current design** | Clears the candidate review only |
+
+  **Saved summary format** on the section header: `<panelCount> panels · <address> · Saved revision <first 8 chars of revision id>`.
+
+  **Ordering an agent must respect.**
+
+  1. The quote draft must be saved immediately before launch and again before attach. The panel calls the draft save action for `currentStep: "solar"` first; launching or attaching without a saved draft fails.
+  2. Launch the editor, then wait for the child's `roof-design:ready` message before sending the launch payload.
+  3. Save a revision, then complete **both** image assets, then attach. Attaching before both images are complete is refused.
+  4. Attaching requires `reviewed: true`. There is no attach-without-review path.
+
+  **Embedded-app handshake (do not improvise this).** The editor is a separate application in an iframe at the configured roof design origin. Communication is `postMessage` only, `version: 1`, with origin and source checks on both sides.
+
+  | Message | Direction | Payload |
+  | --- | --- | --- |
+  | `roof-design:ready` | child to parent | `version: 1` |
+  | `roof-design:launch` | parent to child | `version: 1`, `launchCode`, `apiBase` |
+  | `roof-design:completed` | child to parent | `version: 1`, `projectId`, `revisionId` |
+  | `roof-design:open-project` | child to parent | `version: 1`, optional `projectId`, `address`, `customerId`, `siteId`, `coordinates` |
+
+  The parent accepts a message only when `event.origin` matches the configured origin, the source is the live iframe or popup window, and any project identifier matches the launched project. A completion for a different project is rejected with `Design project mismatch.`
+
+  **Credentials never travel in a URL.** The parent sends a single-use `launchCode` that expires in 60 seconds and is consumed once. The child exchanges it for an opaque, project-scoped access token valid for at most 10 minutes, capped by the remaining ArcSolar session. Reopen from ArcSolar to renew. Discovered project identifiers never broaden the capability: a request for any other project returns `403 This launch is restricted to its project.`
+
+  **Persistence.** Saves are optimistic: every save, link, archive, rename, duplicate and revision request carries `expectedVersion`. If the stored version has moved on, the save is refused with `409 VERSION_CONFLICT` and the message `The design changed. Reload before saving.` Reload and re-apply rather than retrying blind. Revisions are immutable — correcting a saved revision means creating a new one, never editing the old one.
+</Visibility>
+
+## Review and attach the design
+
+<Visibility for="humans">
+  Review the design against the saved quote before attaching. Check the address, the panel model and the panel count, and the battery, switchboard or add-on equipment lines.
+
+  Both layout images must be complete before you can attach. If one is missing, finish it and review again.
+
+  If ArcSolar says the design does not match the quote, do not work around it. Open the quote's commercial package controls, correct the mismatch, save, then reopen the design and review it again. Browser messages from the design editor can never change a price or a rebate.
+</Visibility>
+
+<Visibility for="agents">
+  **Attachment preconditions, in evaluation order.** Attachment is refused unless every one of these holds. Each failure names the mismatch.
+
+  | Check | Rule on failure |
+  | --- | --- |
+  | Saved draft | The draft must resolve and its id must equal the id declared in the request. Otherwise: `404 Save this quote draft before attaching a design.` |
+  | Both assets ready | Both `panel-layout` and `stringing-components` must exist for the revision with status `ready`. Otherwise: `409 ASSETS_NOT_READY` — `Both completed design images are required. The previous bundle is retained.` |
+  | Customer | The design's customer must equal the saved draft's customer. Otherwise: `customer` is named as a mismatch. |
+  | Supply address | Normalised addresses must match (lowercase, alphanumeric only). Otherwise: `supply address` is named. |
+  | Panel model and quantity | Exactly one solar package, one panel line, panel commercial product equal to the draft's solar or panel product, quantity equal to the draft's panel count. Otherwise: `panel model or quantity` is named. |
+  | Other equipment | Each non-panel line's commercial product must be one of the draft's solar, battery, switchboard or add-on products, with quantity 1. Otherwise `<kind> model or quantity` is named. |
+
+  Any mismatch returns `409 REVIEW_REQUIRED` with the template `Reconcile <mismatched dimensions, comma separated> using the quote's commercial package controls, then review again.` Correct the commercial package with the quote's own controls, then review again. Never attempt to change prices or rebates through the design editor.
+
+  **Re-checked at issue time.** Issuing an estimate re-validates that the attached design still matches the draft being issued and that a review link exists for that exact revision and commercial fingerprint. If not: `409 REVIEW_REQUIRED` — `Review this design against the saved quote before issuing.` The send action surfaces that message as a send error.
+
+  **Decision rules an agent must encode.**
+
+  - Changing the installation address invalidates the existing roof context. Re-assess rather than reusing another property's array.
+  - A project created from an address alone creates **no** CRM records. Linking a design to a customer validates the workspace and customer relationship, and requires a site whose authoritative address matches the project address.
+  - NMI is populated only from unambiguous **accepted** bill evidence whose normalised supply-site address matches the project address exactly. It is never taken from the customer's latest bill or from the customer record. Missing or conflicting evidence yields `null` — treat `null` as unknown, never as "no NMI".
+  - An incomplete image bundle never replaces a previously complete one. Retrying an upload cannot destroy a good bundle.
+  - Imagery does not prove structural suitability, electrical compliance, clearances or installer approval. The layout is indicative and final placement remains subject to physical site verification.
+</Visibility>
+
+## Where the customer sees it
+
+<Visibility for="humans">
+  Once attached and issued, the design appears in the customer's estimate as **Proposed rooftop design**, with the two layout images labelled **Solar panel layout** and **Stringing and component layout**, and the imagery attribution. The same two images appear on the issued PDF.
+
+  If you attach a design, it replaces any older style of rooftop analysis for that quote. You do not need both.
+</Visibility>
+
+<Visibility for="agents">
+  The customer-facing surface is the estimate portal section `portal-roof` plus the issued PDF, keyed on the estimate snapshot's `roofDesign` bundle. Public images are served through a token route that requires the estimate to be `sent`, `viewed` or `accepted`; every failure returns `404`. Images are served as `image/png` with `Cache-Control: private, no-store`.
+
+  Version-4 solar estimates must carry either the older `solarDesign` payload or a `roofDesign` bundle. An estimate with neither is refused with `Version-four solar estimates require a customer-safe roof design.` When a `roofDesign` bundle is present it replaces the legacy roof section in the PDF entirely.
+</Visibility>
+
+## Availability
+
+<Visibility for="humans">
+  Roof Design is available whenever you can revise a quote. There is nothing to switch on, and it does not depend on your plan.
+
+  If you cannot see the **Roof Design** area in a quote, check two things: the quote must be saved as a draft, and your role must be able to revise quotes. If both are true and the area is still missing, [ask support](/reference/support).
+</Visibility>
+
+<Visibility for="agents">
+  **Availability rule.** Roof Design is live in the standard product. It is not behind a feature flag, and it is not gated by an entitlement or a plan. There are exactly two gates, both enforced per request rather than at configuration time.
+
+  | Gate | Applies to | Failure |
+  | --- | --- | --- |
+  | `quote.revise` capability | Cookie-authorised writes: `launch`, `attach`, and cookie writes | `403 You do not have permission to edit quote designs.` |
+  | Origin validation | Every cookie-authorised write, and CORS | `403 Request origin denied.` |
+
+  Reads require active workspace membership plus access to the linked customer, with an explicit grant for address-only projects. The permitted embedded host resolves from `ROOF_DESIGN_ORIGIN`, defaulting to `https://design.arcsolar.com.au`.
+
+  There is **no entitlement gate on this path**: a `roof_vision` entitlement exists but applies to the older analysis paths, not to this route or this panel.
+
+  **Decision rules.** Do not tell an operator that Roof Design needs a plan change, an entitlement, or support to switch it on — none of those is true. If the area is missing from a quote, check the two product preconditions: the quote draft must be saved, and the member's role must permit revising quotes.
+
+  **Error codes you will meet.** Full status map: `401 UNAUTHENTICATED`, `403 FORBIDDEN`, `404 NOT_FOUND` or `DISABLED`, `409 VERSION_CONFLICT` / `ASSETS_NOT_READY` / `REVIEW_REQUIRED`, `422 VALIDATION`, `503 UNAVAILABLE`.
+
+  | Code | Retryable | Agent action |
+  | --- | --- | --- |
+  | `UNAUTHENTICATED` | Yes | Session expired or too near expiry. Return to ArcSolar and reopen the panel. The launch renewal message is `Refresh your ArcSolar session before opening the panel.` |
+  | `LAUNCH_EXPIRED` | Yes | The 60-second code was reused or expired: `This launch expired or was already used. Reopen from ArcSolar.` Start a fresh launch. |
+  | `FORBIDDEN` | No | Wrong project scope, wrong origin, or a missing capability. Do not retry; re-launch from the correct quote. |
+  | `NOT_FOUND` | No | Asset, revision or draft does not exist. Re-read state before acting. |
+  | `DISABLED` | No | Host or encryption configuration is missing. Report, do not retry. |
+  | `VERSION_CONFLICT` | Yes, after reload | Re-read the design, re-apply the change, retry once. |
+  | `ASSETS_NOT_READY` | Yes, after completing assets | Complete both images, then re-attach. A prior complete bundle is untouched. |
+  | `REVIEW_REQUIRED` | Yes, after correcting the package | Correct the quote's commercial package, review again, then attach or issue. |
+  | `VALIDATION` | No | Payload or document invalid (for example a document over 5 MB). Fix the input. |
+  | `UNAVAILABLE` | Yes | Temporary outage or an unresolvable draft. Retry later. |
+</Visibility>
+
+## Related
+
+- The API-level contract, asset specification, permissions and data shapes are on [the roof design integration contract](/reference/roof-design-contract).
+- Revising an issued quote is covered in [Revise and manage quotes](/quoting/revisions).
+- Availability conventions across the product are listed in [Feature availability](/reference/availability).
 
 ## ArgonixIntelligence in this workflow
 
-Roof Vision and supported recommendations assist assessment. The rep and installer must verify the final equipment and feasible installation layout.
+Roof Design and supported recommendations assist assessment. The rep and installer must verify the final equipment and the feasible installation layout.
