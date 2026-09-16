@@ -28,6 +28,10 @@ You normally reach it from a quote, where ArcSolar opens it and links the design
 
 In its own workspace the editor is named **Roof Design**. The reports it prints are branded **Roof Studio** and footer-stamped `Preliminary design — verify on site`. Both names refer to the same editor.
 
+<Frame caption="Standalone design build with a synthetic roof image and demonstration panels; in the deployed editor the roof image is Google satellite imagery. The Model catalogue is open over the canvas, with the tool rail at the left and the design downloads at the right.">
+  <img src="/images/roof-design-editor-workspace.png" alt="Roof Design editor showing nine demonstration panels on a synthetic roof image, the Model catalogue open over the canvas, the ten-tool rail at the left and the six design download buttons at the right." />
+</Frame>
+
 ## Work on the roof
 
 <Visibility for="humans">
@@ -58,6 +62,18 @@ In its own workspace the editor is named **Roof Design**. The reports it prints 
   **Imagery and tools.** **Images and plans** calibrates a floor plan or photo you supply against a known distance and a north direction. **Solar production** overlays Google Solar production and shade.
 
   If the address search or the imagery looks wrong, do not place panels on a guess. Imagery can be out of date, and a roof face read from a photo is an estimate, not a survey.
+
+  <Frame caption="The status line under the canvas reports the roof check: the module size and wattage, the projected height and width gaps, and `1 estimated faces · pitch unmeasured`. Faces read from imagery are estimates, and pitch is never derived from an image.">
+    <img src="/images/roof-design-roof-analysis.png" alt="Roof image with demonstration panels placed on it and the canvas status line reading 1762 × 1134 mm · 450 W · 20 × 30 mm gaps · 1 estimated faces · pitch unmeasured." />
+  </Frame>
+
+  <Frame caption="Hovering beside an existing panel — the one badged `E` — reveals one adjoining footprint marked `+`. The extension inherits the neighbour's angle, tilt and product so the array stays consistent. The edit bar above carries the selected model and the live panel counts.">
+    <img src="/images/roof-design-adjacency-preview.png" alt="Design canvas in Build mode with an adjoining panel footprint marked with a plus sign beside an existing panel badged E, the edit bar above showing the selected model and the live panel counts, and the Build-mode help line under the canvas." />
+  </Frame>
+
+  <Frame caption="The **Panel Design** report, one of the five report kinds, as exported from the editor. Every report footer reads `Roof Studio · <ISO date> · Preliminary design — verify on site`.">
+    <img src="/images/roof-design-panel-design-report.png" alt="Panel Design report for 12 Example Street, Testville, showing the demonstration layout over the plan image, the summary 8 new panels · 3.60 kW · 1 existing (grey / E), the caption Calibrated custom image included. and the footer Roof Studio · 2026-09-16 · Preliminary design — verify on site." />
+  </Frame>
 </Visibility>
 
 <Visibility for="agents">
