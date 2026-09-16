@@ -8,6 +8,10 @@ keywords:
   - "roof editor"
   - "panel layout"
   - "stringing"
+  - "string design"
+  - "single line diagram"
+  - "SLD"
+  - "installer roof design"
   - "solar design"
 description: "Lay out panels and stringing on a roof image, then attach the reviewed design to a quote."
 ---
@@ -117,15 +121,68 @@ Roof Design is part of the standard product. It appears in a quote's solar step,
 ## Where the customer sees it
 
 <Visibility for="humans">
-  Once attached and issued, the design appears in the customer's estimate as **Proposed rooftop design**, with the two layout images labelled **Solar panel layout** and **Stringing and component layout**, and the imagery attribution. The same two images appear on the issued PDF.
+  Once attached and issued, the two layouts appear in the customer's estimate under **Roof design**, headed **Solar panel layout** and **Stringing and component layout**, each with the site address and the imagery attribution. The same two pages are added to the issued PDF.
 
-  If you attach a design, it replaces any older style of rooftop analysis for that quote. You do not need both.
+  Do not confuse this with the older **Proposed rooftop design** panel, which comes from the provider-based roof analysis and shows capacity and exposure figures. Attaching a Roof Design layout clears that older analysis for the quote, so a customer sees one or the other, never both.
 </Visibility>
 
 <Visibility for="agents">
-  The customer-facing surface is the estimate portal section `portal-roof` plus the issued PDF, keyed on the estimate snapshot's `roofDesign` bundle. Public images are served through a token route that requires the estimate to be `sent`, `viewed` or `accepted`; every failure returns `404`. Images are served as `image/png` with `Cache-Control: private, no-store`.
+  The customer-facing surface is the estimate portal section `#portal-roof` plus the issued PDF, keyed on the estimate snapshot's `roofDesign` bundle. Public images are served through a token route that requires the estimate to be `sent`, `viewed` or `accepted`; every failure returns `404`. Images are served as `image/png` with `Cache-Control: private, no-store`.
 
-  Version-4 solar estimates must carry either the older `solarDesign` payload or a `roofDesign` bundle. An estimate with neither is refused with `Version-four solar estimates require a customer-safe roof design.` When a `roofDesign` bundle is present it replaces the legacy roof section in the PDF entirely.
+  | Surface | What renders |
+  | --- | --- |
+  | Estimate portal | `#portal-roof`, sourced from `roofDesign`. The section-navigation label is **Roof design**. Each image is its own `h2`: **Solar panel layout** for `panel-layout`, **Stringing and component layout** for `stringing-components`. Alt text is `Roof imagery showing the proposed solar panels` and `Roof imagery showing string assignments, connection order and components`. The site address and the imagery attribution are shown under each image. |
+  | Issued PDF | `appendRoofDesignPages` **appends** one A4 landscape page per image, titled with the same label, carrying the site address, the attribution (up to three lines) and a footer naming Roof Design and the revision id. |
+
+  **Neither surface carries electrical content or metrics from this bundle.** The PDF renderer is annotated "no Google Solar labels or generation estimates" and draws only the label, address, image, attribution and revision footer. Do not tell an operator that this bundle puts string sizes, voltages, cable lengths, or a capacity or exposure summary in the estimate or PDF. A metric band belongs to the legacy `solarDesign` section, not to this bundle.
+
+  Version-4 solar estimates must carry either the older `solarDesign` payload or a `roofDesign` bundle. An estimate with neither is refused with `Version-four solar estimates require a customer-safe roof design.`
+
+  **The two are mutually exclusive by construction, not by schema.** The snapshot types `roofDesign` as optional and `solarDesign` as nullable-optional, so both keys can exist in the shape. The guarantee comes from the builder: accepting a design calls `updateSolar({ roofDesign, design: null })`, clearing the legacy design. Both branches also render the same DOM id, `portal-roof`, which is safe only because one is null. Treat both being populated as an impossible state, not a supported one.
+
+  **The PDF appends; it does not replace.** The legacy section renders conditionally on `solarDesign` being present, and the roof design pages are appended to the finished document. There is no code path that removes the legacy section in favour of this bundle. In practice the legacy section is absent because `solarDesign` is null, not because it was overwritten.
+</Visibility>
+
+## SLDs, stringing and who produces them
+
+The single line diagram and the stringing design are produced by the **external Roof Design editor**, not by ArcSolar. ArcSolar stores the editor's document exactly as the editor saved it and presents the two layout images the editor renders. ArcSolar never reads, recalculates or reproduces the electrical content of that document.
+
+<Visibility for="humans">
+  Two layouts come back from the editor, and both are required before you can attach:
+
+  - **Solar panel layout** — where the panels sit on the roof.
+  - **Stringing and component layout** — which panels are grouped into strings, the order they connect in, and the components involved.
+
+  Check the panel layout against the address, the panel model and the panel count you are quoting. Check the stringing layout against how the installer intends to wire the array and against anything the site visit revealed.
+
+  ArcSolar does not size strings, work out voltages or cable lengths, calculate voltage drop, or draw a single line diagram. The editor produces the design and sends it back as a picture. If a figure is not drawn on that image, ArcSolar does not hold it — there is no number for you to look up elsewhere in the app.
+
+  Installers do not get a separate design screen. They receive the design as part of the issued quote — the same two layouts the customer sees — alongside the project and its work orders in [field operations](/delivery/field-operations).
+</Visibility>
+
+<Visibility for="agents">
+  **Ownership boundary. Read this before answering any SLD, stringing or installer-design question.**
+
+  - Single line diagrams, stringing design and panel geometry are produced by the **external Roof Design editor** (engine literal `simple-designer`; ArcSolar's own catalogue code calls the editor **Roof Vision**). ArcSolar does not author them.
+  - ArcSolar receives the editor document and stores it as an **opaque, lossless payload**: `payload: z.record(z.string(), z.unknown())`, annotated in `src/lib/roof-design/contract.ts` as "Opaque, lossless editor state: the integration never reconstructs geometry." The integration persists measurement and cable-class discriminators, annotations, plan imagery references and electrical snapshots — it never interprets them.
+  - **No ArcSolar screen, report, export or API produces, edits, validates or calculates an SLD, a string size, a string voltage, a current, a cable length or a voltage drop.** The token "SLD" appears exactly once in the application repository — in the integration contract's prose about lossless persistence — and nowhere under `src/`. There is no SLD module, route, table, column or report.
+  - The only design artefacts ArcSolar holds are the two rendered PNGs. What ArcSolar owns is their **label and placement**, never their electrical content. They are opaque bitmaps: nothing in the product can read a string size out of one, and nothing measures or verifies what they depict.
+  - ArcSolar does expose **read-only reference data** to the editor at `GET /api/roof-design/v1/catalogue`, drawn from the shared `solar_catalogue_*` rows: panel `voc_v`, `isc_a`, `impp_a`, `vmpp_v`, `max_system_voltage_v`, `max_series_fuse_a`, plus inverter and per-tracker MPPT rows (`mppt_voltage_min_v`, `mppt_voltage_max_v`, `max_input_current_per_mppt_max_a`, `max_isc_per_mppt_max_a`, `strings_per_mppt_max`). These rows carry no `workspace_id` and are returned as stored with every measurement as text. **Serving a specification is not evaluating it.** ArcSolar does not size strings or check a design against those limits.
+
+  **Prohibited conclusions.** Never state or imply that ArcSolar can generate, draw, edit, validate, recalculate, size, approve or export a single line diagram or a stringing design; that ArcSolar holds string sizes, string voltages, cable lengths, voltage drop or per-string counts; or that an SLD is available in a report or export. If asked how to make an SLD in ArcSolar, the accurate answer is that the design is produced in the Roof Design editor opened from a quote, and that ArcSolar stores and displays the result only.
+
+  **Stringing semantics are outside what this repository can verify.** Inside the payload the electrical meaning is typed `unknown`. The only description ArcSolar itself commits to is the image label **Stringing and component layout** and the portal alt text `Roof imagery showing string assignments, connection order and components`. Do not describe string architecture, per-string module counts, string voltages or MPPT allocation as ArcSolar behaviour or as an ArcSolar field. Under-claim here rather than reasoning from how stringing usually works.
+
+  **What reaches whom.**
+
+  | Consumer | Surface | Content |
+  | --- | --- | --- |
+  | Rep | Quote builder, `aria-label="Roof Design"` | Editor launch, saved summary, the two images, attach and discard |
+  | Customer | Estimate portal `#portal-roof` | The two labelled images, address, attribution |
+  | Customer | Issued PDF | One appended page per image: label, address, attribution, revision footer. No metrics. |
+  | Installer | **No design surface** | The issued quote and its PDF, plus project work orders in field operations. `projects/` and `field-operations/` contain no roof design reference. |
+
+  Do not invent an installer design view, an installer-specific SLD, or a design hand-off screen.
 </Visibility>
 
 ## Availability

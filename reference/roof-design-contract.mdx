@@ -11,6 +11,11 @@ keywords:
   - "error codes"
   - "permissions"
   - "agents"
+  - "single line diagram"
+  - "SLD"
+  - "stringing"
+  - "installer"
+  - "electrical"
 ---
 
 This page is the technical contract behind [Roof Design](/quoting/roof-design). It is written for integrators and AI agents that need to operate or reason about the feature precisely. Contract version: **1**.
@@ -81,6 +86,23 @@ Two image assets are required per revision.
 
 An incomplete attempt never replaces a prior complete bundle. The refusal is `409 ASSETS_NOT_READY` — `Both completed design images are required. The previous bundle is retained.`
 
+### Design artefacts and electrical scope
+
+The integration transmits and stores design artefacts. It does not interpret them.
+
+| Artefact | Producer | ArcSolar's role |
+| --- | --- | --- |
+| Panel layout | External editor (`engine: "simple-designer"`) | Stores the editor document; stores the rendered `panel-layout` PNG; labels and places it |
+| Stringing and component layout | External editor | Stores the rendered `stringing-components` PNG; labels and places it |
+| Single line diagram (SLD) | External editor. SLD _state_ lives inside the document payload | Persists the payload losslessly and never reads it back. **ArcSolar has no SLD surface.** |
+| Measurements and annotations | External editor | Persisted inside the opaque payload, for example a `measurement` object with `class: "cable"` and points. Never parsed, never surfaced. |
+
+`payload` is `z.record(z.string(), z.unknown())`, annotated in `contract.ts` as "Opaque, lossless editor state: the integration never reconstructs geometry." A payload key may hold any shape. Nothing in ArcSolar enumerates or validates the document's internal keys beyond `version` and `engine`, and unknown keys are retained — which is what makes the persistence lossless.
+
+**No electrical calculation exists anywhere in this integration.** There is no code path that sizes a string, sums a string voltage, checks an MPPT window, computes a cable run or a voltage drop, or validates a design against `max_system_voltage_v` or the inverter MPPT limits. The only electrical data ArcSolar touches is the read-only reference catalogue it serves at `GET /api/roof-design/v1/catalogue` from the shared `solar_catalogue_*` rows: panel `voc_v`, `isc_a`, `impp_a`, `vmpp_v`, `temp_coeff_voc_pct_per_c`, `temp_coeff_isc_pct_per_c`, `max_system_voltage_v` and `max_series_fuse_a`, plus inverter and per-tracker MPPT rows (`mppt_voltage_min_v`, `mppt_voltage_max_v`, `max_input_current_per_mppt_max_a`, `max_isc_per_mppt_max_a`, `strings_per_mppt_max`, and per-tracker `strings`). Those rows are shared reference data carrying no `workspace_id`, returned as stored, and every measurement is text that the editor normalises. **Serving a specification is not evaluating it.**
+
+An integrator should therefore treat the document as write-only from ArcSolar's perspective: send it, have it stored, get it back unaltered. Do not expect ArcSolar to reject an electrically invalid design, and do not ask ArcSolar for a derived electrical figure. If a stringing or SLD value is not inside the payload or drawn on an image, ArcSolar does not have it.
+
 ### Error codes
 
 | Code | Status | Meaning |
@@ -146,6 +168,31 @@ Key interfaces available to the embedded app include a command entry point (`roo
 
 **Context shape returned to the editor.** Version 1, with the organisation id, read/edit/attach permissions, optional customer, site and opportunity ids, address, coordinates, optional NMI evidence (value, evidence id, site id), and up to 200 selected equipment lines. Note that the draft id in this context is not the live quote draft id; the live id comes from the launch exchange.
 
+### Two design systems can appear in one estimate
+
+An estimate snapshot can carry a `roofDesign` bundle or a legacy `solarDesign` payload. They are different features with different producers, and they must never be described as one.
+
+|  | Roof Design bundle | Legacy provider solar design |
+| --- | --- | --- |
+| Snapshot key | `roofDesign` (`proposalDesignBundleSchema`) | `solarDesign` (`solarRoofDesignSchema`) |
+| Provider literal | `z.literal("roof-design")` | `z.enum(["google_solar", "manual", "prototype"])` |
+| Producer | The external Roof Design editor, over the iframe handshake | Google Solar API building insights, or a restored prototype layout |
+| Holds | Two PNG assets plus the selected equipment lines | Modelled roof segments, per-panel geometry and energy model, imagery quality, `detectedArrayStatus` |
+| Customer heading | The two image labels, under a section labelled **Roof design** | **Proposed rooftop design**, with a provider badge from `getSolarDesignProviderLabel` |
+| Metrics | None. No capacity, energy or exposure figure is produced from this bundle | `getSolarDesignSummary` yields Designed capacity, Panel layout, Annual DC energy and Average exposure |
+| Entitlement | None beyond `quote.revise` and origin validation | `roof_vision`, via `requireArcFeature`, reserved for paid Arc accounts |
+| Modules | `src/lib/roof-design/*` | `src/lib/quotes/solar-design.ts`, `solar-layout.ts`, `google-solar-analysis.server.ts`, `solar-proposal-image.server.ts`, `solar-customer-preview.server.ts` |
+
+**How they relate.** ArcSolar is moving from the provider-based path to the editor, and both paths are live code today.
+
+- The builder presents the Roof Design panel. Accepting a design calls `updateSolar({ roofDesign, design: null })`, which clears the legacy design.
+- Issue-time validation branches on `!draft.solar.roofDesign`. When a roof design is attached, only the Roof Design checks run. When it is not, the legacy checks run, including the 30-day Google Solar freshness rule and `requireArcFeature(..., "roof_vision")`.
+- So the `roof_vision` entitlement gates the **legacy** path at issue time, never the editor.
+- Both estimate branches share the DOM id `portal-roof`, which is safe only because the builder guarantees one is null.
+- The PDF renders the legacy section conditionally on `solarDesign` and appends the Roof Design pages. It does not swap one for the other.
+
+**Keep them separate when answering.** A question about capacity, annual energy, exposure, `detectedArrayStatus` or a provider badge belongs to the legacy path. A question about the two layout images, revisions, framing, or the attach and review flow belongs to the Roof Design editor. Do not attribute a Google Solar figure to the Roof Design editor, and do not describe the editor as producing the legacy metrics.
+
 ### Genuinely undetermined
 
 Do not present any of the following as settled behaviour.
@@ -154,6 +201,8 @@ Do not present any of the following as settled behaviour.
 - **Equipment has no write path.** The equipment table is readable but no command action creates or maps equipment rows. How the catalogue is populated is unresolved.
 - **"Reviewed" is not persisted as a state.** The review flag is validated on the attach request but never stored; the only durable record of review is the quote-link row. Any state machine described for a design must be expressed in terms of the project version, the asset status, and the presence of a link row.
 - **The legacy editor path.** The contract states that `/designer` remains the legacy editor while `/` is the shell, but nothing in the application defines or verifies `/designer`.
+- **SLD and stringing semantics.** The payload carries SLD state, measurements and cable-class discriminators, but its shape inside the payload is typed `unknown` and no ArcSolar code reads it. ArcSolar's own verifiable description of the stringing image is limited to its label and the portal alt text `Roof imagery showing string assignments, connection order and components`. Anything beyond that — string architecture, per-string module counts, string voltages, MPPT allocation — cannot be confirmed from this repository.
+- **Whether the legacy provider path is being retired.** Both paths are live code and both are validated at issue time, with no dated removal and no deprecation flag. Whether Google Solar analysis is intended to remain available alongside the editor is not settled by the code.
 </Visibility>
 
 ## Related
