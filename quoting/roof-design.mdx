@@ -1,9 +1,10 @@
 ---
-title: "Use Roof Design (Roof Vision)"
+title: "Use Roof Design"
 icon: "solar-panel"
 sidebarTitle: "Roof design"
 keywords:
   - "Roof Design"
+  - "Roof Studio"
   - "Roof Vision"
   - "roof editor"
   - "panel layout"
@@ -11,12 +12,13 @@ keywords:
   - "string design"
   - "single line diagram"
   - "SLD"
+  - "MPPT"
   - "installer roof design"
   - "solar design"
 description: "Lay out panels and stringing on a roof image, then attach the reviewed design to a quote."
 ---
 
-Roof Design — also called **Roof Vision** — is the roof editor inside a quote. You lay solar panels out on a roof image, mark how they are strung together, save a revision, then attach that reviewed layout to the quote so the customer sees it in their proposal.
+Roof Design is the roof editor inside a quote. You lay solar panels out on a roof image, mark how they are strung together, save a revision, then attach that reviewed layout to the quote so the customer sees it in their proposal.
 
 Roof Design is part of the standard product. It appears in a quote's solar step, and anyone whose role can revise quotes can use it. There is no separate switch to request and no plan upgrade needed.
 
@@ -121,26 +123,47 @@ Roof Design is part of the standard product. It appears in a quote's solar step,
 ## Where the customer sees it
 
 <Visibility for="humans">
-  Once attached and issued, the two layouts appear in the customer's estimate under **Roof design**, headed **Solar panel layout** and **Stringing and component layout**, each with the site address and the imagery attribution. The same two pages are added to the issued PDF.
+  Once attached and issued, the two layouts appear in the customer's estimate portal under **Roof design**, headed **Solar panel layout** and **Stringing and component layout**, each with the site address and the imagery attribution.
 
-  Do not confuse this with the older **Proposed rooftop design** panel, which comes from the provider-based roof analysis and shows capacity and exposure figures. Attaching a Roof Design layout clears that older analysis for the quote, so a customer sees one or the other, never both.
+  In PDFs the headings differ by document. The **estimate PDF** shows the two drawings in a section headed **PROPOSED ROOFTOP DESIGN**, captioned **PROPOSED PANEL LAYOUT** and **PANEL STRINGS & COMPONENT MARKINGS**. The **agreement (contract) PDF** adds them as extra landscape pages headed **Solar panel layout** and **Stringing and component layout**.
+
+  The estimate PDF's **PROPOSED ROOFTOP DESIGN** heading is shared with the older provider-based roof analysis, so the heading alone does not tell you which one you are looking at. The Roof Design version shows the two drawings and no figures; the provider version shows a capacity and exposure band instead. Attaching a Roof Design layout clears the older analysis for that quote, so a customer sees one or the other, never both.
 </Visibility>
 
 <Visibility for="agents">
   The customer-facing surface is the estimate portal section `#portal-roof` plus the issued PDF, keyed on the estimate snapshot's `roofDesign` bundle. Public images are served through a token route that requires the estimate to be `sent`, `viewed` or `accepted`; every failure returns `404`. Images are served as `image/png` with `Cache-Control: private, no-store`.
 
-  | Surface | What renders |
-  | --- | --- |
-  | Estimate portal | `#portal-roof`, sourced from `roofDesign`. The section-navigation label is **Roof design**. Each image is its own `h2`: **Solar panel layout** for `panel-layout`, **Stringing and component layout** for `stringing-components`. Alt text is `Roof imagery showing the proposed solar panels` and `Roof imagery showing string assignments, connection order and components`. The site address and the imagery attribution are shown under each image. |
-  | Issued PDF | `appendRoofDesignPages` **appends** one A4 landscape page per image, titled with the same label, carrying the site address, the attribution (up to three lines) and a footer naming Roof Design and the revision id. |
+  **The labels are split by surface. Quote them as written.**
 
-  **Neither surface carries electrical content or metrics from this bundle.** The PDF renderer is annotated "no Google Solar labels or generation estimates" and draws only the label, address, image, attribution and revision footer. Do not tell an operator that this bundle puts string sizes, voltages, cable lengths, or a capacity or exposure summary in the estimate or PDF. A metric band belongs to the legacy `solarDesign` section, not to this bundle.
+  | Surface | Label | Source |
+  | --- | --- | --- |
+  | Estimate portal, section navigation | **Roof design** | `src/app/estimates/[token]/portal-section-navigation.tsx` |
+  | Estimate portal, each drawing | **Solar panel layout** and **Stringing and component layout** | `src/app/estimates/[token]/page.tsx` |
+  | Estimate PDF, section heading | **PROPOSED ROOFTOP DESIGN** | `src/lib/quotes/estimate-pdf.ts`, `roofDesignContent` |
+  | Estimate PDF, drawing captions | **PROPOSED PANEL LAYOUT** and **PANEL STRINGS & COMPONENT MARKINGS** | same function |
+  | Contract and tenant-document PDFs | **Solar panel layout** and **Stringing and component layout** | `src/lib/roof-design/pdf.server.ts`, `appendRoofDesignPages` |
+
+  **`PROPOSED ROOFTOP DESIGN` is not an exclusively legacy label.** `estimate-pdf.ts` uses it as the section heading in both branches: `roofDesignContent` for the bundle, and the legacy branch further down the same file. Never tell an operator that seeing this heading means the provider analysis is showing. The bundle's copy of it carries no figures; the legacy copy carries the capacity and exposure band.
+
+  **Portal rendering.** The estimate portal renders `#portal-roof` from `roofDesign`. Each image is its own `h2`: **Solar panel layout** for `panel-layout`, **Stringing and component layout** for `stringing-components`. Alt text is `Roof imagery showing the proposed solar panels` and `Roof imagery showing string assignments, connection order and components`. The site address and the imagery attribution are shown under each image.
+
+  **PDF behaviour is per document.** Two different renderers are involved, and a blanket claim in either direction is wrong.
+
+  | Document | Renderer | Roof section behaviour |
+  | --- | --- | --- |
+  | Estimate PDF — `src/lib/quotes/estimate-pdf.ts` | pdfmake. `solarDesignContent(snapshot, roofDesign)` early-returns `roofDesignContent` when a bundle is present. | **Supersedes.** While a bundle exists the legacy `solarDesign` branch is unreachable, because the early return is taken first. |
+  | Contract PDF — `src/lib/quotes/contract-pdf.ts` | pdf-lib, via `appendRoofDesignPages` | **Appends** one A4 landscape page per image to the finished document. |
+  | Tenant document PDF — `src/lib/quotes/tenant-document-pdf.ts` | pdf-lib, via `appendRoofDesignPages` | **Appends** one A4 landscape page per image. |
+
+  `appendRoofDesignPages` is referenced by the contract and tenant-document renderers only. The estimate PDF does not use it: it builds the two drawings as pdfmake content.
+
+  **"The issued quote PDF" is ambiguous, because one route serves both.** `GET /api/estimates/[token]/pdf` returns the contract PDF when the snapshot is version 4 with `document.kind === "contract"`, and the estimate PDF otherwise. The same customer-facing link can therefore resolve to the superseding estimate PDF or to the appending agreement PDF. Name which one you mean rather than generalising.
+
+  **No electrical content or metrics arrive from this bundle on any surface.** In the estimate PDF, `roofDesignContent` draws only the section heading, the address line and the two drawings with their captions. `appendRoofDesignPages` is separately annotated "no Google Solar labels or generation estimates" and draws only the label, address, image, attribution and revision footer. Do not tell an operator that this bundle puts string sizes, voltages, cable lengths, or a capacity or exposure summary into the estimate or a PDF. The capacity and exposure band belongs to the legacy `solarDesign` section.
 
   Version-4 solar estimates must carry either the older `solarDesign` payload or a `roofDesign` bundle. An estimate with neither is refused with `Version-four solar estimates require a customer-safe roof design.`
 
   **The two are mutually exclusive by construction, not by schema.** The snapshot types `roofDesign` as optional and `solarDesign` as nullable-optional, so both keys can exist in the shape. The guarantee comes from the builder: accepting a design calls `updateSolar({ roofDesign, design: null })`, clearing the legacy design. Both branches also render the same DOM id, `portal-roof`, which is safe only because one is null. Treat both being populated as an impossible state, not a supported one.
-
-  **The PDF appends; it does not replace.** The legacy section renders conditionally on `solarDesign` being present, and the roof design pages are appended to the finished document. There is no code path that removes the legacy section in favour of this bundle. In practice the legacy section is absent because `solarDesign` is null, not because it was overwritten.
 </Visibility>
 
 ## SLDs, stringing and who produces them
@@ -163,7 +186,7 @@ The single line diagram and the stringing design are produced by the **external 
 <Visibility for="agents">
   **Ownership boundary. Read this before answering any SLD, stringing or installer-design question.**
 
-  - Single line diagrams, stringing design and panel geometry are produced by the **external Roof Design editor** (engine literal `simple-designer`; ArcSolar's own catalogue code calls the editor **Roof Vision**). ArcSolar does not author them.
+  - Single line diagrams, stringing design and panel geometry are produced by the **external Roof Design editor** (engine literal `simple-designer`; its own reports print the brand **Roof Studio**). ArcSolar does not author them.
   - ArcSolar receives the editor document and stores it as an **opaque, lossless payload**: `payload: z.record(z.string(), z.unknown())`, annotated in `src/lib/roof-design/contract.ts` as "Opaque, lossless editor state: the integration never reconstructs geometry." The integration persists measurement and cable-class discriminators, annotations, plan imagery references and electrical snapshots — it never interprets them.
   - **No ArcSolar screen, report, export or API produces, edits, validates or calculates an SLD, a string size, a string voltage, a current, a cable length or a voltage drop.** The token "SLD" appears exactly once in the application repository — in the integration contract's prose about lossless persistence — and nowhere under `src/`. There is no SLD module, route, table, column or report.
   - The only design artefacts ArcSolar holds are the two rendered PNGs. What ArcSolar owns is their **label and placement**, never their electrical content. They are opaque bitmaps: nothing in the product can read a string size out of one, and nothing measures or verifies what they depict.
@@ -225,6 +248,9 @@ The single line diagram and the stringing design are produced by the **external 
 
 ## Related
 
+- [The design editor](/roof-design/editor) — the canvas, the panels, the imagery, the site tools and the reports.
+- [Stringing](/roof-design/stringing) — the **String Editor**, MPPTs, and what the stringing image shows.
+- [The single line diagram](/roof-design/sld) — drawing the electrical schematic and exporting it.
 - The API-level contract, asset specification, permissions and data shapes are on [the roof design integration contract](/reference/roof-design-contract).
 - Revising an issued quote is covered in [Revise and manage quotes](/quoting/revisions).
 - Availability conventions across the product are listed in [Feature availability](/reference/availability).

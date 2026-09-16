@@ -93,13 +93,21 @@
           "quoting/site-information",
           "quoting/bill-analysis",
           "quoting/savings",
-          "quoting/roof-design",
           "quoting/incentives-stcs",
           "quoting/payment-options",
           "quoting/follow-ups",
           "quoting/customer-view",
           "quoting/revisions",
           "quoting/energy-data"
+        ]
+      },
+      {
+        "group": "Roof design",
+        "icon": "solar-panel",
+        "pages": [
+          "quoting/roof-design",
+          "roof-design/editor",
+          "roof-design/stringing"
         ]
       },
       {

@@ -21,11 +21,12 @@ description: "Understand the terms used across ArcSolar."
 | Quote / estimate | An issued offer with its saved terms |
 | Snapshot | The saved version used by an issued document |
 | BOM | Bill of materials: equipment and quantities |
-| Roof Design / Roof Vision | The roof editor opened from a quote. It draws the panel layout and the stringing and component layout. ArcSolar opens it and stores the result; the editor produces the design. |
+| Roof Design | The roof editor opened from a quote, where the panel layout, the stringing and the single line diagram are drawn. The printed reports it produces are branded **Roof Studio**, and its internal product name is **Roof Vision**. ArcSolar opens it and stores the result; the editor produces the design. |
 | Panel layout | The design image showing where the panels sit on the roof. |
-| Stringing | How panels are grouped into strings and the order they connect in. The only thing ArcSolar holds is the **Stringing and component layout** image, not the underlying electrical values. |
-| Single line diagram (SLD) | The electrical schematic of the system. It is produced by the external Roof Design editor, and its state is stored inside the design document ArcSolar keeps. ArcSolar does not draw, calculate or display an SLD. |
-| Proposed rooftop design | The older provider-based roof analysis shown in an estimate, with capacity and exposure figures. It is not the same as **Roof design**. |
+| Stringing | How panels are grouped into strings and the order they connect in, set in the editor's **String Editor**. The only thing ArcSolar holds is the **Stringing and component layout** image, not the underlying electrical values. |
+| MPPT | Maximum power point tracker: a separate DC input on an inverter that a string connects to. Each MPPT has its own operating window, so strings are assigned per MPPT. |
+| Single line diagram (SLD) | The electrical schematic of the system, drawn in the **Roof Design** editor and exported from there as a PDF. Its state is stored inside the design document ArcSolar keeps, but ArcSolar does not draw, calculate or display an SLD. |
+| Proposed rooftop design | The label for the older provider-based roof analysis in an estimate, which shows capacity and exposure figures. The same words are also the estimate PDF's section heading for a **Roof design** layout, which shows drawings and no figures, so the label alone does not tell you which one is showing. |
 | Google Solar | The provider analysis behind the older rooftop design path. It needs the roof vision entitlement, and the saved analysis must be no more than 30 days old. |
 | STC | Small-scale technology certificate used in the applicable incentive calculation |
 | CER zone | Location-based input used in the relevant solar STC calculation |
