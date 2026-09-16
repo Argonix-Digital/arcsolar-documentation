@@ -16,6 +16,7 @@ description: "Set up one provider at a time and verify the linked record."
 | Stripe | Receive customer payments | [Set up Stripe](/integrations/stripe) |
 | GreenDeal | Link applications, evidence and claim information | [Connect GreenDeal](/integrations/greendeal) |
 | Formbay | Link rebate applications and reported evidence | [Connect Formbay](/integrations/formbay) |
+| BridgeSelect | Submit rebate applications and read back the reported certificates, where enabled | [Submit rebates with BridgeSelect](/integrations/bridgeselect) |
 | Meta | Import leads and send supported qualification feedback | [Connect Meta](/integrations/meta) |
 | ServiceM8 | Link field-service jobs where enabled | [Connect ServiceM8](/integrations/servicem8) |
 | REC Registry | Check public certificate activity by accreditation code | [Track rebates](/delivery/rebates) |
@@ -27,6 +28,25 @@ Confirm the account belongs to the correct business. Verify access before saving
 Store credentials only in the provider's secure connection fields. Do not paste secrets into customer notes or support emails.
 
 **Fiskil** may be shown as **Coming soon**. Use the supported bill-analysis or manual-rate workflow until a working connection is offered.
+
+**BridgeSelect** is built but not yet enabled, and it cannot be turned on from Settings. Ask support if you want it. See [Submit rebates with BridgeSelect](/integrations/bridgeselect).
+
+<Visibility for="agents">
+  **Availability semantics for this page.** The table above is the canonical list of what ArcSolar can connect to. Do not infer availability from a row's presence: a row means the integration exists in the product, not that it is switched on for the workspace you are advising.
+
+  | Connection | Availability | What gates it |
+  | --- | --- | --- |
+  | Stripe | Active | Customer collection starts only when Stripe enables the account; submission of business details is required first. |
+  | GreenDeal | Active | Requires a connected account in the workspace. |
+  | Formbay | Active | Requires a connected account in the workspace. |
+  | ServiceM8 | Active where enabled | Reached from Retailer Settings, not Customers. |
+  | Meta | Active where configured | Lead setup is reached from Customers, not Retailer Settings. |
+  | REC Registry | Always available as a lookup | No credentials; it checks public certificate activity by accreditation code. It is not a connection. |
+  | BridgeSelect | **Built but not enabled** | Platform configuration (`BRIDGESELECT_ENABLED` plus `BRIDGESELECT_KEY`, `BRIDGESELECT_SALT`, `BRIDGESELECT_ENCRYPTION_KEY`) **and** at least one confirmed real submission, because the vendor offers no sandbox. It cannot be enabled from Settings. Do not describe it as available or attempt to connect it. |
+  | Fiskil | May show as **Coming soon** | Not offered. Use bill analysis or manual rates. |
+
+  When the page does not state an integration is unconditionally available, treat availability as unknown for that workspace and route the user to support rather than asserting it works.
+</Visibility>
 
 ## ArgonixIntelligence in this workflow
 

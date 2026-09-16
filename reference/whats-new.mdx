@@ -1,0 +1,179 @@
+---
+title: "What's new in ArcSolar"
+sidebarTitle: "What's new"
+description: "Changes landing in the next release, and features that are built but switched off."
+icon: "newspaper"
+keywords:
+  - "release notes"
+  - "what's new"
+  - "updates"
+  - "pending release"
+  - "availability"
+---
+
+This page tracks changes that exist in the product but may not yet be live in your workspace. Each entry states which stage it is at, so nothing here is presented as something you can rely on today.
+
+<Visibility for="agents">
+Three states are used on this page and they are **not** interchangeable. Never present *Pending* or *Built but switched off* as live behaviour.
+
+| State | Meaning |
+| --- | --- |
+| **Landing in the next release** | Merged to the release branch. The behaviour exists in the product code but is **not confirmed deployed** to the workspace you are advising. |
+| **Pending** | Open, not merged. The description is what will change, not what exists. |
+| **Built but switched off** | Code exists and is complete, but a gate is deliberately closed. |
+
+The governing rule: if a feature is not marked unconditionally available, treat it as unavailable for the workspace, say that plainly, and route the user to support instead of asserting it works.
+</Visibility>
+
+## Quoting is only locked by the steps a quote is priced from
+
+<Visibility for="humans">
+**Landing in the next release.**
+
+While a workspace is being set up, ArcSolar holds quoting and calling back. Until this change, *every* unfinished setup step did that — so a step with nothing to do with pricing, such as adding a Google review link or picking a theme, could stop you quoting.
+
+Now only the steps a quote is actually priced from hold quoting and calling back:
+
+- How your pricing is quoted
+- Upload your pricing documents
+- Your services and fees
+- Finance and deposits
+- Incentives you offer
+
+The remaining steps still appear on your checklist and are still worth finishing, but they no longer stop you quoting or calling.
+</Visibility>
+
+<Visibility for="agents">
+**What changed.** `retailerOnboardingTasks` gained a `blocksRevenueWork` field, and the gate now consults only the tasks that set it. Previously `isRetailerOnboardingComplete()` — every task completed — decided whether quoting and calling were withheld, so an unfinished cosmetic step could lock a whole workspace out of revenue work.
+
+**Steps that withhold quoting and calling** (`blocksRevenueWork: true`):
+
+| Task id | Wizard title | Where the same data is edited later | `deferrable` |
+| --- | --- | --- | --- |
+| `pricing-basis` | How your pricing is quoted | `/dashboard/quoting-settings?tab=pricing` | `false` |
+| `pricing-documents` | Upload your pricing documents | `/dashboard/product-catalogue` | `true` |
+| `services` | Your services and fees | `/dashboard/quoting-settings?tab=services` | `false` |
+| `finance` | Finance and deposits | `/dashboard/quoting-settings?tab=finance` | `false` |
+| `incentives` | Incentives you offer | `/dashboard/energy-data` | `true` |
+
+**Steps that do not** (`blocksRevenueWork: false`): `integrations` (Connect your other tools), `appearance` (How the workspace looks), `notifications` (What you get told about), `team` (Invite your team), `reviews` (Ask for Google reviews). They remain on the checklist and still count toward progress, but they never block a quote or a call.
+
+**Decision rules.**
+
+- Withholding is `state.enforced && getRevenueBlockingRetailerOnboardingTasks(state).length > 0`. When `enforced` is false nothing blocks — it is false in the fictional demo, and false when progress could not be read at all, because a workspace must never be locked out by our own outage. **Never treat a failure to read progress as a lock.**
+- A **deferred** task is still outstanding. Deferring `pricing-basis`, `pricing-documents`, `services`, `finance` or `incentives` does **not** unlock quoting or calling. Deferring an optional step changes nothing about the gate.
+- A task **absent** from the stored task map reads as `pending`, by design: the map is partial because it only carries the tasks a retailer has touched. Never read a missing key as completed.
+- Status values are `pending`, `completed`, `deferred`.
+- Blocking copy is exact and distinguishes who can act. `getRetailerOnboardingGate(state, "quote" | "call")` returns:
+  - `allowed: true, reason: null, href: null` when nothing revenue-blocking is outstanding;
+  - when a member **cannot** complete setup themselves: reason `Quoting unlocks once your administrator finishes workspace setup — N setup tasks outstanding.` and `href: null`, with `Calling` substituted for calls;
+  - otherwise: reason `Quoting unlocks once workspace setup is finished — N setup tasks outstanding.` and `href: /get-started/setup`.
+  - `N` counts only the **revenue-blocking** outstanding tasks, with `task`/`tasks` singular or plural accordingly. Do not report the workspace's total outstanding task count.
+- `canComplete` is false for every member except owner/administrator. Use it to decide whether to tell the operator to act, or to tell them who can.
+- Landing is separate from the gate. `shouldLandOnRetailerSetup` sends an administrator to setup while **any** task is incomplete — keyed on completion, not on the product-tour marker — even though only revenue-blocking steps withhold quoting.
+- The standing summary has three states that must not be conflated: revenue work withheld; revenue work already open with only optional steps left (`Quoting and calling are open. What is left is optional, and you can finish it whenever you like.`, or `…and your administrator can finish it whenever they like.`); and not enforced at all (`Add your own pricing, fees and preferences so quotes use your numbers.`).
+- Adding a task with `blocksRevenueWork: true` withholds quoting and calling on **every** workspace that has not completed it, because an absent task reads as pending. Such a task must ship with a migration that records state for live tenants. Do not propose one casually.
+</Visibility>
+
+## The Google reviews step now saves your link
+
+<Visibility for="humans">
+**Landing in the next release.**
+
+Two problems made the **Ask for Google reviews** step impossible to finish properly. Finishing it did not actually store your review link, so the step looked done while your customer invitations had nothing to send. And links that a real Google Business Profile hands out — such as a `maps.google.com` link with a customer ID, or the Australian Google domain — were rejected.
+
+Both are fixed. Your link saves properly, and the links Google actually gives you are accepted.
+
+You can also send yourself the review request as a test before letting it go out to customers automatically. On the review settings, choose **Send me a test**. It goes to your own mobile number only, and it uses the same message and sender your customers would receive.
+</Visibility>
+
+<Visibility for="agents">
+**Defect 1 — the step persisted nothing.** The `reviews` task rendered the shared `ProjectCompletionSettings` surface inside `InlineStep`, which passes `onSave={() => Promise.resolve(null)}`. Choosing **Save and continue** therefore marked the task complete without ever writing the review link. The only control that appeared to save the link belonged to the other screen.
+
+**Defect 2 — real review links were rejected.** The host allow-list was narrower than what a Google Business Profile actually issues, so a retailer with a genuine link could not store it, leaving setup unfinished. The constraint is now:
+
+```sql
+review_url = ''
+  or review_url ~* '^https://([a-z0-9-]+\.)*(google\.[a-z]{2,3}(\.[a-z]{2})?|g\.page|g\.co|goo\.gl)/[^[:space:]]+$'
+```
+
+Constraint name: `private.project_completion_settings_review_url_check1`. Newly accepted: `maps.google.com/?cid=…`, country domains (`google.com.au`, `google.co.uk`), `business.google.com`, `goo.gl`. The previous set was `g.page`, `g.co`, `maps.app.goo.gl`, `www.google.com`, `google.com`, `search.google.com`. The list is a strict superset, so every already-stored value still satisfies it. The shape guard is unchanged: **https**, a Google host, and something after the slash. The country suffix is one or two short labels rather than a permissive dotted tail, so `google.co.evil.test` is not treated as a Google host. The application's own check is kept in step with this constraint by hand, and both are exercised by the same cases in `project-completion-settings.test.ts`.
+
+**Test SMS.**
+
+| Aspect | Detail |
+| --- | --- |
+| UI | Button **Send me a test**, changing to **Sending…** while in flight. Helper text: `Add your review link first — the test sends it.` |
+| Server path | `sendReviewRequestTestSmsAction` → RPC `public.enqueue_review_request_test_sms(p_workspace_id)` |
+| Roles | `administrator`, `developer`, `operations`, resolved from the session and never from an argument |
+| Precondition | The review link must be saved, otherwise it raises `Save your Google review link before sending a test.` |
+| Destination | The **caller's own** verified mobile, resolved from their member and profile records. **No caller-supplied number is accepted**, so this entry point cannot reach a customer. Must match `^\+614[0-9]{8}$`. |
+| Pipeline | Enters the ordinary automated member SMS pipeline (event type `member_review_request_test`), so member preference policy, sender-line resolution, dispatch authorization and the provider ledger all apply unchanged |
+| Outcome statuses | `queued` (with `notification_id` and `mode`), `policy_off`, `not_eligible`, `no_mobile`, `paused`, `no_line`, `throttled` — the gates are called directly rather than skipped silently, so the administrator is told instead of assuming the message was sent |
+| Throttle | Idempotency key `review-request-test:<memberId>:<YYYYMMDDHHMI>`, so one test per member per minute and a double press is absorbed |
+
+**The step can still be completed without a link.** `reviews` is deferrable and completing it empty is allowed, because plenty of retailers have no Business Profile yet. Never treat a missing review link as something that should block a workspace.
+</Visibility>
+
+## Sign-up records your agreement to the subscription terms
+
+<Visibility for="humans">
+**Landing in the next release.**
+
+When you create an organisation, sign-up now records that you accepted the ArcSolar subscription agreement and privacy policy, storing which version you accepted and when. The legal pages are branded as ArcSolar rather than your business, because they are platform documents and not yours.
+</Visibility>
+
+<Visibility for="agents">
+The platform legal layer landed on the release branch.
+
+- Documents are versioned under `src/lib/legal/` (`subscription-terms.ts`, `privacy-policy.ts`, `app-terms.ts`, `registry.ts`, `types.ts`) and rendered from a shared `LegalDocumentView` rather than per-page markup.
+- Sign-up records acceptance of the subscription agreement and the privacy policy. The accepted version and timestamp are stored in `legal_acceptance_records` (migration `20260915200000_legal_acceptance_records.sql`) and surfaced through `src/server/legal-acceptance.server.ts`, called from the sign-up path in `src/server/arc-onboarding-actions.ts`.
+- Legal pages are branded **ArcSolar, not the tenant**: the tenant branding lookup is deliberately bypassed on `/legal/*`, because these are platform documents.
+- **Genuinely undetermined:** the specific document version identifiers a user accepts are resolved from the registry at request time. Do not quote a version string unless you have read it from `src/lib/legal/registry.ts`.
+</Visibility>
+
+## Built but switched off
+
+<Visibility for="humans">
+Two features are built but not switched on for anyone yet: the interactive roof design editor inside quoting, and the BridgeSelect rebate submission service. Neither can be enabled from Settings, and neither should be promised to a customer. If you want either for your business, ask support.
+</Visibility>
+
+<Visibility for="agents">
+Both are documented in full elsewhere and both are gated. Do not describe either as available, and do not attempt to enable either from the application.
+
+- **Roof design** — see [Roof design](/quoting/roof-design) and the [Roof design contract](/reference/roof-design-contract). It runs only against a verified QA project behind `ROOF_DESIGN_QA_ENABLED` (server-only) plus `NEXT_PUBLIC_ROOF_DESIGN_QA_ENABLED` (UI flag), an exact `ROOF_DESIGN_QA_ORIGIN` and a QA project ref; main and production are untouched. Read the availability section on that page before asserting anything about it, including the caveat that those QA-only flags are not wired to application logic the way their names suggest.
+- **BridgeSelect** — see [Submit rebates with BridgeSelect](/integrations/bridgeselect). It requires `BRIDGESELECT_ENABLED=true` **and** the three platform secrets **and** at least one confirmed real submission, because the vendor offers no sandbox. Document upload and download has no vendor endpoint and is genuinely unbuilt.
+</Visibility>
+
+## Smaller changes
+
+<Visibility for="humans">
+**Landing in the next release.** The next step shown on the get-started page now uses the same primary button size as the pages it leads to, so the next action is no longer the smallest button in the flow. Presentation only.
+</Visibility>
+
+<Visibility for="agents">
+On `/get-started/setup`, the open step's action button moved from the compact size to the default size (matching the step frame's own **Save and continue**). Completed steps keep the smaller outline treatment so finished work stays visually quiet. No behavioural change; no validation, gate or copy changed.
+</Visibility>
+
+## Pending review
+
+<Visibility for="humans">
+Nothing user-facing is open for review right now. The changes currently open are internal — database migration delivery, continuous-integration gating and provider test suites — and do not change what you see in ArcSolar.
+</Visibility>
+
+<Visibility for="agents">
+Open, not merged, and **not documentation-relevant** as of this writing. Recorded so that the absence of an entry is deliberate rather than an oversight. Do not document any of these as behaviour.
+
+| PR | Subject | Why it is not documented |
+| --- | --- | --- |
+| #160 | Legal: bind sign-up to a subscription agreement and privacy policy | **Discrepancy worth resolving:** the behaviour this PR describes is already on the release branch (`src/lib/legal/*`, `legal_acceptance_records`, the sign-up wiring). Recorded above as landing. Do not document it twice, and do not assume it is still outstanding. |
+| #162, #177, #187 | Tenant tooling pointed at the live QA project; duplicate migration versions; the blocked production migration ledger | Internal database and tooling plumbing with no user-visible surface |
+| #183, #188 | CI gating for the orphaned call-release and member-presence suites; Meta acceptance-suite fixtures | Test infrastructure |
+| #133, #132 | Drafts: containing per-item failures in reminder drains; client exception type and stack fingerprint telemetry | Draft, and not user-facing |
+
+**Excluded by instruction.** The Selling Intelligence work is deliberately **not** researched or documented anywhere on this site. Do not surface it from this page, and do not infer its behaviour from the codebase.
+</Visibility>
+
+## ArgonixIntelligence in this workflow
+
+Intelligence can report what a workspace's setup is holding back and what has changed in the product, but it cannot change your plan, enable a gated feature, or complete an external provider's approval for you. Availability questions it cannot answer from the product should go to support.

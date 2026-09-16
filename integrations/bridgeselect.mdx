@@ -1,0 +1,330 @@
+---
+title: "Submit rebates with BridgeSelect"
+sidebarTitle: "BridgeSelect"
+description: "Submit rebate applications to BridgeSelect and read back the reported certificate figures."
+icon: "plug-circle-check"
+keywords:
+  - "BridgeSelect"
+  - "rebates"
+  - "STC"
+  - "battery STC"
+  - "PRC"
+  - "compliance"
+  - "integration"
+---
+
+BridgeSelect is an Australian solar and rebate compliance service. It submits certificate applications — PV STC, Battery STC, PRC and REPS — on a retailer's behalf, then reports back the certificate figures it holds for each application. In ArcSolar it sits alongside Formbay and GreenDeal as a third rebate provider: an alternative, not a replacement. Connecting a provider never enables certificate tracking or a government submission on its own.
+
+<Warning>
+**Not enabled yet, and not something you can turn on yourself.** BridgeSelect is built but switched off. It stays off until ArcSolar's platform credentials are configured **and** at least one real submission has been confirmed with BridgeSelect directly. There is no BridgeSelect test environment, so that confirmation has to happen against their live service. If you want BridgeSelect for your workspace, [ask support](/reference/support) — do not expect to enable it from Settings.
+
+Two parts of it are genuinely not built: uploading or downloading documents has no BridgeSelect interface to call, and BridgeSelect publishes no approval status. Do not promise a customer either.
+</Warning>
+
+## What BridgeSelect covers
+
+<Visibility for="humans">
+BridgeSelect handles certificate applications that a retailer submits after an installation. Today ArcSolar supports four application types:
+
+| Application type | What it covers |
+| --- | --- |
+| **PV STC** | Small-scale Technology Certificates for the solar PV system |
+| **Battery STC** | Small-scale Technology Certificates for the battery system |
+| **PRC** | Peak Reduction Certificates for a battery installation |
+| **REPS** | Retailer Energy Productivity Scheme certificates for eligible South Australian jobs |
+
+**REPS is listed but cannot be selected.** It applies to hot water and aircon jobs in South Australia, which ArcSolar does not sell yet. Virtual power plant participation on a battery is recorded under **Battery STC** instead — REPS does not cover it.
+</Visibility>
+
+<Visibility for="agents">
+Four scopes have modules; eight more exist only as typed keys with no implementation and cannot be selected. The registry is the source of truth and its display order follows the certificate-type matrix: PV, battery, then state schemes.
+
+| Scope key | Label | Job type codes | Product line | Eligible states | Selectable |
+| --- | --- | --- | --- | --- | --- |
+| `pv_stc` | PV STC | 1 | solar PV | nationwide | Yes |
+| `bstc` | Battery STC | 1, 6 | battery | nationwide | Yes |
+| `prc` | PRC | 1, 6 | battery | nationwide | Yes |
+| `reps` | REPS | 1, 2 | hot water, aircon | SA only | **No** |
+
+Typed but unimplemented: `swh_stc`, `swh_veec`, `swh_esc`, `swh_reps`, `aircon_veec`, `aircon_esc`, `aircon_reps`, `ev_prc`. The database enforces the same allowlist and caps a job at 8 scopes.
+
+**Job type resolution.** Job type codes are 1 = solar PV and PV-plus-battery combinations, 2 = solar water heater, 6 = battery only. A combination is valid only when at least one code satisfies every selected scope. When several fit, battery-only wins, so a battery-only selection reports 6 rather than the combination code. If none fits: `BridgeSelect has no job type that covers <scope A> and <scope B> together. Submit them as separate jobs.`
+
+**REPS is deliberately non-selectable**, with the reason `REPS applies only to hot water and aircon jobs in South Australia, which are not sold yet. Virtual power plant participation on a battery is recorded under Battery STC instead.` VPP participation is the answer to `ibpoa` under Battery STC, not a REPS claim.
+</Visibility>
+
+## Connect the account
+
+<Visibility for="humans">
+An administrator or operations member connects BridgeSelect once for the whole workspace.
+
+**Where:** **Retailer Settings → Integrations → BridgeSelect**. The card carries a **Beta** badge and a status label.
+
+You need two things from BridgeSelect, both found under **Settings → API & Integrations** in BridgeSelect:
+
+- the **Retailer username**, and
+- the **Account secret** — the 2nd-factor secret you generate there.
+
+1. Choose **Connect account**.
+2. Enter the **Retailer username**.
+3. Enter the **Account secret**.
+4. Choose **Verify credentials**.
+5. Check that BridgeSelect accepted the credentials **for your business**, then choose **Connect verified account**.
+
+The platform key is already configured by ArcSolar — you never need to paste it. Verification comes first so you never connect an account you have not confirmed.
+
+**Status labels you may see:** Check connection…, Not connected, Disconnected, Needs attention, First sync pending, Connected, Status unavailable. **Needs attention** carries BridgeSelect's own last error. **First sync pending** means the credentials work but no application has been read yet.
+
+**Read applications now** refreshes from BridgeSelect. **Disconnect** removes the saved secret and stops reading; existing project associations and previously read applications stay available.
+</Visibility>
+
+<Visibility for="agents">
+Mount point: the quoting-settings integrations workspace. Tile: `aria-label="BridgeSelect integration"`, heading **BridgeSelect** with badge **Beta**, description `Submit rebate applications to BridgeSelect and read back the certificates it reports, alongside your projects.`
+
+| Control | Label | Condition |
+| --- | --- | --- |
+| Toggle form | **Connect account** / **Update connection** | Inactive / active |
+| Username field | **Retailer username** | — |
+| Secret field | **Account secret** | Password input |
+| Verify | **Verify credentials** / **Checking…** | Step one of two |
+| Connect | **Connect verified account** | Only rendered after a successful verify |
+| Refresh | **Read applications now** | Gated on the operational role set |
+| External link | **Open BridgeSelect** | Opens `https://www.bridgeselect.com.au/` |
+| Disconnect | **Disconnect** → confirm **Disconnect BridgeSelect?** / **Keep connected** | Confirm body: `Reading will stop and the saved secret will be removed. Existing project associations and previously read applications will remain available.` |
+
+Status label evaluation order: `Status unavailable` when unloaded with an error, `Checking connection…` when unloaded, `Not connected`, `Disconnected`, `Needs attention` when there is a last error, `First sync pending` when there is no last success, then `Connected`.
+
+**Two-step connect is mandatory.** Verify first: `BridgeSelect accepted these credentials for <username>. Confirm that this is your retailer's account before connecting.` then connect. The connect action refuses an account that failed verification.
+
+| Capability | Required for | Roles holding it |
+| --- | --- | --- |
+| `integration.bridgeselect.manage` | Verify, connect, disconnect | `administrator`, `operations`; the database write path also accepts `developer` |
+| `project.mutate` | Refresh, track a reference, link, submit | Any member the project permits |
+
+Connecting is treated as an administrator action because it stores a credential the whole workspace then submits under. Refresh, track, link and submit are operational work. Two consequences worth knowing: the refresh button on the tile is hidden behind the operational role set even though the server action accepts anyone with `project.mutate`; and a **sales** member receives no account-wide application index at all, because it spans customers they cannot access — they see nothing from BridgeSelect, not even a project-scoped subset.
+
+**What cannot be stored.** The platform KEY and SALT are deployment configuration, not per-retailer rows — BridgeSelect issues one pair per platform. Only the retailer username (stored in clear) and the 2nd-factor secret are per connection, and the secret is encrypted with AES-256-GCM before it reaches the database. The payload assembler never embeds credentials; the transport layer injects them.
+
+**Preconditions to enable**, in order, none of which you can complete from the app:
+
+1. `BRIDGESELECT_KEY` set and matching `^[A-Za-z0-9_-]{1,64}$`.
+2. `BRIDGESELECT_SALT` set to at least 16 characters. A shorter value is treated as absent, because the salt is the only thing protecting request and response integrity.
+3. `BRIDGESELECT_ENCRYPTION_KEY` set to the canonical base64 encoding of exactly 32 bytes.
+4. At least one real `create-or-edit` confirmed as accepted by BridgeSelect.
+5. Only then `BRIDGESELECT_ENABLED=true`. It must be exactly `true` after trimming and lowercasing.
+
+All three secrets plus the explicit opt-in are required: availability is `configured AND enabled`. The gate fails closed. There is **no vendor sandbox**; BridgeSelect's own guidance is to create a test job in production. Only the mock origin may be overridden, and only to a loopback address, so a configuration mistake cannot send live credentials to another host.
+</Visibility>
+
+## Prepare a submission
+
+<Visibility for="humans">
+Have these ready before you start. BridgeSelect rejects a request missing any of them, and ArcSolar blocks the same ones before sending.
+
+- The **installation address**, complete and geocoded. Coordinates are mandatory — an address without latitude and longitude is rejected rather than accepted as approximate.
+- The **customer** and **installation contact** names, emails and mobile numbers.
+- The **NMI**, if you have it — 9 or 11 digits. Leave it blank rather than guessing.
+- The **installation date** as DD/MM/YYYY.
+- The **certificate types** you are claiming.
+- For a battery: the **grid connection type**, the number of battery STCs, and the customer's **out-of-pocket** amount.
+- The **installer's CEC or plumbing licence number**.
+
+One panel brand per application. If a job genuinely needs two brands, split it into two applications.
+</Visibility>
+
+<Visibility for="agents">
+Common mandatory fields, with the exact blocking message. Any one of these missing blocks assembly; nothing is sent to BridgeSelect.
+
+| Key | Meaning | Rule | Blocking message |
+| --- | --- | --- | --- |
+| `crmid` | CRM job reference | Non-empty, 1–200 characters. Stable across edits of the same job. | `A CRM job reference is required.` |
+| `fn`, `ln` | Customer first name, surname | Non-empty | `The customer's first name is required.` / `The customer's surname is required.` |
+| `e` | Customer **email** | Non-empty. Note: not `em`. | `The customer's email address is required.` |
+| `m` | Customer **mobile** | Non-empty. Note: not `mob`. | `The customer's mobile number is required.` |
+| `ifn`, `iln`, `ie`, `im` | Installation contact names, email, mobile | Non-empty; `ie` and `im`, not `em` / `mob`. Defaults to the customer when no site contact exists. | `The installation contact's first name is required.` etc. |
+| `ot` | Owner type | One of `Individual`, `Government`, `Company`, `Trust`, `Other` | `Select the owner type (Individual, Government or another entity).` |
+| `orn` | Organisation name | Required when `ot` is not `Individual` | `An organisation name is required when the owner type is not Individual.` |
+| `pt` | Property type | One of `Residential`, `Commercial`, `School` | `Select the property type (Residential, Commercial or School).` |
+| `pabn` | Property ABN | Required when `pt` is `Commercial` or `School` | `A property ABN is required when the property type is Commercial or School.` |
+| `installer` | CEC or plumbing licence number | Non-empty; always emitted, even empty, so an edit can clear a previously assigned installer | `The installer's CEC or plumbing licence number is required.` |
+| `id` | Installation date | DD/MM/YYYY. An ISO date is converted with a warning. | `The installation date could not be read. Enter it as DD/MM/YYYY.` |
+| `nmi` | NMI | Exactly 9 or 11 digits, or blank | `The NMI must be a 9 or 11 digit number, or left blank.` |
+| `mtrn` | Meter number | Optional. Note: not `mnum`. | — |
+
+`siad` is always emitted and derived, not asked: `No` when a separate customer address exists, otherwise `Yes`.
+
+**Address fields are mirrored twice** — an un-prefixed block for the customer address and an `i`-prefixed block for the installation address. Coordinates are mandatory in both blocks.
+
+| Key | Meaning | Rule | Blocking message |
+| --- | --- | --- | --- |
+| `at` | Address type | Emitted as the literal `Physical` | — |
+| `stn`, `pra`, `sb` | Street number, street name, suburb | Non-empty | `A street number is required.` / `A street name is required.` / `A suburb is required.` |
+| `stp` | Street type | Must resolve to a recognised abbreviation | `Select a recognised street type so the address can be standardised for the network distributor.` |
+| `st` | State | Must resolve to an Australian state or territory | `Select an Australian state or territory. The installation state also determines certificate eligibility.` |
+| `pc` | Postcode | Exactly 4 digits | `Enter a four-digit postcode.` |
+| `lat`, `lng`, `ilat`, `ilng` | Coordinates | Finite numbers; latitude within −90 to 90, longitude within −180 to 180 | Missing: `BridgeSelect requires the installation's coordinates. Enter or geocode the address latitude and longitude.` Out of range: `A latitude must be a number between -90 and 90.` / `A longitude must be a number between -180 and 180.` |
+| `untn` | Unit number | Numeric, optionally with a letter suffix; sent as a number, not a string | `A unit number must be numeric, optionally with a letter suffix.` |
+
+**If either coordinate is missing, no address block is emitted at all** — a partial address is never sent. Latitude and longitude are blocking rather than optional because the field table gives them no default, and a job with no coordinates is a rejected request, not a slightly less precise one.
+
+### Battery rules an agent must get exactly right
+
+| Field | Semantics | Rule |
+| --- | --- | --- |
+| `ctieg` | Battery grid connection type | **Mandatory for any job with batteries, including a PRC-only job.** One of `Connected to an electricity grid without battery storage`, `Connected to an electricity grid with battery storage`, `Stand-alone (not connected to an electricity grid)`. |
+| `cbstc` | Is this a battery STC job | A **flag**, `0` or `1` — never the count. Sending a count here would be accepted as `1` and silently misdeclare the claim. |
+| `bstcn` | Number of battery STCs | The **count**. A job claiming no battery STCs must send a real `0` rather than omitting the key. |
+| `bstcfp` | Out-of-pocket for the battery | The customer's out-of-pocket **after** the discount, which must reconcile against the invoice. It is not the discount deducted. |
+| `ibpoa` | Part of an aggregated control (VPP) | A different question from `ctieg`. This is where VPP participation is recorded. |
+
+A PRC-only job still carries the battery group, so `ctieg`, `cbstc` and `bstcn` are contributed by the assembler for any job with batteries — not by the Battery STC scope. Missing `ctieg` blocks with `Select the battery's connection type to the electricity grid. BridgeSelect requires it for any job with batteries.`
+
+**Panels, inverters and batteries** are sent as embedded product groups. Product keys must go through the documented `createKey()` transform or they fail to resolve, which surfaces only as a validation error deep inside a job. Panel groups allow **one brand per job and per claim** (`BridgeSelect accepts only one panel brand per job and per claim. Split the job or align the panel brand.`); inverter and battery groups allow several manufacturers. Each battery line additionally requires its own brand, because BridgeSelect records that separately from the manufacturer.
+
+**Warnings versus blocks.** Some answers produce a warning rather than a refusal — for example the CEC licence, accreditation or electrical safety answers being `no`, or special instructions present without an accompanying detail field. Warnings do not stop submission; read them before sending.
+
+### Field traps worth memorising
+
+- `e` is customer email and `ie` is installation email — `em` is not a field.
+- `m` is customer mobile and `im` is installation mobile — `mob` is not a field.
+- `id` is the installation date, not `cd`.
+- `mtrn` is the meter number, not `mnum`.
+- `fp` is the STC discount and is a common field, not a scope field.
+- `iia` (additional panels on an existing system) is not `siad` (same-address flag). They are easy to transpose and mean unrelated things.
+- `stc` and `stcdp` are response-only; sending them is unnecessary.
+- `cxpv` is free text about a removed or replaced system, not a capacity figure.
+</Visibility>
+
+## Submit, then read back
+
+<Visibility for="humans">
+Submitting is not instant and not interactive. When you submit, ArcSolar queues the application, a background worker sends it, and a later read brings back what BridgeSelect holds. You do not need to keep anything open.
+
+The **first** submission for your account is special. BridgeSelect has to accept one real submission before ArcSolar is allowed to send any others, so the first one acts as its own test. Until that succeeds, later submissions are refused with **BridgeSelect submissions for this account have not been verified. Reconnect the BridgeSelect account and try again.** Reconnecting resets that state and re-runs the check.
+
+**A submission that times out is never re-sent.** BridgeSelect may already have applied it, and sending it twice risks creating a second real application on your account. Instead ArcSolar reads the application back to find out what actually happened. Treat a timeout as "check, don't retry".
+
+On the project, the **Reported for this project** card shows what BridgeSelect returned, with the property, address, the NMI BridgeSelect reports, the certificate figures, and the deeming period. It also lists what changed at each read, so you can see movement without re-reading everything.
+
+**BridgeSelect publishes no way to list its jobs.** ArcSolar can only read a reference it already knows — one it submitted, or one you add by hand with **Add reference**. An application appears on a project only after it has been read at least once.
+</Visibility>
+
+<Visibility for="agents">
+BridgeSelect is **write-first**: ArcSolar creates the job, then reads it back. There is no listing endpoint — `status` and `details` both take a single `crmid` — so a job is either created by ArcSolar or supplied as an existing reference by an operator.
+
+**Ordering, enforced by the cron route.** One scheduled entry point (`/api/cron/bridgeselect`, every 5 minutes, Node.js runtime, 60-second budget) performs the read sync **first**, then drains due submissions. The drain runs second because a submission is only confirmed by the read that follows it, and the two directions share the entry point. A read failure must not cost the queue its turn, so the drain still runs. Endpoints: the route requires `CRON_SECRET` of at least 32 characters (otherwise `503`), a constant-time bearer comparison (otherwise `401`), and refuses prototype mode with `403`.
+
+**Submission stages.**
+
+| Stage | Path | Effect |
+| --- | --- | --- |
+| Assemble | Pure server function | Returns a valid payload with warnings, or blocking issues |
+| Queue | Submit server action | Reserves the job row and enqueues a command keyed by a payload-derived dedupe key |
+| Claim | SQL | `queued` → `running`, 60-second lease, attempt count incremented |
+| Dispatch | Worker | Sends `create-or-edit`, records the verified operation, ends in `outcome_unknown` |
+| Read back | Worker | Reads `status` per unread job, stores the summary, its fingerprint, and an observation if something moved |
+| Link | Operator | Associates a **read** job with a project |
+
+**Command states.** `queued`, `running`, `succeeded`, `failed`, `outcome_unknown`, `cancelled`. In practice:
+
+- `queued` → `running` on claim.
+- `running` → `outcome_unknown` on a lease that expired before claim, on a transport error after dispatch began, or on success.
+- `running` → `failed` only when the error occurred **before** transport.
+- `queued` or `running` → `cancelled` when the connection is superseded or disconnected.
+- `failed` or `cancelled` → `queued` on re-enqueue with the same dedupe key.
+- `succeeded` is **defined but never entered.** The dispatcher writes `outcome_unknown` on success, and the only function that accepts `succeeded` has no caller. Do not build logic that waits for `succeeded`.
+
+**`outcome_unknown` is the success path, not an error path.** After BridgeSelect accepts a request and the response checksum verifies, the command is deliberately marked `outcome_unknown` and the job flagged for a read. The provider's words are recorded; the job counts as written only once read back.
+
+**Never retry a request that may already have been applied.** This is the central rule. A request that outlived its lease becomes `outcome_unknown` and is resolved by reading the job back, never by writing again — re-sending a job write risks a second real submission to a scheme. Automation should never re-issue a `create-or-edit` for a command in `running` or `outcome_unknown`.
+
+**Retry rules.** Retried automatically: transient read failures (the job keeps its refresh flag and its last good data stands), a connection after its retry time passes, and a command that failed before transport. Never retried: anything that may have reached the provider. Cancelled rather than retried: queued work when the connection is superseded or disconnected. Backoff is 300 seconds by default, or the provider's own retry-after on a rate limit, clamped between 60 seconds and 24 hours.
+
+**Idempotency works on two keys.** The job is identified by `crmid`, so create and edit are the same call and an edit reuses the reference rather than duplicating it. The command's dedupe key combines the `crmid`, the operation, and a fingerprint of the payload — so a double click or a retry after a timeout resolves to one queued command, while a genuine further edit changes the payload and queues afresh.
+
+**The verified-operation gate.** A per-connection record of which operations this account has actually performed. Today the only operation is `create-or-edit`. It is never set at connect time, because an authenticating token proves nothing about a write. The first submission for an operation is its own probe: it is allowed through, and dispatch records the operation as verified only if the provider accepted it. Every later submission is gated on that recorded fact. A prior command in `running`, `outcome_unknown` or `succeeded` for the same operation blocks a second probe, so the exception covers exactly one in-flight submission. The gate is checked before anything is queued, so the operator sees `BridgeSelect submissions for this account have not been verified. Reconnect the BridgeSelect account and try again.` rather than a silent queue-and-wait. Reconnecting clears the record and re-runs the probe. Nothing else is gated: reads, product verification, tracking, linking and refresh all run regardless.
+
+**Change detection.** Fingerprints are SHA-256 over a key-sorted canonical serialisation, so they are stable across re-serialisation but sensitive to any value change. A first read stores a baseline and reports no change. A later read records an observation only when the fingerprint differs, naming just the documented fields whose values moved. A response describing a different job is discarded rather than attributed to this project.
+
+**Errors.** Seven kinds, each with a fixed operator message: `auth` → `Reconnect BridgeSelect to continue syncing.`; `rate_limit` → `BridgeSelect is busy. Your last synced data is retained.`; `provider` → `BridgeSelect could not complete this request. Your last synced data is retained.`; `contract` → `BridgeSelect returned an unexpected response. Your last synced data is retained.`; `checksum` → `BridgeSelect's response could not be verified, so it was discarded.`; `timeout` → `BridgeSelect did not respond in time. Your last synced data is retained.`; `validation` → `BridgeSelect rejected the job. Review the highlighted fields.` BridgeSelect's own message is appended when it provided one, because API errors must be shown in the CRM.
+
+HTTP mapping: `401`/`403` are `auth`; `429` is `rate_limit` and sets the retry delay; any other non-2xx is `provider`; a checksum mismatch after a 2xx is `checksum`; an empty, non-JSON, or oversized body is `contract`. Checksums are compared in constant time, and an unverified response is never returned — an attacker able to influence the transport could otherwise inject arbitrary job status. Requests use `redirect: "error"` and `cache: "no-store"`.
+
+**Read-back statuses.** Reads are bounded to a batch of 15 per run within a 45-second budget, and submissions to a batch of 3 within 10 seconds, both sized so a run cannot outlive its lease. A run reports `refreshed` when clean and `partial` when anything failed, with the message `Some applications need another read. Last synced information is retained.` A lease held elsewhere is reported as busy, not as an error.
+</Visibility>
+
+## Link an application to a project
+
+<Visibility for="humans">
+Linked applications appear on the project's rebate area. To link one:
+
+1. Open the project.
+2. Find the BridgeSelect area.
+3. Either add the **BridgeSelect job reference** for an application you did not submit here, or pick from the applications ArcSolar has read.
+4. Choose **Link to this project**.
+
+An application can be linked to only one project. If it is already linked elsewhere, ArcSolar refuses rather than moving it. An application also has to have been read at least once before it can be linked — an unconfirmed reference never makes a project look like it has a live application. **Unlink** reverses the association without deleting the application.
+
+Adding a reference does not read it. The next read collects it, which is why a newly added reference shows **Awaiting first read** until then. A single reference cannot be added twice to the same project.
+</Visibility>
+
+<Visibility for="agents">
+| Rule | Detail |
+| --- | --- |
+| Verified read required | Linking fails unless the job has a stored summary and its connection is active: `A verified active application is required.` An unverified stub can never make a project appear to have a live application. |
+| One project only | An application already associated with another project cannot be moved: `This application is already associated with another project.` |
+| Project access | Both the project read and the link require access to the project's customer, otherwise `Project access denied.` |
+| Reference hygiene | A reference is opaque and accepted as-is. Whitespace is **rejected, never trimmed**, because trimming would silently read a different job than the operator named. |
+| Index scope | The account-wide index is limited to 100 rows with a `hasMore` flag, and is not served to sales members. The project's own applications are always eligible, so searching inside a project can never make a live association appear to vanish. |
+
+The list projection deliberately excludes the raw provider detail.
+
+**Import.** A function exists to create a project from a verified application, but no application module calls it, so the operator-facing import is not wired. It refuses to guess a work type, failing loudly: `This application requires a verified physical work-type mapping before project import.` REPS is deliberately excluded from import mapping, because it is hot water and aircon only and cannot map to a project type ArcSolar sells today.
+</Visibility>
+
+## What BridgeSelect does not do
+
+<Visibility for="humans">
+Be careful not to overstate what this integration proves.
+
+- **It does not report an approval status.** BridgeSelect has no approval state for ArcSolar to show. ArcSolar shows the certificate figures BridgeSelect returns and what changed at each read. That is not confirmation that a claim was created, paid or approved.
+- **Sales do not see the account-wide application list.** It spans customers they cannot access.
+- **Documents are not supported.** Uploading and downloading documents has no BridgeSelect interface to call, so it is unbuilt rather than merely disabled.
+- **ArcSolar cannot discover applications you created in BridgeSelect.** Nothing lists jobs, so you must add the reference by hand.
+</Visibility>
+
+<Visibility for="agents">
+- No approval status is modelled, deliberately. Nothing in the integration treats a response as an approval. The echoed CRM status field is ArcSolar's own value coming back, not the provider's state. The stored observation carries the disclosure `Observed since sync began; this does not confirm the claim was created, paid or approved.`
+- Only `stc` is read back as a numeric certificate count. Battery figures are the caller's own input — reading them back as provider evidence would misreport an echoed value as something BridgeSelect calculated.
+- The document table exists but no module reads or writes it. BridgeSelect publishes no upload or download endpoint at all.
+- Two functions are unreachable in practice: the terminal command-state writer (`succeeded` is never written) and the project-import function (no caller).
+- The stored summary is deliberately narrow — only documented keys are surfaced.
+</Visibility>
+
+## Still open with BridgeSelect
+
+<Visibility for="humans">
+A few details are waiting on answers from BridgeSelect. ArcSolar has deliberately not guessed them, so treat everything below as unsettled rather than as a defect you should work around. [Ask support](/reference/support) if you hit one.
+</Visibility>
+
+<Visibility for="agents">
+These are genuinely undetermined by the code, recorded rather than guessed. Do not present any of them as settled.
+
+- **Boolean casing.** The code normalises incoming answers case-insensitively but emits lowercase literals for most yes/no fields, while the same-address flag is emitted capitalised. BridgeSelect's own documentation and sample data disagree about casing, and there is no sandbox to settle it. Every yes/no answer field could be rejected or silently misread until the vendor replies.
+- **The `at` address-type value.** ArcSolar emits the literal `Physical` per the field table and worked example, but the shipped sample payload sends `Physical Address` instead. The discrepancy is recorded as a smoke-test item. If the vendor wants the longer form, every address block is rejected.
+- **Whether `retailer` belongs on `create-or-edit`.** The master-account second factor is currently added to every request. It is unconfirmed whether that endpoint accepts the extra keys; if it rejects unknown body keys, every create fails.
+- **Numeric versus string types in asset groups.** The documentation quotes some asset values as strings while the working sample sends numbers. ArcSolar emits numbers to match the known-good payload.
+- **Document upload and download.** No vendor endpoint exists. Blocked on the vendor.
+- **Provider status and response schema.** BridgeSelect publishes requests but no response schema beyond a per-field "returned in response" column, so read-back is treated as an echo of the job's own fields. Every key the provider actually returns is stored, so a named extraction can be added later without another provider round trip.
+</Visibility>
+
+## Related
+
+- [Connect your tools](/integrations/overview) — how integrations work in general.
+- [Track rebates and certificate progress](/delivery/rebates) — what happens to certificates after submission.
+- [Feature availability](/reference/availability) — how gated features are presented.
+- [Get help from ArcSolar](/reference/support) — how to ask for BridgeSelect.
+
+## ArgonixIntelligence in this workflow
+
+Intelligence can only reason from information available to its supported workflow. It cannot turn a disconnected provider, an unconfirmed reference or a missing read into a verified certificate figure.

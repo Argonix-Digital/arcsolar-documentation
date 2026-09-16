@@ -1,0 +1,149 @@
+---
+title: "Roof design integration contract"
+sidebarTitle: "Roof design contract"
+description: "The API contract, asset specification, permissions and data shapes behind Roof Design."
+icon: "file-shield"
+keywords:
+  - "roof design"
+  - "contract"
+  - "api"
+  - "assets"
+  - "error codes"
+  - "permissions"
+  - "agents"
+---
+
+This page is the technical contract behind [Roof Design](/quoting/roof-design). It is written for integrators and AI agents that need to operate or reason about the feature precisely. Contract version: **1**.
+
+<Visibility for="humans">
+If you only use Roof Design through the app, you do not need this page. It documents interface-level behaviour — routes, error codes, image requirements and permissions — for technical readers.
+</Visibility>
+
+<Visibility for="agents">
+**Posture.** The editor is a separate first-party application embedded in an iframe, launched from inside a quote. It is not a public API and it is not documented for third-party integration. Treat every path below as internal.
+
+**API base.** `/api/roof-design/v1`, served by a catch-all route on the Node.js runtime. Responses set `Cache-Control: no-store`, `Referrer-Policy: no-referrer` and `Vary: Origin`. CORS echoes the configured roof design origin only, with credentials allowed and headers `Authorization, Content-Type`.
+
+**Request size limit.** Any request body over roughly 5 MB is refused with `422 VALIDATION` — `Request too large.` A design document over 5 MB is refused with `Design document exceeds 5 MB.`
+
+### Authentication modes
+
+| Mode | How | Used by |
+| --- | --- | --- |
+| Cookie session | The signed-in ArcSolar session | `launch`, `attach`, and cookie-authorised writes |
+| Bearer capability | `Authorization: Bearer <accessToken>`, a project-scoped opaque token | Embedded-app reads and writes |
+
+Rules that matter:
+
+- `launch` and `attach` require cookie identity and **reject** a bearer token: `403 Launch from ArcSolar.` and `403 Review in ArcSolar.`
+- Cookie-authorised writes are accepted only when the request origin equals the app origin or the configured roof design origin, otherwise `403 Request origin denied.`
+- Cookie writes additionally require the `quote.revise` capability. A denied capability surfaces as `403 You do not have permission to edit quote designs.`
+- `sign-out` is origin-gated and returns `204`.
+- The bearer capability is workspace- and project-scoped. Every project, revision, asset and command query filters on the workspace, and a request naming any other project returns `403 This launch is restricted to its project.` A capability can never create a project: `403 Open a new project from ArcSolar.`
+
+### Launch and exchange
+
+| Step | Route | Detail |
+| --- | --- | --- |
+| Launch | `POST /api/roof-design/v1/launch` | Accepts an address, optional coordinates, and optional project, customer, site, opportunity, quote draft id and draft key. Creates a project when none is given, then loads it to enforce access before issuing a code. |
+| Exchange | `POST /api/roof-design/v1/exchange` | Body is a single `launchCode`, 40 to 100 characters. Returns an access token, its expiry, the project id, the organisation id, the quote draft id. |
+| Sign out | `POST /api/roof-design/v1/sign-out` | Origin-gated; ends the embedded session locally. |
+
+The launch code is bound to the exact origin, expires in **60 seconds**, and is consumed once atomically. A second exchange of the same code fails with `401 LAUNCH_EXPIRED` — `This launch expired or was already used. Reopen from ArcSolar.` The access token is the opaque capability itself, not a signed token, and it is valid for at most **10 minutes**, capped by the remaining ArcSolar session. If the session has under a minute left, launch is refused with `401 UNAUTHENTICATED` — `Refresh your ArcSolar session before opening the panel.`
+
+The launch response omits extracted credentials from any URL. Nothing in this flow puts a credential in a query string, a fragment, or a referrer.
+
+### Design revisions and assets
+
+A revision is an immutable checkpoint. Creating one copies the authoritative project context and selected equipment — never a snapshot supplied by the embedded app. Revising a saved revision means creating a new one; updating or deleting one is refused with `IMMUTABLE: create a new design revision`.
+
+Two image assets are required per revision.
+
+| Field | Requirement |
+| --- | --- |
+| `type` | Exactly `panel-layout` or `stringing-components` |
+| Format | PNG only |
+| Long edge | At least **2400 px** |
+| `revisionId` | The revision the image belongs to |
+| `sha256` | Lowercase hex checksum of the exact bytes |
+| `width`, `height` | Must match the uploaded image exactly |
+| `attribution` | Non-empty imagery attribution, preserved and shown to the customer |
+| `address` | Must equal the revision's context address |
+| `framingId` | Non-empty; **both images in a bundle must share it** |
+| `northIndicator` | Must be literally `true` |
+| `complete` | Must be literally `true` |
+
+**Upload shape.** Upload uses a signed upload URL with upsert disabled, then a separate completion call. Completion re-reads the stored object and verifies byte length within the 20 MiB bucket limit, checksum, PNG format, and exact width and height. Any mismatch fails with `422 VALIDATION` — `Image bytes, dimensions or checksum do not match.` Completing before uploading fails with `409 ASSETS_NOT_READY` — `Upload the image before completing it.`
+
+**Storage.** Bucket `roof-design-private`; private; 20 MiB file size limit; allowed MIME type `image/png` only. Object paths are generated server-side as `workspace/project/revision/type.png` and are unique per revision and type. There is exactly one row per revision and type: a second upload attempt is refused with `VALIDATION: immutable asset metadata`. Once an asset is `ready` it is immutable — trigger-level guards reject deletion and any change other than status and completion time.
+
+**Bundle completeness.** A bundle exists only when **both** assets for the same revision are `ready`, ordered `panel-layout` then `stringing-components`, with equal revision, equal address to the site address, a long edge of at least 2400, and the same `framingId`. Reading an asset re-verifies that its path belongs to the requested bundle and re-hashes the bytes, failing with `409 Design image integrity check failed.` on mismatch. A bundle cannot be completed from a revision whose customer is unset.
+
+An incomplete attempt never replaces a prior complete bundle. The refusal is `409 ASSETS_NOT_READY` — `Both completed design images are required. The previous bundle is retained.`
+
+### Error codes
+
+| Code | Status | Meaning |
+| --- | --- | --- |
+| `UNAUTHENTICATED` | 401 | No valid session or capability |
+| `LAUNCH_EXPIRED` | 401 | Launch code reused or past its 60-second life |
+| `FORBIDDEN` | 403 | Wrong origin, wrong project scope, or missing capability |
+| `NOT_FOUND` | 404 | Missing project, revision, asset, image, or draft |
+| `DISABLED` | 404 | Host origin or launch encryption is not configured |
+| `VERSION_CONFLICT` | 409 | `expectedVersion` did not match the stored version |
+| `ASSETS_NOT_READY` | 409 | A required image is missing, incomplete, or inconsistent |
+| `REVIEW_REQUIRED` | 409 | The design does not match the saved commercial draft |
+| `VALIDATION` | 422 | Invalid payload, document, or image bytes |
+| `UNAVAILABLE` | 503 | Temporary failure or an unresolvable draft |
+
+Underlying database errors are mapped deterministically: `42501` becomes `403 You do not have access to this design.`, `40001` or `PT409` become `409 VERSION_CONFLICT The design changed. Reload before saving.`, and anything else becomes `422 VALIDATION`, with a message already prefixed `VALIDATION:` passed through verbatim.
+
+### Permissions
+
+| Surface | Who |
+| --- | --- |
+| Read a design | Active workspace member with access to the linked customer, plus an explicit grant for address-only projects |
+| Mutate a design | Roles `administrator`, `developer`, `operations`, `sales`, with an active auth session |
+| Grant or share | Workspace owner, `administrator`, or `developer` |
+| Organisation-level defaults | `administrator` or `developer` |
+
+Row-level security is enabled on every table. Browser roles are granted `select` only, except the launch-exchange table, which has no browser grant and no policy at all — its contents are server-only. Command execution requires a current auth session and one of the mutating roles.
+
+### Data shapes
+
+The integration keeps nine tables, all workspace-scoped and all registered in the tenant purge manifest.
+
+| Table | Holds |
+| --- | --- |
+| `roof_design_projects` | One design project: address, coordinates, optional customer, site and opportunity, the design document, selected equipment, and a positive integer `version` used for optimistic concurrency |
+| `roof_design_grants` | Per-member edit grants for address-only projects |
+| `roof_design_revisions` | Immutable checkpoints with document, context snapshot and equipment snapshot |
+| `roof_design_assets` | One row per revision and image type, with checksum, dimensions, metadata and `pending` or `ready` status |
+| `roof_design_quote_links` | The reviewed attachment: revision, quote draft, bundle, commercial fingerprint, reviewer, and the issued estimate if any |
+| `roof_design_equipment` | The equipment catalogue and its mapping to commercial products |
+| `roof_design_preferences` | Organisation- or member-scoped defaults |
+| `roof_design_events` | Append-only audit events |
+| `roof_design_launch_exchanges` | Server-only launch codes and session capabilities |
+
+Key interfaces available to the embedded app include a command entry point (`roof_design_command`), a context reader (`roof_design_context`), a defaults writer (`roof_design_defaults`), and a member-scoped quote draft reader (`get_quote_builder_draft`). The draft reader returns only the caller's own draft, and settlement requires the returned id to equal the id the caller named.
+
+**Context shape returned to the editor.** Version 1, with the organisation id, read/edit/attach permissions, optional customer, site and opportunity ids, address, coordinates, optional NMI evidence (value, evidence id, site id), and up to 200 selected equipment lines. Note that the draft id in this context is not the live quote draft id; the live id comes from the launch exchange.
+
+### Genuinely undetermined
+
+Do not present any of the following as settled behaviour.
+
+- **Documented QA flags are unwired.** Four flag names exist in `.env.example` and the contract but are read by no application code. Runtime behaviour is controlled by `ROOF_DESIGN_ORIGIN` and `ROOF_DESIGN_EXCHANGE_KEY` instead. Whether the flags were meant to be wired or removed is unresolved.
+- **Search result shape.** The type union includes an external-address result, but the search route only ever builds customer and existing-design results. Where external address results come from is not settled here.
+- **Equipment has no write path.** The equipment table is readable but no command action creates or maps equipment rows. How the catalogue is populated is unresolved.
+- **"Reviewed" is not persisted as a state.** The review flag is validated on the attach request but never stored; the only durable record of review is the quote-link row. Any state machine described for a design must be expressed in terms of the project version, the asset status, and the presence of a link row.
+- **No entitlement gate on the new path.** A `roof_vision` entitlement exists but is applied to the older analysis paths, not to this route or panel.
+- **The legacy editor path.** The contract states that `/designer` remains the legacy editor while `/` is the shell, but nothing in the application defines or verifies `/designer`.
+- **Availability.** Availability is not controlled by a feature flag you can read. Confirm against the deployment's actual configuration. Issuing through the ordinary launch path was still blocked by missing valid QA payment configuration at the time of writing.
+</Visibility>
+
+## Related
+
+- [Use Roof Design (Roof Vision)](/quoting/roof-design) — the working guide.
+- [Feature availability](/reference/availability) — how gated features are presented.
+- [Get help from ArcSolar](/reference/support) — how to ask whether a gated feature is enabled for you.

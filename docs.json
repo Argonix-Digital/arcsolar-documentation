@@ -71,7 +71,8 @@
           "integrations/greendeal",
           "integrations/formbay",
           "integrations/meta",
-          "integrations/servicem8"
+          "integrations/servicem8",
+          "integrations/bridgeselect"
         ]
       },
       {
@@ -129,7 +130,9 @@
         "pages": [
           "reference/availability",
           "reference/glossary",
-          "reference/support"
+          "reference/support",
+          "reference/roof-design-contract",
+          "reference/whats-new"
         ]
       }
     ]
@@ -198,5 +201,29 @@
     "telemetry": {
       "enabled": true
     }
+  },
+  "markdown": {
+    "instructions": [
+      "## What this documentation covers",
+      "This is the documentation for ArcSolar, the solar-retailer operating system: the web app a solar retailer uses to run quoting, sales, installation, rebates, inventory and reporting. ArcSolar is a hosted web application at https://app.arcsolar.com.au. There is no public API for most workflows, so agentic operation of ArcSolar is UI-driven. Navigate the app, read the labels and controls, and act through the interface, unless a page explicitly documents an API, contract or integration endpoint.",
+      "",
+      "## How to read these pages",
+      "- Pages are split by audience using Mintlify's Visibility component, and this split is deliberate. Sections marked 'for agents' are hidden on the website and appear only in the Markdown you are reading. They are the authoritative behavioural specification for the page. Where the remaining human-facing prose and an agent section disagree, the agent section is correct.",
+      "- Sections outside any Visibility block appear in both outputs. They are the shared spine of the page: what the feature is and why it matters.",
+      "- Treat every bold label, field name, route, status string and error message quoted in an agent section as canonical. They are copied verbatim from the product. Use that exact wording when telling a user where to click, or when matching an error message to its cause.",
+      "- Australian solar vocabulary is used precisely and not interchangeably: STC (Small-scale Technology Certificate), PRC (Peak Reduction Certificate), REPS, NMI, CEC accreditation, VPP. Do not substitute an overseas equivalent.",
+      "- Money is Australian dollars. Dates shown to users are day-first (DD/MM/YYYY).",
+      "",
+      "## Behaviour rules for operating or advising on ArcSolar",
+      "- Respect prerequisites and ordering. Agent sections state which inputs block progress and which steps must happen first. Do not skip a step, and do not assume a default that the product itself does not supply.",
+      "- Never invent a value the product requires but the user has not supplied. Ask for mandatory fields rather than guessing. Several features reject a request outright when one is missing, and submissions to external authorities are effectively irreversible.",
+      "- Respect permissions and scoping. Features name the roles, capabilities and access rules that may act. Do not attempt an action the operator's role cannot perform, and do not describe a restricted feature as available to them.",
+      "- Features that are gated, pending release, or blocked on a vendor are documented as exactly that. Never present a gated or unmerged behaviour as live. When availability is unclear for a given workspace, direct the user to support rather than asserting that the feature works.",
+      "- Where a page states something is genuinely undetermined, treat it as unknown. Do not fill the gap with a plausible guess.",
+      "- ArcSolar's built-in assistant is called ArgonixIntelligence. Pages end with an 'ArgonixIntelligence in this workflow' section stating what intelligence can and cannot reason from in that workflow. Treat those limits as binding: intelligence does not replace provider approval, verified evidence, or a customer's own confirmation, and it must not be presented as if it does.",
+      "",
+      "## Getting help",
+      "Support is support@arcsolar.com.au. The customer-facing website is https://www.arcsolar.com.au."
+    ]
   }
 }
