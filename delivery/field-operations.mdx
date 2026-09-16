@@ -32,10 +32,18 @@ Find the existing installer/company before adding another. Review the contact de
 
 The approved design reaches the installer as part of the issued quote, not through a separate tool. They see the same two layouts the customer approved — the **Solar panel layout** and the **Stringing and component layout** — on the issued quote and its PDF, alongside the project and the work order for the job.
 
-There is **no separate installer design screen** in ArcSolar. Installers do not draw, edit or approve a design here, and there is no installer-only single line diagram or stringing sheet. If the site differs from what the design shows, record the difference against the job and raise the next action rather than editing the design.
+If a job needs more, the **design editor** can export installer-oriented documents: a single line diagram PDF and the roof reports. Those come from the editor, not from ArcSolar, and they are preliminary design outputs stamped **Preliminary design — verify on site**, not certification.
+
+There is **no separate installer design screen** in ArcSolar. Installers do not draw, edit or approve a design here. If the site differs from what the design shows, record the difference against the job and raise the next action rather than editing the design.
 
 <Visibility for="agents">
-  The design surface is deliberately rep- and customer-facing only. `projects/` and `field-operations/` contain no roof design reference, and there is no installer route group for design. The installer-facing design artefacts are the issued estimate and PDF pages produced by `appendRoofDesignPages`, labelled **Solar panel layout** and **Stringing and component layout**, and nothing else. Do not describe an installer design view, an installer SLD, or design editing by an installer. Full detail: [Roof design](/quoting/roof-design) and the [Roof design contract](/reference/roof-design-contract).
+  The design surface is deliberately rep- and customer-facing only. `projects/` and `field-operations/` contain no roof design reference, and there is no installer route group for design. The installer-facing design artefacts inside ArcSolar are the issued estimate and the PDFs it produces, and nothing else. Do not describe an installer design view, an installer SLD, or design editing by an installer. Full detail: [Roof design](/quoting/roof-design) and the [Roof design contract](/reference/roof-design-contract).
+
+  **Which renderer produces which PDF.** The **estimate PDF** (`src/lib/quotes/estimate-pdf.ts`) builds the two drawings as pdfmake content inside a section headed **PROPOSED ROOFTOP DESIGN**, captioned **PROPOSED PANEL LAYOUT** and **PANEL STRINGS & COMPONENT MARKINGS**. The **contract PDF** (`contract-pdf.ts`) and the **tenant-document PDF** (`tenant-document-pdf.ts`) append one A4 landscape page per image through `appendRoofDesignPages`. Do not attach `appendRoofDesignPages` to the estimate PDF.
+
+  **What the design editor itself can hand to an installer.** The editor, not ArcSolar, produces the installer-oriented downloads: the A4-landscape **project sheet** single line diagram PDF from **Download SLD PDF**, plus the roof reports **Panel Design**, **Annotation Design**, **Site Plan**, **Battery Site Plan** and **Voltage Rise Calculation**, each footer-stamped `Roof Studio · <date> · Preliminary design — verify on site`. A fixed **A3** installation sheet exists in the editor's code but is not reachable from its interface. These are preliminary design outputs, not certification — the voltage rise report states `No reactance, thermal cable-capacity, protection or regulatory compliance assessment is included.` and `The entered comparison limit is a design input, not a certification of compliance.`
+
+  Both statements are true together: ArcSolar has no installer design surface, and the design editor can export installer-oriented documents. Neither product has an installer login, role or workspace.
 </Visibility>
 
 ## During and after the visit

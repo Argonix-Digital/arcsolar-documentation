@@ -1,0 +1,277 @@
+---
+title: "Draw the single line diagram"
+sidebarTitle: "Single line diagram"
+description: "Draw the switchboard, inverter, battery and PV schematic in the SLD editor and export it as a vector PDF."
+keywords:
+  - "single line diagram"
+  - "SLD"
+  - "SLD editor"
+  - "electrical schematic"
+  - "switchboard diagram"
+  - "Smart Gateway"
+  - "PV string"
+  - "MPPT"
+  - "polarity"
+  - "cable route"
+  - "junction"
+  - "A3 drawing"
+  - "vector PDF"
+  - "Download PDF"
+  - "MEN link"
+  - "AS/NZS 4777.1"
+  - "AS/NZS 5033"
+  - "rule pack"
+---
+
+The single line diagram (SLD) is the electrical schematic for the site. It shows the supply, the main switchboard, the inverter and its MPPT inputs, the PV strings, the battery, the protection devices and the loads, and how they are wired together.
+
+It is drawn in the **SLD editor**, which opens from inside the Roof Design editor. It is a different drawing from the roof layout: the roof design shows where the panels go, the SLD shows how the electricity runs.
+
+The SLD editor belongs to the same external application that provides Roof Design. ArcSolar does not draw, validate or store an SLD — it holds the two proposal images and nothing else.
+
+## Draw the diagram
+
+<Visibility for="humans">
+  **Open it:** in the Roof Design editor, choose **Open SLD** from the downloads toolbar. You can also use the standalone editor at `/sld`.
+
+  When you open it from a roof design, it loads with the inverter you configured, its MPPT inputs, and the strings you built. If you have not configured an inverter yet, the canvas opens empty.
+
+  1. Set the supply with the **Phases** buttons.
+  2. Drag components from **Components** onto the canvas — or click one, then click where it goes.
+  3. Drag between two terminals to run a cable.
+  4. Select a cable to edit its route, or to rename it.
+  5. Select a component to open **Object properties** — label it, set its model and rating, and open its **INTERNAL COMPONENTS**.
+  6. Choose **Download PDF** to export the drawing.
+
+  **What to check**
+
+  - Every cable joins a terminal on one symbol to a terminal on another. A line that crosses another line is not a connection — only a dot is.
+  - DC and AC are kept apart. An AC terminal will not accept a DC cable, and a communications or metering terminal will not accept a power cable.
+  - Every circuit you need has been drawn. The editor checks what you declared; it does not know what the site actually needs.
+
+  **Getting it out:** **Download PDF** is how the diagram leaves the editor. The PDF is a real vector drawing with selectable text, not a picture, and the download is named `single-line-diagram.pdf`. Opening from a roof design gives you a one-page A4 landscape project sheet with **PV MODULES** and **INVERTERS** schedules. Larger drawings are exported to A3, and a drawing too big for one A3 page is split across pages. The editor also exports its drawing as SVG through its embed interface.
+
+  This is a design drawing, not a certified one. It shows the connectivity you declared. It does not certify that a real switchboard is safe or correct, and it does not simulate how a manufacturer's protection device behaves.
+</Visibility>
+
+<Visibility for="agents">
+  ### Entry points
+
+  | Entry | Behaviour |
+  | --- | --- |
+  | **Open SLD** in the roof designer's `aria-label="Design downloads"` toolbar | Renders `role="dialog" aria-label="Single line diagram editor"`, with loading text `Loading diagram editor…`, then either a project-connected editor or a bare `SldEditor` |
+  | `/sld` | The same editor with an empty standalone project: `Untitled electrical design`, `phases: 1`, no strings, `unassignedPanels: 0`, `totalPanelKw: 0` |
+  | `/sld/embed?token=…` | Signed iframe session; without a valid, unexpired session for an allowlisted origin: `Embedding is not authorised` |
+
+  **What loads in.** The current inverter (if configured), its MPPT inputs, and the actual roof panel strings, via `projectDiagram()`. If no inverter is configured, the canvas opens empty.
+
+  **Default framing.** `projectDiagram()` sets `projectSheet = true` and `sheet = "A4-landscape"` when an inverter exists and a circuit is included. So **Open SLD** produces an A4-landscape project sheet with schedule tables, not a bare drawing. The A3 installation sheet is set only inside `installer-example.ts` and has no control in the shipped UI.
+
+  ### Editor controls
+
+  Header, `aria-label` / titles verbatim:
+
+  | Control | `aria-label` | `title` / visible text |
+  | --- | --- | --- |
+  | Undo | `Undo SLD` | `Undo · ⌘Z` |
+  | Redo | `Redo SLD` | `Redo · ⇧⌘Z` |
+  | Phases | group `aria-label="Supply phases"` | visible label `Phases`; buttons render `1Φ`, `2Φ`, `3Φ` with `aria-label` `1 phase`, `2 phase`, `3 phase` |
+  | Fit | `Fit diagram` | `Fit diagram · F` |
+  | Export | `Download SLD PDF` | visible text `Download PDF`; spinner while exporting |
+  | Zoom | `Zoom in diagram`, `Zoom out diagram`, `Reset diagram zoom` | `Zoom in`, `Zoom out`, live percentage |
+  | Close (modal only) | `Close SLD` | `Return to roof design` |
+
+  Left rail, `<nav aria-label="Diagram tools">`: **Select tool** (`Select / move · V`) and **Pan tool** (`Pan · H / hold Space`).
+
+  Palette, `<aside aria-label="SLD components">`. Heading `Components`; tip `Drag to canvas` / `or click, then place`. Entry `aria-label` is `Add <name>`, `title` is the description, `data-component-kind` is the kind. Drag payload MIME type is `application/x-sld-component`.
+
+  **Exactly eleven entries:**
+
+  | Label | Kind | Description (`title`, verbatim) |
+  | --- | --- | --- |
+  | Switchboard | `switchboard` | Phase busbars with incomer and outgoing taps. Drop loads or switches onto the board. |
+  | Smart Gateway | `smart-gateway` | Grid transfer, metering CTs, SPD, backup and non-backup paths. |
+  | Load | `load` | Phase-aware load or grouped outgoing circuits. |
+  | Protection Relay | `protection-relay` | Drawn network-protection relay with a bottom AC voltage-reference / supply connection; fault detection is not simulated. |
+  | C.O. Switch | `changeover` | Interlocked two-source changeover. Common connects to grid or backup, never both. |
+  | Switch | `switch` | Two-terminal AC switch. Open and closed states affect topology. |
+  | Smart Meter | `smart-meter` | Measurement and communications terminals; does not carry the main power circuit. |
+  | Meter Box | `meter-box` | Revenue / NMI meter with incoming and outgoing power terminals. |
+  | Generator | `generator` | Alternative AC source. Requires reviewed transfer arrangements. |
+  | Label | `label` | Editable multiline drawing note. |
+  | Legend | `legend` | Symbols used in this drawing. |
+
+  Only one **Smart Gateway** can exist; the entry is disabled once one is present. The wider symbol catalogue also holds grid supply, point of supply, point of common coupling, distribution and essential-load boards, aggregation board, busbar, main switch, breaker, fuse, isolator, DC isolator, RCD, RCBO, SPD, contactor, PV array, PV string, optimiser, microinverter, inverter, hybrid inverter, battery, battery module, BMS, battery inverter, backup box, current transformer, export controller, utility server, earth, MEN link, junctions, terminals and outgoing circuits. These are drawn **inside assemblies** such as a switchboard or the Smart Gateway, or are created as children of a dropped component.
+
+  Canvas: `role="application" aria-label="Electrical diagram canvas"`. Loading overlay `Preparing diagram…`. Hints, verbatim: `Drag a component onto the canvas. Drag between terminals to connect.` then, after a placement or drop, `Drag between terminals to connect. Select a cable to edit its route.` Notices use `role="status"`.
+
+  Keyboard: `V` select, `H` or hold `Space` pan, `F` fit, `⌘Z`/`⌃Z` undo, `⇧⌘Z` redo, `⌘A` select all, `⌘C`/`⌘V` copy and paste, `Delete`, `Escape`.
+
+  Selection overlay: `aria-label="Component actions"` (`aria-haspopup="menu"`) opens `role="menu"`. On a single project-linked inverter whose AC outlet can still be added, the menu offers **Add backup port**, creating the backup outlet and an accompanying changeover labelled `CHANGEOVER SWITCH` in one undo step. Otherwise it offers **Delete**.
+
+  ### Object properties
+
+  `<section aria-label="Object properties">`, eyebrow `COMPONENT` or `CONNECTION`. Title is the component name, `Panel string` for a string part, the MPPT label for an MPPT, `Cable` for an edge, or `<n> objects` for a multi-selection. Close button `aria-label="Close properties"`.
+
+  | Element | Labels |
+  | --- | --- |
+  | Label | `Label` (`aria-label="Component label"`) |
+  | Project binding | `LINKED TO ROOF DESIGN`, then the model, then `<kW> kW · <n> MPPTs` for an inverter or `<n> panels · <kW> kW`, `MPPT <n>, input <n>` and the `PM…` panel labels for a string |
+  | Free-standing equipment | `Model`, `Rated current (A)` |
+  | Switch position | `Switch position` → `Closed` / `Open` (switch, main-switch, contactor, breaker, isolator, dc-isolator) |
+  | Changeover | `Connected source` → `Grid` / `Alternative source` / `Off` |
+  | CT | `CT ratio` |
+  | Assembly | `Select whole assembly` |
+  | Children | `INTERNAL COMPONENTS`, one button per part |
+  | Ports | `CONNECTIONS`, one row per terminal showing its label and either a `Cable` button per attached wire or `Available` |
+  | Cable | two endpoint lines joined by `connected to`, `Cable label`, help `Drag a cable end to reconnect. Drag the handles to adjust its route.`, button `Reset cable route` |
+  | Actions | `Rotate component` (title `Rotate`), `Duplicate component` (title `Duplicate`), `Delete selection` (title `Delete`) |
+
+  Cable properties include `Length (m)`, `Conductor size (mm²)`, `Design current (A)`, `Current capacity (A)`, `Derating factor`, `Resistance (Ω/km)`, `Reactance (Ω/km)`, material `Copper` / `Aluminium`, and `Installation method`.
+
+  ### The object model
+
+  A document (`DiagramDocument`) carries `context`, `components[]`, `connections[]`, `phases` (1, 2 or 3), `sheet`, `revision`, `status` (`draft` or `for-review`, default `draft`), `rulePackPins`, optional `projectSheet`, optional `printSheet`, and `comments`.
+
+  `context` fields: address, `drawingNumber`, `designer`, `jurisdiction` (`unknown|ACT|NSW|NT|QLD|SA|TAS|VIC|WA`), `dnsp`, `nmi`, `networkCategory` (`unknown|small-ies|lv-generation|embedded|swer`), `connectionAgreement`, `designDate`, `installationDate`, `supplyVoltageV`, `serviceRatingA`, `faultCurrentKa`, `exportLimitKw`, `earthing` (`unknown|MEN|other`), `backstop` (`unknown|required|not-required`), `backstopEvidence`.
+
+  Each component (`Equipment`) has `id`, `kind`, `label`, `x`, `y`, `width`, `height`, `rotation`, `status` (`proposed|existing|decommissioned`, rendered `Proposed` / `Existing` / `Decommissioned`), per-kind `properties`, optional `parentId` (this is how nesting works), optional materialised `ports`, `assembly`, `part` (`mppt`, `string`, …), `projectLink` (`{kind: "inverter"|"string"|"roof", id, mppt?, input?, panelLabels?}` — the binding back to roof equipment), `captionPosition`, `layoutLocked`, `labelOffset` and `loadStyle`.
+
+  Terminals come from `terminals(equipment, phases)`: materialised `ports` when present, `[]` for assemblies, otherwise a per-kind layout. Each terminal has `id`, `label`, `type` (`ac|dc|pe|measurement|control|communications`), `x`, `y`, `side`, `maxConnections`, `required`, and optionally `group` and explicit `conductors`.
+
+  **Connections are conductor bundles, not single wires.** `conductorsFor()` gives `dc` → `["DC+","DC-"]`; `pe` → `["PE"]`; any non-`ac` class → `["SIGNAL"]`; and `ac` → the declared phase (`L1|L2|L3`, or all three sliced to the supply phase count) plus `N` and `PE`. `terminalConductors` filters declared phases down to the supply count.
+
+  Export colouring by status: `proposed` uses standard symbol ink, `existing` `#666666`, `decommissioned` `#969696`.
+
+  ### Connection rules
+
+  Verbatim from the generated connection matrix:
+
+  > AC connects to AC with at least one common, available active phase. One-, two- and three-phase bundles are supported.
+
+  > DC circuits carry DC+ and DC- together. Direct PV/battery-terminal confusion is rejected.
+
+  > PE connects only to PE. The MEN object is an earthing annotation, not a separately solved neutral bonding or fault-loop model.
+
+  > Measurement, control/trip and communications are distinct connection classes. They cannot be connected to power terminals.
+
+  > A junction is explicit; a crossing or overlap cannot create one.
+
+  Direct PV-to-battery DC links are rejected, as are PV-source-to-PV-source and grid-to-generator connections.
+
+  **Assemblies construct real child devices.** A switchboard creates phase busbars, an incomer, way taps, a CT measurement terminal and PE. The Smart Gateway creates a DER bus, grid bus, backup bus, transfer contactor, CT, isolation switch, main switch, SPD, earth and load outlets. These internals are generic, editable arrangements, **not manufacturer-certified topologies**. An internal part can be selected, moved, labelled, rotated or deleted on its own; selecting the parent moves the whole assembly with its attached cables, preserving child offsets.
+
+  **Inverter, MPPT and string identity is stable.** `InverterObject`, `MpptObject` and `PvStringObject` retain project identity, and each MPPT exposes its configured inputs with individual positive and negative terminals. Parallel inputs on one MPPT share polarity-specific nets; separate MPPTs stay distinct. Converter operation requires a complete positive/negative supply from a common source.
+
+  Terminal sets worth knowing:
+
+  | Kind | Terminals |
+  | --- | --- |
+  | Any board, or Busbar | `in` "Incomer", `tap-1…tap-6` "Way 1…Way 6", `meter` "CT measurement", `earth` "PE" |
+  | Smart Gateway | `grid` "Grid", `der` "Inverter / DER", `backup` "Backup loads", `nonbackup` "Non-backup loads", `meter` "CT measurement", `comms` "Communications", `earth` "PE" |
+  | Inverter / Hybrid Inverter | one DC port per MPPT (`MPPT 1 DC`…), `ac` "AC grid", `comms`, `bms` when `separateBmsPort`, `earth` "PE", plus `battery` "Battery DC" and `eps` "EPS / backup" for hybrids |
+  | Switch family | `in` "In" and `out` "Out", both required; `contactor` adds `trip` "Trip / control" |
+  | Load / Backup Load / Outgoing Circuit | `in` "Supply", or twelve `in-<i>` outlets each labelled `Load circuit <i>` |
+  | Junction / Terminal / Point of Supply / PCC | `top`, `right`, `bottom`, `left`, capacity 4 each |
+  | PV Array / PV String | `dc` "DC output" |
+  | Battery / Battery Module | `dc` "Battery DC", `comms` "BMS communications", `earth` "PE" |
+
+  ### Cable editing
+
+  - A drop onto a compatible cable creates an explicit junction and **three independent edges in one undoable transaction**.
+  - **A geometric crossing alone does not connect circuits.** The printed sheet states the same rule: `A dot joins conductors; crossings alone do not.`
+  - Occupied terminals, wrong polarity, and incompatible signal-versus-power terminals are rejected. The nearest-target check runs first and validation second, so an invalid negative pole cannot make a positive lead jump to an adjacent positive pole. Coincident sockets on the same bus or junction may use a free socket at that identical electrical point.
+  - Snap tolerance stays constant in screen pixels as zoom changes.
+  - Selecting a cable exposes route vertices and endpoint handles. **Manual routes stay locked until reset**, via `Reset cable route`.
+  - Moving an already-connected component keeps its endpoint identities. **Failed reconnections restore the graph from the document model.**
+  - Canvas and export share the same orthogonal routing and symbol functions, so the PDF matches the canvas.
+
+  ### Export
+
+  The only export a user can trigger is PDF, from `Download SLD PDF`. The file is named `single-line-diagram.pdf`. On a font failure the user sees `The diagram font could not be loaded. Please retry the PDF export.`
+
+  **The PDF is vector, not raster** — vector paths and selectable text. The export loads `jspdf` and `svg2pdf.js`, registers the real `Source Sans 3` after `document.fonts.load(...)`, and measures text in an off-screen real SVG so the correct face is embedded.
+
+  **Page format is chosen from the drawing's real size**, with `scale = 0.265`:
+
+  - `a3` when the print sheet or project sheet is set, when the sheet name starts with `A3`, or when the drawing exceeds the printable A4 area.
+  - Otherwise `a4`.
+  - A **project sheet** forces A4 landscape in a single page, drawn from `exportSvg()` at `297mm × 210mm` with the schedule tables.
+  - A **print sheet** is A3 landscape at `420mm × 297mm` (viewBox `1680 × 1188`).
+  - A drawing with neither is tiled: `tileW = (pw - 24)/scale`, `tileH = (ph - 46)/scale`, `cols = ceil(width/tileW)`, `rows = ceil(height/tileH)`, one page per tile. Each tiled page carries a border, the bold heading `SINGLE LINE DIAGRAM`, the address, and `"<drawingNumber> / REV <revision> / <phases> PHASE"`, with footer `<designDate> | <designer> | Sheet <page>/<total>`.
+
+  SVG export exists in the code and through the embed protocol's `export` command, returning `{format:"svg", content}`, but there is no SVG button in the UI. Equipment-schedule CSV and an engineering JSON report exist as code paths, not as UI controls.
+
+  ### The non-certification boundary
+
+  This is an engineering limit, not a temporary state. State it exactly.
+
+  > No licensed rule pack, qualified-reviewer registry or engineering approval is supplied by these changes. The drawing engine checks declared connectivity; it does not certify a switchboard installation or simulate manufacturer protection behaviour.
+
+  > The rule engine evaluates explicit engineering facts against versioned source requirements. It is a software verification kernel, not a collection of Australian normative limits or a certification service. The only numerical rule-pack fixtures in the repository are synthetic tests.
+
+  > No single public database supplies all of these inputs. A source being readable online establishes neither commercial redistribution rights nor approval of an individual installation.
+
+  > … the editor can provide useful drafting, topology checks and calculations using declared engineering values. Missing decisive inputs must remain unknown.
+
+  **No rule pack is licensed or shipped.** The editor's rule integration is a host responsibility; the reference route is explicitly not an endpoint the application installs. The engineering report's `ruleEvaluation` defaults to `{ status: "not-configured", findings: [] }`, and its `limitations` array reads: `Rule packs and product datasets require qualified source review.` · `Cable voltage results are resistive estimates at unity power factor.` · `Site installation, battery siting and commissioning are outside schematic-only checks.`
+
+  In-product language reinforces the same limit: `Checks report topology errors and missing design facts. This drawing has no signed engineering approval.` and `Drawings remain draft until the network, product, installation and engineering evidence is reviewed.` The Smart Gateway's own internals are described as generic editable arrangements, not manufacturer-certified topologies, and the Protection Relay's catalogue description ends `fault detection is not simulated.`
+
+  Never describe an SLD as compliant, approved, certified or as-built. It is a draft drawing of declared connectivity.
+
+  ### The Australian references it cites
+
+  The editor ships a dated source index (34 references) and a directory of 16 major distributors, and records standards by name and edition observation. **These are references recorded for future work, not implemented rules** — the index itself cannot clear the unapproved-rule-pack finding.
+
+  | Reference | Subject | Edition note carried |
+  | --- | --- | --- |
+  | AS/NZS 3000 | General electrical installation, earthing, isolation, protection | 2018 edition identified; amendments and legal adoption need confirmation |
+  | AS/NZS 5033 | PV array installation and DC design | 2021 edition identified |
+  | AS/NZS 4777.1 | Installation of inverter energy systems | 2024 edition identified |
+  | AS/NZS 4777.2 | Inverter product behaviour and conformity | 2020 Amendment 2:2024, with a 23 August 2025 product-list transition |
+  | AS/NZS 5139 | Battery system installation | 2019 edition identified |
+  | AS/NZS 3008 series | Cable selection and operating conditions | Part, edition and licensed calculation data to be resolved through the catalogue |
+  | SA TS 5398:2025 | Electrical energy storage equipment safety | Free official download route linked by the CEC |
+  | IEC 60617, 61082, 81346 | Symbols, document presentation, designations | Publisher rights and engineering interpretation needed before claiming conformance |
+
+  Access to CEC approved-product lists, CER inverter bulk data, DNSP requirements, manufacturer compatibility documents and SAA or statutory reviewer registers would all need licensed or authorised access. Do not present any of this as available.
+
+  ### It does not write back
+
+  > Editing the SLD does not alter roof panels, stringing, annotations, floor objects, cabling or the roof undo history.
+
+  > SLD edits do not write back to the host.
+
+  The roof-to-SLD direction is one-way and one-shot at open time: the editor reads the current roof design to build the starting diagram, and never mutates it. Reopening builds a fresh diagram from the roof equipment as it stands then. ArcSolar's own save path covers the roof document only; there is no ArcSolar endpoint that accepts an SLD.
+
+  ### Installer-facing output
+
+  There is no installer login, role or surface in either application. An installer receives **files exported from the editor** by whoever produced the design.
+
+  | Artifact | Reachable? |
+  | --- | --- |
+  | The SLD PDF, defaulting to an A4-landscape project sheet with `PV MODULES` and `INVERTERS` schedules when opened from a roof design with an inverter | Yes, via `Download SLD PDF` |
+  | The roof reports — `Panel Design`, `Annotation Design`, `Site Plan`, `Battery Site Plan`, `Voltage Rise Calculation` | Yes, via the roof designer's `Design downloads` toolbar |
+  | The fixed A3 installation sheet with its `EQUIPMENT SCHEDULE`, `PV STRING CHECK`, `WIRING + OPERATING NOTES` and `CABLE SCHEDULE` regions | Layout exists in the export code, but the control that selects it has no UI, so it is not reachable from the deployed editor |
+
+  The A3 sheet's worked example is a **worked design drawing, not an as-built record**, and says so: `Site, NMI, DNSP approval, actual installation method, fault levels, serial numbers, installer and commissioning evidence have not been supplied.` Its issuing instruction is the standard to hold to: a real issue must **replace the worked assumptions with the installed values** and accompany the array layout, cable-route record, shutdown instructions and commissioning documentation. A real switchboard issue must also be signed off by whoever is qualified to do it.
+
+  **Reconciling this with ArcSolar.** ArcSolar correctly has no installer design surface inside it: ArcSolar embeds the editor and holds the two proposal images. The installer-facing output is an **export**, not a workspace, and it carries no certification. Both statements are true at once — see [Field operations](/delivery/field-operations) for what the installer does with it.
+
+  ### Naming on the drawing
+
+  The printed sheets are branded **ROOF STUDIO**, with the masthead `ROOF STUDIO` followed by the sheet title, `<phases> PHASE` and `A3 / VECTOR DRAWING`. The generic export title block reads `SINGLE LINE DIAGRAM` with `<drawingNumber> · REV <revision>`, and the project sheet's status is `draft` or `for-review`. A reader who sees `ROOF STUDIO` on a PDF is looking at output from the editor that ArcSolar calls Roof Design.
+</Visibility>
+
+## Related
+
+- [Design the roof and the panels](/roof-design/editor) — the roof layout the diagram is built from.
+- [Stringing](/roof-design/stringing) — the strings that seed the initial diagram.
+- [Use Roof Design](/quoting/roof-design) — how the design reaches the quote.
+- [Roof design integration contract](/reference/roof-design-contract) — routes, assets, permissions and error codes.
+- [Field operations](/delivery/field-operations) — what the installer receives and does.
+
+## ArgonixIntelligence in this workflow
+
+Intelligence can help read a diagram and explain what a topology finding means. It cannot certify the drawing, verify the site, check protection coordination or approve an installation, and it cannot save or amend an SLD. Any real switchboard issue needs a qualified person's review.

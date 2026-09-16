@@ -1,0 +1,105 @@
+---
+title: "String the panels"
+sidebarTitle: "Stringing"
+description: "Wire placed panels into PV strings on an inverter's MPPT inputs, and see the voltage-only series-length checks the editor runs."
+keywords:
+  - "stringing"
+  - "string design"
+  - "string editor"
+  - "MPPT"
+  - "PV string"
+  - "inverter"
+  - "battery inverter"
+  - "series length"
+  - "stringing and component layout"
+  - "stringing-components image"
+  - "roof design"
+  - "preliminary design checks"
+---
+
+Stringing assigns the panels already on the roof to PV strings and those strings to an inverter's MPPT inputs. It is how the design stops being a picture of a roof and starts being an electrical proposal.
+
+It happens inside the Roof Design editor, using the **String Editor**. ArcSolar receives and stores what the editor produces; ArcSolar does not calculate stringing itself.
+
+## Wire panels into strings
+
+<Visibility for="humans">
+  1. Place the panels first. Stringing works on panels that are already on the roof.
+  2. Choose **String Editor** from the canvas tools, or press `T`.
+  3. Pick the inverter. Use the dropdown, not a typed name — a typed name is only kept if it explicitly matches a known model.
+  4. Pick the string and the MPPT input it should use.
+  5. Drag across the panels in wiring order — first module to last.
+  6. **Alt-click** a panel to disconnect it from the string.
+
+  The header tells you whether real manufacturer limits or demonstration limits are in use: **Manufacturer specifications · preliminary design checks**, **Demo inverter limits · preliminary design checks**, or **Manufacturer specifications and demo models · preliminary design checks**.
+
+  A count bar tracks the string as you build it and warns when a string runs past the allowed series-length window. The stringing layout report — labelled **Stringing & component layout** on the quote — shows the result.
+
+  The editor checks that string voltages fit the selected inverter. It does not check current, protection, connectors, shading or whether the installation is compliant. Mixed panel models, or incomplete temperature data, mean it gives no recommendation at all. Always confirm the limits and temperature coefficients against the manufacturer's datasheet.
+</Visibility>
+
+<Visibility for="agents">
+  ### Workflow and labels
+
+  Open with the **String Editor** canvas tool (`T`). Per-mode help text, verbatim:
+
+  > `Choose an inverter and string · drag panels in wiring order · Alt-click to disconnect`
+
+  | Control | Behaviour |
+  | --- | --- |
+  | **Roof** / **Battery** tabs | `role="tablist"`, `aria-label="Inverter group"` |
+  | Inverter dropdown | `aria-label` = `Roof inverter` or `Battery inverter`. A suggested list plus **Custom inverter** |
+  | Inverter typing | `role="combobox"`; a typed name is honoured only on an exact, case-insensitive match to a known model, otherwise it reverts |
+  | **Add inverter** | Creates a vendor-and-model inverter |
+  | **Strings** / **Inputs** | `role="tablist"`, `aria-label="Stringing view mode"` |
+  | String rows | `role="button"`, `aria-label="Assign panel to string <index> on MPPT <index>"` |
+  | MPPT section | `aria-label="MPPT <n> strings"`; MPPT group labels render as `MPPT <n>` |
+  | Inverter removability | Removal is offered only when no string contains panels |
+
+  Manufacturer data may be partial, and the header says which class of data is in play:
+
+  - `Manufacturer specifications · preliminary design checks`
+  - `Demo inverter limits · preliminary design checks`
+  - `Manufacturer specifications and demo models · preliminary design checks`
+
+  ### The string model
+
+  A string is: an ordered list of modules — **first** and **last** module, total module count — plus the module serial and the string-plus-MPPT key. Strings link one inverter to several MPPTs to several panels.
+
+  Panel keys are scoped per building. A string spanning buildings is invalid. **Existing** panels carry no string assignment and do not count toward string totals.
+
+  **Editing roof equipment changes stringing.** When an inverter is replaced, the editor tries to migrate each existing string to the replacement **at the same MPPT position**. Strings that cannot be migrated are dropped and surfaced to the user.
+
+  Historic panel records may arrive as paired `panelSerial`/`secondPanelSerial` values; normalise them to whole modules before presenting them as strings. When stored panels disagree with the current inventory, the editor corrects the stored string reference rather than failing.
+
+  ### Series-length checks
+
+  The count bar shows a **voltage-only series-length window**. The underlying rules, verbatim:
+
+  > At cell temperature T, voltage = STC voltage × [1 + coefficient / 100 × (T − 25)]. Series voltages add. Cold Voc must be strictly below maximum DC input voltage; hot Vmp and cold Vmp must lie in the MPPT window; hot Voc is checked against startup voltage. The count bar shows the corresponding voltage-only series-length window, with connected counts filled. It does not certify current, protection, connector, shading or installation compliance. Mixed models or incomplete thermal specifications yield no count recommendation. STC parallel Imp is summed; design Isc includes its thermal correction and the editable irradiance/current factor. Different parallel string lengths/types and more strings than physical connectors require review. Total connected DC nameplate power is checked against the inverter's shared limit.
+
+  > Defaults −5°C cold cell, 70°C hot cell and 1.25 current factor are explicit editable assumptions, not location-derived weather. Conditions remain in design history across tool changes and undo/redo. Limits/temperature coefficients must be confirmed from manufacturer data before engineering use.
+
+  These are voltage-only series-length checks. Strings that differ in length or type, and more parallel strings than the inverter has physical connectors, require review.
+
+  ### What is not calculated or certified
+
+  - Nothing here certifies current, protection, connector, shading or installation compliance.
+  - Mixed panel models, or incomplete thermal specifications, produce **no** count recommendation rather than a guess.
+  - A "series-length window" is not a string design approval.
+  - The editor is an external application; ArcSolar stores what it is given and does not recompute or validate stringing.
+
+  ### The stringing image on the quote
+
+  The quote's **Stringing & component layout** image is the editor's layout render. What it shows is panel grouping into strings and the associated components. Its alt text on customer surfaces is `Stringing and component layout`. Its electrical semantics live inside the editor's payload, not in the image — so treat it as the wiring layout the designer produced, not as something ArcSolar has interpreted or verified.
+</Visibility>
+
+## Related
+
+- [Design the roof and the panels](/roof-design/editor) — placing panels before stringing them.
+- [The single line diagram](/roof-design/sld) — the schematic view of the same electrical design.
+- [Use Roof Design](/quoting/roof-design) — how the stringing layout reaches the quote and the PDFs.
+
+## ArgonixIntelligence in this workflow
+
+Intelligence can help read the stringing layout and explain why a string sits outside the voltage window. It cannot verify the equipment, the temperature assumptions or the installation, and it cannot approve the design. Confirm stringing against manufacturer data before it is built.

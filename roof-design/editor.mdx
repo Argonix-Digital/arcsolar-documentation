@@ -1,0 +1,273 @@
+---
+title: "Design the roof and the panels"
+sidebarTitle: "The design editor"
+description: "Place panels on the roof image, align them to the roof face, calibrate imagery and export the design reports."
+keywords:
+  - "roof design"
+  - "roof editor"
+  - "Roof Studio"
+  - "panel layout"
+  - "canvas tools"
+  - "panel placement"
+  - "roof face"
+  - "roof analysis"
+  - "address search"
+  - "panel model"
+  - "catalogue"
+  - "voltage rise report"
+  - "site plan"
+  - "annotations"
+  - "floor plan"
+  - "autosave"
+  - "revision"
+---
+
+The Roof Design editor is where the roof design is drawn. You search an Australian address, the satellite image centres on the property, and you place physically sized PV modules on the roof in plan view. The same editor carries the stringing and the single line diagram, and it exports the design reports.
+
+You normally reach it from a quote, where ArcSolar opens it and links the design to the customer and site. It also runs on its own as an address-only editor.
+
+In its own workspace the editor is named **Roof Design**. The reports it prints are branded **Roof Studio** and footer-stamped `Preliminary design — verify on site`. Both names refer to the same editor.
+
+## Work on the roof
+
+<Visibility for="humans">
+  **Open:** the quote's **Roof Design** area, then **Open Design Panel**. The quote-side workflow is on [Use Roof Design](/quoting/roof-design).
+
+  1. Search the property address and wait for the roof image to load.
+  2. Pick the panel in the **Model** dropdown. **Build** stays disabled until you do.
+  3. Choose **Build** and place the array — click for one panel, or drag to lay a block.
+  4. Set **Portrait** or **Landscape**, the **Height spacing** and **Width spacing** gaps, and **Panel rotate** and **Panel tilt**.
+  5. Mark panels that are already on the roof with **Existing**.
+  6. Check the layout against the actual roof. Detected roof faces guide the direction of new panels only — they never set tilt.
+  7. Use the downloads on the right to produce the reports you need.
+
+  **The tools**
+
+  | Tool | What it does |
+  | --- | --- |
+  | **Select** | Select and move panels |
+  | **Hand** | Pan the image |
+  | **Build** | Place panels |
+  | **Eraser** | Remove panels |
+  | **Measurement Add** / **Measurement Edit** | Draw and adjust ground-distance measurements |
+  | **String Editor** | Wire panels into strings — see [Stringing](/roof-design/stringing) |
+  | **Cabling** | Draw cable runs with bends |
+  | **Annotations** | Place site-plan symbols such as the meter, inverter or battery location |
+  | **Floor plan** | Draw rooms, doors, windows and equipment footprints |
+
+  **Imagery and tools.** **Images and plans** calibrates a floor plan or photo you supply against a known distance and a north direction. **Solar production** overlays Google Solar production and shade.
+
+  If the address search or the imagery looks wrong, do not place panels on a guess. Imagery can be out of date, and a roof face read from a photo is an estimate, not a survey.
+</Visibility>
+
+<Visibility for="agents">
+  ### Where the editor runs
+
+  The editor is a separate deployed application. ArcSolar embeds it in an iframe; it is not a page inside the ArcSolar app.
+
+  | Surface | Route | Behaviour |
+  | --- | --- | --- |
+  | Workspace shell | `/` | Home, Map, Library and Settings; hosts the editor frame |
+  | Embedded frame | `/roof-design/editor` | The iframe bridge. Without a valid session it prints `Open this design from the Roof Design QA workspace.` |
+  | Standalone editor | `/designer` | The editor with no ArcSolar connection — address-only |
+
+  Launch, handshake and persistence mechanics are on [the integration contract](/reference/roof-design-contract).
+
+  ### Canvas tools
+
+  `aria-label="Canvas tools"`. Ten tools, each with a shortcut. Mode keys are the internal state values.
+
+  | Label | Shortcut | Mode |
+  | --- | --- | --- |
+  | **Select** | `S` | `select` |
+  | **Hand** | `D` | `hand` |
+  | **Build** | `B` | `place` |
+  | **Eraser** | `E` | `erase` |
+  | **Measurement Add** | `M` | `measure-add` |
+  | **Measurement Edit** | `V` | `measure-edit` |
+  | **String Editor** | `T` | `strings` |
+  | **Cabling** | `C` | `cable-add` |
+  | **Annotations** | — | `annotations` |
+  | **Floor plan** | — | `floor-plan` |
+
+  With no panel model selected, **Build** renders as the sentence `Select a solar panel before using Build` and is `aria-disabled`, but stays clickable so the controller can explain what is missing.
+
+  **Per-mode help text, verbatim.** Rendered under the canvas.
+
+  | Mode | Text |
+  | --- | --- |
+  | Build | `Click or drag to build · ⌘ / Ctrl: free placement with edge snapping` |
+  | Select | `Drag to select · drag selected panels to move · Shift-drag to extend selection · corners rotate` |
+  | Eraser | `Click a panel or drag across a row · release to erase` |
+  | Measurement Add | `Click path vertices · Enter to finish · or drag a line · Escape to cancel · Ground distance` |
+  | Measurement Edit | `Drag endpoints or lines to edit · Delete to remove · Ground distance` |
+  | String Editor | `Choose an inverter and string · drag panels in wiring order · Alt-click to disconnect` |
+  | Cabling | `Draw cable bends · Enter to finish · Edit route to move endpoints · Escape cancels` |
+  | Annotations | `Choose a symbol · click to place · drag to move` |
+  | Floor plan | `Select an object · drag handles to resize or rotate · rulers use point A → point B` |
+  | imagery | `Calibrate a known length and north direction before placement` |
+  | production | `Google Solar production · new panels only` |
+  | default | `Drag the image to pan · scroll to zoom` |
+
+  A second line shows either `Choose a solar panel to enable Build` or `<height> × <width> mm · <watts> W`, then `<gapX> × <gapY> mm gaps`, then `<n> estimated faces · pitch unmeasured` or the roof status. The initial roof status is `Search an address to check its roof`.
+
+  ### Edit bar
+
+  | Control | Label | Notes |
+  | --- | --- | --- |
+  | Undo / Redo | **Undo** (`⌘/Ctrl Z`) and **Redo** (`⌘/Ctrl Shift Z`) | Icon buttons |
+  | Panel model | **Model** dropdown | Shows `<watts> W • <manufacturer>-<name>` |
+  | Stats | live region | `<n> panels · <kW> kW new · <n> selected` |
+  | Existing | **Existing** | `aria-label="Selected panels are existing"`; existing panels stay on the plan but are excluded from new capacity, production and stringing |
+  | Orientation | **Portrait** / **Landscape** | `role="group" aria-label="Panel orientation"` |
+  | Gaps | **Height spacing** / **Width spacing** | Number inputs, suffix `mm`, range 0–1000 |
+  | Rotation | **Panel rotate** | `aria-label="Panel rotate in degrees"`, range 0–360, 1 dp |
+  | Tilt | **Panel tilt** | `aria-label="Panel tilt in degrees"`, range 0–80, 1 dp |
+
+  Invalid numeric entry raises a toast titled `<label> is invalid` with description `Enter a number from <minimum> to <maximum>.`
+
+  The address search sits in the header (`aria-label="Property address"`, placeholder `Loading address search…`). The **Roof Studio** brand block renders only when the editor is **not** embedded.
+
+  ### Placement rules
+
+  - **Build** places one panel per click, or drags a rectangular array along the current azimuth. Hovering beside an existing panel reveals one dashed adjoining footprint with `+`; the extension inherits the neighbour's angle, tilt and product so arrays stay consistent.
+  - The default projected gap is 20 mm. Spacing edits apply to the group.
+  - Overlapping candidates are rejected. A single drag is capped at 500 panels.
+  - Free placement: hold `⌘`/`Ctrl`. Within an 8-pixel snap tolerance, capped at 350 mm, the candidate snaps perpendicular to an existing panel edge and slides along it, preserving staggered offsets.
+  - **Eraser** deletes on click, or on release after dragging across panel centres; targeted panels turn red during the gesture.
+  - Physical size comes from the catalogue, never from the user: `width = widthMm/1000` and `length = heightMm/1000`.
+  - **Tilt** is an explicit user input that shortens the overhead projected footprint by cosine. It never changes the manufacturer's width or length.
+  - Panels marked **Existing** remain physical objects for layout and collision checks but are excluded from new kW, production and string assignment.
+
+  ### Roof face alignment — azimuth only
+
+  A detected roof face changes the **azimuth** of a new panel so its long axis follows the roof's downhill direction and its rows follow the eave. It applies only when placement is not manual.
+
+  **It does not change tilt.** Tilt is always the user's number. There is no cross-face rejection; placement is rejected only by the overlap test. When a neighbour is under the pointer, the neighbour's geometry wins over the face — extending an existing array follows that array's current geometry, and the face direction is only the fallback for a new array.
+
+  Faces arrive from the imagery provider, or from manual tracing, which is not reachable from the shipped interface. Imagery-derived faces are estimates, and pitch is never derivable from an RGB image — which is why the status line reads `pitch unmeasured`. Never present an estimated face as a surveyed roof plane.
+
+  ### Adjacency checks
+
+  The hard rejection is **overlap**. Also validated: fixed module dimensions at arbitrary rotation, 20 mm projected neighbouring spacing at rotated headings, rigid group rotation that leaves unselected panels unchanged, concave boundaries and setbacks, staggered snapping at 0°, 37° and 104°, selected-building mask extraction, exclusion of holes and neighbouring buildings, missing masks, and nearest-edge azimuth.
+
+  Failures surface through a shared alert region and a toast whose default title is `Couldn't update the design`. The one explicitly mapped message is Build with no product: title `Please select a panel first` — `Choose a panel model from the Model dropdown before placing panels on the roof.` The exact overlap-rejection wording is generated inside the placement engine; do not quote a specific string for it.
+
+  ### Image roof analysis
+
+  `GET /api/roof-orientation?lat=&lng=`. Coordinates are clamped to ±85 and ±180; invalid input returns `400 {"error":"Invalid coordinates"}`.
+
+  Pipeline: a north-up Google Static Maps satellite image at `zoom=20`, `size=640x640`, `scale=2`, `maptype=satellite`; then the deployment's Python worker, token-authenticated with `X-Roof-Worker-Token`; then OpenCV and Shapely extract a footprint and candidate faces and map the vertices back through the inverse Web Mercator projection.
+
+  Result shape: `{outline, faces[{vertices,centre,azimuth}], status: "estimated"|"unavailable", reason, source: "opencv-shapely", pitchKnown: false}`. `pitchKnown` is hard-coded `false`. Failure returns `503` with `status: "error"` and one of the internal `reason` codes `image-key-missing`, `image-api-not-enabled`, `image-fetch-failed`, `invalid-image`, `analysis-busy`, `analysis-worker-token-missing`, `analysis-worker-unauthorised`, `analysis-failed`, `analysis-timeout`, `analysis-runtime-missing`, `analysis-output-too-large`.
+
+  The product's own stated limits: this is a heuristic prototype, not surveyed roof geometry; colour similarity can include walls or pavement; shadows can hide edges; multiple roof materials can split the footprint; an exterior boundary is treated as an eave candidate, which is not valid for every roof type; static imagery may differ from the interactive map. One extraction runs at a time, with a 20-second worker timeout and no retained image cache.
+
+  ### Site tools
+
+  Two right-hand toolbars.
+
+  `aria-label="Design downloads"`:
+
+  | Label | Effect |
+  | --- | --- |
+  | **Download Panel Design** | Panel design report |
+  | **Download Annotation Design** | Annotation report |
+  | **Open SLD** | Opens the [single line diagram](/roof-design/sld) editor |
+  | **Download Site Plan** | Site plan report |
+  | **Download battery Site plan** | Battery plan report — the lowercase `battery` is verbatim |
+  | **Download Voltage Rise Report** | Voltage rise calculation report |
+
+  `aria-label="Image and solar tools"`: **Images and plans** (sets mode `imagery`) and **Solar production** / **Close solar production**.
+
+  The SLD opens as `role="dialog" aria-label="Single line diagram editor"` with loading text `Loading diagram editor…`.
+
+  **Image and PDF calibration** is a five-step flow: upload PNG, JPEG, WebP or PDF and choose a PDF page; click the two ends of a known plan or ground dimension and enter metres; click the north arrow tail then tip, or choose **Image top is north**; optionally check another dimension with the independent check ruler; then apply and click the map to position the image centre. Scale is `known metres / endpoint distance in original image pixels`, so preview zoom and screen size never enter the equation. The known dimension must not be a sloped roof length, an oblique photo or a stretched scan. Moving or rotating the image does not move existing panels or annotations, and automatic satellite-based panel orientation is paused while custom imagery is visible.
+
+  **Annotations** are site-plan symbols, not automatically connected electrical equipment. Dragging a placed symbol away creates a pointer back to the original location, and the round hook moves the actual equipment location independently. Label and symbol rotation are edited in the inspector.
+
+  **Floor plan** objects: `Room`, `NonHabitableRoom`, `VoidArea`, `Door`, `WindowOpening`, `FloorMeasurement`, `Bollard`, `SmokeDetector`, `BatteryFootprint`, `InverterFootprint`. Equipment footprints are generic — confirm manufacturer dimensions. Doors and windows are independent objects; automatic wall attachment and battery-clearance checks are not implemented.
+
+  **Solar production** uses Google Solar building insights and data layers, with annual, monthly and hourly shade overlays and a 3×3 footprint sample grid that requires all nine samples to have roof coverage. It is a DC estimate, not AC output, inverter clipping or a bankable yield simulation.
+
+  ### Address search
+
+  Two providers are fanned out: ArcSolar customer search and Google Places address suggestions. Queries shorter than two characters return nothing.
+
+  Address detection is deliberately conservative. It returns nothing when the query contains an email, the words `nmi|email|phone|customer|contact|reference|ref`, a `+`-prefixed phone number, or a run of seven or more digits, and it otherwise requires a street number, street name and street type. Names, contacts, NMIs and reference IDs stay internal. Filters are **All**, **Customers** and **Addresses**.
+
+  Verbatim failures:
+
+  - `Customer and design search is unavailable. Retry or renew your ArcSolar session.`
+  - `Address search is unavailable. Internal results are retained; retry the address search.`
+  - `The address provider did not return a site location.`
+  - Empty but valid: `No results. For address lookup, enter a street number, street name and street type.`
+
+  ### Catalogue and equipment
+
+  The shipped panel catalogue is a static import of `src/data/solar-modules.json`: 268 module records across 43 manufacturers. The preselected model is the first record — `1KOMMA5°-FullBlack-DG-01-450`, `1762 × 1134 mm`, `450 W`.
+
+  Every record carries `verified: false` and `provenance: "Imported database"`, with `cellCount` null throughout, and no interface surfaces those fields. **Do not describe this catalogue as manufacturer-verified.**
+
+  Inverter data is different: part of it is real product data and part is explicitly labelled demonstration data. The String Editor header reflects which is in use — `Manufacturer specifications · preliminary design checks`, `Demo inverter limits · preliminary design checks`, or `Manufacturer specifications and demo models · preliminary design checks`.
+
+  When connected to ArcSolar, the Library's Equipment tab reads ArcSolar's authorised catalogue: `Authorised ArcSolar technical equipment and commercial mappings.` Otherwise it falls back to the shipped catalogue with `Existing editor catalogue. Open Roof Design from ArcSolar for battery products and commercial mappings.` Exact identifiers must be explicitly mapped by ArcSolar's technical catalogue — never infer a substitute.
+
+  ### Reports
+
+  Five report kinds, each an SVG document of 1200 × 860 rendered at high resolution for PNG and PDF. SVG retains vector geometry.
+
+  | Kind | Title |
+  | --- | --- |
+  | `panels` | **Panel Design** |
+  | `annotations` | **Annotation Design** |
+  | `site` | **Site Plan** |
+  | `battery` | **Battery Site Plan** |
+  | `voltage` | **Voltage Rise Calculation** |
+
+  Every report footer reads `Roof Studio · <ISO date> · Preliminary design — verify on site`. Captions include `Calibrated custom image included.`, `Google satellite imagery included; provider attribution is retained in the image.`, `Vector plan: satellite imagery could not be loaded.`, and for the battery plan `Generic equipment footprints; dimensions and clearances must be verified.`
+
+  **Voltage Rise Calculation is the most caveated output.** Sections are `Service mains`, `Consumer mains`, `Submains`, and `Final subcircuit` when a sub-board is set. Nodes are `Common Coupling`, `Point of Connection`, `Main Switchboard`, `Sub-board` and `Inverter`. Per-section states include `Cable not assigned`, `Length unavailable`, `Resistance not confirmed` and `Calculation unavailable`; the headline is either `Total from common coupling: <x>% (<y> V)` or `Incomplete`. Its methodology lines are `Method: confirmed conductor resistance at operating temperature; unity power factor; one serial path.` with `Single phase, 230 V: I = VA / 230, rise = 2 × I × R × L / 1000.` for single phase and `Balanced 3-phase, 400 V: I = VA / (sqrt(3) × 400), rise = sqrt(3) × I × R × L / 1000.` for three phase.
+
+  Its limitation lines are verbatim, and must not be softened:
+
+  > No reactance, thermal cable-capacity, protection or regulatory compliance assessment is included.
+
+  > The entered comparison limit is a design input, not a certification of compliance.
+
+  When a demonstration inverter is selected it also prints `Demo inverter selected. Verify actual product specifications.` Never present a voltage rise figure as a compliance result — the product itself says it is not one.
+
+  ### Undo, saving and revisions
+
+  - **Undo** and **Redo** reverse completed edits (`⌘/Ctrl Z`, `⌘/Ctrl Shift Z`). `Escape` cancels the current gesture.
+  - The roof document **is saved**. `RoofDesignSession` exposes `SaveState = "Unsaved" | "Saving" | "Saved" | "Failed" | "Conflict"`, shown in the project bar as `Customer linked` or `Address-only design` followed by the state.
+  - **Autosave** runs on a 5-second interval and fires when the repository is writable, the state is `Unsaved`, and an adapter exists. An unattached address-only design on a direct connection is not autosaved; an embedded session is autosaved as soon as it is writable.
+  - Saves are optimistic: `save(projectId, expectedVersion, envelope, selectedEquipment)`. A `409` puts the session into `Conflict` with **Retry save** and **Open server copy separately**. There is no automatic overwrite or rebase — a server copy opens as a separate session.
+  - After a successful save, if the live capture no longer matches what was sent, the state returns to `Unsaved` rather than `Saved`.
+  - `beforeunload` guards an unsaved workspace.
+  - **Checkpoint** saves, refuses if the design changed mid-save (`The design changed while saving. Save again before creating the proposal revision.`), then creates an immutable revision. Library notices: `Checkpoint created: <id>` and `Project archived. Its open working session is retained.`
+  - Revisions are immutable; correcting one means creating a new one.
+  - **Local export** downloads `roof-design-<projectId>.json` with envelope `{format:"roof-design-recovery", version:1, address, document}`. **Import local design** accepts `.json` up to 25 MB and reports `Local design recovered in a separate unsaved session. No customer ownership was inferred.` Rejections: `Unsupported recovery document. Your current designs are retained.` and `Recovery file is too large. Keep the original file and contact support.`
+  - Save requires `permissions.edit`; proposal export requires `permissions.attach`. Refusals include `Open this design from an ArcSolar quote before saving it.`, `This session cannot edit the project.`, `An authorised ArcSolar launch is required to use this design in a proposal.`, `Link this address-only design to the correct customer/site before using it in a proposal.`, `Wait for the saved design to load.`, `Open Roof Design from ArcSolar to authorise another project.`, `ArcSolar did not end the session. Try again.` and `Unable to sign out of ArcSolar.`
+
+  ### Boundaries
+
+  State these, and do not fill the gaps with plausible capability.
+
+  - The shipped editor is **plan view only**. There is no 3D view, no roof-tracing mode and no shade or DSM layer in the interface.
+  - Roof faces read from imagery are **estimates**, and tilt is never derived from an image.
+  - The panel catalogue is **imported, not manufacturer-verified**.
+  - Nothing in the editor certifies structural suitability, electrical compliance, clearances or installer approval. Every report is footer-stamped `Preliminary design — verify on site`.
+  - The editor does not price anything. There is no price engine, and no commercial figure is produced here.
+</Visibility>
+
+## Related
+
+- [Use Roof Design](/quoting/roof-design) — the quote-side workflow, review and attachment.
+- [Stringing](/roof-design/stringing) — the **String Editor** and the stringing layout.
+- [The single line diagram](/roof-design/sld) — the electrical schematic and its PDF export.
+- [Roof design integration contract](/reference/roof-design-contract) — routes, assets, permissions and error codes.
+
+## ArgonixIntelligence in this workflow
+
+Intelligence can help interpret the design and the reports it produces. It cannot verify the roof, the imagery, the panel data or the installation, and it cannot approve a design. Confirm the layout on site before anyone relies on it.

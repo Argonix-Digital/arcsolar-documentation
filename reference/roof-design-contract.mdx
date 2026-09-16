@@ -178,7 +178,7 @@ An estimate snapshot can carry a `roofDesign` bundle or a legacy `solarDesign` p
 | Provider literal | `z.literal("roof-design")` | `z.enum(["google_solar", "manual", "prototype"])` |
 | Producer | The external Roof Design editor, over the iframe handshake | Google Solar API building insights, or a restored prototype layout |
 | Holds | Two PNG assets plus the selected equipment lines | Modelled roof segments, per-panel geometry and energy model, imagery quality, `detectedArrayStatus` |
-| Customer heading | The two image labels, under a section labelled **Roof design** | **Proposed rooftop design**, with a provider badge from `getSolarDesignProviderLabel` |
+| Customer heading | Per surface: estimate portal section nav **Roof design**; estimate PDF section heading **PROPOSED ROOFTOP DESIGN**, captioned **PROPOSED PANEL LAYOUT** and **PANEL STRINGS & COMPONENT MARKINGS**; contract and tenant-document PDFs **Solar panel layout** and **Stringing and component layout**. The heading **PROPOSED ROOFTOP DESIGN** is shared with the legacy branch, so it does not by itself indicate which system is showing. | **Proposed rooftop design**, with a provider badge from `getSolarDesignProviderLabel` |
 | Metrics | None. No capacity, energy or exposure figure is produced from this bundle | `getSolarDesignSummary` yields Designed capacity, Panel layout, Annual DC energy and Average exposure |
 | Entitlement | None beyond `quote.revise` and origin validation | `roof_vision`, via `requireArcFeature`, reserved for paid Arc accounts |
 | Modules | `src/lib/roof-design/*` | `src/lib/quotes/solar-design.ts`, `solar-layout.ts`, `google-solar-analysis.server.ts`, `solar-proposal-image.server.ts`, `solar-customer-preview.server.ts` |
@@ -189,7 +189,7 @@ An estimate snapshot can carry a `roofDesign` bundle or a legacy `solarDesign` p
 - Issue-time validation branches on `!draft.solar.roofDesign`. When a roof design is attached, only the Roof Design checks run. When it is not, the legacy checks run, including the 30-day Google Solar freshness rule and `requireArcFeature(..., "roof_vision")`.
 - So the `roof_vision` entitlement gates the **legacy** path at issue time, never the editor.
 - Both estimate branches share the DOM id `portal-roof`, which is safe only because the builder guarantees one is null.
-- The PDF renders the legacy section conditionally on `solarDesign` and appends the Roof Design pages. It does not swap one for the other.
+- PDF behaviour is per document, and both statements are true of different files. The **estimate PDF** (`src/lib/quotes/estimate-pdf.ts`) **supersedes**: `solarDesignContent` early-returns `roofDesignContent` when a bundle is present, so the legacy `solarDesign` branch is unreachable while one exists. The **contract PDF** (`src/lib/quotes/contract-pdf.ts`) and the **tenant-document PDF** (`src/lib/quotes/tenant-document-pdf.ts`) **append** one A4 landscape page per image through `appendRoofDesignPages`, which the estimate PDF never calls.
 
 **Keep them separate when answering.** A question about capacity, annual energy, exposure, `detectedArrayStatus` or a provider badge belongs to the legacy path. A question about the two layout images, revisions, framing, or the attach and review flow belongs to the Roof Design editor. Do not attribute a Google Solar figure to the Roof Design editor, and do not describe the editor as producing the legacy metrics.
 
