@@ -29,6 +29,7 @@
     "groups": [
       {
         "group": "Start here",
+        "boost": 3,
         "pages": [
           "index"
         ]
@@ -48,6 +49,7 @@
       },
       {
         "group": "The customer journey",
+        "boost": 3,
         "pages": [
           "quickstart"
         ]
@@ -201,10 +203,21 @@
     "fonts": {
       "family": "Geist"
     },
-    "background": "/images/u8498839783_A_monumental_cinematic_view_across_a_vast_Austral_68ade847-5cb9-4bf6-823a-5d3445c13696_1.png"
+    "background": "/images/og-background.jpg"
   },
   "seo": {
-    "indexing": "all"
+    "indexing": "all",
+    "organization": {
+      "id": "https://www.arcsolar.com.au/#organization",
+      "name": "ArcSolar",
+      "url": "https://www.arcsolar.com.au"
+    },
+    "metatags": {
+      "og:locale": "en_AU"
+    }
+  },
+  "search": {
+    "prompt": "Search ArcSolar docs…"
   },
   "integrations": {
     "telemetry": {
