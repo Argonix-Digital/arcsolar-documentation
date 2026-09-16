@@ -35,7 +35,19 @@ It happens inside the Roof Design editor, using the **String Editor**. ArcSolar 
 
   A count bar tracks the string as you build it and warns when a string runs past the allowed series-length window. The stringing layout report — labelled **Stringing & component layout** on the quote — shows the result.
 
+  <Frame caption="The **Stringing & component layout** render from the editor — the image ArcSolar labels on the quote. Each string is drawn through its own modules in wiring order, numbered from the first module to the last, and the legend under the drawing names the string, its MPPT and its module count. The electrical semantics live in the editor's payload, not in the image.">
+    <img src="/images/roof-design-stringing-components.png" alt="Stringing and component layout drawing for 12 Example Street, Testville · SYNTHETIC QA, showing two strings of four numbered modules each with the legends A · MPPT 1 · 4 panels and B · MPPT 2 · 4 panels, the count 0 panels unassigned, a recorded battery and antenna, the attribution Synthetic QA roof illustration · Regression fixture, not customer imagery, and the footer Roof Design · Revision … · Verify installation details on site." />
+  </Frame>
+
   The editor checks that string voltages fit the selected inverter. It does not check current, protection, connectors, shading or whether the installation is compliant. Mixed panel models, or incomplete temperature data, mean it gives no recommendation at all. Always confirm the limits and temperature coefficients against the manufacturer's datasheet.
+
+  <Frame caption="Standalone design build with a synthetic roof image and demonstration panels; in the deployed editor the roof image is Google satellite imagery. The **String Editor** draws each string across the modules in wiring order, and the panel at the right holds the inverter, the strings and the MPPT inputs.">
+    <img src="/images/roof-design-string-editor.png" alt="Roof Design canvas with the String Editor open, showing strings drawn across demonstration panels, the inverter and strings panel at the right, and the stringing help text under the canvas." />
+  </Frame>
+
+  <Frame caption="String properties and MPPT assignment. The header states which class of inverter data is in play — here `Manufacturer specifications · preliminary design checks` — over the selected inverter's limits, its power check and the MPPT groups with the strings assigned to them.">
+    <img src="/images/roof-design-string-editor-panel.png" alt="Inverter & strings panel for the Sungrow SG8.0RS under a Manufacturer specifications · preliminary design checks header, showing 3 MPPTs, 8 kW AC out, 600 V maximum DC input, 16 A per MPPT and 3.60 kW connected, then the MPPT 1 group with String A · 4 panels, and the note Voltage window unavailable — module electrical data incomplete." />
+  </Frame>
 </Visibility>
 
 <Visibility for="agents">

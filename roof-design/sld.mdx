@@ -49,6 +49,14 @@ The SLD editor belongs to the same external application that provides Roof Desig
   5. Select a component to open **Object properties** — label it, set its model and rating, and open its **INTERNAL COMPONENTS**.
   6. Choose **Download PDF** to export the drawing.
 
+  <Frame caption="Standalone design build from a synthetic roof design; the diagram is built from the roof equipment. The **Components** palette lists the eleven entries, from Switchboard to Legend — the list scrolls, so the last entry sits below the fold. The wider symbol catalogue is drawn inside assemblies such as a switchboard or the Smart Gateway.">
+    <img src="/images/roof-design-sld-components-palette.png" alt="SLD editor with the Components palette at the right listing Switchboard, Smart Gateway, Load, Protection Relay, C.O. Switch, Switch, Smart Meter, Meter Box, Generator and Label, with Download PDF in the header above it and part of the project sheet visible behind on the canvas." />
+  </Frame>
+
+  <Frame caption="A diagram seeded from a roof design, shown on the project sheet. The inverter keeps its project identity — `INV1`, `8000VA` — together with its MPPT inputs and the module groups assigned to them; the switchboard carries its own internals. Crossing lines are not connections — only a dot joins conductors.">
+    <img src="/images/roof-design-sld-diagram.png" alt="Single line diagram on the project sheet: the inverter INV1 rated 8000VA with MPPT 1 and MPPT 2 over module groups PM1, PM4, PM5 and PM8, each marked 4 TOTAL, alongside GRID SUPPLY, MAIN SWITCHBOARD with its MAIN SWITCH, a meter box marked M and Loads A, B and C; the sheet's rotated rail reads 12 Example Street, Testville, Design Ref: SLD-001, Version: 0 and DRAFT." />
+  </Frame>
+
   **What to check**
 
   - Every cable joins a terminal on one symbol to a terminal on another. A line that crosses another line is not a connection — only a dot is.
@@ -56,6 +64,10 @@ The SLD editor belongs to the same external application that provides Roof Desig
   - Every circuit you need has been drawn. The editor checks what you declared; it does not know what the site actually needs.
 
   **Getting it out:** **Download PDF** is how the diagram leaves the editor. The PDF is a real vector drawing with selectable text, not a picture, and the download is named `single-line-diagram.pdf`. Opening from a roof design gives you a one-page A4 landscape project sheet with **PV MODULES** and **INVERTERS** schedules. Larger drawings are exported to A3, and a drawing too big for one A3 page is split across pages. The editor also exports its drawing as SVG through its embed interface.
+
+  <Frame caption="The exported A4 landscape project sheet, opened from a roof design — the record of the drawing, in the file the editor names `single-line-diagram.pdf`. Its **PV MODULES** and **INVERTERS** schedules sit below the drawing, and the rail beside it carries the address, design ref, version, date and `DRAFT` status. It is a draft of declared connectivity, not a certified drawing.">
+    <img src="/images/roof-design-sld-project-sheet.png" alt="A4 landscape project sheet for 12 Example Street, Testville, with a PV MODULES schedule listing PM1-8, 8 × 1KOMMA5°-FullBlack-DG-01-450 at 450 W, an INVERTERS schedule listing INV1 Sungrow SG8.0RS at 8,000VA with 3 MPPTs and a 40-560V MPPT window, and a rotated rail reading Design Ref: SLD-001, Version: 0, Updated: 2026-09-16, DRAFT, Total: 3.6kWp, New: 3.6kWp and Inverter Capacity: 8kVA." />
+  </Frame>
 
   **The PDF is the record of the drawing** — **Download PDF** is how a drawing leaves the editor, and the `single-line-diagram.pdf` file it produces is the one you file with the job.
 
