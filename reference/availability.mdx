@@ -19,7 +19,19 @@ ArcSolar menus depend on your plan, role, organisation setup and enabled release
 
 ## Intelligence availability
 
-The separate **ArgonixIntelligence Agentic Chat interface tab in the sidebar** will be coming **Soon in a future release**. Embedded bill analysis, call summaries and briefs can still be available. Use the enabled entry point for that workflow. Roof Vision and intelligence features can depend on your selected plan.
+The separate **ArgonixIntelligence Agentic Chat interface tab in the sidebar** will be coming **Soon in a future release**. Embedded bill analysis, call summaries and briefs can still be available. Use the enabled entry point for that workflow. Intelligence features can depend on your selected plan and on the data available.
+
+## Roof Design availability
+
+<Visibility for="humans">
+  **Roof Design** in a quote is available to anyone whose role can revise quotes. It does not depend on your plan, and there is no switch to ask support to turn on.
+
+  A separate **Roof Vision** entitlement governs the older rooftop analysis, so a plan difference can still appear there rather than in the roof design editor.
+</Visibility>
+
+<Visibility for="agents">
+  Do not present Roof Design as plan-gated, entitlement-gated, behind a feature flag, or awaiting a release. Its gates are the `quote.revise` capability and origin validation, both enforced per request. The `roof_vision` entitlement applies to the older analysis paths only.
+</Visibility>
 
 ## Onboarding release
 

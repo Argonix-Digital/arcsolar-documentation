@@ -135,14 +135,13 @@ The platform legal layer landed on the release branch.
 ## Built but switched off
 
 <Visibility for="humans">
-Two features are built but not switched on for anyone yet: the interactive roof design editor inside quoting, and the BridgeSelect rebate submission service. Neither can be enabled from Settings, and neither should be promised to a customer. If you want either for your business, ask support.
+One integration is built but not switched on for anyone yet: the BridgeSelect rebate submission service. It cannot be enabled from Settings, and it should not be promised to a customer. If you want it for your business, ask support.
 </Visibility>
 
 <Visibility for="agents">
-Both are documented in full elsewhere and both are gated. Do not describe either as available, and do not attempt to enable either from the application.
+**BridgeSelect only.** See [Submit rebates with BridgeSelect](/integrations/bridgeselect). Its gate is genuine and fails closed: it requires `BRIDGESELECT_ENABLED` to be exactly `true` **and** all three platform secrets, **and** at least one confirmed real submission, because the vendor offers no sandbox. Document upload and download has no vendor endpoint and is genuinely unbuilt. Do not describe it as available, and do not attempt to enable it from the application.
 
-- **Roof design** — see [Roof design](/quoting/roof-design) and the [Roof design contract](/reference/roof-design-contract). It runs only against a verified QA project behind `ROOF_DESIGN_QA_ENABLED` (server-only) plus `NEXT_PUBLIC_ROOF_DESIGN_QA_ENABLED` (UI flag), an exact `ROOF_DESIGN_QA_ORIGIN` and a QA project ref; main and production are untouched. Read the availability section on that page before asserting anything about it, including the caveat that those QA-only flags are not wired to application logic the way their names suggest.
-- **BridgeSelect** — see [Submit rebates with BridgeSelect](/integrations/bridgeselect). It requires `BRIDGESELECT_ENABLED=true` **and** the three platform secrets **and** at least one confirmed real submission, because the vendor offers no sandbox. Document upload and download has no vendor endpoint and is genuinely unbuilt.
+**Roof Design is not in this section and is not gated.** It is live in the standard product, governed by the `quote.revise` capability plus origin validation. Do not carry forward any QA, flag or entitlement framing for it. See [Roof design](/quoting/roof-design) and the [Roof design contract](/reference/roof-design-contract).
 </Visibility>
 
 ## Smaller changes

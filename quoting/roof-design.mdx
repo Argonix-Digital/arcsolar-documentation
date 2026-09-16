@@ -14,9 +14,7 @@ description: "Lay out panels and stringing on a roof image, then attach the revi
 
 Roof Design — also called **Roof Vision** — is the roof editor inside a quote. You lay solar panels out on a roof image, mark how they are strung together, save a revision, then attach that reviewed layout to the quote so the customer sees it in their proposal.
 
-<Warning>
-  **Not generally available yet.** Roof Design is being verified on ArcSolar's internal QA environment and is not switched on for every workspace. [Ask support](/reference/support) whether it is enabled for yours. Do not promise a customer a roof layout you cannot yet produce.
-</Warning>
+Roof Design is part of the standard product. It appears in a quote's solar step, and anyone whose role can revise quotes can use it. There is no separate switch to request and no plan upgrade needed.
 
 ## What you need first
 
@@ -133,19 +131,24 @@ Roof Design — also called **Roof Vision** — is the roof editor inside a quot
 ## Availability
 
 <Visibility for="humans">
-  Roof Design is not part of the standard release yet. ArcSolar is validating it against an internal QA environment, and it is not switched on for every workspace. If you cannot see **Roof Design** in a quote, it is not enabled for you — [ask support](/reference/support) rather than trying to force it.
+  Roof Design is available whenever you can revise a quote. There is nothing to switch on, and it does not depend on your plan.
 
-  One known limitation: issuing a quote through the ordinary launch path was still blocked by missing valid QA payment configuration at the time of writing. Treat this as unfinished rather than working, and confirm with support before relying on it.
+  If you cannot see the **Roof Design** area in a quote, check two things: the quote must be saved as a draft, and your role must be able to revise quotes. If both are true and the area is still missing, [ask support](/reference/support).
 </Visibility>
 
 <Visibility for="agents">
-  **Availability is not a single switch, and the documented QA flags are not wired in code.** Read this carefully before asserting that the feature is on or off.
+  **Availability rule.** Roof Design is live in the standard product. It is not behind a feature flag, and it is not gated by an entitlement or a plan. There are exactly two gates, both enforced per request rather than at configuration time.
 
-  - The integration contract describes server-only `ROOF_DESIGN_QA_ENABLED`, an exact `ROOF_DESIGN_QA_ORIGIN`, `ROOF_DESIGN_QA_PROJECT_REF`, plus a public UI flag `NEXT_PUBLIC_ROOF_DESIGN_QA_ENABLED`. As of this writing those four names appear only in `.env.example` and the contract — **no application code reads them**.
-  - The variables actually read at runtime are `ROOF_DESIGN_ORIGIN` and `ROOF_DESIGN_EXCHANGE_KEY`, both server-only. The origin defaults to the production roof design host, so the code path is not gated off by default.
-  - Practical gating is therefore the `quote.revise` capability, the embedded app being available at the configured origin, exact-origin validation, and which Supabase project the deployment targets — not a feature flag.
-  - Do not claim the feature is enabled, disabled, or safe to rely on based on a flag name. Confirm against the deployment's actual configuration and treat availability as an open question.
-  - The QA validation record states that the ordinary ArcSolar cookie launch, reviewed commercial attachment and issued proposal flow had **not** completed, blocked by missing valid QA Stripe test-mode configuration in the access resolver, and that no production deployment or main-branch change occurred.
+  | Gate | Applies to | Failure |
+  | --- | --- | --- |
+  | `quote.revise` capability | Cookie-authorised writes: `launch`, `attach`, and cookie writes | `403 You do not have permission to edit quote designs.` |
+  | Origin validation | Every cookie-authorised write, and CORS | `403 Request origin denied.` |
+
+  Reads require active workspace membership plus access to the linked customer, with an explicit grant for address-only projects. The permitted embedded host resolves from `ROOF_DESIGN_ORIGIN`, defaulting to `https://design.arcsolar.com.au`.
+
+  There is **no entitlement gate on this path**: a `roof_vision` entitlement exists but applies to the older analysis paths, not to this route or this panel.
+
+  **Decision rules.** Do not tell an operator that Roof Design needs a plan change, an entitlement, or support to switch it on — none of those is true. If the area is missing from a quote, check the two product preconditions: the quote draft must be saved, and the member's role must permit revising quotes.
 
   **Error codes you will meet.** Full status map: `401 UNAUTHENTICATED`, `403 FORBIDDEN`, `404 NOT_FOUND` or `DISABLED`, `409 VERSION_CONFLICT` / `ASSETS_NOT_READY` / `REVIEW_REQUIRED`, `422 VALIDATION`, `503 UNAVAILABLE`.
 

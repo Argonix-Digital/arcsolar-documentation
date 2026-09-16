@@ -109,6 +109,23 @@ Underlying database errors are mapped deterministically: `42501` becomes `403 Yo
 
 Row-level security is enabled on every table. Browser roles are granted `select` only, except the launch-exchange table, which has no browser grant and no policy at all — its contents are server-only. Command execution requires a current auth session and one of the mutating roles.
 
+### Availability
+
+Roof Design is live in the standard product. The gates are enforced per request, not at configuration time.
+
+| Gate | Applies to | Failure |
+| --- | --- | --- |
+| `quote.revise` capability | Cookie-authorised writes — `launch`, `attach`, and cookie writes | `403 You do not have permission to edit quote designs.` |
+| Origin validation | Every cookie-authorised write, and CORS | `403 Request origin denied.` |
+
+There is **no entitlement gate on this path**. A `roof_vision` entitlement exists but is applied to the older analysis paths, not to this route or this panel. Reads require active workspace membership plus access to the linked customer, with an explicit grant for address-only projects.
+
+The permitted embedded host resolves from `ROOF_DESIGN_ORIGIN`, which defaults to `https://design.arcsolar.com.au`. The value must be a bare https origin with no path; `localhost` and `127.0.0.1` are accepted for local development, and any other host is rejected at resolution time.
+
+### Configuration accuracy
+
+Four `ROOF_DESIGN_QA_*` names — `ROOF_DESIGN_QA_ENABLED`, `NEXT_PUBLIC_ROOF_DESIGN_QA_ENABLED`, `ROOF_DESIGN_QA_ORIGIN` and `ROOF_DESIGN_QA_PROJECT_REF` — appear in `.env.example` and earlier contract text but are read by **no application code**. Runtime configuration is `ROOF_DESIGN_ORIGIN` (default `https://design.arcsolar.com.au`) and `ROOF_DESIGN_EXCHANGE_KEY`, the latter falling back to a key derived from `SUPABASE_SECRET_KEY` / `SUPABASE_SERVICE_ROLE_KEY`. Do not rely on the `ROOF_DESIGN_QA_*` names for gating: setting them has no effect, and omitting them does not disable the feature.
+
 ### Data shapes
 
 The integration keeps nine tables, all workspace-scoped and all registered in the tenant purge manifest.
@@ -133,17 +150,14 @@ Key interfaces available to the embedded app include a command entry point (`roo
 
 Do not present any of the following as settled behaviour.
 
-- **Documented QA flags are unwired.** Four flag names exist in `.env.example` and the contract but are read by no application code. Runtime behaviour is controlled by `ROOF_DESIGN_ORIGIN` and `ROOF_DESIGN_EXCHANGE_KEY` instead. Whether the flags were meant to be wired or removed is unresolved.
 - **Search result shape.** The type union includes an external-address result, but the search route only ever builds customer and existing-design results. Where external address results come from is not settled here.
 - **Equipment has no write path.** The equipment table is readable but no command action creates or maps equipment rows. How the catalogue is populated is unresolved.
 - **"Reviewed" is not persisted as a state.** The review flag is validated on the attach request but never stored; the only durable record of review is the quote-link row. Any state machine described for a design must be expressed in terms of the project version, the asset status, and the presence of a link row.
-- **No entitlement gate on the new path.** A `roof_vision` entitlement exists but is applied to the older analysis paths, not to this route or panel.
 - **The legacy editor path.** The contract states that `/designer` remains the legacy editor while `/` is the shell, but nothing in the application defines or verifies `/designer`.
-- **Availability.** Availability is not controlled by a feature flag you can read. Confirm against the deployment's actual configuration. Issuing through the ordinary launch path was still blocked by missing valid QA payment configuration at the time of writing.
 </Visibility>
 
 ## Related
 
 - [Use Roof Design (Roof Vision)](/quoting/roof-design) — the working guide.
 - [Feature availability](/reference/availability) — how gated features are presented.
-- [Get help from ArcSolar](/reference/support) — how to ask whether a gated feature is enabled for you.
+- [Get help from ArcSolar](/reference/support) — how to get help.
