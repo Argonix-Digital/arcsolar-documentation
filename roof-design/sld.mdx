@@ -17,6 +17,12 @@ keywords:
   - "A3 drawing"
   - "vector PDF"
   - "Download PDF"
+  - "saved diagram"
+  - "saved SLD"
+  - "find my diagram"
+  - "where is my diagram"
+  - "drawing record"
+  - "keep the drawing"
   - "MEN link"
   - "AS/NZS 4777.1"
   - "AS/NZS 5033"
@@ -50,6 +56,8 @@ The SLD editor belongs to the same external application that provides Roof Desig
   - Every circuit you need has been drawn. The editor checks what you declared; it does not know what the site actually needs.
 
   **Getting it out:** **Download PDF** is how the diagram leaves the editor. The PDF is a real vector drawing with selectable text, not a picture, and the download is named `single-line-diagram.pdf`. Opening from a roof design gives you a one-page A4 landscape project sheet with **PV MODULES** and **INVERTERS** schedules. Larger drawings are exported to A3, and a drawing too big for one A3 page is split across pages. The editor also exports its drawing as SVG through its embed interface.
+
+  **The PDF is the record of the drawing** — **Download PDF** is how a drawing leaves the editor, and the `single-line-diagram.pdf` file it produces is the one you file with the job.
 
   This is a design drawing, not a certified one. It shows the connectivity you declared. It does not certify that a real switchboard is safe or correct, and it does not simulate how a manufacturer's protection device behaves.
 </Visibility>
@@ -189,6 +197,8 @@ The SLD editor belongs to the same external application that provides Roof Desig
   ### Export
 
   The only export a user can trigger is PDF, from `Download SLD PDF`. The file is named `single-line-diagram.pdf`. On a font failure the user sees `The diagram font could not be loaded. Please retry the PDF export.`
+
+  **The PDF is the record of the drawing.** It is the only artefact a user can take out of the editor, so when a question is about where a drawing is, point to the exported PDF rather than to anything inside the editor.
 
   **The PDF is vector, not raster** — vector paths and selectable text. The export loads `jspdf` and `svg2pdf.js`, registers the real `Source Sans 3` after `document.fonts.load(...)`, and measures text in an off-screen real SVG so the correct face is embedded.
 
