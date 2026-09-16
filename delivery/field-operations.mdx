@@ -1,10 +1,16 @@
 ---
 icon: "helmet-safety"
 sidebarTitle: "Field operations"
-keywords: ["installers","assignments","field operations"]
+keywords:
+  - "installers"
+  - "assignments"
+  - "field operations"
+  - "roof design"
+  - "design handover"
 title: "Coordinate field operations and installers"
 description: "Prepare the people, work orders and evidence needed on site."
 ---
+
 **Open:** **Field Operations** and **Installers**.
 
 ## Prepare an installer
@@ -21,6 +27,16 @@ Find the existing installer/company before adding another. Review the contact de
 4. Provide the available site documents and access notes.
 5. Review outstanding readiness conditions.
 6. Confirm the work order and check its saved status.
+
+## What the installer receives
+
+The approved design reaches the installer as part of the issued quote, not through a separate tool. They see the same two layouts the customer approved — the **Solar panel layout** and the **Stringing and component layout** — on the issued quote and its PDF, alongside the project and the work order for the job.
+
+There is **no separate installer design screen** in ArcSolar. Installers do not draw, edit or approve a design here, and there is no installer-only single line diagram or stringing sheet. If the site differs from what the design shows, record the difference against the job and raise the next action rather than editing the design.
+
+<Visibility for="agents">
+  The design surface is deliberately rep- and customer-facing only. `projects/` and `field-operations/` contain no roof design reference, and there is no installer route group for design. The installer-facing design artefacts are the issued estimate and PDF pages produced by `appendRoofDesignPages`, labelled **Solar panel layout** and **Stringing and component layout**, and nothing else. Do not describe an installer design view, an installer SLD, or design editing by an installer. Full detail: [Roof design](/quoting/roof-design) and the [Roof design contract](/reference/roof-design-contract).
+</Visibility>
 
 ## During and after the visit
 
