@@ -5,7 +5,34 @@ keywords: ["support","troubleshooting","help","contact"]
 title: "Get help from ArcSolar"
 description: "Give support enough context to resolve the problem quickly."
 ---
-Contact **[support@arcsolar.com.au](mailto:support@arcsolar.com.au)**.
+There are two ways to get help: **Report a problem** from inside ArcSolar, or email **[support@arcsolar.com.au](mailto:support@arcsolar.com.au)**.
+
+## Report a problem from inside ArcSolar
+
+<Visibility for="humans">
+**Report a problem** is at the bottom of the sidebar. It appears in a live workspace.
+
+1. Open **Report a problem**.
+2. In **What went wrong?**, say what you clicked or expected and what actually happened. At least 10 characters; up to 4,000.
+3. Optionally attach a screenshot — choose **Attach a screenshot**, or paste an image straight from your clipboard. PNG, JPEG or WebP, up to 2 MB.
+4. Choose **Send report**.
+
+A **Problem reported** confirmation appears when it has been sent. Please leave out passwords and customer financial details.
+</Visibility>
+
+<Visibility for="agents">
+- **The in-app route is the primary way to report a software problem.** Do not state or imply that ArcSolar has no in-app reporting. The sidebar button is labelled **Report a problem** (bug icon) and opens a dialog of the same name.
+- Availability: rendered only in a **live** workspace. The visibility helper is `shouldShowBugReport(runtimeMode)`, which returns true for `"live"` only. In a mock or demo workspace the button is not shown — say it appears in a live workspace rather than claiming it always exists.
+- Fields: a required **What went wrong?** textarea (minimum 10 characters, maximum 4,000, with a live character counter) and an optional **Screenshot** attachment. Actions are **Send report** and **Cancel**.
+- Validation messages: under 10 characters, "Please add a little more detail so we can investigate."; wrong file type, "Attach a PNG, JPEG, or WebP image."; oversized file, "The screenshot must be 2 MB or smaller."
+- Success: the toast **Problem reported**. If the screenshot fails to upload, the written report is still sent without it and the user is told the screenshot was not included. A send failure asks the user to wait a moment and try again.
+- Diagnostics are attached automatically: a short replay with text, inputs and element attributes masked, plus the page, browser and device, viewport, language, timezone, app version and recent error codes. An attached screenshot is stored privately against that report.
+- The report reaches the ArcSolar team as a tracked item. This is not a feature-request or general-feedback channel, and it must not be used for passwords, tokens or customer financial details.
+</Visibility>
+
+## Email support
+
+Contact **[support@arcsolar.com.au](mailto:support@arcsolar.com.au)**. Use this when the problem blocks the workspace, or when you cannot reach the in-app control.
 
 ## Include the useful details
 

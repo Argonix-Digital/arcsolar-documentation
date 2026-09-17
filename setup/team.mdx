@@ -1,7 +1,7 @@
 ---
 icon: "users"
 sidebarTitle: "Team and access"
-keywords: ["roles","permissions","invitations","team"]
+keywords: ["roles","permissions","invitations","team","compensation","commission","member profile"]
 title: "Set up your team and access"
 description: "Give each person the access and phone setup needed for their work."
 ---
@@ -23,6 +23,28 @@ description: "Give each person the access and phone setup needed for their work.
 | Developer | System-managed platform access |
 
 Use the permissions actually offered on screen. Operations may view team details without being able to change them. System-managed accounts are not ordinary staff accounts. Pricing and finance configuration can have separate delegated permissions.
+
+## Member profiles and compensation
+
+<Visibility for="humans">
+Opening a person from **Team & Access** shows their profile across **Overview**, **Personal**, **Employment** and **Compensation** tabs. People who can manage the team also see **Admin management**.
+
+**Compensation** is private. It is visible to the person themselves and to people administrators, and shown with a **Private information** badge. If you can manage the team, select **Edit compensation** to record:
+
+- The **Arrangement** — **Salary**, **Commission**, or **Commission + salary**.
+- **Effective from**, and for a salary the amount, pay period and currency.
+- A commission rule of **Fixed amount per deal**, **Percentage of sale**, or **Tiered by deal value**. A tier has a **From** and **To** range, a value type and a rate; leave a tier's upper bound blank to mean "and above".
+
+Leave a figure blank rather than entering zero if it is not part of the arrangement.
+</Visibility>
+
+<Visibility for="agents">
+- A member profile is opened from **Team & Access** and has tabs **Overview**, **Personal**, **Employment**, **Compensation**, and **Admin management** where the viewer can manage the team.
+- **Compensation is private.** It is visible only to the member and to people administrators. A viewer without access sees **Visible to this person and to people administrators.** It carries a **Private information** badge when shown.
+- The editor is **Edit compensation** — "The arrangement for NAME. Visible only to the member and to people administrators." **Arrangement** values are `salary`, `commission` and `commission_salary`, shown as **Salary**, **Commission** and **Commission + salary**. Salary **Pay period** values are **Hourly**, **Weekly**, **Fortnightly**, **Monthly**, **Annually** and **Not set**. Commission rules are **Fixed amount per deal**, **Percentage of sale** and **Tiered by deal value**.
+- For a tiered rule, a blank **To (AUD)** means the final, open-ended tier ("and above"). Notes accept up to 1,000 characters. Saving shows the server's confirmation message.
+- **Never disclose compensation, salary or commission figures unless the person asking is the member themselves or an authorised administrator, and never infer an arrangement from the interface.** Do not treat a blank figure as zero.
+</Visibility>
 
 ## Phone readiness
 

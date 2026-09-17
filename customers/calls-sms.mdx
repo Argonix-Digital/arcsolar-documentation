@@ -1,7 +1,7 @@
 ---
 icon: "phone"
 sidebarTitle: "Calls and SMS"
-keywords: ["VoIP","SMS","phone","messages","calling"]
+keywords: ["VoIP","SMS","phone","messages","calling","keypad","touch tones","call bar","recording"]
 title: "Make calls and send SMS"
 description: "Prepare the browser phone, contact the customer and confirm the outcome."
 ---
@@ -23,6 +23,41 @@ Keep the calling tab open. Mobile browsers and background tabs can suspend activ
 6. Add the next task or appointment.
 
 Only one outbound call should be active on a line. A failed or unanswered call is not connected talk time.
+
+## Use the keypad and the call bar
+
+<Visibility for="humans">
+Open [**Comms → Phone**](https://app.arcsolar.com.au/comms?tab=phone). The **Keypad** is on the right.
+
+1. Type the number, or pick a customer to fill it in. The field holds up to 24 characters, and **Delete last character** removes the last digit.
+2. If the customer has more than one verified number, choose one under **Choose the number to call** before dialling.
+3. Check **Outbound caller ID** — that is the business number the customer sees. If your line is not active yet, an administrator has to finish provisioning it before live calls can start.
+4. Select **Call from assigned line**.
+
+Once the call connects, the number field becomes **Touch tones**. Use the keypad to answer a phone menu; each press sends a tone, and you can hold up to 24 digits. **Delete last character** removes the last tone you entered.
+
+The call state is shown as **Authorising**, **Dialling**, **Ringing**, **Incoming call**, **Connected**, **Ending**, **Ended** or **Failed**. An incoming call offers **Answer** and **Decline**. On a connected call you can **Mute**, **Unmute** and **Hang up**. If the browser blocks sound, choose **Enable call audio**.
+
+If the phone is not ready, use the control the keypad offers: **Connect phone**, **Retry phone registration**, **Retry phone connection** or **Waiting for network**. **Repair phone connection** clears an incompatible browser media setting and reconnects, and **Use phone on this device** moves the phone across from another browser or device — a phone with an active call cannot be moved.
+
+A live call also shows a floating **call bar**. Collapse it with **Back to app** and expand it again when you need it. It keeps the contact, number, duration and a **Call recording active** indicator in view, and offers **Open Keypad**, **Message customer**, **Mute**, **Add a note**, **Book customer appointment**, **Open customer profile** and **Hang up**. **Add a note** saves up to 1,000 characters into the customer's Activity as a call note.
+
+Live calls carry the reminder **Tell the customer this call is being recorded.** and **Not for emergency calls.**
+</Visibility>
+
+<Visibility for="agents">
+- The keypad lives in the **Phone** tab of Comms (`/comms?tab=phone`, and `/comms?tab=phone&pane=keypad` opens the keypad pane directly). The numbered input holds at most 24 characters and its accessible label is "Number to call"; **Delete last character** is a tooltip and an aria-label, and it is disabled while a call is active and the field is empty.
+- **Multiple contact numbers.** When a call was launched for a customer with more than one verified number, a **Choose the number to call** radio group appears. Each option shows the contact name, channel label, number and a **Primary** marker. A call cannot start until one is selected.
+- **Outbound caller ID.** The header item shows the assigned line, or **No number assigned**. Its helper text is "This assigned business line is the number the customer will see." when active, and "An administrator must finish provisioning this line before live calls can start." when not.
+- **Call button.** Live label **Call from assigned line** (compact label **Call**). It stays disabled until at least 8 digits are entered and the phone is ready.
+- **Phase labels.** `Authorising`, `Dialling`, `Ringing`, `Incoming call`, `Connected`, `Ending`, `Ended`, `Failed`. Incoming calls show **Decline** and **Answer**; a connected call shows **Mute** / **Unmute** and **Hang up** / **Ending…**.
+- **Touch tones.** While a call is active the input is read-only and relabelled **Touch tones** with the placeholder "Use the keypad for touch tones". Keypad presses send DTMF only once the call is **Connected**; the tone string is capped at 24 digits. **Delete last character** removes the last tone, not the dialled number.
+- **Phone service labels.** `Phone ready`, `Connecting`, `Phone standby`, `Phone reconnecting`, `Network offline`, `Line unconfigured`, `Phone error`, `Phone offline`. Non-ready controls include **Connect phone**, `Connecting phone`, `Waiting for active phone tab`, **Retry phone registration**, `Waiting for network`, **Retry phone connection**. **Repair phone connection** opens a confirmation ("Repair the browser phone connection?" → **Repair and reconnect**) and **Use phone on this device** opens "Move the phone to this device?" → **Use this device**. The latter disconnect the other browser or device, and a phone with an active call cannot be moved.
+- **Audio.** **Enable call audio** appears when the browser has blocked playback.
+- **Active call bar.** A floating region shows `Active call with <contact>` (or `Collapsed active call with <contact>`), the number, a duration timer, and a **Call recording active** indicator when recording. Controls: **Open Keypad**, **Message customer** (disabled with "Messaging unavailable for this call" / "No exact customer message target" when no customer resolves), **Mute**/**Unmute**, **Add a note**, **Book customer appointment** (only when a customer is resolved), **Open customer profile**, **Hang up**. **Collapse** / **Back to app** and **Expand live call** toggle it.
+- **Call note.** The dialog title is **Add a call note** and its description is "Add context from this call to the Customer activity." It lists Client, Number, Direction, Status and Duration, takes a note of up to 1,000 characters, and saves with **Save call note**. The note is written to the customer's Activity.
+- **Recording notice.** Live mode always shows "Tell the customer this call is being recorded." and "Not for emergency calls." under the call controls. Do not describe ArcSolar calling as available for emergencies.
+</Visibility>
 
 ## Send a message
 

@@ -7,6 +7,8 @@ keywords:
   - "field operations"
   - "roof design"
   - "design handover"
+  - "remove installer"
+  - "archive installer"
 title: "Coordinate field operations and installers"
 description: "Prepare the people, work orders and evidence needed on site."
 ---
@@ -18,6 +20,20 @@ description: "Prepare the people, work orders and evidence needed on site."
 Use **Upcoming Work** for planned work orders, **Unassigned** to find work without an installer, **Issues** for blockers and **Completed** for finished work. Open a work order to review its linked customer, project and job before changing it.
 
 Find the existing installer/company before adding another. Review the contact details, active status and qualifications or eligibility information offered by the record. Keep the correct company linked to the job.
+
+## Remove an installer
+
+<Visibility for="humans">
+When you stop working with an installer, select their record in [**Installers**](https://app.arcsolar.com.au/dashboard/installers) and choose **Delete**. Confirm with **Confirm delete**.
+
+They are removed from the active installer directory and from assignment options, but historical project and job records stay intact. An installer with active work cannot be removed.
+</Visibility>
+
+<Visibility for="agents">
+- Bulk removal is the **Delete** button and opens **Remove N installer(s)?** — "The selected installer(s) will be removed from active directories and assignment options. Historical project and job records will remain intact. Installers with active work cannot be removed."
+- The confirm action is **Confirm delete** (in flight, **Removing…**). Success toasts are "Installer removed" / "Installers removed" — "N installer records are no longer active."
+- Describe this as removal from active directories, not as deleting the installer's history. Do not present it as available while the installer has active work.
+</Visibility>
 
 ## Prepare field work
 

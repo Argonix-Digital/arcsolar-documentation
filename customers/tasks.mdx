@@ -1,7 +1,7 @@
 ---
 icon: "circle-check"
 sidebarTitle: "Tasks"
-keywords: ["tasks","due dates","completion","ownership"]
+keywords: ["tasks","due dates","completion","ownership","ArgonixIntelligence","automatic tasks","review timing"]
 title: "Create and complete tasks"
 description: "Give every follow-up a clear owner, due date and outcome."
 ---
@@ -15,6 +15,25 @@ description: "Give every follow-up a clear owner, due date and outcome."
 4. Add relevant context and tag colleagues where needed.
 5. Save and confirm it appears in the appropriate task list.
 
+## Tasks from a call
+
+<Visibility for="humans">
+You do not create follow-up tasks after a call. When ArgonixIntelligence finishes a call summary, ArcSolar creates a task for each action item automatically and assigns it to the customer's sales rep. These tasks are marked **ArgonixIntelligence**.
+
+- **Your work** has the status **To do**.
+- **Await customer: …** is something the customer agreed to do. It sits in **Waiting** until they act.
+- A task whose timing came from a loose phrase such as "in a few months", rather than a specific date and time, shows **Review timing** under its due date. That is an internal reminder, not an appointment.
+
+If no task appears, the call may have no customer, or the customer may not have an assigned sales rep. Both are normal. See [Tasks are created automatically](/customers/call-intelligence#tasks-are-created-automatically).
+</Visibility>
+
+<Visibility for="agents">
+- Call-derived tasks are created by the `call_summaries_sync_action_tasks` trigger, not by a user. Never tell a user to create a task that a call summary already produced.
+- They are identifiable by a non-null `intelligence_call_id` and are labelled **ArgonixIntelligence** in the list.
+- A rep-owned action is created as `todo`; a customer-owned action is created as `waiting` with the title prefix `Await customer: `.
+- A task dated by inference or by the three-day fallback rather than an explicit call time is shown as **Review timing** and must not be described as an agreed appointment. See [CallIntelligence](/customers/call-intelligence#tasks-are-created-automatically) for the full rules.
+</Visibility>
+
 ## Use the right view
 
 **My tasks** includes work you own or are tagged in. Authorised managers can use **Team tasks** and choose a person or the whole team.
@@ -23,7 +42,13 @@ Use date, title, status, priority and type filters. **All open** can include tas
 
 ## Update work
 
-Open the task to complete, reschedule or update it using the available actions. Record the outcome. If waiting on someone else, leave a useful explanation and a follow-up date. Tagging does not transfer ownership.
+Open a task and use **Actions** to change it:
+
+- **Status** — **To do**, **In progress**, **Waiting** (only offered while the task is already waiting), **Completed**, or **Archived / incorrectly detected**. Archiving removes the task from active follow-ups without counting it as complete, and choosing **To do** reopens it.
+- **Completion note** — optional, saved as an internal note in the customer's Activity when you choose **Mark complete**.
+- **Due date and time** — labelled **Review timing by** when the date is an internal review date rather than an agreed time. Changing it updates only the task; it does not move a linked appointment.
+
+Record the outcome. If waiting on someone else, leave a useful explanation and a follow-up date. Tagging does not transfer ownership.
 
 A task deadline is not a booked appointment. Use [Calendar](/delivery/calendar) to arrange an actual time with a customer or crew.
 
@@ -37,4 +62,14 @@ Task links can open a completed task even when the current list hides completed 
 
 ## ArgonixIntelligence in this workflow
 
-Use suggested actions as a starting point, then verify owner and timing. The [Accountability Report](/reporting/accountability) distinguishes owned, tagged and AI-related open work.
+<Visibility for="humans">
+Call summaries create tasks for you rather than leaving suggestions in a note, so you always have the next action on a list with an owner. Treat the wording as a starting point: check the customer, the owner and the timing before acting, and read the source call for anything important.
+
+The [Accountability Report](/reporting/accountability) distinguishes owned, tagged and AI-related open work.
+</Visibility>
+
+<Visibility for="agents">
+- Intelligence creates tasks automatically from call summaries; it does not leave them as suggestions for a human to enter. The trigger and field-level rules are on [CallIntelligence](/customers/call-intelligence#tasks-are-created-automatically).
+- It cannot complete, reassign or book a task on its own, and it does not overwrite completed, cancelled, manually dated or appointment-linked tasks.
+- The [Accountability Report](/reporting/accountability) distinguishes owned, tagged and AI-related open work. Do not use it to claim an AI task was actioned.
+</Visibility>
