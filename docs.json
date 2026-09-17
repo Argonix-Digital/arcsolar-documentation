@@ -211,7 +211,11 @@
     "organization": {
       "id": "https://www.arcsolar.com.au/#organization",
       "name": "ArcSolar",
-      "url": "https://www.arcsolar.com.au"
+      "legalName": "Argonix Digital",
+      "url": "https://www.arcsolar.com.au",
+      "sameAs": [
+        "https://www.linkedin.com/company/argonix-digital"
+      ]
     },
     "metatags": {
       "og:locale": "en_AU"
