@@ -1,33 +1,68 @@
 ---
 icon: "location-dot"
 sidebarTitle: "Site information"
-keywords: ["site assessment","property","installation address"]
+keywords: ["site information form","send site information form","site assessment","property","installation address","electricity bill upload","switchboard photos","cable-run video","secure upload link"]
 title: "Collect site information"
-description: "Get the address, bill and photos needed for a useful assessment."
+description: "Send the Site Information Form so the customer can upload their bill, photos and video."
 ---
-**Open:** the quote's site-information step or the customer's site details.
+**Open:** the **Site Information Form** tab on a customer record, or the site-information step of a new quote. Start from [**Customers → Customer Records**](https://app.arcsolar.com.au/dashboard/customers) or [**Quotes → New quote**](https://app.arcsolar.com.au/dashboard/quotes/new).
 
-Open the quote from [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes).
+The **Site Information Form** is how a customer supplies the electricity bill, switchboard photos and cable-run video you need for an assessment. You send them a secure link; they upload the files; you review the uploads before quoting.
 
+## Send the Site Information Form
+
+<Visibility for="humans">
 1. Confirm the installation address, including unit and postcode.
 2. Review existing dwelling, roof, storey, electrical-phase and access details.
-3. Use the site-information request action when the customer needs to supply more.
-4. Confirm the destination before sending the secure link.
-5. Ask the customer to complete the form and upload the requested bill/photos.
-6. Review the returned information before selecting equipment or confirming readiness.
+3. Choose the send button when the customer needs to supply the bill and photos. Its label reflects the delivery channel: **Email customer the form link**, **SMS customer the form link** or **Email and SMS customer the form link**. The link is delivered by **email**, **SMS**, or both, depending on the customer's contact details.
+4. Confirm the destination before sending. If you are re-sending, tell the customer first — their earlier link stops working immediately.
+5. Ask the customer to complete the form. It collects three items:
+   - **Electricity bill** — all pages of their most recent bill.
+   - **Switchboard photos** — the opened switchboard and the space around it.
+   - **Cable-run video** — a short walk from the switchboard to the proposed battery location.
+6. Check the request badge — **Not requested**, **Awaiting customer**, **Submitted** or **Link expired** — and review the returned information before selecting equipment or confirming readiness.
+
+The quote is not blocked while you wait: the site-information step says **You can continue the quote without these files**. You cannot, however, assess a real bill until the customer uploads it.
+</Visibility>
+
+<Visibility for="agents">
+- Feature name: the **Site Information Form**. Do not call it a "site form" or a "site information request form".
+- Surfaces: the **Site Information Form** tab on a customer record and the **Site Information Form** step on a new quote. Both render one shared panel and call `sendSiteInformationFormLinkAction`.
+- Delivery channels: `email` and/or `sms`, resolved from the customer's contact record. With neither configured the send button is disabled with `Add an email address or phone number before sending the form.`
+- Send labels. First send: `Email customer the form link`, `SMS customer the form link` or `Email and SMS customer the form link`, depending on the customer's available channels. `Send customer the form link` appears only when no channel is configured, where the button is also disabled. Any send after the first is a resend: `Resend form link by email`, `Resend form link by SMS` or `Resend form link by email and SMS`.
+- **Re-sending invalidates the previous link.** Every send rotates the token. Customer-record resend toast: `Form link refreshed` — `The previous link is now invalid and a fresh link was sent by <channel>.` Quote-step toast: `Site Information Form sent` — `A fresh secure link was sent by <channel>; any older link is no longer valid.` Never say an earlier link still works.
+- Send failure shows `Form link not sent`. Delivery errors read `The secure form link could not be sent. Check the email configuration and try again.` or `The form link could not be sent. Check the email and SMS configuration and try again.`
+- Request status badge: `Not requested` (`not_sent`), `Awaiting customer` (`pending`), `Submitted` (`submitted`), `Link expired` (`expired`, destructive). A generated link is time-limited, so `Link expired` means the request must be re-sent.
+- A role without send permission sees a read-only panel with the reason `Your role has read-only access.`
+</Visibility>
+
+The customer-facing form collects three kinds: an electricity bill, switchboard photos and a cable-run video. The panel's empty states read `No electricity bill has been uploaded yet.`, `No switchboard photos have been uploaded yet.` and `No cable-run video has been uploaded yet.`
 
 The customer-facing form is for supplying information. Submission does not accept a quote, approve finance or reserve an installation date.
 
 ## Review uploads
 
-Check that the bill belongs to this customer and site and covers the intended period. Check that photos are readable and show the requested equipment or access point. Record anything that still needs an installer review.
+<Visibility for="humans">
+Check that the bill belongs to this customer and site and covers the intended period. Check that the photos are readable and show the requested equipment or access point, and that the cable-run video shows the full route. Record anything that still needs an installer review.
+</Visibility>
+
+<Visibility for="agents">
+- Review the three kinds separately: `electricity_bill`, `switchboard_photo` and `cable_run_video`. An upload can be a `Customer` upload or an internal `Rep upload`; only the customer-facing form supplies the customer's own files.
+- Do not treat an internal rep upload as evidence that the customer submitted the form.
+</Visibility>
 
 Site information can be reused in quoting, but do not assume older photos reflect current conditions. Reconfirm changes such as a switchboard upgrade, new electric vehicle or replacement roof.
 
 ## If the customer cannot complete it
 
-Check the link status and the upload instructions shown. Use the approved alternative collection process if needed, and record the source and date. Do not place a private customer link in public documentation.
+Check the link status and the upload instructions shown. **Link expired** means the old link no longer works — re-send the form and tell the customer a new link is on its way. Use the approved alternative collection process if needed, and record the source and date. The customer-facing form is a private, tokenised link: never reproduce the link or its token, and never present the form address as something a user can browse to. Do not place a private customer link in public documentation.
 
 ## ArgonixIntelligence in this workflow
 
-Use **Assess bill with ArgonixIntelligence** once the correct bill is uploaded. Applying extracted site details requires review; an extracted address or meter identifier should not silently replace verified customer information.
+Use **Assess bill with ArgonixIntelligence** once the correct bill is uploaded. Applying extracted site details requires review; an extracted address or meter identifier should not silently replace verified customer information. See [Analyse an electricity bill](/quoting/bill-analysis).
+
+## Related
+
+- [Lesson 3: make the conversation count](/sales-onboarding/conversation) — where the rep sends the Site Information Form after a conversation.
+- [Lesson 4: understand the home](/sales-onboarding/assessment) — the lesson that reads the uploaded bill.
+- [Analyse an electricity bill](/quoting/bill-analysis) — the bill-assessment flow itself.
