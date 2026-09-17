@@ -1,7 +1,7 @@
 ---
 icon: "microphone"
 sidebarTitle: "CallIntelligence"
-keywords: ["transcripts","recordings","summaries","CallIntelligence"]
+keywords: ["transcripts","recordings","summaries","CallIntelligence","automatic tasks","action items","review timing","follow-up tasks"]
 title: "Use Argonix CallIntelligence"
 description: "Prepare for follow-up with call summaries, transcripts and recordings."
 ---
@@ -21,7 +21,7 @@ Summary availability depends on your plan, access and the captured source materi
 2. Select **ArgonixIntelligence** beside that call.
 3. Read **Intelligence notes** and **Next steps**. Check the owner and due date.
 4. Under **Calls behind these notes**, select **Transcript** to verify important details. Use the recording when available.
-5. Check **Tasks** before creating a follow-up so you do not duplicate existing work.
+5. Open **Tasks**: ArcSolar has already created a task for each action item, so review the existing one rather than adding a duplicate. See [Tasks are created automatically](#tasks-are-created-automatically).
 
 <Frame caption="Open CallIntelligence from a customer call, review the next step, then check the transcript. Fictional demo data.">
   <video controls playsInline preload="metadata" poster="/videos/call-intelligence.jpg" src="/videos/call-intelligence.mp4" aria-label="Open post-call ArgonixIntelligence and verify the transcript" />
@@ -37,9 +37,92 @@ Names, prices, technical terms and dates can be transcribed incorrectly. Verify 
 
 A call summary does not establish consent to a contract, payment or finance application. Use the corresponding acceptance or payment record.
 
-## Suggested work
+## Tasks are created automatically
 
-Where suggested actions or AI-created task context are shown, review the customer, wording, owner and due date. Check Tasks to confirm whether a task actually exists; a sentence in a summary is not itself a scheduled task.
+<Visibility for="humans">
+You do not have to create the follow-up yourself. As soon as a call summary is ready, ArcSolar turns each action item from the call into a real task and assigns it to the customer's sales rep.
+
+The summary takes a moment to arrive after the call ends, so the tasks appear shortly afterwards. If you cannot see them yet, the summary may still be processing.
+
+Each task is marked **ArgonixIntelligence** so you know it came from a call. Open it to check the wording, who was discussed as the owner, and when it should be reviewed.
+
+Two kinds of task appear:
+
+- **Your work** — something the rep agreed to do, such as calling back or sending a proposal.
+- **Await customer: …** — something the customer agreed to do, such as sending a bill or a photo. These sit in **Waiting** until the customer acts.
+
+If a colleague's call has no tasks yet, that can be normal: a call with no customer, or a customer with no assigned sales rep, produces no tasks. Cancelled calls, and calls replaced by a newer summary, do not recreate work.
+
+### When a task is due
+
+- If a **specific date and time** were discussed, that becomes the task's due date.
+- If the call only mentioned a **relative timeframe** — "in three to four months", "in a couple of weeks" — ArcSolar adds an internal **review date** instead, using the earliest date in a range and marking it **Review timing**. It is a prompt for you to review, not an appointment booked with the customer.
+- If nothing about timing was discussed, the task gets a review date three days after it was created, also marked **Review timing**.
+
+Never tell a customer a time was agreed based only on a review date. Only a due date that came from a specific date and time on the call is a real commitment.
+
+### Book the call from the task
+
+A follow-up task with an outstanding status can be turned into a phone appointment. Booking it moves the task to **Waiting** and shows **Phone appointment booked; awaiting the call.** Completing the appointment completes the task. Cancelling the appointment returns the task to **To do** so you can reschedule it, and rescheduling the appointment moves the task's due date with it.
+
+Only rep-owned follow-up tasks can be booked this way. A customer-owned task cannot.
+
+### What ArcSolar will not do
+
+- It does not re-create an action you have already completed, cancelled or edited.
+- It does not overwrite a task that already has an appointment booked, or a due date you set yourself.
+- It does not book an appointment, send a message or contact a customer. It only creates the internal task.
+- It does not create tasks on the strength of a call that has no customer, and it leaves a newer summary in charge when an older call is superseded.
+</Visibility>
+
+<Visibility for="agents">
+**Creation is automatic and trigger-driven.** No user action and no AI chat session is involved.
+
+- Trigger `call_summaries_sync_action_tasks` fires `AFTER INSERT OR UPDATE OF status, current_payload` on `public.call_summaries` and calls `private.materialize_call_intelligence_tasks(new.id)`. Every entry in the summary payload's `action_items` becomes a task.
+- **Never say a summary's suggested action is "not a task" or that the user must create it.** That is the defect this section corrects.
+
+**Preconditions — if any fails, no tasks are created.**
+
+- The summary must reach status `available` and pass `private.is_valid_call_summary_payload`. There is a delay after the call ends while the summary is produced.
+- The call must have a `customer_id`.
+- An eligible owner must resolve for that customer, at `coalesce(customer.associated_sales_rep_member_id, call.owner_member_id)`. That member must have an active membership, completed password setup, an active non-archived profile, and an effective workspace role of `sales`, `operations`, `administrator` or `developer`. The customer must be unarchived and unmerged. If no member resolves, **no tasks are created** — absence of tasks can be legitimate.
+- **Superseded calls never recreate work.** If a newer `available` summary exists for the same customer (ordered by call `started_at`, then call id), the older call materialises nothing.
+
+**Each task's shape.**
+
+- Title: `left(btrim(action.task), 200)`. Blank or whitespace-only items are skipped.
+- Description, exactly:
+
+```text
+Detected by ArgonixIntelligence. Discussed owner: <owner>. Review the source call before acting.
+```
+
+- **Customer-owned action.** When the action's owner text matches `customer`, `client` or `homeowner` (case-insensitive substring match): the title is prefixed `Await customer: ` (capped at 200 characters), status is `waiting`, `waiting_on` is `customer`, and `blocked_reason` is `Awaiting the customer action discussed on the call.`
+- **Status:** `waiting` for a customer-owned action, otherwise `todo`.
+- **Type:** `follow_up` when the action is rep-owned and its text matches `call|phone|ring|speak|follow.?up`; `collect_document` when the text matches `bill|document|photo` (this can also apply to a customer-owned action); otherwise `general`. A customer-owned action is never typed `follow_up`.
+- **Priority:** `high` when the summary payload's `urgency` is `high`, otherwise `normal`.
+- Owner and assignee are both the resolved owner member. `source_system` is `workflow`, and `intelligence_call_id` points at the originating call.
+
+**Due date and review timing.**
+
+- An explicit `due` timestamp on the action item becomes `due_at`.
+- With no explicit timestamp, `private.prepare_work_accountability` tries to infer an internal review date from a relative phrase such as `in three to four months`, anchored to the call's start. Ranges use the earliest bound; the time is 9 am in the workspace timezone. It then appends to the description: `Suggested review date: <DD Mon YYYY>. Based on the stated timeframe from the source call; approximate ranges use the earliest date. Internal review at 9 am, not a booked appointment.`
+- With no timing at all, an open task falls back to a review date three days after it was created.
+- A task dated this way is identified by `isTaskReviewDeadline` and shown as **Review timing** in the Tasks list. The task actions dialog labels the field **Review timing by** and explains: "No precise call time was agreed. Review the source context and choose the appropriate task deadline; this does not book a call."
+- **Do not claim a call time was agreed unless the action item carried an explicit `due` timestamp.** A review date is internal.
+
+**Deduplication and safety.**
+
+- Every AI task stores `intelligence_action_key`, an md5 of the normalised action text plus the customer-owned flag. A unique index on `(workspace_id, customer_id, intelligence_action_key)` means re-summarising a call does not create duplicates.
+- Existing matched tasks are updated only while their status is `todo`, `in_progress` or `waiting`. Completed and cancelled tasks are left alone.
+- A task with a booked appointment keeps its own due date; a manually set due date (`due_date_manually_set`) is preserved.
+- **Automatic cancellation.** An AI task whose action is no longer in the latest unresolved list is cancelled when it is `todo` or `waiting` with no booked appointment and no manually set due date. `blocked_reason` is cleared and `waiting_on` is set to `none`. Do not describe a cancelled AI task as completed, and do not present automatic cancellation as a user action.
+
+**Calls, tasks and appointments.**
+
+- The Tasks list and the call's next-steps view show **ArgonixIntelligence** beside a linked task. The next-steps view shows the linked task, or states "No task linked to this next step" when a summary action has no matching task.
+- `public.create_phone_appointment` accepts a `source_task_id` only when the task is type `follow_up`, belongs to the same customer, is owned by the acting member (Operations, Administrator and Developer may act on others), and has status `todo`, `in_progress` or `waiting`. Booking sets the task to `waiting`, sets `blocked_reason` to `Phone appointment booked; awaiting the call.`, and copies the appointment start into the task's due date and `starts_at`. Completing the appointment completes the task; cancelling or archiving it returns the task to `todo`; rescheduling it updates the task due date. One appointment links to one task.
+</Visibility>
 
 ## Troubleshooting
 

@@ -139,6 +139,7 @@
       {
         "group": "Reference and support",
         "pages": [
+          "reference/workspace",
           "reference/availability",
           "reference/glossary",
           "reference/support",

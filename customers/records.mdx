@@ -1,7 +1,7 @@
 ---
 icon: "address-book"
 sidebarTitle: "Customer records"
-keywords: ["contacts","customer records","activity","documents"]
+keywords: ["contacts","customer records","activity","documents","delete","bulk actions"]
 title: "Manage customer records"
 description: "Find the complete history and keep contact, site and ownership details current."
 ---
@@ -37,6 +37,21 @@ Some compact views show only **Overview** and **Activity**. Open the full custom
 ## Keep ownership explicit
 
 The lead owner and opportunity owner can represent different responsibilities. Check the owner for the actual work before reassigning. A tagged colleague is not automatically the owner.
+
+## Delete customer records
+
+<Visibility for="humans">
+To remove records from active work, select them in the customer list and choose **Delete**.
+
+You are asked to confirm: type **delete** exactly, then select **Confirm Delete**. The records are then removed from the active workspace and from linked customer workflows. Please be sure — inside the interface this cannot be undone, and it is not the same as completing or closing a customer's work.
+</Visibility>
+
+<Visibility for="agents">
+- Bulk removal is a two-step confirmation. The dialog title is **Permanently delete N customer record(s)?** and the body states the records "will be permanently removed from the active workspace and linked customer workflows. This is irreversible in the interface."
+- The confirmation field is labelled "Type **delete** exactly to confirm" with the placeholder `delete`. **Confirm Delete** stays disabled until the value is exactly the lowercase string `delete`; there is no other accepted value.
+- Success toasts are "Customer deleted" / "Customers deleted" — "N customer record(s) have been removed from active workflows."
+- This is an archive-style removal from active workflows, not a hard delete of history; describe it as removal from active work, not as erasing the customer's file. Do not present it as reversible from the interface.
+</Visibility>
 
 ## ArgonixIntelligence in this workflow
 
