@@ -3,7 +3,7 @@ title: "4. Understand the home"
 sidebarTitle: "4 · Prepare the recommendation"
 description: "Start with the customer’s needs. Let accurate information shape the offer."
 icon: "house"
-keywords: ["sales rep onboarding","assessment","training","Prepare the recommendation"]
+keywords: ["sales rep onboarding","assessment","training","Prepare the recommendation","site information form","electricity bill upload","site photos","bill assessment input"]
 ---
 
 import { LessonChecklist } from "/snippets/sales-course.jsx";
@@ -25,9 +25,33 @@ Use your team’s approved request process to collect:
 
 Read [Collect site information](/quoting/site-information) for the full checklist. Never promise technical suitability from an incomplete form.
 
+## Where the bill and photos come from
+
+<Visibility for="humans">
+The bill and photos you review in this lesson are not collected here. They arrive through the **Site Information Form** you sent the customer in [lesson 3](/sales-onboarding/conversation).
+
+That form gives the customer a secure link. They upload their **electricity bill**, **switchboard photos** and a short **cable-run video** through it, and those files then appear on the customer record and on the quote.
+
+If the customer has not completed the form yet, there is nothing real to assess. Open the customer's **Site Information Form** tab and check the badge and the uploads before you continue:
+
+- **Awaiting customer** — the link was sent, but no files have arrived. Wait, or remind the customer.
+- **Not requested** — you have not sent the form. Send it before assessing anything.
+- **Link expired** — the customer can no longer open the old link. Re-send it.
+- **Submitted** — the files are in. Check that the bill belongs to this customer and site and covers the period you need.
+
+Do not estimate usage or rates from memory, from an old bill, or from a home you have not seen.
+</Visibility>
+
+<Visibility for="agents">
+- **Precondition for the assessment step below:** a real uploaded bill, collected by the **Site Information Form** in [lesson 3](/sales-onboarding/conversation). Nothing is fetched automatically and no lesson creates the bill.
+- Read the request status before assessing: `Not requested` (`not_sent`), `Awaiting customer` (`pending`), `Submitted` (`submitted`), `Link expired` (`expired`). Only a genuine customer upload gives genuine values.
+- With nothing uploaded, the correct action is to send or re-send the form and wait — never to proceed on assumed or sample values as if they were the customer's. See [Collect site information](/quoting/site-information).
+- Once the correct bill is uploaded, the assessment itself is [Analyse an electricity bill](/quoting/bill-analysis).
+</Visibility>
+
 ## Read a bill with ArgonixIntelligence
 
-1. Open the quote’s bill-assessment flow and use an approved sample bill.
+1. Open the quote’s bill-assessment flow. With a real customer, select the bill they uploaded through the **Site Information Form**; in the course demo, use an approved sample bill.
 2. Choose **Assess bill with ArgonixIntelligence**.
 3. Open **Review bill assessment**.
 4. Compare the extracted billing period, usage, rates and address with the original.
@@ -49,7 +73,7 @@ Try saying: “This estimate uses the usage and rates we reviewed. Your result w
 
 Bill analysis saves preparation time. You remain the final check on every value you apply. If the source and assessment disagree, resolve that difference before quoting.
 
-<LessonChecklist lessonId="assessment" items={["I know which bill, photos and site details to request.","I can compare a bill assessment with its source before applying values.","I can explain that savings are estimates and identify the assumptions to check."]} />
+<LessonChecklist lessonId="assessment" items={["I can send the Site Information Form and check that the customer's bill and photos have arrived.","I can compare a bill assessment with its source before applying values.","I can explain that savings are estimates and identify the assumptions to check."]} />
 
 [Continue to lesson 5: Build a confident quote](/sales-onboarding/quote)
 

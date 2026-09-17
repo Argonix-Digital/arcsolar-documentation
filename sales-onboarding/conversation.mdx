@@ -3,7 +3,7 @@ title: "3. Make the conversation count"
 sidebarTitle: "3 · Call, message, follow up"
 description: "Be present in the conversation. Leave the next step beautifully clear."
 icon: "phone"
-keywords: ["sales rep onboarding","conversation","training","Call, message, follow up"]
+keywords: ["sales rep onboarding","conversation","training","Call, message, follow up","site information form","send site information form","electricity bill upload","secure upload link"]
 ---
 
 import { LessonChecklist } from "/snippets/sales-course.jsx";
@@ -64,15 +64,42 @@ A task is a reminder. A customer appointment belongs in **Calendar**. Confirm th
 Respect STOP and do-not-contact requests. If a message fails, inspect its status before trying again; do not send repeated copies.
 </Note>
 
+## Send the customer the Site Information Form
+
+<Visibility for="humans">
+The customer's bill and site photos are not something you collect by hand. You ask for them with the **Site Information Form**.
+
+After the conversation:
+
+1. Open the customer and choose the **Site Information Form** tab. You can also send it from the site-information step of a new quote.
+2. Check the customer has an email address or phone number. The link goes out by **email**, **SMS**, or both.
+3. Choose the send button. Its label reflects the delivery channel — **Email customer the form link**, **SMS customer the form link** or **Email and SMS customer the form link**. The customer gets a secure, private link and uploads three things: their **electricity bill**, **switchboard photos**, and a short **cable-run video**.
+4. Wait for the customer. The request badge shows where things stand: **Not requested**, **Awaiting customer**, **Submitted** or **Link expired**.
+
+You can keep working on the quote while you wait, but you cannot assess a real bill until the customer uploads it. The next lesson shows what to check. Read [Collect site information](/quoting/site-information) for the full detail.
+</Visibility>
+
+<Visibility for="agents">
+- The step exists so lesson 4 has a real input. Sending the **Site Information Form** is a required rep action; the customer's bill and photos are customer uploads and never appear automatically.
+- Surfaces: the **Site Information Form** tab on a customer record and the **Site Information Form** step on a new quote; both call `sendSiteInformationFormLinkAction`.
+- Delivery channels are `email` and/or `sms`, taken from the customer's contact record. With neither, sending is blocked. The send button is not a one-time control: any send after the first is a resend.
+- **Re-sending rotates the token and invalidates the previous link immediately.** Do not tell a rep that an earlier link still works. Full labels, statuses and expiry are in [Collect site information](/quoting/site-information).
+- Request status: `Not requested` (`not_sent`), `Awaiting customer` (`pending`), `Submitted` (`submitted`), `Link expired` (`expired`).
+</Visibility>
+
+<Warning>
+Re-sending replaces the link. Choosing the send button again becomes **Resend form link by email**, **Resend form link by SMS** or **Resend form link by email and SMS**, and the customer's earlier link stops working straight away. Tell the customer before you re-send, especially if they already have the old link. This cannot be undone.
+</Warning>
+
 ## Your reference guides
 
-[Calls and SMS](/customers/calls-sms) · [Tasks](/customers/tasks) · [Appointments](/delivery/calendar)
+[Calls and SMS](/customers/calls-sms) · [Tasks](/customers/tasks) · [Appointments](/delivery/calendar) · [Site Information Form](/quoting/site-information)
 
 ## ArgonixIntelligence, by your side
 
 After a call, open the customer’s **Activity**, find the call and select **ArgonixIntelligence**. [Watch the 43-second CallIntelligence walkthrough](/customers/call-intelligence#after-each-call) to see the notes, next step and source transcript. Summaries and transcripts appear when available. Check names, dates and promises against the source. When the summary is ready, ArcSolar turns each action item into a real task for the customer’s rep — you do not have to create it yourself. Open [**Tasks**](/customers/tasks) to see them, and check the owner and timing before you act. [How tasks are created](/customers/call-intelligence#tasks-are-created-automatically).
 
-<LessonChecklist lessonId="conversation" items={["I can check the customer, consent, phone-ready state and headset before a call.","I can write a note with the goal, agreement and next action.","I can create a task with an owner and due date, or explain the steps in the demo."]} />
+<LessonChecklist lessonId="conversation" items={["I can check the customer, consent, phone-ready state and headset before a call.","I can write a note with the goal, agreement and next action.","I can create an owned task and send the Site Information Form when the customer needs to upload a bill and photos."]} />
 
 [Continue to lesson 4: Understand the home](/sales-onboarding/assessment)
 
