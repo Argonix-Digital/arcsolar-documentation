@@ -207,7 +207,7 @@
     "background": "/images/og-background.jpg"
   },
   "seo": {
-    "indexing": "all",
+    "indexing": "navigable",
     "organization": {
       "id": "https://www.arcsolar.com.au/#organization",
       "name": "ArcSolar",
