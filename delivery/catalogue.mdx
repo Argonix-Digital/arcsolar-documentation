@@ -29,15 +29,22 @@ One product carries **one price per selling brand**. Adding a brand does not cop
 
 ### Read the pricing status labels
 
-Every product row labels its price situation, per brand:
+Every product row carries a **Status** badge that describes the price **in the brand you are looking at**, not merely whether a number exists somewhere:
 
-| Label | What it means |
+| Badge | What it means |
 | --- | --- |
-| **Priced in BRAND** | Priced in the price book of the brand you are looking at |
-| **Priced in OTHER BRAND** | It has a price, but only in a different selling brand's price book — so it will not appear in this brand's quotes until you price it here |
-| **Missing price** | No current price in the price book of the brand you are looking at |
+| **Current** | This brand prices the product today, so quotes under it can use the price |
+| **Draft price** | A price exists but has not been published, so quotes ignore it |
+| **Future price** | A published price starts on a later date; nothing applies today |
+| **Expired price** | A published price has already ended |
+| **Upon request** | Deliberately not priced — quoted by arrangement |
+| **Priced in BRAND** | Priced, but in **another** selling brand's price book — so it will not appear in this brand's quotes until you price it here |
+| **Missing price** | No sellable price book prices or quotes it at all |
+| **Missing price book** | There is no price book to resolve against |
 
-An unpriced product is not an error. It is the normal state of the catalogue in a brand that has not been priced yet, and it keeps the two brands' prices independent.
+A **Priced in BRAND** badge is not an error. It is the normal state of a correctly priced product in a brand that does not carry it, and it is what keeps the two brands' prices independent. The full vocabulary, including the lifecycle badges **Draft product**, **Inactive**, **Review due** and **System pricing**, is listed in [Prices per brand](/setup/price-books).
+
+A brand's own **Products and prices** list words the same states in book terms — **Published**, **Draft only**, **Missing price**, **No price book** — because that surface is about one book.
 
 The product's dialog carries the same story in two labels: the price field is named **Additional brand price** for a brand other than the original, and the history note reads _"Currency amount this product costs for the selected selling brand."_
 

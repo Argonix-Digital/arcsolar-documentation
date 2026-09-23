@@ -20,14 +20,14 @@ Retailer Settings is the **per selling brand** screen. The label above the title
 | Tab | What to configure |
 | --- | --- |
 | [Pricing](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=pricing) | Package price basis, quote defaults and BOM completeness requirements |
-| [Services & fees](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=services) | Chargeable services, quantities, allowances, regions and companion items |
+| [Services & fees](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=services) | Chargeable services, quantities, allowances, regions and companion items. This entry is hidden when the service catalogue is available, and choosing it then opens **Product Catalogue → Services** instead |
 | [Finance & deposits](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=finance) | Available finance terms, fees, the deposit limit, the stock delivery payment and the installation window |
 | [Customer journeys](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=quote-sms) | Automatic quote SMS wording and timing |
 | [Branding](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) | Names, website, sending address, logos, colours and contract fonts — see [Branding](/setup/branding) |
 | [Documents](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=documents) | This brand's agreement wording and consent text — see [The NETCC contract](/setup/selling-contract) |
 | [Integrations](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations) | Connected providers and optional rebate tracking |
 
-**Pricing**, **Services & fees** and **Finance & deposits** always open on **Product Catalogue** in the title row, where the amounts behind a quote come from.
+When you are in **Pricing**, **Services & fees** or **Finance & deposits**, a **Product Catalogue** link sits in the title row, because the amounts behind a quote come from there.
 
 ## Switch the brand you are editing
 
@@ -41,11 +41,14 @@ The strip is filtered to the sections your role can use, so a tab you cannot use
 
 | Tab | Who sees it |
 | --- | --- |
-| **Pricing**, **Services & fees**, **Finance & deposits**, **Integrations** | Everyone who can open Retailer Settings |
+| **Pricing**, **Finance & deposits**, **Integrations** | Everyone who can open Retailer Settings |
+| **Services & fees** | Shown only while the service catalogue is unavailable; otherwise the entry opens **Product Catalogue → Services** |
 | **Customer journeys** | Roles that can configure quote SMS |
 | **Branding**, **Documents** | Administrators and developers |
 
 Opening a **Branding** or **Documents** address directly as another role sends you back to **Pricing**.
+
+The readiness report above the tabs follows the same administrator-and-developer rule, because the document rows behind it are not readable by every role — and a brand that cannot be read must never be reported as an incomplete one.
 
 ## Apply a commercial change
 
