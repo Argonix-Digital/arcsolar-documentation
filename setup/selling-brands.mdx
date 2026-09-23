@@ -31,7 +31,7 @@ A **selling brand** is the identity your customer is buying from. One brand owns
 
 ## The original brand and additional brands
 
-Every workspace has exactly one **original brand**. It is your own business identity: it uses the workspace logos, colours and fonts you set in Retailer Settings → Branding, its legal details come from **ArcSolar Settings**, and it uses your existing price book. In every list of brands it is labelled **(default brand)**.
+Every workspace has exactly one **original brand**. It is your own business identity: it uses the workspace logos, colours and fonts you set in Retailer Settings → Branding, its legal details come from **ArcSolar Settings**, and it uses your existing price book. In a list of brands its name is followed by **(default brand)**.
 
 Each brand you add after that is an **additional brand**. It carries its own price book and its own approved contract document, so it can quote at different prices and under different terms.
 
@@ -41,7 +41,7 @@ Each brand you add after that is an **additional brand**. It carries its own pri
 | Price book | Your existing price book | Its own, created empty for it |
 | Logos, colours, fonts | The workspace's, set on **Branding** | Its own, set with its own document |
 | Legal name and ABN | From **ArcSolar Settings** | Typed on its own document |
-| Shown in lists as | Name plus **(default brand)** | Its plain name |
+| Marked in the **Selling brands** card as | _Original brand · workspace appearance and existing price book_ | _Draft · separate quote price book_ (or _Active_) |
 
 Both kinds are edited on the same screen. Retailer Settings edits whichever brand the title row has selected, and every tab follows that choice.
 
@@ -51,20 +51,26 @@ Both kinds are edited on the same screen. Retailer Settings edits whichever bran
 2. In the title row, on the right, find the box labelled **Selling brand**.
 3. Open it and choose the brand you want to edit.
 
-The whole page re-scopes to that brand: **Pricing**, **Finance & deposits**, **Customer journeys**, **Branding** and **Documents** all follow the selection, and the readiness report above the tabs is recalculated for it. The choice is written into the page address as `?brand=…`, so a link you copy reopens on the same brand.
+The whole page re-scopes to that brand: **Pricing**, **Finance & deposits**, **Customer journeys**, **Branding** and **Documents** all follow the selection, and the readiness report above the tabs is recalculated for it. You stay on the section you were in. The choice is written into the page address as `?brand=…`, so a link you copy reopens on the same brand.
 
 <Info>
   **With one brand, there is nothing to choose.** When only one brand is available to you, the box shows the brand's name as plain text instead of a list, with the note *"Prices, fees and quote terms below apply to this selling brand."* With more than one brand the note reads *"Every section below edits this brand. Switch brands at any time."*
 </Info>
 
+If your role may manage the workspace's brands, a **Select allowed users** button sits beside the box and grants access to the brand you are looking at.
+
 ### Why an option is greyed out
 
-A brand still appears in the list when it cannot be edited, so you can see it exists and read why:
+A brand stays in the list when it cannot be edited: you can see that it exists, but you cannot select it. There are two causes and they need different responses.
 
-| State | What the list says | What to do |
+| State | What it means | What to do |
 | --- | --- | --- |
-| **Draft** brand | *"Not ready. Complete this brand's setup before selling under it."* | Finish its setup, then choose **Allow draft preparation** on the **Selling brands** card |
-| **Archived** brand | *"Archived. This brand can no longer be sold under."* | Nothing — archived brands are read-only history |
+| **Draft** brand | The brand exists but its setup is not finished, so it cannot be the context for editing sell pricing | Finish its setup, then choose **Allow draft preparation** on the **Selling brands** card |
+| **Archived** brand | The brand has been retired and can no longer be sold under | Nothing — archived brands are kept for history |
+
+<Warning>
+  The list shows the disabled entry **without printing the reason beside it**, so a draft brand and an archived brand look the same until you open the **Selling brands** card: a draft brand offers **Allow draft preparation**, and an archived brand does not. If you need the reason shown in the list itself, raise it with support — the reason already exists in the product and is not displayed.
+</Warning>
 
 If the brand you are looking for is not listed at all, your role does not have it. See [Who may use which brand](#who-may-use-which-brand).
 
@@ -89,7 +95,11 @@ When a brand meets all four, the panel collapses to one line naming the brand an
 
 ## Enable multi-brand
 
-The controls for adding brands sit behind one switch, on a card called **Selling brands**. The same card appears in two places:
+The card that creates and retires brands is called **Selling brands**:
+
+> _"Use your shared catalogue and CRM with separate selling identities, prices and approved documents."_
+
+It appears in two places:
 
 - [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=selling-brands) → **Selling Brands** — the workspace-wide home for creating and retiring brands.
 - [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) → **Branding** — the same card, beside the appearance it shares with the original brand.
@@ -97,13 +107,13 @@ The controls for adding brands sit behind one switch, on a card called **Selling
 On the card:
 
 1. The original brand's row says *"Prepare your original brand's fonts, agreement and document settings."* with **Edit original documents** and **Select allowed users**.
-2. Choose **Enable multi-brand**.
+2. Turn on **Enable multi-brand**. Its help text is _"Your original brand's appearance remains editable above. Team selling grants are independent of record visibility."_
 
 Until multi-brand is enabled, the additional-brand list and the **Additional brand name** field are not shown at all.
 
 ### Turn multi-brand off again
 
-Choose **Disable multi-brand**. ArcSolar refuses while work is unresolved, and says so: *"Resolve N additional-brand drafts and M preparing revisions before disabling."* Finish or remove those drafts, then try again.
+Choose **Disable multi-brand**. The button is unavailable while work is unresolved, and the card says why: *"Resolve N additional-brand drafts and M preparing revisions before disabling."* Finish or remove those drafts, then try again.
 
 ## Add an additional brand
 
@@ -117,8 +127,8 @@ The new brand starts as a **draft**, so Retailer Settings cannot select it yet. 
 
 | Control | What it does |
 | --- | --- |
-| **Copy brand ID** | Copies the brand's identifier, for CSV imports that take a brand column |
-| **Rename** | Changes the brand label in your workspace. *"Legal identity and approved documents are edited separately."* |
+| **Copy brand ID** | Copies the brand's identifier — _"Brand ID copied for CSV imports."_ |
+| **Rename** | Changes the label in your workspace. _"Legal identity and approved documents are edited separately."_ |
 | **Products and prices** | Opens this brand's product list — see [Prices per brand](/setup/price-books) |
 | **Edit documents** | Opens this brand's contract document — see [The NETCC contract](/setup/selling-contract) |
 | **Copy draft prices** | Copies selected current original-brand prices into this brand's book **as drafts**. *"Nothing is published by this action."* Choose **Copy selected as drafts** |
@@ -131,19 +141,19 @@ The new brand starts as a **draft**, so Retailer Settings cannot select it yet. 
 Work through the four readiness requirements above, in whatever order suits you:
 
 1. **Products and prices** — publish at least one price in this brand's price book.
-2. **Edit documents** — fill in the legal name, trading name and ABN, save the NETCC wording and consent text, and supply both logos.
-3. **Branding** — if you want the contract to use particular fonts, choose them here; **Contract appearance** stores the fonts against the brand's draft.
-4. Choose **Allow draft preparation**, then select the brand in Retailer Settings to check the readiness badge reads **Ready to sell**.
+2. **Edit documents** — fill in the legal name, trading name and ABN, write the NETCC wording and consent text, and supply both logos.
+3. **Branding** → the **Selling brands** card → **Edit documents** — if you want this brand's contract to use particular fonts, choose its **Heading font** and **Body font** here. The **Contract appearance** card further up the page belongs to the original brand, not to this one.
+4. Choose **Allow draft preparation**, then select the brand in Retailer Settings to confirm the readiness badge reads **Ready to sell**.
 
 ### Archive a brand
 
-Choose **Archive**. The dialog reads *"Archive NAME?"* — *"This stops new selling under this brand. Historical offers, payments and reporting remain. Resolve its drafts and preparing revisions first."* The buttons are **Keep brand** and **Archive brand**.
+Choose **Archive**. The dialog asks **Archive NAME?** — _"This stops new selling under this brand. Historical offers, payments and reporting remain. Resolve its drafts and preparing revisions first."_ The buttons are **Keep brand** and **Archive brand**.
 
 Archived brands stay listed in the **Selling brand** box so the history stays readable, but they cannot be selected, sold under, or granted to anyone.
 
 ## Who may use which brand
 
-Two questions are answered by the same one setting, so it is worth keeping them together:
+One setting answers both of these questions, so it is worth keeping them together:
 
 - **Which brands can this person see and configure** on Retailer Settings.
 - **Which brands can this person sell and issue quotes for.**
@@ -178,9 +188,13 @@ This is a *rule*, not a stored list. A brand you create tomorrow is already cove
 
 For a role that already sells every brand, the card says so instead of offering a list: *"This role sells every brand the workspace has, including brands added later. There is nothing to grant or clear here."*
 
-The same choice is reachable from a brand's own **Select allowed users** button, on the **Selling brands** card or in Team & Access. The dialog is titled **Who may sell BRAND?** and the tick *"grants this brand only. Their role still decides which records they can see, and every other brand keeps its own list."* Whichever direction you use, the same list is written, so a save in one place shows up in the other.
+### Or grant people to a brand
 
-An invitation to a new member can carry the same grants before they accept.
+The other direction starts from the brand. **Select allowed users** — on the **Selling brands** card, or beside the brand box in Retailer Settings — opens **Who may sell BRAND?**:
+
+> _"Ticking a member grants this brand only. Their role still decides which records they can see, and every other brand keeps its own list."_
+
+This dialog lists **people**, not brands, and a member whose role already sells every brand is shown as permanently allowed rather than as a checkbox. Both directions write the same list, so a save in one place shows up in the other, and an invitation to a new member can carry the same grants before they accept. An archived brand cannot change access at all until it is restored.
 
 ## What an additional brand can and cannot do today
 
@@ -210,7 +224,7 @@ So the practical position today is:
 </Warning>
 
 <Visibility for="agents">
-  The ceiling is `private.selling_brand_alternate_writes_ready(p_operation)` (migration `20260920012730_selling_brand_price_books_and_catalogue.sql`), which returns `true` for `draft.save` and `opportunity.assign` only. `quote.create`, `quote.revise` and `quote.deliver` return `false`. It is pinned by `supabase/tests/selling_brand_role_access.sql`. The TypeScript ceiling is `alternateIssuanceReady` on `SellingBrandContext`; `useQuoteSellingBrand`'s `canIssue` and `confirmAndSendQuoteAction` both consult it. `permittedActiveSellingBrands` deliberately does **not** apply the ceiling, so an additional brand still appears for draft work and bulk lead import. The role rule is `private.role_sells_every_brand` (`20260923190000_selling_brand_role_access.sql`); invitations use `private.invitation_sells_every_brand`, which requires `role_managed_by = 'system'` for a developer.
+  The ceiling is `private.selling_brand_alternate_writes_ready(p_operation)` (migration `20260920012730_selling_brand_price_books_and_catalogue.sql`), which returns `true` for `draft.save` and `opportunity.assign` only. `quote.create`, `quote.revise` and `quote.deliver` return `false`. It is pinned by `supabase/tests/selling_brand_role_access.sql`. The TypeScript ceiling is `alternateIssuanceReady` on `SellingBrandContext`; `useQuoteSellingBrand`'s `canIssue` and `confirmAndSendQuoteAction` both consult it. `permittedActiveSellingBrands` deliberately does **not** apply the ceiling, so an additional brand still appears for draft work and bulk lead import. The role rule is `private.role_sells_every_brand` (`20260923190000_selling_brand_role_access.sql`); invitations use `private.invitation_sells_every_brand`, which requires `role_managed_by = 'system'` for a developer. The disabled brand's reason **is** supplied as `SellingBrandOption.description` by `toRetailerSellingBrandOptions` but is **not** rendered by `SellingBrandSelect` — do not tell an operator the reason appears in the list.
 </Visibility>
 
 ## Related

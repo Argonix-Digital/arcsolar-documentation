@@ -1,19 +1,51 @@
 ---
 icon: "sliders"
-sidebarTitle: "Pricing and finance"
-keywords: ["pricing","deposits","retailer settings","services"]
-title: "Configure pricing and finance"
-description: "Set the rules your team uses for future quotes."
+sidebarTitle: "Retailer Settings"
+keywords:
+  - "retailer settings"
+  - "pricing"
+  - "deposits"
+  - "services"
+  - "branding"
+  - "selling brand"
+  - "documents"
+title: "Retailer Settings"
+description: "Set the pricing, finance, branding and contract rules for the branch, brand by brand."
 ---
+
 **Open:** [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings) in the Business section.
+
+Retailer Settings is the **per selling brand** screen. The label above the title says so, and the **Selling brand** box in the title row decides which brand every section below edits — _"Edits whichever brand is selected. The primary brand and every additional brand use this exact screen."_
 
 | Tab | What to configure |
 | --- | --- |
 | [Pricing](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=pricing) | Package price basis, quote defaults and BOM completeness requirements |
 | [Services & fees](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=services) | Chargeable services, quantities, allowances, regions and companion items |
-| [Finance & deposits](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=finance) | Available finance terms, fees and payment treatment |
+| [Finance & deposits](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=finance) | Available finance terms, fees, the deposit limit, the stock delivery payment and the installation window |
 | [Customer journeys](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=quote-sms) | Automatic quote SMS wording and timing |
+| [Branding](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) | Names, website, sending address, logos, colours and contract fonts — see [Branding](/setup/branding) |
+| [Documents](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=documents) | This brand's agreement wording and consent text — see [The NETCC contract](/setup/selling-contract) |
 | [Integrations](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations) | Connected providers and optional rebate tracking |
+
+**Pricing**, **Services & fees** and **Finance & deposits** always open on **Product Catalogue** in the title row, where the amounts behind a quote come from.
+
+## Switch the brand you are editing
+
+Use the **Selling brand** box in the title row. Everything on the page follows it, and the readiness report above the tabs is recalculated for the brand you chose. If only one brand is available to you the box is a plain label instead — with a single brand there is nothing to choose.
+
+See [Sell under more than one selling brand](/setup/selling-brands) for the states that make an entry unselectable, and for who may edit which brand.
+
+## Who can open which tab
+
+The strip is filtered to the sections your role can use, so a tab you cannot use is absent rather than empty:
+
+| Tab | Who sees it |
+| --- | --- |
+| **Pricing**, **Services & fees**, **Finance & deposits**, **Integrations** | Everyone who can open Retailer Settings |
+| **Customer journeys** | Roles that can configure quote SMS |
+| **Branding**, **Documents** | Administrators and developers |
+
+Opening a **Branding** or **Documents** address directly as another role sends you back to **Pricing**.
 
 ## Apply a commercial change
 
@@ -27,6 +59,42 @@ description: "Set the rules your team uses for future quotes."
 
 Published changes apply according to their effective date. Sent quotes retain their issued values. Changing a setting is not permission to rewrite an accepted contract.
 
+## Finance and deposits
+
+The **Finance & deposits** tab has three cards.
+
+### Customer finance
+
+_"Use the terms agreed with your finance provider. Quotes show an estimate of repayments and the fees included."_
+
+Turn **Offer finance** on or off, then record the **Provider name**, **Annual interest rate (%)**, **Credit assistance fee**, **Credit fee treatment** (**Include in amount financed** or **Pay upfront**), **Monthly account fee**, **Minimum finance amount** and **Maximum finance amount**, and tick the **Available terms** you offer (1 to 10 years) with a **Default term**.
+
+### Retailer finance costs
+
+_"Internal merchant fees for the finance dashboard. These are not added to customer repayments."_ — **Merchant fee (%)** and **Fixed merchant fee**.
+
+### Direct payments & deposits
+
+_"Set the deposit limits and delivery payment. The remaining balance is automatically due on installation, so the three payments always total 100%."_
+
+| Field | What it means |
+| --- | --- |
+| **Offer direct payment** | Whether a customer can pay directly at all |
+| **Default deposit** | _"Starting amount for a new quote, adjusted to its permitted deposit range."_ It must be at least the minimum deposit |
+| **Minimum deposit** | The smallest deposit a representative may ask for |
+| **Deposit limit (% of customer balance)** | _"The most a rep can request as a deposit, not a fixed payment percentage. On small quotes, the minimum deposit takes priority, capped at the full balance."_ |
+| **Stock delivery payment (% of customer balance)** | _"Calculated from the full customer balance, capped at what remains after the deposit."_ |
+| **Installation minimum (weeks)** | _"Earliest installation window quoted on a direct-payment contract, counted from acceptance."_ |
+| **Installation maximum (weeks)** | _"Latest installation window quoted on a direct-payment contract, counted from acceptance."_ |
+
+<Info>
+  **These three values are the single source of truth for the customer contract.** The deposit limit, the stock delivery percentage and the installation window are read from here when a contract is rendered, so the next quote picks up a change immediately and no approved agreement can store a different one. The default is **2–6 weeks**, and the contract words it in full: _"N–N weeks from receipt of the deposit and/or Solar Victoria approval, subject to stock availability."_ See [The NETCC contract](/setup/selling-contract).
+</Info>
+
+The card closes with the rule that stops confusion about arithmetic: _"The deposit limit and delivery percentage do not need to add up to 100%. Installation is the customer balance minus the actual deposit and delivery payment."_
+
+The quote's own payment controls are explained in [Payment options](/quoting/payment-options).
+
 ## Services and materials
 
 Choose whether a service is rep-selected or triggered by a condition such as indoor installation, cable run, extra storeys or panel removal. Check the region, quantity and whether the price comes from the catalogue or a custom selling price.
@@ -36,3 +104,10 @@ Choose when detailed materials must be complete: optional, before issuing a quot
 ## ArgonixIntelligence in this workflow
 
 Bill analysis and quoting assistance work alongside these rules. Staff must review and apply commercial changes; intelligence does not silently approve a pricing policy.
+
+## Related
+
+- [Sell under more than one selling brand](/setup/selling-brands)
+- [Finance and deposits in the contract](/setup/selling-contract)
+- [Prices per brand](/setup/price-books)
+- [Which settings screen do I want?](/setup/settings-screens)
