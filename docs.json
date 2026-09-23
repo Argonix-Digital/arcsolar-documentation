@@ -62,7 +62,12 @@
           "setup/team",
           "setup/checklist",
           "setup/retailer-settings",
-          "setup/notifications"
+          "setup/notifications",
+          "setup/selling-brands",
+          "setup/branding",
+          "setup/selling-contract",
+          "setup/price-books",
+          "setup/settings-screens"
         ]
       },
       {
@@ -144,7 +149,8 @@
           "reference/glossary",
           "reference/support",
           "reference/roof-design-contract",
-          "reference/whats-new"
+          "reference/whats-new",
+          "reference/selling-brands-faq"
         ]
       }
     ]

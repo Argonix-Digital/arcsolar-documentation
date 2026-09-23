@@ -5,27 +5,76 @@ keywords: ["products","catalogue","bill of materials","BOM"]
 title: "Manage products and bill of materials"
 description: "Keep quoted equipment and delivery materials aligned."
 ---
-**Open:** [**Product Catalogue**](https://app.arcsolar.com.au/dashboard/product-catalogue). Review the quote's **Review & bill of materials** and the project's **System & BOM**.
 
-## Maintain the catalogue
+**Open:** [**Product Catalogue**](https://app.arcsolar.com.au/dashboard/product-catalogue) in the Delivery section.
 
-Find the product/package and check its exact brand, model, capacity, phase compatibility, region and selling configuration. Use the supported editor to correct fields and save. Where publication or approval is required, complete that step before expecting new quotes to use the change.
+## Review a product
 
-Check technical-sheet attachments against the exact product model. A similar model's datasheet is not a substitute.
+1. Open the product and read its name, brand, model, category, specifications, warranty, images and status.
+2. Review the default price, effective dates, labour or add-on records, regional pricing and supplier information.
+3. Change only a field you can support with the current price list.
+4. Save the draft and review any warning, missing-data or duplicate message.
 
-## Quote and delivery checks
+## Add a product
 
-1. Select the actual equipment and quantities.
-2. Review required companion products and services.
-3. Confirm quoted BOM completeness.
-4. Add detailed materials or template allowances when required.
-5. Mark an allowance as such until confirmed.
-6. At handover, confirm the operational BOM matches the agreed system.
+1. Choose **Add product**.
+2. Enter the identity, category and specifications.
+3. Add the default price and effective dates.
+4. Add images and the technical documents staff need.
+5. Save and use it in a sample quote. Confirm the quantity, unit and exclusions.
 
-An internal BOM can include information that does not belong in a customer document. Customer documents use their own presentation; do not paste internal costs or margin into public notes.
+## Prices belong to a selling brand
 
-Changing the catalogue does not reprice an issued quote. Technical sheets attached to new documents do not necessarily change historical PDFs.
+One product carries **one price per selling brand**. Adding a brand does not copy the catalogue; it starts that brand's price book empty, and a product only reaches a quote when it has a price in the price book of the brand the quote is sold under.
+
+### Read the pricing status labels
+
+Every product row carries a **Status** badge that describes the price **in the brand you are looking at**, not merely whether a number exists somewhere:
+
+| Badge | What it means |
+| --- | --- |
+| **Current** | This brand prices the product today, so quotes under it can use the price |
+| **Draft price** | A price exists but has not been published, so quotes ignore it |
+| **Future price** | A published price starts on a later date; nothing applies today |
+| **Expired price** | A published price has already ended |
+| **Upon request** | Deliberately not priced — quoted by arrangement |
+| **Priced in BRAND** | Priced, but in **another** selling brand's price book — so it will not appear in this brand's quotes until you price it here |
+| **Missing price** | No sellable price book prices or quotes it at all |
+| **Missing price book** | There is no price book to resolve against |
+
+A **Priced in BRAND** badge is not an error. It is the normal state of a correctly priced product in a brand that does not carry it, and it is what keeps the two brands' prices independent. The full vocabulary, including the lifecycle badges **Draft product**, **Inactive**, **Review due** and **System pricing**, is listed in [Prices per brand](/setup/price-books).
+
+A brand's own **Products and prices** list words the same states in book terms — **Published**, **Draft only**, **Missing price**, **No price book** — because that surface is about one book.
+
+The product's dialog carries the same story in two labels: the price field is named **Additional brand price** for a brand other than the original, and the history note reads _"Currency amount this product costs for the selected selling brand."_
+
+### Set a price for the selected brand
+
+1. Open the product while the correct brand is selected, or filter the catalogue to that brand.
+2. Enter the price for the brand you are looking at, with its effective date.
+3. Save, then confirm the row's label changes from **Missing price** to **Priced in BRAND**.
+4. Price a sample quote under that brand and check the sell price and margin.
+
+If you are preparing a batch of a new brand's prices, Retailer Settings' **Selling brands** card can copy prices from the original brand into the new book **as drafts** — see [Prices per brand](/setup/price-books). Nothing is published by the copy itself, so every copied price is still reviewed before it reaches a quote.
+
+### Which brand a product row is priced in
+
+Use the catalogue's brand filter to switch between price books. The filter changes the prices the table shows; it does not change the records, so a product that looks unpriced in one brand remains priced in the other.
+
+## Change or retire a product
+
+Confirm the replacement price, effective date and impacted packages. Preview a quote with the new price and check whether active quotes need revision. Do not delete a product with active usage; mark it inactive instead.
+
+## Bulk and imports
+
+Use a CSV import only with approved templates and the correct brand's price list. Validate duplicates and errors before publishing, and confirm the imported prices landed in the intended price book.
 
 ## ArgonixIntelligence in this workflow
 
-Recommendations can assist selection where supported, but exact model compatibility and approved equipment need verification. The saved quote/BOM is the agreed scope.
+Intelligence can help with specification extraction, category suggestions, substitutions and missing-price review. A person still approves price, warranty, supplier and compliance changes.
+
+## Related
+
+- [Prices per brand](/setup/price-books)
+- [Sell under more than one selling brand](/setup/selling-brands)
+- [Quote overview](/quoting/quote-overview)
