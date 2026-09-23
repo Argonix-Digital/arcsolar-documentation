@@ -64,7 +64,8 @@
           "setup/retailer-settings",
           "setup/notifications",
           "setup/selling-brands",
-          "setup/branding"
+          "setup/branding",
+          "setup/selling-contract"
         ]
       },
       {

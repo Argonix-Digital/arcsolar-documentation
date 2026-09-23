@@ -1,0 +1,204 @@
+---
+sidebarTitle: "The NETCC contract"
+title: "Edit and publish a selling brand's agreement"
+description: "Change the agreement wording customers accept, save a draft, get it published, and restore an earlier version."
+keywords:
+  - "NETCC"
+  - "contract"
+  - "agreement"
+  - "documents"
+  - "publish"
+  - "revision"
+  - "consent"
+  - "approval"
+---
+
+**Open:** [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=documents) → **Documents**.
+
+The **Documents** tab holds one brand's agreement: the wording the customer reads and accepts when they sign, plus the details that appear on it. It edits the brand the **Selling brand** box has selected, so the agreement you are changing is always named in front of you.
+
+<Info>
+  **Who can open it.** The tab follows the administrator-and-developer rule: other roles are sent back to **Pricing**, so the tab is absent from the strip rather than shown empty. **Publishing** is narrower still — only the workspace owner can publish.
+</Info>
+
+## The two roles: editing and publishing
+
+| | Any administrator or developer | The workspace owner |
+| --- | --- | --- |
+| Edit the agreement | Yes | Yes |
+| **Save draft** | Yes | Yes |
+| **Save and publish** | No | Yes |
+| Restore an earlier version | No | Yes |
+| Approve in **ArcSolar Settings → Customer documents** | No | Yes |
+
+The rule exists because the agreement is a promise the business makes. A draft is never an approval — the page says so under the editor: *"Saved draft version: N. A draft is never an approval."*
+
+When you can publish, the editor tells you exactly what a save will do:
+
+> *"Saving publishes immediately, so this wording is what customers receive. Every save is kept as a published revision below."*
+
+When you cannot, it says what happens instead:
+
+> *"You can edit and save drafts. The workspace owner must publish a version before customers see it."*
+
+## What the agreement contains
+
+### Supplier and contact details
+
+**Legal name**, **Trading name**, **ABN**, **Business address**, **Contact email**, **Contact phone** and an optional **Website URL**.
+
+On the **original brand** these come from **ArcSolar Settings**, so the card is read-only apart from the website — *"Original legal and contact details come from ArcSolar Settings. Refresh a saved draft after changing those details."* Use **Use current organisation details** to pull the latest values into the draft. On an **additional brand**, type them: they are that brand's own legal identity.
+
+### Document email sender
+
+| Field | Notes |
+| --- | --- |
+| **Sender display name** | What the customer sees the message from |
+| **Sender address name** | *"The part before @. The platform supplies the sending domain; no domain setup is needed."* |
+| **Reply-to email** | Where a customer's reply lands |
+
+### Appearance
+
+For the **original brand** the card points at [Branding](/setup/branding) — *"Your original brand uses the organisation logos, colours and contract fonts in Retailer Settings → Branding. Approval captures their current version, so this editor keeps no appearance controls of its own."*
+
+For an **additional brand** you set **Primary colour**, **Secondary colour**, **Tertiary colour**, **Logo on light background** and **Logo on dark background** here, because they belong to that brand rather than to the workspace. Fonts for an additional brand are set from the **Selling brands** card's **Edit documents** on the **Branding** tab; this page links you there.
+
+### Agreement wording
+
+The heart of the tab:
+
+| Field | What it is |
+| --- | --- |
+| **Terms and conditions (Markdown)** | The contract body, written in Markdown |
+| **Agreement title** | The heading the customer sees |
+| **Agreement acceptance statement** | The consent sentence the customer agrees to |
+| **Electronic communications consent** | Consent to receive documents electronically |
+| **Unsolicited-sale notice** | The notice used when a sale was not initiated by the customer |
+
+The Markdown field supports *"Headings, paragraphs, emphasis, links and numbered or bulleted lists"*; HTML, images, code and templates are not supported. A live preview sits directly under it, so you see the rendered contract as you type, and **Replace wording from a .md file** imports the field's content from a `.md` file — *"Markdown imported into the draft. Save to retain it."*
+
+Where the workspace has older clauses on file, **Replace wording with existing JBE clauses** copies them into this unapproved draft for you to review.
+
+<Warning>
+  An empty **Unsolicited-sale notice** means that version **cannot issue an unsolicited-sale contract**. The owner's review says so before you approve: *"No unsolicited-sale notice. This version cannot issue an unsolicited-sale contract."* If your team ever signs up a customer who did not come to you first, fill this in.
+</Warning>
+
+### Finance terms
+
+Tick **Include approved finance terms** to write the lender's actual terms into the contract: **Lender legal name**, **Lender ABN**, **Lender contact details**, **Finance terms**, **Annual interest rate (%)**, **Credit assistance fee (cents)**, **Monthly account fee (cents)**, **Minimum loan (cents)**, **Maximum loan (cents)** and **Available loan terms** (36 to 120 months).
+
+> *"Enter the lender's actual terms and supported loan range. Finance offers require these details to be approved."*
+
+Leave the box clear and the owner's review reports *"Finance offers are unavailable under this version."*
+
+<Info>
+  **This is not where the deposit and installation terms live.** This section is the lender's approved wording. The deposit limit, stock-delivery payment and installation window are finance settings that apply to every contract — see [Finance is the single source of truth](#finance-is-the-single-source-of-truth).
+</Info>
+
+## Save a draft, then publish
+
+The button at the bottom of the editor says what it will do:
+
+| Where you are | Button | Meaning |
+| --- | --- | --- |
+| Documents tab, as a non-owner | **Save draft** | Saves the version for an owner to review |
+| Documents tab, as the owner | **Save and publish** | Saves *and* publishes in one step |
+| **Edit documents** dialog from the **Selling brands** card | **Save document draft** | Saves the draft only |
+
+Alongside them: **Contract preview**, **Discard edits and reload**, and **Close** in the dialog form.
+
+Saving a draft reports the version it wrote:
+
+> *"Draft version N saved. The workspace owner must publish it before customers see it."*
+
+At the top of the card, one line always states where the brand stands:
+
+| Line | When |
+| --- | --- |
+| *"No document draft has been saved yet. Saving starts this brand's history."* | Nothing saved |
+| *"Draft version N is saved but not published yet."* | Draft only |
+| *"Published draft version N on DATE by NAME."* | Draft matches the published version |
+| *"Draft version N differs from published draft version N. Save and publish to update the version customers receive."* | Edited since publishing (for an owner) |
+| *"…The workspace owner must publish it before customers see the change."* | Same, for a non-owner |
+
+### If publishing is unavailable
+
+An alert reads **Owner status could not be verified** — *"You can still edit and save a draft, but publishing is unavailable until the page can confirm the workspace owner. Reload the page to retry."* The page fails closed: not being able to *prove* you are the owner is treated the same as not being the owner, so no version is published on a guess.
+
+## How the owner approves a version
+
+The owner's approval surface is in [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-documents) → **Customer documents** → **Approve brand documents**:
+
+> *"Administrators prepare drafts in Retailer Settings → Documents. As the organisation owner, review their current sources and retain an approved version here. Approval does not enable multi-brand selling or change payment accounts."*
+
+The flow:
+
+1. Choose the **Selling brand** if the workspace has more than one.
+2. Choose **Prepare current draft review**. The panel shows the supplier identity, the email sender, the retained fonts, the colours and logos, the payment terms the draft was prepared with, the rendered words, and the lender's finance terms if present.
+3. Choose **Download direct-payment preview** — and **Download finance preview** when the draft includes finance terms. Open them; the review says *"Open it and review the layout, fonts and full agreement before approving."*
+4. Tick the confirmation, which cannot be ticked until the previews have been downloaded:
+   > *"I have reviewed the downloaded previews and confirm this supplier identity, assets, agreement and payment terms are authorised for this brand."*
+5. Choose **Approve this document version**. Success reads *"Document draft N approved and retained."*
+
+The line above the button always states the last retained approval — *"Latest retained approval: draft N, approved DATE. Changes to its sources may require a new approval before issuing."*
+
+## Revision history and restoring a version
+
+**Published revisions** lists *"every version published for BRAND, newest first"*, each row showing **Draft N · date** and **Published by NAME**. Its description states the important property:
+
+> *"Restoring an earlier version publishes it as a new revision, so this history is never rewritten."*
+
+To go back:
+
+1. Choose **Restore this revision** on the row you want.
+2. Read the confirmation: *"The selected version is saved as the current draft and published as a new revision. Earlier revisions stay in the history, and customers receive the restored version once it is published."*
+3. Choose **Restore and publish** — or **Keep current version** to back out.
+
+The outcome is reported plainly: *"Draft version N was restored and published."* If the restore saved but did not publish, the page says so and why rather than claiming success.
+
+An empty list is honest about itself: *"No revision has been published for this brand yet."* A failure to load the history is reported as a failure to load, never as an empty history.
+
+## Preview the branded contract
+
+**Contract preview** sits with the editor and on [Branding](/setup/branding). It renders the brand's saved draft — its logo, colours, retained fonts and agreement wording — through the real contract renderer, and the dialog states *"A preview is never an approval."*
+
+## Finance is the single source of truth
+
+Three numbers on every direct-payment contract come from **Retailer Settings → Finance & deposits**, not from the document:
+
+- the **deposit limit** as a percentage of the customer balance,
+- the **stock delivery payment** percentage, and
+- the **installation window** in weeks.
+
+This is deliberate. The installation window is read from the workspace's Finance settings at the moment the contract is rendered, so a change there reaches the next quote immediately — and nobody can quietly store a different window inside an approved agreement. A configuration saved before these settings existed falls back to the platform default, **2–6 weeks**, which is what a fresh workspace also states.
+
+The contract words it in full:
+
+> *"N–N weeks from receipt of the deposit and/or Solar Victoria approval, subject to stock availability."*
+
+Keep that sentence's meaning in mind if you shorten the window: the phrase is part of the wording the customer accepts.
+
+See [Finance and deposits](/setup/retailer-settings#finance-and-deposits) for the fields, and [Prices per brand](/setup/price-books) for what sits behind the amounts.
+
+## When the tab has nothing to show
+
+| Message | Cause |
+| --- | --- |
+| **No selling brand to document** — *"This workspace has no selling brand you can configure yet. Create or enable one in ArcSolar Settings before editing its agreement."* | No brand is available to you |
+| **Fictional preview** — *"Documents read from the workspace, so this preview has none to edit or publish."* | You are in a demo workspace |
+
+## Before you approve a version
+
+- The **legal name and ABN** are exactly right. They appear on the customer's contract and receipt.
+- The **trading name** is the name customers know the business by.
+- A **logo is present for both backgrounds**, in case any part of the document prints on the other one.
+- The **unsolicited-sale notice** is filled in if it applies.
+- The **installation window** on the preview matches what your Finance settings say, because that is what the next quote will promise.
+- The **finance terms** match the lender's current offer, if finance is offered at all.
+
+## Related
+
+- [What a selling brand is](/setup/selling-brands)
+- [Branding](/setup/branding)
+- [Which settings screen do I want?](/setup/settings-screens)
+- [Selling brands FAQ](/reference/selling-brands-faq)
