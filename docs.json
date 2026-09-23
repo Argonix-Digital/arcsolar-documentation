@@ -65,7 +65,9 @@
           "setup/notifications",
           "setup/selling-brands",
           "setup/branding",
-          "setup/selling-contract"
+          "setup/selling-contract",
+          "setup/price-books",
+          "setup/settings-screens"
         ]
       },
       {
