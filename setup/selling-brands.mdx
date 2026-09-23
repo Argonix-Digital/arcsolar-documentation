@@ -53,6 +53,10 @@ Both kinds are edited on the same screen. Retailer Settings edits whichever bran
 
 The whole page re-scopes to that brand: **Pricing**, **Finance & deposits**, **Customer journeys**, **Branding** and **Documents** all follow the selection, and the readiness report above the tabs is recalculated for it. You stay on the section you were in. The choice is written into the page address as `?brand=…`, so a link you copy reopens on the same brand.
 
+<Frame caption="The Selling brand box in the title row of Retailer Settings, with more than one brand available so the box is a control rather than a plain label. Captured from a synthetic workspace.">
+  <img src="/images/selling-brand-switcher.png" alt="Retailer Settings title row under the label Per selling brand, showing the page summary Edits whichever brand is selected, the Selling brand box reading Acme Solar (default brand), the note Every section below edits this brand. Switch brands at any time., and a Select allowed users button." />
+</Frame>
+
 <Info>
   If you have unsaved work in the section you are leaving, ArcSolar asks before discarding it. Save first if the change matters — switching brand reloads the section for the new brand.
 </Info>
@@ -107,6 +111,10 @@ It appears in two places:
 
 - [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=selling-brands) → **Selling Brands** — the workspace-wide home for creating and retiring brands.
 - [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) → **Branding** — the same card, beside the appearance it shares with the original brand.
+
+<Frame caption="The Selling brands card, captured with multi-brand already enabled in a synthetic workspace: the original brand's row, one additional brand still in draft beside an active one, the multi-brand switch, and the Additional brand name field.">
+  <img src="/images/selling-brands-card.png" alt="Selling brands card listing Acme Solar as the original brand with workspace appearance and existing price book, Cascade Solar as a draft with a separate quote price book, and Northwind Energy as active, each row carrying its own actions and Copy brand ID, with Enable multi-brand labelled above a Disable multi-brand button, an Additional brand name field and Create draft brand." />
+</Frame>
 
 On the card:
 
@@ -201,6 +209,10 @@ The other direction starts from the brand. **Select allowed users** — on the *
 > _"Ticking a member grants this brand only. Their role still decides which records they can see, and every other brand keeps its own list."_
 
 This dialog lists **people**, not brands, and a member whose role already sells every brand is shown as permanently allowed rather than as a checkbox. Both directions write the same list, so a save in one place shows up in the other, and an invitation to a new member can carry the same grants before they accept. An archived brand offers no access control at all — **Copy brand ID** is the only control left on its row.
+
+<Frame caption="The Who may sell BRAND? dialog, opened from Select allowed users in a synthetic workspace. Each member shows the role that decides which records they can see, and a role that already sells every brand is named rather than offered as a tick box.">
+  <img src="/images/selling-brands-allowed-users.png" alt="Who may sell Acme Solar? dialog with Select all and Clear above a list of members: [DEMO] Acme administrator shown as Administrator with every brand including ones added later, Priya Raman shown as Sales representative, and Tom Alvarez shown as Operations with every brand including ones added later, over Reload, Close and Save allowed users actions." />
+</Frame>
 
 ## What an additional brand can and cannot do today
 
