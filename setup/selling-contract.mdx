@@ -18,12 +18,12 @@ keywords:
 The **Documents** tab holds one brand's agreement: the wording the customer reads and accepts when they sign, plus the details that appear on it. It edits the brand the **Selling brand** box has selected, so the agreement you are changing is always named in front of you.
 
 <Info>
-  **Who can open it.** The tab follows the administrator-and-developer rule: other roles are sent back to **Pricing**, so the tab is absent from the strip rather than shown empty. **Publishing** is narrower still — only the workspace owner can publish.
+  **Who can open it.** The tab follows the administrator-and-developer rule: other roles are sent back to **Pricing**, so the tab is absent from the strip rather than shown empty. **Publishing is narrower still — the workspace owner or a developer can publish.**
 </Info>
 
-## The two roles: editing and publishing
+## Who can edit and who can publish
 
-| | Any administrator or developer | The workspace owner |
+| | An administrator who is not the owner | The workspace owner or a developer |
 | --- | --- | --- |
 | Edit the agreement | Yes | Yes |
 | **Save draft** | Yes | Yes |
@@ -37,9 +37,7 @@ When you can publish, the editor tells you exactly what a save will do:
 
 > *"Saving publishes immediately, so this wording is what customers receive. Every save is kept as a published revision below."*
 
-When you cannot, it says what happens instead:
-
-> *"You can edit and save drafts. The workspace owner must publish a version before customers see it."*
+When you cannot, you can still edit and save drafts — but the version customers receive is not published until **the workspace owner or a developer** publishes it.
 
 ## What the agreement contains
 
@@ -105,15 +103,13 @@ The button at the bottom of the editor says what it will do:
 
 | Where you are | Button | Meaning |
 | --- | --- | --- |
-| Documents tab, as a non-owner | **Save draft** | Saves the version for an owner to review |
-| Documents tab, as the owner | **Save and publish** | Saves *and* publishes in one step |
+| Documents tab, without publish authority | **Save draft** | Saves the version for the owner or a developer to review |
+| Documents tab, with publish authority | **Save and publish** | Saves *and* publishes in one step |
 | **Edit documents** dialog from the **Selling brands** card | **Save document draft** | Saves the draft only |
 
 Alongside them: **Contract preview**, **Discard edits and reload**, and **Close** in the dialog form.
 
-Saving a draft reports the version it wrote:
-
-> *"Draft version N saved. The workspace owner must publish it before customers see it."*
+Saving a draft reports the version it wrote and that it is not yet live: a saved draft reaches customers only once **the workspace owner or a developer** publishes it.
 
 At the top of the card, one line always states where the brand stands:
 
@@ -122,18 +118,16 @@ At the top of the card, one line always states where the brand stands:
 | *"No document draft has been saved yet. Saving starts this brand's history."* | Nothing saved |
 | *"Draft version N is saved but not published yet."* | Draft only |
 | *"Published draft version N on DATE by NAME."* | Draft matches the published version |
-| *"Draft version N differs from published draft version N. Save and publish to update the version customers receive."* | Edited since publishing (for an owner) |
-| *"…The workspace owner must publish it before customers see the change."* | Same, for a non-owner |
+| *"Draft version N differs from published draft version N. Save and publish to update the version customers receive."* | Edited since publishing (with publish authority) |
+| *"Draft version N differs from published draft version N."* — the change reaches customers only when **the workspace owner or a developer** publishes it | Same, without publish authority |
 
 ### If publishing is unavailable
 
-An alert reads **Owner status could not be verified** — *"You can still edit and save a draft, but publishing is unavailable until the page can confirm the workspace owner. Reload the page to retry."* The page fails closed: not being able to *prove* you are the owner is treated the same as not being the owner, so no version is published on a guess.
+An alert reads **Owner status could not be verified** — *"You can still edit and save a draft, but publishing is unavailable until the page can confirm the workspace owner. Reload the page to retry."* The page fails closed: not being able to *prove* the actor holds the workspace owner's authority (the owner, or a developer acting under it) is treated the same as not holding it, so no version is published on a guess.
 
-## How the owner approves a version
+## How a version is approved
 
-The owner's approval surface is in [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-documents) → **Customer documents** → **Approve brand documents**:
-
-> *"Administrators prepare drafts in Retailer Settings → Documents. As the organisation owner, review their current sources and retain an approved version here. Approval does not enable multi-brand selling or change payment accounts."*
+The approval surface is in [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-documents) → **Customer documents** → **Approve brand documents**. Administrators prepare drafts in Retailer Settings → Documents, and **the workspace owner or a developer** reviews the current sources and retains an approved version here. Approval does not enable multi-brand selling or change payment accounts.
 
 The flow:
 

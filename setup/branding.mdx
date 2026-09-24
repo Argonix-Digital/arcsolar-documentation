@@ -126,7 +126,7 @@ A family that does not publish all four required faces cannot be selected, and i
 
 **Approved documents keep the copies they were approved with.** Re-choosing a font creates fresh stored copies instead of changing the ones an approved contract points at, so an already-issued contract never changes under a customer's feet.
 
-If Google Fonts search returns nothing, either the search genuinely has no match, or the feature is not configured on your deployment — in that case ArcSolar reports the deployment's own message rather than pretending there were no results. You can still upload a **licensed font file** through the assets control below the font fields.
+If Google Fonts search returns nothing, either the search genuinely has no match, or the deployment has no Google Fonts search configured — the ArcSolar-hosted product has it configured, but a self-hosted or local deployment may not. In that case ArcSolar reports the deployment's own message rather than pretending there were no results. You can still upload a **licensed font file** through the assets control below the font fields.
 
 ## Preview the branded contract
 
@@ -139,7 +139,7 @@ If Google Fonts search returns nothing, either the search genuinely has no match
 </Visibility>
 
 <Visibility for="agents">
-  Only the workspace owner can render the preview, because assembling it uses the same authority that approves a version. A non-owner sees the reason the call gave rather than a blank frame, and the button stays available so the reason is discoverable. Footer reads `Draft version N, not approved.`
+  The preview is gated on the document-manager authority — an administrator or a developer in the caller's own workspace — not on the owner identity, even though it assembles the same candidate approval uses and stamps it with the workspace's recorded owner. A caller without that authority sees the reason the call gave rather than a blank frame, and the button stays available so the reason is discoverable. Footer reads `Draft version N, not approved.`
 </Visibility>
 
 ## The Selling brands card

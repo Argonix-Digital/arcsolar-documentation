@@ -30,14 +30,12 @@ As soon as a second brand is available to you, it becomes a real list and the li
 
 Only a brand you can configure is selectable. A **draft** brand — one that has been created but not yet switched on — and an **archived** brand are listed but disabled.
 
-<Warning>
-  The shipped selector greys the entry out **without printing the reason beside it**. The two causes are different:
+The selector appends the reason to the brand's name in the option, so the greyed-out entry carries it in the list. The two causes read differently:
 
-  - **Draft** — the brand's setup is not finished. See [Add an additional brand](/setup/selling-brands#add-an-additional-brand).
-  - **Archived** — the brand has been retired and can no longer be sold under.
+- **Draft** — *"Not ready. Complete this brand's setup before selling under it."* See [Add an additional brand](/setup/selling-brands#add-an-additional-brand).
+- **Archived** — *"Archived. This brand can no longer be sold under."*
 
-  Distinguish them by opening the **Selling brands** card: a draft brand offers **Allow draft preparation**, and an archived brand does not. If your team needs the reason shown in the list itself, ask support — the product already knows it and does not display it.
-</Warning>
+The appended reason is part of the option's text, so it is visible next to the greyed-out entry and in the option's accessible name — it is not a separate muted line or a tooltip. To tell a draft brand from an archived one another way, open the **Selling brands** card: a draft brand offers **Allow draft preparation**, and an archived brand does not.
 
 ### My brand is not in the list at all
 
@@ -99,12 +97,12 @@ The quote builder uses the same rule as the selector, with one difference: it sh
 
 ### Why can I not publish the contract?
 
-Publishing is owner-only, and it fails closed. Two situations produce it:
+Publishing needs the **workspace owner or a developer**, and it fails closed. Two situations produce it:
 
-- **You are not the workspace owner.** You can still edit and save drafts: *"You can edit and save drafts. The workspace owner must publish a version before customers see it."*
-- **Your owner status could not be checked.** The alert reads **Owner status could not be verified** — *"You can still edit and save a draft, but publishing is unavailable until the page can confirm the workspace owner. Reload the page to retry."* Not being able to *prove* you are the owner is treated exactly like not being the owner.
+- **You do not have publish authority.** You can still edit and save drafts, but the version customers receive is not published until **the workspace owner or a developer** publishes it.
+- **Your authority could not be checked.** The alert reads **Owner status could not be verified** — *"You can still edit and save a draft, but publishing is unavailable until the page can confirm the workspace owner. Reload the page to retry."* Not being able to *prove* the actor holds the owner's authority is treated exactly like not holding it.
 
-### The owner cannot tick the approval confirmation box
+### The approval confirmation box cannot be ticked
 
 The box stays disabled until the previews have been downloaded, because approving on an unread PDF is not a review:
 
