@@ -52,6 +52,8 @@ The diagram is not a copy you maintain by hand. Roof Vision rebuilds it from the
 | A replacement the drawing cannot carry — a phase or kind change, or a terminal the new product does not have | The drawing is **kept as it is**, and the inverter is marked **SOURCE UPDATE PENDING** for review |
 | Your own edits — moved objects, added protection, cables and labels | Preserved |
 
+The customer only ever receives a finished drawing. While a source review is still open, the diagram is **not** filed: the last complete copy stays on the customer's record, and Roof Vision tells the rep which inverter or circuits to reconcile. Once the drawing is clean, it files again by itself.
+
 ## Draw the diagram
 
 <Visibility for="humans">
@@ -295,7 +297,7 @@ The diagram is not a copy you maintain by hand. Roof Vision rebuilds it from the
 
   **How the merge behaves.** `syncProjectEquipment` rebuilds the diagram from the roof design and merges it into the open document. Existing components keep their position, rotation, lock state, label offset and caption position; string and MPPT parts take their labels from the roof design, which is how a panel-count change reaches the drawing. New components are added at their generated position, and connections are rebuilt: an existing edge keeps its routed waypoints unless its endpoints moved, so a panel-count change does not erase a cable someone routed or branched. Project-linked equipment that the design no longer has is removed with its circuits; an explicitly archived drawing is the only retained copy. A change to the inverter's kind, model or phase, a string moving to another MPPT or input, or a changed terminal set is **not** applied over the drawing: the old section is kept and marked `sourceConflict`, and `planSourceReconciliation` (the `Reconcile inverter source` edit) is the only path that applies it.
 
-  **Filing is automatic.** The SLD publisher renders and files the diagram after the design saves, debounced at 850 ms and keyed to the canonical document, so an unchanged diagram is not re-published and a newer edit is never attached to an older PDF. It publishes nothing until the diagram has components.
+  **Filing is automatic, and never files a marked drawing.** The SLD publisher renders and files the diagram after the design saves, debounced at 850 ms and keyed to the canonical document, so an unchanged diagram is not re-published and a newer edit is never attached to an older PDF. It publishes nothing until the diagram has components. `hasUnresolvedSourceReview(doc)` refuses any drawing that the export would stamp as `SOURCE UPDATE PENDING`, `SOURCE REMOVED · RETAINED`, `ARCHIVED DRAWING · RECOVERY PENDING` or `UNVERIFIED CIRCUITS`: the last complete copy stays on the customer's record and the rep is told once per distinct drawing — `The single line diagram was not filed because it still carries a source review. Reconcile the marked inverter or circuits in the SLD, and it files again.` A clean drawing files again by itself; do not tell an operator that a customer sees a pending or unverified sheet.
 
   ### Installer-facing output
 
