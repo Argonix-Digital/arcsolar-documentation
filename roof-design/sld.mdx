@@ -31,14 +31,14 @@ keywords:
 
 The single line diagram (SLD) is the electrical schematic for the site. It shows the supply, the main switchboard, the inverter and its MPPT inputs, the PV strings, the battery, the protection devices and the loads, and how they are wired together.
 
-It is drawn in the **SLD editor**, which opens from inside the Roof Design editor. It is a different drawing from the roof layout: the roof design shows where the panels go, the SLD shows how the electricity runs.
+It is drawn in the **SLD editor**, which opens from inside the Roof Vision editor. It is a different drawing from the roof layout: the roof design shows where the panels go, the SLD shows how the electricity runs.
 
-The SLD editor belongs to the same external application that provides Roof Design. ArcSolar does not draw, validate or store an SLD — it holds the two proposal images and nothing else.
+The SLD editor belongs to the same external application that provides Roof Vision. ArcSolar does not draw, validate or store an SLD — it holds the two proposal drawings and nothing else.
 
 ## Draw the diagram
 
 <Visibility for="humans">
-  **Open it:** in the Roof Design editor, choose **Open SLD** from the downloads toolbar. You can also use the standalone editor at `/sld`.
+  **Open it:** in the Roof Vision editor, choose **Open SLD** from the downloads toolbar. You can also use the standalone editor at `/sld`.
 
   When you open it from a roof design, it loads with the inverter you configured, its MPPT inputs, and the strings you built. If you have not configured an inverter yet, the canvas opens empty.
 
@@ -79,7 +79,7 @@ The SLD editor belongs to the same external application that provides Roof Desig
 
   | Entry | Behaviour |
   | --- | --- |
-  | **Open SLD** in the roof designer's `aria-label="Design downloads"` toolbar | Renders `role="dialog" aria-label="Single line diagram editor"`, with loading text `Loading diagram editor…`, then either a project-connected editor or a bare `SldEditor` |
+  | **Open SLD** in the Roof Vision editor's `aria-label="Design downloads"` toolbar | Renders `role="dialog" aria-label="Single line diagram editor"`, with loading text `Loading diagram editor…`, then either a project-connected editor or a bare `SldEditor` |
   | `/sld` | The same editor with an empty standalone project: `Untitled electrical design`, `phases: 1`, no strings, `unassignedPanels: 0`, `totalPanelKw: 0` |
   | `/sld/embed?token=…` | Signed iframe session; without a valid, unexpired session for an allowlisted origin: `Embedding is not authorised` |
 
@@ -273,8 +273,9 @@ The SLD editor belongs to the same external application that provides Roof Desig
 
   | Artifact | Reachable? |
   | --- | --- |
-  | The SLD PDF, defaulting to an A4-landscape project sheet with `PV MODULES` and `INVERTERS` schedules when opened from a roof design with an inverter | Yes, via `Download SLD PDF` |
-  | The roof reports — `Panel Design`, `Annotation Design`, `Site Plan`, `Battery Site Plan`, `Voltage Rise Calculation` | Yes, via the roof designer's `Design downloads` toolbar |
+  | The SLD PDF, defaulting to an A4-landscape project sheet with `PV MODULES` and `INVERTERS` schedules when opened from a roof design with an inverter | Yes, via **Download PDF** in the SLD editor header |
+  | The roof reports — `Panel Design`, `Annotation Design`, `Site Plan` and `Battery Site Plan` | Yes, via the Roof Vision editor's `Design downloads` toolbar |
+  | The `Voltage Rise Calculation` report | **Not reachable.** The report exists in the editing code and the toolbar carries a disabled **Voltage rise report (Coming Soon)** control. |
   | The fixed A3 installation sheet with its `EQUIPMENT SCHEDULE`, `PV STRING CHECK`, `WIRING + OPERATING NOTES` and `CABLE SCHEDULE` regions | Layout exists in the export code, but the control that selects it has no UI, so it is not reachable from the deployed editor |
 
   The A3 sheet's worked example is a **worked design drawing, not an as-built record**, and says so: `Site, NMI, DNSP approval, actual installation method, fault levels, serial numbers, installer and commissioning evidence have not been supplied.` Its issuing instruction is the standard to hold to: a real issue must **replace the worked assumptions with the installed values** and accompany the array layout, cable-route record, shutdown instructions and commissioning documentation. A real switchboard issue must also be signed off by whoever is qualified to do it.
@@ -283,15 +284,15 @@ The SLD editor belongs to the same external application that provides Roof Desig
 
   ### Naming on the drawing
 
-  The printed sheets are branded **ROOF STUDIO**, with the masthead `ROOF STUDIO` followed by the sheet title, `<phases> PHASE` and `A3 / VECTOR DRAWING`. The generic export title block reads `SINGLE LINE DIAGRAM` with `<drawingNumber> · REV <revision>`, and the project sheet's status is `draft` or `for-review`. A reader who sees `ROOF STUDIO` on a PDF is looking at output from the editor that ArcSolar calls Roof Design.
+  The printed sheets are branded **ROOF VISION**, with the masthead `ROOF VISION` followed by the sheet title, `<phases> PHASE` and `A3 / VECTOR DRAWING`. The generic export title block reads `SINGLE LINE DIAGRAM` with `<drawingNumber> · REV <revision>`, and the project sheet's status is `draft` or `for-review`.
 </Visibility>
 
 ## Related
 
 - [Design the roof and the panels](/roof-design/editor) — the roof layout the diagram is built from.
 - [Stringing](/roof-design/stringing) — the strings that seed the initial diagram.
-- [Use Roof Design](/quoting/roof-design) — how the design reaches the quote.
-- [Roof design integration contract](/reference/roof-design-contract) — routes, assets, permissions and error codes.
+- [Use Roof Vision](/quoting/roof-design) — how the design reaches the quote.
+- [Roof Vision integration contract](/reference/roof-design-contract) — routes, assets, permissions and error codes.
 - [Field operations](/delivery/field-operations) — what the installer receives and does.
 
 ## ArgonixIntelligence in this workflow

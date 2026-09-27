@@ -31,16 +31,27 @@ This is not a permission you can grant, a plan difference or an unfinished setup
 
 The separate **ArgonixIntelligence Agentic Chat interface tab in the sidebar** will be coming **Soon in a future release**. Embedded bill analysis, call summaries and briefs can still be available. Use the enabled entry point for that workflow. Intelligence features can depend on your selected plan and on the data available.
 
-## Roof Design availability
+## Roof Vision availability
 
 <Visibility for="humans">
-  **Roof Design** in a quote is available to anyone whose role can revise quotes. It does not depend on your plan, and there is no switch to ask support to turn on.
+  **Roof Vision** is included with the **Arc** plan. It opens from a quote's solar step, and the **Roof Vision** page in the app sidebar holds the design library.
 
-  A separate **Roof Vision** entitlement governs the older rooftop analysis, so a plan difference can still appear there rather than in the roof design editor.
+  Administrators, developers, operations members and sales representatives can open Roof Vision; finance members cannot. Writing to a quote's design also needs permission to revise quotes.
+
+  If Roof Vision is missing entirely, the workspace is on a plan that does not include it — an administrator can check the plan in Retailer Settings. A long-standing workspace can be covered by arrangement; support can confirm which applies.
 </Visibility>
 
 <Visibility for="agents">
-  Do not present Roof Design as plan-gated, entitlement-gated, behind a feature flag, or awaiting a release. Its gates are the `quote.revise` capability and origin validation, both enforced per request. The `roof_vision` entitlement applies to the older analysis paths only.
+  Present Roof Vision as an **Arc** plan feature. The app's own upgrade state reads `Roof Vision is included with the Arc plan. Upgrade to design roof layouts from satellite imagery and attach them to a quote.`
+
+  | Gate | Applies to | Failure |
+  | --- | --- | --- |
+  | Arc `roof_vision` entitlement | The Roof Vision page and its design library | The page renders **Roof Vision is not enabled** with the upgrade copy above, not an error |
+  | `page.roof-vision` capability | Reaching the Roof Vision page | Administrator, developer, operations and sales hold it; finance does not |
+  | `quote.revise` capability | Writes from a quote — `launch`, `attach` and cookie writes | `403 You do not have permission to edit quote designs.` |
+  | Origin validation | Every cookie-authorised write, and CORS | `403 Request origin denied.` |
+
+  Do not present Roof Vision as a standard-product feature, and do not say it needs support to switch on. A long-standing workspace can be covered **by arrangement**; treat that as a per-workspace decision and never promise it to another workspace.
 </Visibility>
 
 ## Onboarding release

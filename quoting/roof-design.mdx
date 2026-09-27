@@ -1,11 +1,10 @@
 ---
-title: "Use Roof Design"
+title: "Use Roof Vision"
 icon: "solar-panel"
-sidebarTitle: "Roof design"
+sidebarTitle: "Roof Vision"
 keywords:
-  - "Roof Design"
-  - "Roof Studio"
   - "Roof Vision"
+  - "roof design"
   - "roof editor"
   - "panel layout"
   - "stringing"
@@ -15,70 +14,72 @@ keywords:
   - "MPPT"
   - "installer roof design"
   - "solar design"
-description: "Lay out panels and stringing on a roof image, then attach the reviewed design to a quote."
+description: "Design the panel layout, the stringing and the single line diagram in Roof Vision, then see the finished drawings on the customer's quote."
 ---
 
-Roof Design is the roof editor inside a quote. You lay solar panels out on a roof image, mark how they are strung together, save a revision, then attach that reviewed layout to the quote so the customer sees it in their proposal.
+Roof Vision is the roof design workspace for a quote. You place solar panels on satellite imagery, wire them into strings against the inverter, draw the single line diagram, and the latest saved design attaches to the quote automatically. The customer's proposal carries two drawings: **Solar panel layout** and **Stringing and component layout**.
 
-Open the quote from [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes), then launch the design from its **Roof Design** area.
+Open the quote from [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes), then open its **Roof Vision** area in the solar step.
 
-Roof Design is part of the standard product. It appears in a quote's solar step, and anyone whose role can revise quotes can use it. There is no separate switch to request and no plan upgrade needed.
+Roof Vision is included with the **Arc** plan. Saved designs also live on their own page in the app sidebar — **Roof Vision** — where they are kept for the whole organisation and offered to any quote for the same customer.
 
 ## What you need first
 
-- A saved quote draft. The **Roof Design** area only appears in a quote that already exists.
-- The installation address, with coordinates.
-- The solar package and the exact panel model you are quoting. One panel model only.
-- The customer and site, if you want to attach the design to a customer's quote.
+- A saved quote draft. The **Roof Vision** area only appears in a quote that already exists.
+- The installation address, so the imagery can centre on the property.
+- The panel model you are quoting, so the catalogue and the drawing match the offer.
+- The customer and site, if the design should appear on that customer's quotes and documents. A design can also exist on its own as an address-only design, and be linked later.
 
 ## Draw the layout
 
 <Visibility for="humans">
-  **Open:** the quote's solar step, then the **Roof Design** area.
+  **Open:** the quote's solar step, then the **Roof Vision** area.
 
-  1. Choose **Open Design Panel**. The editor opens inside ArcSolar.
-  2. Check the roof image against the installation address. Imagery can be dated or incomplete.
-  3. Place the panels and review the layout the editor proposes.
-  4. Save a revision.
-  5. Complete **both** layout images — the panel layout, and the stringing and component layout.
-  6. Return to the quote, review what you have drawn, then choose **Reviewed — attach to proposal**.
+  1. Choose **Open Roof Vision**. The editor opens over the quote; choose **Open in new tab** if you want it on a second screen.
+  2. Search the installation address if the map is not already on the right property. Satellite imagery centres on it.
+  3. Choose **Build**, then place panels: click for one panel, or drag to preview and place a row. Select a panel in the **Catalogue** on the right — the **Solar panel** tab — from the searchable catalogue, or add a custom panel.
+  4. Choose **Select** to move, rotate or remove panels. Shift-click toggles a panel; drag a corner to rotate; hold Command or Control and drag to move the selection.
+  5. Choose **Strings** to wire the panels into strings and assign them to the inverter's MPPT inputs.
+  6. Choose **Open SLD** from the design downloads to draw the single line diagram, then **Download PDF** to export it.
+  7. Check the bottom bar: panel orientation, **Row gap** and **Col gap**, **Rotate** and **Tilt**. Use **Existing** for panels that are already on the roof.
+  8. Close the editor when you are done. Roof Vision saves as you work, and the newest saved design attaches to this quote on its own.
 
-  Choose **Open in separate window** if you want the editor on a second screen. Use **Expand** and **Restore size** to resize the panel.
-
-  If the design no longer matches the saved quote, change the quote's commercial package first, then reopen the design and review it again. Choose **Keep current design** to discard a design you do not want to attach.
+  The design downloads are **Download Panel Design**, **Download Annotation Design**, **Open SLD**, **Download site plan** and **Download Battery Site Plan**. **Voltage rise report** is shown as Coming Soon. **Images and plans** and **Solar production** open the imagery and production tools.
 </Visibility>
 
 <Visibility for="agents">
-  **Where the feature lives.** The primary rep surface is the **Roof Design** section (`aria-label="Roof Design"`) in the quote builder's solar step. It renders only when a quote draft key exists. Its heading is **Roof Design**; its empty state reads `Open the design panel to prepare the panel and stringing layouts.`
+  **Where the feature lives.** The rep surface is the **Roof Vision** section (`aria-label="Roof Vision"`) in the quote builder's solar step. It renders only when a quote draft key exists. Its heading is **Roof Vision**; its empty state reads `Design the panel layout and stringing on the roof. The latest saved images appear here automatically.` The saved summary on the section header is `<panelCount> panels · <address>`.
 
   **Exact controls, in render order.**
 
   | Control | Label | Notes |
   | --- | --- | --- |
-  | Open the modal | **Open Design Panel** | Disabled while busy |
-  | Separate window | **Open in separate window** | Opens a named window; the host path is `/` inside the embedded app |
-  | Dialog resize | **Expand** / **Restore size** | Toggles the dialog size |
-  | Dialog | Title **Roof Design**; description `Save a revision and complete both layouts before using it in this proposal.` | — |
-  | Attach | **Reviewed — attach to proposal** | Disabled while busy or when no quote draft id is resolved |
-  | Discard | **Keep current design** | Clears the candidate review only |
+  | Open the editor | **Open Roof Vision** | Hidden once the quote carries a saved design pair |
+  | Separate window | **Open in new tab** | Opens a named window on the same launch |
+  | Edit | **Edit** | Shown with a saved design; reopens the same project |
+  | Refresh | **Refresh** | Shown with a saved design; asks for the newest drawings |
+  | Editor overlay | Title **Roof Vision design editor** (`aria-label`) | Hidden rather than unmounted while closed so a snapshot can finish |
 
-  **Saved summary format** on the section header: `<panelCount> panels · <address> · Saved revision <first 8 chars of revision id>`.
+  **Editor chrome.** The editor is the separate Roof Vision application at the configured origin, not a screen inside the app. Its workspace navigation is **Home**, **Map**, **Library** and **Settings**, plus the member's account button. On **Map** the project bar carries the address, **Open another project**, **Link customer / site** and **Local export**. The canvas tools are **Select**, **Hand**, **Build**, **Eraser**, **Measurement Add**, **Measurement Edit**, **String Editor**, **Cabling**, **Annotations** and **Floor plan**. The inspector carries the **Catalogue** tab — with the **Solar panel** and **Solar batteries** tabs, the `Search manufacturer or model` field, filters and **Add custom panel** — plus a tab for each tool with settings. The design downloads are **Download Panel Design**, **Download Annotation Design**, **Open SLD**, **Download site plan**, **Download Battery Site Plan** and the disabled **Voltage rise report (Coming Soon)**. **Images and plans** and **Solar production** sit under the image and solar tools.
 
   **Ordering an agent must respect.**
 
-  1. The quote draft must be saved immediately before launch and again before attach. The panel calls the draft save action for `currentStep: "solar"` first; launching or attaching without a saved draft fails.
+  1. The quote draft must be saved before launch. The panel persists the draft for `currentStep: "solar"` first; launching without a saved draft fails.
   2. Launch the editor, then wait for the child's `roof-design:ready` message before sending the launch payload.
-  3. Save a revision, then complete **both** image assets, then attach. Attaching before both images are complete is refused.
-  4. Attaching requires `reviewed: true`. There is no attach-without-review path.
+  3. The editor saves continuously. Each save can produce a new revision, and the app renders the two images when the design has actually changed.
+  4. The app attaches the newest complete pair to the quote by itself. There is no reviewed flag, attach button or review step in the rep's flow.
 
-  **Embedded-app handshake (do not improvise this).** The editor is a separate application in an iframe at the configured roof design origin. Communication is `postMessage` only, `version: 1`, with origin and source checks on both sides.
+  **Embedded-app handshake (do not improvise this).** The editor runs in an iframe or a named window at the configured roof design origin. Communication is `postMessage` only, `version: 1`, with origin and source checks on both sides.
 
   | Message | Direction | Payload |
   | --- | --- | --- |
   | `roof-design:ready` | child to parent | `version: 1` |
-  | `roof-design:launch` | parent to child | `version: 1`, `launchCode`, `apiBase` |
+  | `roof-design:launch` | parent to child | `version: 1`, optional `renewal`, `projectId`, `launchCode`, `apiBase` |
   | `roof-design:completed` | child to parent | `version: 1`, `projectId`, `revisionId` |
-  | `roof-design:open-project` | child to parent | `version: 1`, optional `projectId`, `address`, `customerId`, `siteId`, `coordinates` |
+  | `roof-design:open-project` | child to parent | `version: 1`, optional `projectId`, `customerId`, `siteId`, `address`, `coordinates` |
+  | `roof-design:snapshot` | parent to child | `version: 1` — asks the editor for a fresh render |
+  | `roof-design:renew` | child to parent | `version: 1`, `projectId` — asks the parent for a fresh launch |
+  | `roof-design:documents-updated` | child to parent | `version: 1`, `projectId`, optional `customerId` |
 
   The parent accepts a message only when `event.origin` matches the configured origin, the source is the live iframe or popup window, and any project identifier matches the launched project. A completion for a different project is rejected with `Design project mismatch.`
 
@@ -87,31 +88,39 @@ Roof Design is part of the standard product. It appears in a quote's solar step,
   **Persistence.** Saves are optimistic: every save, link, archive, rename, duplicate and revision request carries `expectedVersion`. If the stored version has moved on, the save is refused with `409 VERSION_CONFLICT` and the message `The design changed. Reload before saving.` Reload and re-apply rather than retrying blind. Revisions are immutable — correcting a saved revision means creating a new one, never editing the old one.
 </Visibility>
 
-## Review and attach the design
+## What happens when you save
 
 <Visibility for="humans">
-  Review the design against the saved quote before attaching. Check the address, the panel model and the panel count, and the battery, switchboard or add-on equipment lines.
+  Roof Vision saves while you work. There is no separate save step, and you do not have to attach anything by hand.
 
-  Both layout images must be complete before you can attach. If one is missing, finish it and review again.
+  The quote's **Roof Vision** area picks up the newest saved design automatically, and also refreshes quietly about once a minute. The line under the drawings tells you which state you are looking at:
 
-  If ArcSolar says the design does not match the quote, do not work around it. Open the quote's commercial package controls, correct the mismatch, save, then reopen the design and review it again. Browser messages from the design editor can never change a price or a rebate.
+  - **Latest saved design included in this quote.** — the drawings in the quote are the newest saved revision.
+  - **The design has changed in Roof Vision since these images were generated. Refresh once it has saved.** — the editor has saved a newer design; give it a moment, then choose **Refresh**.
+  - **This design has no completed images yet. Open Roof Vision, place the panels and let it save; the images appear here automatically.** — nothing has been drawn for this quote yet.
+
+  Choose **Edit** to reopen the design, **Refresh** to ask for the newest drawings, and **Open in new tab** to work in a separate window.
 </Visibility>
 
 <Visibility for="agents">
-  **Attachment preconditions, in evaluation order.** Attachment is refused unless every one of these holds. Each failure names the mismatch.
+  **Attach is automatic and idempotent.** After each save the app reads the project's newest revision, and when that revision has a complete image pair it calls `attach` with the revision id and the quote draft key. The attempt is keyed by revision id and the current commercial inputs, so an unchanged design is not re-attached and a failed attach is not retried in a loop. The attached pair is written to the draft as `solar.roofDesign`.
 
-  | Check | Rule on failure |
+  **Saved-state strings.** Quote them as written.
+
+  | State | String |
   | --- | --- |
-  | Saved draft | The draft must resolve and its id must equal the id declared in the request. Otherwise: `404 Save this quote draft before attaching a design.` |
-  | Both assets ready | Both `panel-layout` and `stringing-components` must exist for the revision with status `ready`. Otherwise: `409 ASSETS_NOT_READY` — `Both completed design images are required. The previous bundle is retained.` |
-  | Customer | The design's customer must equal the saved draft's customer. Otherwise: `customer` is named as a mismatch. |
-  | Supply address | Normalised addresses must match (lowercase, alphanumeric only). Otherwise: `supply address` is named. |
-  | Panel model and quantity | Exactly one solar package, one panel line, panel commercial product equal to the draft's solar or panel product, quantity equal to the draft's panel count. Otherwise: `panel model or quantity` is named. |
-  | Other equipment | Each non-panel line's commercial product must be one of the draft's solar, battery, switchboard or add-on products, with quantity 1. Otherwise `<kind> model or quantity` is named. |
+  | Default | `The latest saved design is added to this quote automatically.` |
+  | Out of date | `The design has changed in Roof Vision since these images were generated. Refresh once it has saved.` |
+  | Updating | `Updating this design for the current quote…` |
+  | Current | `Latest saved design included in this quote.` |
+  | Attaching | `Adding these images to the quote…` |
+  | Preview | `These images are a preview until they are added to the quote.` |
+  | No images yet | `This design has no completed images yet. Open Roof Vision, place the panels and let it save; the images appear here automatically.` |
+  | Attach failure | `The latest design could not be added to this quote.` |
 
-  Any mismatch returns `409 REVIEW_REQUIRED` with the template `Reconcile <mismatched dimensions, comma separated> using the quote's commercial package controls, then review again.` Correct the commercial package with the quote's own controls, then review again. Never attempt to change prices or rebates through the design editor.
+  **The solar step requires an attached design.** `getSolarDesignIssue` returns `Open Roof Vision in the Solar step and attach the roof design to this quote.` whenever a solar quote has no `solar.roofDesign`. Sending an estimate is refused with `Open Roof Vision in the Solar step and attach the roof design before sending this estimate.`
 
-  **Re-checked at issue time.** Issuing an estimate re-validates that the attached design still matches the draft being issued and that a review link exists for that exact revision and commercial fingerprint. If not: `409 REVIEW_REQUIRED` — `Review this design against the saved quote before issuing.` The send action surfaces that message as a send error.
+  **Commercial reconciliation.** With the approval layer disabled (the default), the attach records a commercial fingerprint of the draft rather than comparing every line; a mismatch cannot be raised by the rep's flow. When `ROOF_VISION_APPROVAL_LAYER=yes`, the attach reconciles the design's customer, supply address, panel model and quantity, and other equipment against the saved draft, and any mismatch returns `409 REVIEW_REQUIRED` — `Reconcile <mismatched dimensions, comma separated> using the quote's commercial package controls, then review again.` Never attempt to change prices or rebates through the design editor.
 
   **Decision rules an agent must encode.**
 
@@ -122,14 +131,22 @@ Roof Design is part of the standard product. It appears in a quote's solar step,
   - Imagery does not prove structural suitability, electrical compliance, clearances or installer approval. The layout is indicative and final placement remains subject to physical site verification.
 </Visibility>
 
+## Review the design
+
+<Visibility for="humans">
+  Check the address, the panel model and the panel count, and the battery, switchboard or add-on equipment lines. Both drawings are what the customer receives, so review them before the quote goes out.
+
+  The two drawings are the record of the design. If a figure is not drawn on them, ArcSolar does not hold it — ArcSolar stores the drawings; the editor produces them.
+</Visibility>
+
 ## Where the customer sees it
 
 <Visibility for="humans">
-  Once attached and issued, the two layouts appear in the customer's estimate portal under **Roof design**, headed **Solar panel layout** and **Stringing and component layout**, each with the site address and the imagery attribution.
+  Once the quote is issued, the two drawings appear in the customer's estimate portal under **Roof design**, headed **Solar panel layout** and **Stringing and component layout**, each with the site address and the imagery attribution.
 
   In PDFs the headings differ by document. The **estimate PDF** shows the two drawings in a section headed **PROPOSED ROOFTOP DESIGN**, captioned **PROPOSED PANEL LAYOUT** and **PANEL STRINGS & COMPONENT MARKINGS**. The **agreement (contract) PDF** adds them as extra landscape pages headed **Solar panel layout** and **Stringing and component layout**.
 
-  The estimate PDF's **PROPOSED ROOFTOP DESIGN** heading is shared with the older provider-based roof analysis, so the heading alone does not tell you which one you are looking at. The Roof Design version shows the two drawings and no figures; the provider version shows a capacity and exposure band instead. Attaching a Roof Design layout clears the older analysis for that quote, so a customer sees one or the other, never both.
+  A customer sees one roof section, never two: the older provider-based roof analysis has been retired.
 </Visibility>
 
 <Visibility for="agents">
@@ -145,67 +162,83 @@ Roof Design is part of the standard product. It appears in a quote's solar step,
   | Estimate PDF, drawing captions | **PROPOSED PANEL LAYOUT** and **PANEL STRINGS & COMPONENT MARKINGS** | same function |
   | Contract and tenant-document PDFs | **Solar panel layout** and **Stringing and component layout** | `src/lib/roof-design/pdf.server.ts`, `appendRoofDesignPages` |
 
-  **`PROPOSED ROOFTOP DESIGN` is not an exclusively legacy label.** `estimate-pdf.ts` uses it as the section heading in both branches: `roofDesignContent` for the bundle, and the legacy branch further down the same file. Never tell an operator that seeing this heading means the provider analysis is showing. The bundle's copy of it carries no figures; the legacy copy carries the capacity and exposure band.
-
   **Portal rendering.** The estimate portal renders `#portal-roof` from `roofDesign`. Each image is its own `h2`: **Solar panel layout** for `panel-layout`, **Stringing and component layout** for `stringing-components`. Alt text is `Roof imagery showing the proposed solar panels` and `Roof imagery showing string assignments, connection order and components`. The site address and the imagery attribution are shown under each image.
 
-  **PDF behaviour is per document.** Two different renderers are involved, and a blanket claim in either direction is wrong.
+  **PDF behaviour is per document.**
 
   | Document | Renderer | Roof section behaviour |
   | --- | --- | --- |
-  | Estimate PDF — `src/lib/quotes/estimate-pdf.ts` | pdfmake. `solarDesignContent(snapshot, roofDesign)` early-returns `roofDesignContent` when a bundle is present. | **Supersedes.** While a bundle exists the legacy `solarDesign` branch is unreachable, because the early return is taken first. |
+  | Estimate PDF — `src/lib/quotes/estimate-pdf.ts` | pdfmake | Draws the section heading, the address line and the two drawings with their captions. |
   | Contract PDF — `src/lib/quotes/contract-pdf.ts` | pdf-lib, via `appendRoofDesignPages` | **Appends** one A4 landscape page per image to the finished document. |
   | Tenant document PDF — `src/lib/quotes/tenant-document-pdf.ts` | pdf-lib, via `appendRoofDesignPages` | **Appends** one A4 landscape page per image. |
 
   `appendRoofDesignPages` is referenced by the contract and tenant-document renderers only. The estimate PDF does not use it: it builds the two drawings as pdfmake content.
 
-  **"The issued quote PDF" is ambiguous, because one route serves both.** `GET /api/estimates/[token]/pdf` returns the contract PDF when the snapshot is version 4 with `document.kind === "contract"`, and the estimate PDF otherwise. The same customer-facing link can therefore resolve to the superseding estimate PDF or to the appending agreement PDF. Name which one you mean rather than generalising.
+  **"The issued quote PDF" is ambiguous, because one route serves both.** `GET /api/estimates/[token]/pdf` returns the contract PDF when the snapshot is version 4 with `document.kind === "contract"`, and the estimate PDF otherwise. The same customer-facing link can therefore resolve to either document. Name which one you mean rather than generalising.
 
-  **No electrical content or metrics arrive from this bundle on any surface.** In the estimate PDF, `roofDesignContent` draws only the section heading, the address line and the two drawings with their captions. `appendRoofDesignPages` is separately annotated "no Google Solar labels or generation estimates" and draws only the label, address, image, attribution and revision footer. Do not tell an operator that this bundle puts string sizes, voltages, cable lengths, or a capacity or exposure summary into the estimate or a PDF. The capacity and exposure band belongs to the legacy `solarDesign` section.
+  **No electrical content or metrics arrive from this bundle on any surface.** The estimate PDF draws only the section heading, the address line and the two drawings with their captions; the appended contract pages draw only the label, address, image, attribution and revision footer. Do not tell an operator that this bundle puts string sizes, voltages, cable lengths, or a capacity or exposure summary into the estimate or a PDF. The capacity and exposure band belonged to the retired provider analysis.
 
-  Version-4 solar estimates must carry either the older `solarDesign` payload or a `roofDesign` bundle. An estimate with neither is refused with `Version-four solar estimates require a customer-safe roof design.`
+  Version-4 solar estimates must carry a `roofDesign` bundle; an estimate without one is refused with `Version-four solar estimates require a customer-safe roof design.`
+</Visibility>
 
-  **The two are mutually exclusive by construction, not by schema.** The snapshot types `roofDesign` as optional and `solarDesign` as nullable-optional, so both keys can exist in the shape. The guarantee comes from the builder: accepting a design calls `updateSolar({ roofDesign, design: null })`, clearing the legacy design. Both branches also render the same DOM id, `portal-roof`, which is safe only because one is null. Treat both being populated as an impossible state, not a supported one.
+## Roof Vision documents on the customer record
+
+<Visibility for="humans">
+  Roof Vision also files finished PDFs against the customer, so the site team can find them without opening the quote. Open the customer record and look for them with the customer's other documents:
+
+  - **Roof Vision · Site plan**
+  - **Roof Vision · SLD** — the single line diagram
+  - **Roof Vision · Panel design**
+  - **Roof Vision · Annotation design**
+  - **Roof Vision · Battery site plan**
+
+  Each file is replaced when the design is published again, so the customer keeps one current copy rather than a pile of versions.
+</Visibility>
+
+<Visibility for="agents">
+  The five generated document kinds are registered in `src/lib/roof-design/generated-documents.server.ts` with stable filenames — `roof-vision-site-plan.pdf`, `roof-vision-single-line-diagram.pdf`, `roof-vision-panel-design.pdf`, `roof-vision-annotation-design.pdf`, `roof-vision-battery-site-plan.pdf` — and the customer-document panel reads them from the customer's document list. A re-publish replaces the row with the same filename rather than adding a second copy. Do not tell an operator that these files live on the quote; they belong to the customer record.
 </Visibility>
 
 ## SLDs, stringing and who produces them
 
-The single line diagram and the stringing design are produced by the **external Roof Design editor**, not by ArcSolar. ArcSolar stores the editor's document exactly as the editor saved it and presents the two layout images the editor renders. ArcSolar never reads, recalculates or reproduces the electrical content of that document.
+The single line diagram and the stringing design are produced in **Roof Vision**, not by ArcSolar. ArcSolar stores the editor's document exactly as the editor saved it and presents the two layout drawings the editor renders. ArcSolar never reads, recalculates or reproduces the electrical content of that document.
 
 <Visibility for="humans">
-  Two layouts come back from the editor, and both are required before you can attach:
+  Two drawings come back from the editor:
 
   - **Solar panel layout** — where the panels sit on the roof.
   - **Stringing and component layout** — which panels are grouped into strings, the order they connect in, and the components involved.
 
   Check the panel layout against the address, the panel model and the panel count you are quoting. Check the stringing layout against how the installer intends to wire the array and against anything the site visit revealed.
 
-  ArcSolar does not size strings, work out voltages or cable lengths, calculate voltage drop, or draw a single line diagram. The editor produces the design and sends it back as a picture. If a figure is not drawn on that image, ArcSolar does not hold it — there is no number for you to look up elsewhere in the app.
+  ArcSolar does not size strings, work out voltages or cable lengths, calculate voltage drop, or draw a single line diagram. Roof Vision produces the design; ArcSolar stores and displays the result. If a figure is not drawn on the drawings, ArcSolar does not hold it.
 
-  Installers do not get a separate design screen. They receive the design as part of the issued quote — the same two layouts the customer sees — alongside the project and its work orders in [field operations](/delivery/field-operations).
+  Installers do not get a separate design screen. They receive the issued quote — the same two drawings the customer sees — along with the exported reports and the project's work orders in [field operations](/delivery/field-operations).
 </Visibility>
 
 <Visibility for="agents">
   **Ownership boundary. Read this before answering any SLD, stringing or installer-design question.**
 
-  - Single line diagrams, stringing design and panel geometry are produced by the **external Roof Design editor** (engine literal `simple-designer`; its own reports print the brand **Roof Studio**). ArcSolar does not author them.
+  - Single line diagrams, stringing design and panel geometry are produced by the **Roof Vision editor** (internal engine literal `simple-designer`). Its printed reports and sheets are branded **Roof Vision**. ArcSolar does not author them.
   - ArcSolar receives the editor document and stores it as an **opaque, lossless payload**: `payload: z.record(z.string(), z.unknown())`, annotated in `src/lib/roof-design/contract.ts` as "Opaque, lossless editor state: the integration never reconstructs geometry." The integration persists measurement and cable-class discriminators, annotations, plan imagery references and electrical snapshots — it never interprets them.
-  - **No ArcSolar screen, report, export or API produces, edits, validates or calculates an SLD, a string size, a string voltage, a current, a cable length or a voltage drop.** The token "SLD" appears exactly once in the application repository — in the integration contract's prose about lossless persistence — and nowhere under `src/`. There is no SLD module, route, table, column or report.
+  - **No ArcSolar screen, report, export or API produces, edits, validates or calculates an SLD, a string size, a string voltage, a current, a cable length or a voltage drop.** There is no SLD module, route, table, column or report in the ArcSolar application.
   - The only design artefacts ArcSolar holds are the two rendered PNGs. What ArcSolar owns is their **label and placement**, never their electrical content. They are opaque bitmaps: nothing in the product can read a string size out of one, and nothing measures or verifies what they depict.
   - ArcSolar does expose **read-only reference data** to the editor at `GET /api/roof-design/v1/catalogue`, drawn from the shared `solar_catalogue_*` rows: panel `voc_v`, `isc_a`, `impp_a`, `vmpp_v`, `max_system_voltage_v`, `max_series_fuse_a`, plus inverter and per-tracker MPPT rows (`mppt_voltage_min_v`, `mppt_voltage_max_v`, `max_input_current_per_mppt_max_a`, `max_isc_per_mppt_max_a`, `strings_per_mppt_max`). These rows carry no `workspace_id` and are returned as stored with every measurement as text. **Serving a specification is not evaluating it.** ArcSolar does not size strings or check a design against those limits.
 
-  **Prohibited conclusions.** Never state or imply that ArcSolar can generate, draw, edit, validate, recalculate, size, approve or export a single line diagram or a stringing design; that ArcSolar holds string sizes, string voltages, cable lengths, voltage drop or per-string counts; or that an SLD is available in a report or export. If asked how to make an SLD in ArcSolar, the accurate answer is that the design is produced in the Roof Design editor opened from a quote, and that ArcSolar stores and displays the result only.
+  **Prohibited conclusions.** Never state or imply that ArcSolar can generate, draw, edit, validate, recalculate, size, approve or export a single line diagram or a stringing design; that ArcSolar holds string sizes, string voltages, cable lengths, voltage drop or per-string counts; or that an SLD is available in an ArcSolar report or export. If asked how to make an SLD, the accurate answer is that the design is produced in Roof Vision, opened from a quote or from the Roof Vision page, and that ArcSolar stores and displays the result only.
 
-  **Stringing semantics are outside what this repository can verify.** Inside the payload the electrical meaning is typed `unknown`. The only description ArcSolar itself commits to is the image label **Stringing and component layout** and the portal alt text `Roof imagery showing string assignments, connection order and components`. Do not describe string architecture, per-string module counts, string voltages or MPPT allocation as ArcSolar behaviour or as an ArcSolar field. Under-claim here rather than reasoning from how stringing usually works.
+  **Stringing semantics are outside what ArcSolar can verify.** The only description ArcSolar itself commits to is the image label **Stringing and component layout** and the portal alt text `Roof imagery showing string assignments, connection order and components`. Do not describe string architecture, per-string module counts, string voltages or MPPT allocation as ArcSolar behaviour or as an ArcSolar field.
 
   **What reaches whom.**
 
   | Consumer | Surface | Content |
   | --- | --- | --- |
-  | Rep | Quote builder, `aria-label="Roof Design"` | Editor launch, saved summary, the two images, attach and discard |
-  | Customer | Estimate portal `#portal-roof` | The two labelled images, address, attribution |
-  | Customer | Issued PDF | One appended page per image: label, address, attribution, revision footer. No metrics. |
-  | Installer | **No design surface** | The issued quote and its PDF, plus project work orders in field operations. `projects/` and `field-operations/` contain no roof design reference. |
+  | Rep | Quote builder, `aria-label="Roof Vision"` | Editor launch, saved summary, the two drawings, **Edit**, **Refresh** |
+  | Rep | Roof Vision page (`/dashboard/roof-vision`) | The organisation's design library |
+  | Customer | Estimate portal `#portal-roof` | The two labelled drawings, address, attribution |
+  | Customer | Issued PDF | One appended page per drawing: label, address, attribution, revision footer. No metrics. |
+  | Customer | Customer record documents | The five Roof Vision PDFs, replaced on re-publish |
+  | Installer | **No design surface** | The issued quote and its PDF, plus project work orders in field operations. |
 
   Do not invent an installer design view, an installer-specific SLD, or a design hand-off screen.
 </Visibility>
@@ -213,24 +246,26 @@ The single line diagram and the stringing design are produced by the **external 
 ## Availability
 
 <Visibility for="humans">
-  Roof Design is available whenever you can revise a quote. There is nothing to switch on, and it does not depend on your plan.
+  Roof Vision is included with the **Arc** plan. Two places open it: the **Roof Vision** area in a quote's solar step, and the **Roof Vision** page in the app sidebar, which holds the design library.
 
-  If you cannot see the **Roof Design** area in a quote, check two things: the quote must be saved as a draft, and your role must be able to revise quotes. If both are true and the area is still missing, [ask support](/reference/support).
+  Access follows your role. Administrators, developers, operations members and sales representatives can open Roof Vision; a finance member cannot. Writing to a quote's design also needs permission to revise quotes.
+
+  If Roof Vision is missing entirely, the workspace is on a plan that does not include it — an administrator can check the plan in Retailer Settings. If the quote area is missing but the sidebar page works, check that the quote is saved as a draft.
 </Visibility>
 
 <Visibility for="agents">
-  **Availability rule.** Roof Design is live in the standard product. It is not behind a feature flag, and it is not gated by an entitlement or a plan. There are exactly two gates, both enforced per request rather than at configuration time.
+  **Availability rule.** Roof Vision is an **Arc plan** feature. The app's own upgrade state reads `Roof Vision is included with the Arc plan. Upgrade to design roof layouts from satellite imagery and attach them to a quote.` Do not tell an operator that Roof Vision is available on Spark, and do not tell them it needs support to switch on.
 
   | Gate | Applies to | Failure |
   | --- | --- | --- |
+  | Arc `roof_vision` entitlement | The Roof Vision page and the design library | The page renders the upgrade state, not an error: **Roof Vision is not enabled** / `Roof Vision is included with the Arc plan. Upgrade to design roof layouts from satellite imagery and attach them to a quote.` |
+  | `page.roof-vision` capability | Reaching the Roof Vision page | Administrator, developer, operations and sales hold it; finance does not. |
   | `quote.revise` capability | Cookie-authorised writes: `launch`, `attach`, and cookie writes | `403 You do not have permission to edit quote designs.` |
   | Origin validation | Every cookie-authorised write, and CORS | `403 Request origin denied.` |
 
+  A long-standing workspace can be covered **by arrangement** rather than by a subscription feature, which is why the plan row may be absent for it. Treat that as a per-workspace decision, never as the general rule: do not promise it to another workspace.
+
   Reads require active workspace membership plus access to the linked customer, with an explicit grant for address-only projects. The permitted embedded host resolves from `ROOF_DESIGN_ORIGIN`, defaulting to `https://design.arcsolar.com.au`.
-
-  There is **no entitlement gate on this path**: a `roof_vision` entitlement exists but applies to the older analysis paths, not to this route or this panel.
-
-  **Decision rules.** Do not tell an operator that Roof Design needs a plan change, an entitlement, or support to switch it on — none of those is true. If the area is missing from a quote, check the two product preconditions: the quote draft must be saved, and the member's role must permit revising quotes.
 
   **Error codes you will meet.** Full status map: `401 UNAUTHENTICATED`, `403 FORBIDDEN`, `404 NOT_FOUND` or `DISABLED`, `409 VERSION_CONFLICT` / `ASSETS_NOT_READY` / `REVIEW_REQUIRED`, `422 VALIDATION`, `503 UNAVAILABLE`.
 
@@ -238,25 +273,25 @@ The single line diagram and the stringing design are produced by the **external 
   | --- | --- | --- |
   | `UNAUTHENTICATED` | Yes | Session expired or too near expiry. Return to ArcSolar and reopen the panel. The launch renewal message is `Refresh your ArcSolar session before opening the panel.` |
   | `LAUNCH_EXPIRED` | Yes | The 60-second code was reused or expired: `This launch expired or was already used. Reopen from ArcSolar.` Start a fresh launch. |
-  | `FORBIDDEN` | No | Wrong project scope, wrong origin, or a missing capability. Do not retry; re-launch from the correct quote. |
+  | `FORBIDDEN` | No | Wrong project scope, wrong origin, or a missing capability. Do not retry; re-launch from the correct quote. A customer the caller cannot edit returns `You do not have access to that customer. Choose a customer you own, or ask an administrator.` |
   | `NOT_FOUND` | No | Asset, revision or draft does not exist. Re-read state before acting. |
   | `DISABLED` | No | Host or encryption configuration is missing. Report, do not retry. |
   | `VERSION_CONFLICT` | Yes, after reload | Re-read the design, re-apply the change, retry once. |
-  | `ASSETS_NOT_READY` | Yes, after completing assets | Complete both images, then re-attach. A prior complete bundle is untouched. |
-  | `REVIEW_REQUIRED` | Yes, after correcting the package | Correct the quote's commercial package, review again, then attach or issue. |
+  | `ASSETS_NOT_READY` | Yes, after completing assets | Complete both drawings, then re-attach. A prior complete bundle is untouched. |
+  | `REVIEW_REQUIRED` | Yes, after correcting the package | Only when the approval layer is enabled. Correct the quote's commercial package, review again, then attach or issue. |
   | `VALIDATION` | No | Payload or document invalid (for example a document over 5 MB). Fix the input. |
   | `UNAVAILABLE` | Yes | Temporary outage or an unresolvable draft. Retry later. |
 </Visibility>
 
 ## Related
 
-- [The design editor](/roof-design/editor) — the canvas, the panels, the imagery, the site tools and the reports.
-- [Stringing](/roof-design/stringing) — the **String Editor**, MPPTs, and what the stringing image shows.
+- [The Roof Vision editor](/roof-design/editor) — the canvas, the panels, the imagery, the tools and the reports.
+- [Stringing](/roof-design/stringing) — the **String Editor**, MPPTs, and what the stringing drawing shows.
 - [The single line diagram](/roof-design/sld) — drawing the electrical schematic and exporting it.
-- The API-level contract, asset specification, permissions and data shapes are on [the roof design integration contract](/reference/roof-design-contract).
+- The API-level contract, asset specification, permissions and data shapes are on [the Roof Vision integration contract](/reference/roof-design-contract).
 - Revising an issued quote is covered in [Revise and manage quotes](/quoting/revisions).
 - Availability conventions across the product are listed in [Feature availability](/reference/availability).
 
 ## ArgonixIntelligence in this workflow
 
-Roof Design and supported recommendations assist assessment. The rep and installer must verify the final equipment and the feasible installation layout.
+Roof Vision and supported recommendations assist assessment. The rep and installer must verify the final equipment and the feasible installation layout.
