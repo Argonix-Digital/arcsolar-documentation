@@ -35,6 +35,8 @@ It is drawn in the **SLD editor**, which opens from inside Roof Vision. It is a 
 
 **Open:** a design in Roof Vision, then choose **Open SLD** from the downloads rail. You can also use the standalone editor at `/sld`.
 
+The diagram is built for you from the roof design: as soon as the design has an inverter, the editor seeds it with the panels, the strings you assigned and the inverter with its MPPT inputs, and it keeps it in line as the roof design changes. If a change affects wiring that already exists, the inverter is marked **SOURCE UPDATE PENDING** — select it and review its wiring. The finished diagram is filed against the customer automatically when it changes.
+
 ## Draw the diagram
 
 <Visibility for="humans">
@@ -274,7 +276,9 @@ It is drawn in the **SLD editor**, which opens from inside Roof Vision. It is a 
 
   > SLD edits do not write back to the host.
 
-  The roof-to-SLD direction is one-way and one-shot at open time: the editor reads the current roof design to build the starting diagram, and never mutates it. Reopening builds a fresh diagram from the roof equipment as it stands then. ArcSolar's own save path covers the roof document only; there is no ArcSolar endpoint that accepts an SLD.
+  The roof-to-SLD direction is one-way and automatic: the editor reads the current roof design and never mutates it, and the rep does not have to create the diagram. Once the design has an inverter, `projectDiagram(project)` seeds the diagram and files it; as the roof design changes, `syncProjectEquipment(current, project)` brings the existing diagram into line, and a change that affects wiring already drawn marks the inverter as `SOURCE UPDATE PENDING` — the canvas hint reads `Source update pending. Select the marked inverter to review its wiring.` With no inverter configured there is nothing to seed, so the canvas opens empty. ArcSolar's own save path covers the roof document only; there is no ArcSolar endpoint that accepts an SLD, and the diagram reaches the customer as the filed PDF.
+
+  **Filing is automatic.** The SLD publisher renders and files the diagram after the design saves, debounced at 850 ms and keyed to the canonical document, so an unchanged diagram is not re-published and a newer edit is never attached to an older PDF. It publishes nothing until the diagram has components.
 
   ### Installer-facing output
 

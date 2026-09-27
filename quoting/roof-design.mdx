@@ -37,7 +37,7 @@ Set **Portrait** or **Landscape**, then the **Row gap** and **Col gap**. Use **R
 Choose **Strings**, pick the inverter, then drag across the panels in wiring order and assign each string to an MPPT input. See [Stringing](/roof-design/stringing).
 </Step>
 <Step title="Draw the single line diagram">
-Choose **Open SLD**, set the supply with the **Phases** buttons, then place the components and run the cables. Choose **Download PDF** to export the drawing. See [the single line diagram](/roof-design/sld).
+Choose **Open SLD** — the diagram arrives seeded with your panels, strings and inverter — then set the supply with the **Phases** buttons and check the wiring. Choose **Download PDF** for a copy. See [the single line diagram](/roof-design/sld).
 </Step>
 <Step title="Check the drawings attached">
 Roof Vision saves while you work, and the newest saved design adds itself to the quote. The line under the drawings reads **Latest saved design included in this quote.** If it says the design has changed, wait for the save and choose **Refresh**.
@@ -107,6 +107,8 @@ Check the address, the panel model and the panel count against the quote. The cu
   - **Latest saved design included in this quote.** — the drawings are current.
   - **The design has changed in Roof Vision since these images were generated. Refresh once it has saved.** — wait for the save, then choose **Refresh**.
   - **This design has no completed images yet. Open Roof Vision, place the panels and let it save; the images appear here automatically.** — nothing has been drawn for this quote yet.
+
+  Every save also files the finished PDFs against the customer — the site plan, the panel design, the annotation design, the battery site plan and the single line diagram — so the customer's documents stay current without anyone exporting by hand.
 
   Use **Edit** to reopen the design, **Refresh** for the newest drawings, and **Open in new tab** to work in a separate window.
 </Visibility>
@@ -183,7 +185,7 @@ Check the address, the panel model and the panel count against the quote. The cu
 ## Roof Vision documents on the customer record
 
 <Visibility for="humans">
-  Roof Vision also files finished PDFs against the customer, so the site team can find them without opening the quote:
+  Roof Vision files these PDFs against the customer by itself as the design is worked on, so the site team can find them without opening the quote. A design that is not linked to a customer has nowhere to file them until it is linked:
 
   - **Roof Vision · Site plan**
   - **Roof Vision · SLD** — the single line diagram
@@ -196,6 +198,8 @@ Check the address, the panel model and the panel count against the quote. The cu
 
 <Visibility for="agents">
   The five generated document kinds are registered in `src/lib/roof-design/generated-documents.server.ts` with stable filenames — `roof-vision-site-plan.pdf`, `roof-vision-single-line-diagram.pdf`, `roof-vision-panel-design.pdf`, `roof-vision-annotation-design.pdf`, `roof-vision-battery-site-plan.pdf` — and the customer-document panel reads them from the customer's document list. A re-publish replaces the row with the same filename rather than adding a second copy. Do not tell an operator that these files live on the quote; they belong to the customer record.
+
+  **Filing is automatic and content-gated.** The editor subscribes to the design session and files each document after the design saves. Publication is debounced and fingerprinted, so an unchanged document is not re-rendered, and a document with nothing to draw is skipped: the panel design needs placed panels, the annotation design needs annotations, and the battery site plan needs the room and equipment on the floor plan. The destination customer is the linked project customer, or an exact address match when the design is address-only; an address-only design with no unambiguous match has no destination until it is linked.
 </Visibility>
 
 ## Who produces the design
