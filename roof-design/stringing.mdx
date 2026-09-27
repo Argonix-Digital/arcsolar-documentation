@@ -17,29 +17,38 @@ keywords:
   - "preliminary design checks"
 ---
 
-Stringing assigns the panels already on the roof to PV strings and those strings to an inverter's MPPT inputs. It is how the design stops being a picture of a roof and starts being an electrical proposal.
+Stringing assigns the panels already on the roof to PV strings, and those strings to an inverter's MPPT inputs. It happens in Roof Vision, using the **Strings** tool; ArcSolar stores what the editor produces and does not calculate stringing itself.
 
-It happens inside the Roof Vision editor, using the **String Editor**. ArcSolar receives and stores what the editor produces; ArcSolar does not calculate stringing itself.
+**Open:** a design in Roof Vision, then choose **Strings** from the canvas tools — or press `T`. Place the panels first.
 
-## Wire panels into strings
+## String the panels
+
+<Steps>
+<Step title="Choose the inverter">
+Pick the inverter with the dropdown under the **Roof** or **Battery** tab. A typed name is only kept when it matches a known model; use **Add inverter** for anything else.
+</Step>
+<Step title="Assign the string to an MPPT input">
+Choose the string, then the MPPT input it connects to.
+</Step>
+<Step title="Drag across the panels in wiring order">
+Start at the first module and finish at the last. **Alt-click** a panel to disconnect it from the string.
+</Step>
+<Step title="Check the voltage window">
+The count bar shows the voltage-only series-length window for the connected modules and warns when a string runs past it. The header states which class of inverter data is in play: **Manufacturer specifications · preliminary design checks**, **Demo inverter limits · preliminary design checks**, or **Manufacturer specifications and demo models · preliminary design checks**.
+</Step>
+<Step title="Confirm against the manufacturer data">
+Mixed panel models, or incomplete temperature data, give no recommendation at all. Check the limits and temperature coefficients against the datasheet before the design is built.
+</Step>
+</Steps>
 
 <Visibility for="humans">
-  1. Place the panels first. Stringing works on panels that are already on the roof.
-  2. Choose **Strings** from the canvas tools, or press `T`.
-  3. Pick the inverter. Use the dropdown, not a typed name — a typed name is only kept if it explicitly matches a known model.
-  4. Pick the string and the MPPT input it should use.
-  5. Drag across the panels in wiring order — first module to last.
-  6. **Alt-click** a panel to disconnect it from the string.
-
-  The header tells you whether real manufacturer limits or demonstration limits are in use: **Manufacturer specifications · preliminary design checks**, **Demo inverter limits · preliminary design checks**, or **Manufacturer specifications and demo models · preliminary design checks**.
-
-  A count bar tracks the string as you build it and warns when a string runs past the allowed series-length window. The stringing drawing — labelled **Stringing and component layout** on the quote — shows the result. It carries no brand footer of its own; the revision is recorded in the image metadata.
+  The stringing drawing — labelled **Stringing and component layout** on the quote — shows the result. It carries no brand footer of its own; the revision is recorded in the image metadata.
 
   <Frame caption="The **Stringing and component layout** drawing the editor produces — the image ArcSolar labels on the quote. Each string is drawn through its own modules in wiring order, and the recorded equipment sits where it was placed. The drawing carries no captions or legends: its only writing is the north marker, because the electrical semantics live in the editor's payload, not in the image. This render is the editor's own regression fixture over a synthetic roof illustration.">
     <img src="/images/roof-design-stringing-components.png" alt="Stringing and component layout drawing over a synthetic roof illustration, showing two strings drawn across four modules each — one green, one blue — beside a recorded battery and antenna, a north marker in the top right, and no other writing." />
   </Frame>
 
-  The editor checks that string voltages fit the selected inverter. It does not check current, protection, connectors, shading or whether the installation is compliant. Mixed panel models, or incomplete temperature data, mean it gives no recommendation at all. Always confirm the limits and temperature coefficients against the manufacturer's datasheet.
+  String voltages are checked against the selected inverter. Current, protection, connectors, shading and installation compliance are not — and a series-length window is not a string design approval.
 
   <Frame caption="The **Strings** tool open on a live design. Each string runs through its modules in wiring order and is drawn in its own colour, and the **Strings** tab in the inspector holds the inverter, the strings and the MPPT inputs. The left rail names the ten canvas tools, and the status line under the canvas reports the selected panel and the gaps.">
     <img src="/images/roof-design-string-editor.png" alt="Roof Vision with the Strings tool selected: two strings drawn across the placed panels on satellite imagery, the Strings inspector open at the right, the tool rail naming Select, Pan, Build, Erase, Measure, Edit, Strings, Cabling, Annot. and Floor plan, and the canvas status line reading Nothing selected 1722 × 1134 mm · 420 W · Saved design restored." />
@@ -107,12 +116,6 @@ It happens inside the Roof Vision editor, using the **String Editor**. ArcSolar 
 
   The quote's **Stringing and component layout** image is the editor's layout render. What it shows is panel grouping into strings and the associated components. Its label on customer surfaces is `Stringing and component layout`, and its alt text is `Roof imagery showing string assignments, connection order and components`. Its electrical semantics live inside the editor's payload, not in the image — so treat it as the wiring layout the designer produced, not as something ArcSolar has interpreted or verified.
 </Visibility>
-
-## Related
-
-- [Design the roof and the panels](/roof-design/editor) — placing panels before stringing them.
-- [The single line diagram](/roof-design/sld) — the schematic view of the same electrical design.
-- [Use Roof Vision](/quoting/roof-design) — how the stringing drawing reaches the quote and the PDFs.
 
 ## ArgonixIntelligence in this workflow
 

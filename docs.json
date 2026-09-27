@@ -110,7 +110,6 @@
       },
       {
         "group": "Roof Vision",
-        "icon": "solar-panel",
         "pages": [
           "quoting/roof-design",
           "roof-design/editor",

@@ -20,49 +20,71 @@ keywords:
   - "revision"
 ---
 
-Roof Vision is where the roof design is drawn. You search an Australian address, the satellite image centres on the property, and you place physically sized PV modules on the roof in plan view. The same workspace carries the stringing, the cabling, the annotations, the floor plan and the single line diagram, and it exports the design reports.
+Roof Vision is where the roof design is drawn. Search an Australian address, the satellite imagery centres on the property, and you place physically sized panels on the roof in plan view. The same workspace carries the stringing, the cabling, the annotations, the floor plan and the single line diagram.
 
-You normally reach it from a quote, where ArcSolar opens it and links the design to the customer and site. It also runs in its own workspace — at **Roof Vision** in the app sidebar, and at `design.arcsolar.com.au` — where designs can exist on their own and be linked later.
-
-In its own workspace the editor is named **Roof Vision**, and the reports and sheets it prints are branded **Roof Vision**: every report footer reads `Roof Vision · <ISO date> · Preliminary design — verify on site`, and the single line diagram sheet masthead reads `ROOF VISION`.
+**Open:** the quote's **Roof Vision** area, then **Open Roof Vision** — or open a saved design from the **Roof Vision** page in the app sidebar.
 
 <Frame caption="The Roof Vision workspace with a design open. The navigation rail on the left names each tool, the canvas carries the placed array over Google satellite imagery, and the inspector on the right is showing the **Catalogue**. The downloads rail sits on the right of the canvas, and the project bar above it carries the address, **Open another project**, **Link customer / site** and **Local export**. Google's imagery attribution is retained at the bottom of the map.">
   <img src="/images/roof-design-editor-workspace.png" alt="Roof Vision with a solar array placed on satellite imagery. The left rail lists Select, Pan, Build, Erase, Measure, Edit, Strings, Cabling, Annot. and Floor plan; the inspector on the right lists the chosen panel under Panels on this roof; the bottom bar carries the panel size, row and column gaps, rotate, tilt and the Existing switch." />
 </Frame>
 
-## Work on the roof
+<Steps>
+<Step title="Open the design and check the address">
+Search the property address and wait for the roof image to load. If the imagery looks wrong, do not place panels on a guess.
+</Step>
+<Step title="Pick the panel">
+Choose **Build**, then pick the panel in the **Catalogue** — the **Solar panel** tab. Search by manufacturer or model, or use **Add custom panel**. **Build** stays unavailable until a panel is chosen.
+</Step>
+<Step title="Place the array">
+Click for one panel, or drag to lay a row. Hover beside a placed panel to reveal one adjoining footprint and add to it.
+</Step>
+<Step title="Set the array controls">
+Choose **Portrait** or **Landscape**, then set the **Row gap** and **Col gap** in millimetres. Use **Rotate** and **Tilt** for the angle and the projected roof footprint — tilt is your own number.
+</Step>
+<Step title="Mark what is already there">
+Select the existing panels and switch on **Existing**. They stay on the plan but are left out of the new capacity, production and quote equipment.
+</Step>
+<Step title="Move, remove and mark up">
+Use **Select** to move and rotate panels and **Erase** to remove them. Add measurements, site symbols, the floor plan and cable runs with the tools below.
+</Step>
+<Step title="String and draw the diagram">
+Choose **Strings** to wire the panels into the inverter's MPPT inputs, then **Open SLD** to draw the single line diagram and **Download PDF** to export it. See [Stringing](/roof-design/stringing) and [the single line diagram](/roof-design/sld).
+</Step>
+<Step title="Export what the job needs">
+Use the downloads for **Panel Design**, **Annotation Design**, the **site plan** and the **Battery Site Plan**. Roof Vision saves while you work, so there is no separate save step.
+</Step>
+</Steps>
 
-<Visibility for="humans">
-  **Open:** the quote's **Roof Vision** area, then **Open Roof Vision**. The quote-side workflow is on [Use Roof Vision](/quoting/roof-design). You can also open a design from the **Roof Vision** page in the app sidebar.
+## The tools
 
-  1. Search the property address and wait for the roof image to load.
-  2. Choose **Build**, then pick the panel in the **Catalogue** on the right — the **Solar panel** tab. Search by manufacturer or model, or use **Add custom panel**.
-  3. Place the array: click for one panel, or drag to lay a row. Hover beside a placed panel to reveal one adjoining footprint and add to it.
-  4. Set **Portrait** or **Landscape**, and the **Row gap** and **Col gap** in millimetres.
-  5. Use **Rotate** and **Tilt** for the exact angle and the projected roof footprint. Tilt is your own number.
-  6. Mark panels that are already on the roof with **Existing**.
-  7. Check the layout against the actual roof, then use the downloads to produce the reports you need.
+| Tool | What it does |
+| --- | --- |
+| **Select** | Select and move panels; drag a box, shift-click to toggle, drag a corner to rotate |
+| **Pan** | Move the map |
+| **Build** | Place panels |
+| **Erase** | Remove panels |
+| **Measure** / **Edit** | Draw and adjust ground-distance measurements |
+| **Strings** | Wire panels into strings and assign them to the inverter's MPPT inputs |
+| **Cabling** | Draw cable runs with bends |
+| **Annot.** | Place site-plan symbols such as the meter, inverter or battery location |
+| **Floor plan** | Draw rooms, doors, windows and equipment footprints |
 
-  **The tools**
+**Images and plans** calibrates a floor plan or photo you supply against a known distance and a north direction, and **Solar production** overlays Google Solar production and shade.
 
-  | Tool | What it does |
-  | --- | --- |
-  | **Select** | Select and move panels; drag a box, shift-click to toggle, drag a corner to rotate |
-  | **Pan** | Move the map |
-  | **Build** | Place panels |
-  | **Erase** | Remove panels |
-  | **Measure** / **Edit** | Draw and adjust ground-distance measurements |
-  | **Strings** | Wire panels into strings and assign them to the inverter's MPPT inputs — see [Stringing](/roof-design/stringing) |
-  | **Cabling** | Draw cable runs with bends |
-  | **Annot.** | Place site-plan symbols such as the meter, inverter or battery location |
-  | **Floor plan** | Draw rooms, doors, windows and equipment footprints |
+## Design downloads
 
-  **Imagery and production.** **Images and plans** calibrates a floor plan or photo you supply against a known distance and a north direction. **Solar production** overlays Google Solar production and shade.
+| Download | What it produces |
+| --- | --- |
+| **Download Panel Design** | The panel design report |
+| **Download Annotation Design** | The annotation report |
+| **Open SLD** | The single line diagram editor |
+| **Download site plan** | The site plan |
+| **Download Battery Site Plan** | The battery site plan, once the floor plan has the room and the equipment |
+| **Voltage rise report** | Coming Soon — the control is disabled |
 
-  If the address search or the imagery looks wrong, do not place panels on a guess. Imagery can be out of date, and a roof direction read from a photo is an estimate, not a survey.
+## Before you rely on the drawing
 
-  **Save and export.** Roof Vision saves while you work — there is no separate save step. The downloads on the right of the canvas produce **Download Panel Design**, **Download Annotation Design**, **Open SLD**, **Download site plan** and **Download Battery Site Plan**. **Voltage rise report** is shown as Coming Soon.
-</Visibility>
+Imagery can be out of date, and a roof direction read from a photo is an estimate, not a survey. Tilt is your own input, not a measurement. Check the layout against the actual roof, and treat every report as a preliminary design marked `Preliminary design — verify on site`.
 
 <Visibility for="agents">
   ### Where the editor runs
@@ -176,13 +198,6 @@ In its own workspace the editor is named **Roof Vision**, and the reports and sh
   | Vector site plan export | Footer `Roof Vision · Vector site plan · Site verification required` |
   | Single line diagram installation sheet | Masthead `ROOF VISION`, then the sheet title, `<phases> PHASE` and `A3 / VECTOR DRAWING` |
 </Visibility>
-
-## Related
-
-- [Use Roof Vision](/quoting/roof-design) — the quote-side workflow, the automatic attach and what the customer sees.
-- [Stringing](/roof-design/stringing) — the **String Editor**, MPPTs and the stringing drawing.
-- [The single line diagram](/roof-design/sld) — drawing the electrical schematic and exporting it.
-- [The Roof Vision integration contract](/reference/roof-design-contract) — launch, revisions, images, permissions and error codes.
 
 ## ArgonixIntelligence in this workflow
 

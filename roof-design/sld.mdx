@@ -29,25 +29,34 @@ keywords:
   - "rule pack"
 ---
 
-The single line diagram (SLD) is the electrical schematic for the site. It shows the supply, the main switchboard, the inverter and its MPPT inputs, the PV strings, the battery, the protection devices and the loads, and how they are wired together.
+The single line diagram (SLD) is the electrical schematic for the site: the supply, the main switchboard, the inverter and its MPPT inputs, the PV strings, the battery, the protection devices and the loads, and how they are wired together.
 
-It is drawn in the **SLD editor**, which opens from inside the Roof Vision editor. It is a different drawing from the roof layout: the roof design shows where the panels go, the SLD shows how the electricity runs.
+It is drawn in the **SLD editor**, which opens from inside Roof Vision. It is a different drawing from the roof layout — the roof design shows where the panels go, the SLD shows how the electricity runs — and ArcSolar stores it without drawing, validating or displaying the schematic.
 
-The SLD editor belongs to the same external application that provides Roof Vision. ArcSolar does not draw, validate or store an SLD — it holds the two proposal drawings and nothing else.
+**Open:** a design in Roof Vision, then choose **Open SLD** from the downloads rail. You can also use the standalone editor at `/sld`.
 
 ## Draw the diagram
 
 <Visibility for="humans">
-  **Open it:** in the Roof Vision editor, choose **Open SLD** from the downloads toolbar. You can also use the standalone editor at `/sld`.
+  Opening from a roof design loads the inverter you configured, its MPPT inputs and the strings you built. With no inverter configured, the canvas opens empty.
 
-  When you open it from a roof design, it loads with the inverter you configured, its MPPT inputs, and the strings you built. If you have not configured an inverter yet, the canvas opens empty.
-
-  1. Set the supply with the **Phases** buttons.
-  2. Drag components from **Components** onto the canvas — or click one, then click where it goes.
-  3. Drag between two terminals to run a cable.
-  4. Select a cable to edit its route, or to rename it.
-  5. Select a component to open **Object properties** — label it, set its model and rating, and open its **INTERNAL COMPONENTS**.
-  6. Choose **Download PDF** to export the drawing.
+  <Steps>
+  <Step title="Set the supply">
+  Use the **Phases** buttons for one, two or three phases.
+  </Step>
+  <Step title="Place the components">
+  Drag a component from **Components** onto the canvas, or click it and then click where it goes.
+  </Step>
+  <Step title="Run the cables">
+  Drag between two terminals to run a cable. Select a cable to edit its route or rename it.
+  </Step>
+  <Step title="Label the equipment">
+  Select a component to open **Object properties** — label it, set its model and rating, and open its **INTERNAL COMPONENTS**.
+  </Step>
+  <Step title="Export the drawing">
+  Choose **Download PDF**. From a roof design it produces a one-page A4 landscape project sheet with the **PV MODULES** and **INVERTERS** schedules.
+  </Step>
+  </Steps>
 
   <Frame caption="The **Components** palette on the right of the SLD editor, with the header above it holding **Undo SLD**, **Redo SLD**, the **Phases** buttons, **Download PDF** and the close control. The list scrolls, so the entries past Switch sit below the fold; the wider symbol catalogue is drawn inside assemblies such as a switchboard or the Smart Gateway.">
     <img src="/images/roof-design-sld-components-palette.png" alt="The SLD editor's Components palette listing Switchboard, Smart Gateway, Load, Protection Relay, C.O. Switch and Switch, with the Down arrow for more entries, beside the canvas showing the project sheet." />
@@ -63,7 +72,7 @@ The SLD editor belongs to the same external application that provides Roof Visio
   - DC and AC are kept apart. An AC terminal will not accept a DC cable, and a communications or metering terminal will not accept a power cable.
   - Every circuit you need has been drawn. The editor checks what you declared; it does not know what the site actually needs.
 
-  **Getting it out:** **Download PDF** is how the diagram leaves the editor. The PDF is a real vector drawing with selectable text, not a picture, and the download is named `single-line-diagram.pdf`. Opening from a roof design gives you a one-page A4 landscape project sheet with **PV MODULES** and **INVERTERS** schedules. Larger drawings are exported to A3, and a drawing too big for one A3 page is split across pages. The editor also exports its drawing as SVG through its embed interface.
+  The export is a real vector drawing with selectable text, named `single-line-diagram.pdf`. Larger drawings are exported to A3, and a drawing too big for one A3 page is split across pages.
 
   <Frame caption="The exported A4 landscape project sheet, opened from a roof design — the record of the drawing, in the file the editor names `single-line-diagram.pdf`. Its **PV MODULES** and **INVERTERS** schedules sit below the drawing, and the rail beside it carries the address, design ref, version and updated date. A default draft is not stamped on the exported sheet; a status chosen deliberately still travels.">
     <img src="/images/roof-design-sld-project-sheet.png" alt="A4 landscape project sheet for 7 Pollen Rd, Tarneit VIC 3029, with a PV MODULES schedule listing PM1-15, 15 × Canadian Solar CS6R-420T at 420 W, an INVERTERS schedule listing INV1 Fronius Primo 5.0-1 at 5,000VA with 2 MPPTs and a 240-800V MPPT input window, and a rotated rail reading Design Ref: SLD-001, Version: 27/09/2026, Updated: 27/09/2026, Total: 6.3kWp, New: 6.3kWp and Inverter Capacity: 5kVA." />
@@ -286,14 +295,6 @@ The SLD editor belongs to the same external application that provides Roof Visio
 
   The printed sheets are branded **ROOF VISION**, with the masthead `ROOF VISION` followed by the sheet title, `<phases> PHASE` and `A3 / VECTOR DRAWING`. The generic export title block reads `SINGLE LINE DIAGRAM` with `<drawingNumber> · REV <revision>`, and the project sheet's status is `draft` or `for-review`.
 </Visibility>
-
-## Related
-
-- [Design the roof and the panels](/roof-design/editor) — the roof layout the diagram is built from.
-- [Stringing](/roof-design/stringing) — the strings that seed the initial diagram.
-- [Use Roof Vision](/quoting/roof-design) — how the design reaches the quote.
-- [Roof Vision integration contract](/reference/roof-design-contract) — routes, assets, permissions and error codes.
-- [Field operations](/delivery/field-operations) — what the installer receives and does.
 
 ## ArgonixIntelligence in this workflow
 
