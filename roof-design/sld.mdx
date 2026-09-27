@@ -37,6 +37,19 @@ It is drawn in the **SLD editor**, which opens from inside Roof Vision. It is a 
 
 The diagram is built for you from the roof design: as soon as the design has an inverter, the editor seeds it with the panels, the strings you assigned and the inverter with its MPPT inputs, and it keeps it in line as the roof design changes. If a change affects wiring that already exists, the inverter is marked **SOURCE UPDATE PENDING** — select it and review its wiring. The finished diagram is filed against the customer automatically when it changes.
 
+## What the roof design does for you
+
+The diagram is not a copy you maintain by hand. Roof Vision rebuilds it from the roof design and merges the result into what you have drawn, so the symbols, counts and connections follow the roof.
+
+| Change on the roof design | What happens on the diagram |
+| --- | --- |
+| Panels added or removed in a string | The module group updates its count; any cable you routed along it is kept |
+| A new string assigned to an inverter | The string, its module group and its MPPT wiring are added |
+| A battery chosen in the catalogue | The battery is added with its connections |
+| Equipment removed from the design | Its symbols and circuits go with it — only an explicit archive is retained |
+| A string moved to a different MPPT, or the inverter replaced or re-rated | The drawing is **kept as it is**, and the inverter is marked **SOURCE UPDATE PENDING** for review |
+| Your own edits — moved objects, added protection, cables and labels | Preserved |
+
 ## Draw the diagram
 
 <Visibility for="humans">
@@ -277,6 +290,8 @@ The diagram is built for you from the roof design: as soon as the design has an 
   > SLD edits do not write back to the host.
 
   The roof-to-SLD direction is one-way and automatic: the editor reads the current roof design and never mutates it, and the rep does not have to create the diagram. Once the design has an inverter, `projectDiagram(project)` seeds the diagram and files it; as the roof design changes, `syncProjectEquipment(current, project)` brings the existing diagram into line, and a change that affects wiring already drawn marks the inverter as `SOURCE UPDATE PENDING` — the canvas hint reads `Source update pending. Select the marked inverter to review its wiring.` With no inverter configured there is nothing to seed, so the canvas opens empty. ArcSolar's own save path covers the roof document only; there is no ArcSolar endpoint that accepts an SLD, and the diagram reaches the customer as the filed PDF.
+
+  **How the merge behaves.** `syncProjectEquipment` rebuilds the diagram from the roof design and merges it into the open document. Existing components keep their position, rotation, lock state, label offset and caption position; string and MPPT parts take their labels from the roof design, which is how a panel-count change reaches the drawing. New components are added at their generated position, and connections are rebuilt: an existing edge keeps its routed waypoints unless its endpoints moved, so a panel-count change does not erase a cable someone routed or branched. Project-linked equipment that the design no longer has is removed with its circuits; an explicitly archived drawing is the only retained copy. A change to the inverter's kind, model or phase, a string moving to another MPPT or input, or a changed terminal set is **not** applied over the drawing: the old section is kept and marked `sourceConflict`, and `planSourceReconciliation` (the `Reconcile inverter source` edit) is the only path that applies it.
 
   **Filing is automatic.** The SLD publisher renders and files the diagram after the design saves, debounced at 850 ms and keyed to the canonical document, so an unchanged diagram is not re-published and a newer edit is never attached to an older PDF. It publishes nothing until the diagram has components.
 
