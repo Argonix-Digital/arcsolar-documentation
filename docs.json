@@ -78,8 +78,7 @@
           "integrations/greendeal",
           "integrations/formbay",
           "integrations/meta",
-          "integrations/servicem8",
-          "integrations/bridgeselect"
+          "integrations/servicem8"
         ]
       },
       {
@@ -229,6 +228,12 @@
   "search": {
     "prompt": "Search ArcSolar docs…"
   },
+  "redirects": [
+    {
+      "source": "/integrations/bridgeselect",
+      "destination": "/integrations/overview"
+    }
+  ],
   "integrations": {
     "telemetry": {
       "enabled": true
