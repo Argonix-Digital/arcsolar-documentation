@@ -31,7 +31,8 @@
         "group": "Start here",
         "boost": 3,
         "pages": [
-          "index"
+          "index",
+          "changelog"
         ]
       },
       {
