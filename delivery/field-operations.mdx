@@ -21,6 +21,10 @@ Use **Upcoming Work** for planned work orders, **Unassigned** to find work witho
 
 Find the existing installer/company before adding another. Review the contact details, active status and qualifications or eligibility information offered by the record. Keep the correct company linked to the job.
 
+For web Work access, invite a named **Technician** user in **Team & Access**, complete their email verification and link that person through the installer's **Technician user** control. Use **Save technician user**, then assign the installer to the correct field visit. The retailer's Work capability must be enabled. A company record alone does not create a login.
+
+Technicians can open their assigned visits through the authenticated [job portal](/delivery/job-portal). **Projects & Jobs → Installer portal** gives the office an **Open portal** action and a link to copy once a field visit is linked. The recipient still needs their own sign-in and current assignment.
+
 ## Remove an installer
 
 <Visibility for="humans">
@@ -53,13 +57,13 @@ If a job needs more, the **design editor** can export installer-oriented documen
 There is **no separate installer design screen** in ArcSolar. Installers do not draw, edit or approve a design here. If the site differs from what the design shows, record the difference against the job and raise the next action rather than editing the design.
 
 <Visibility for="agents">
-  The design surface is deliberately rep- and customer-facing only. `projects/` and `field-operations/` contain no roof design reference, and there is no installer route group for design. The installer-facing design artefacts inside ArcSolar are the issued estimate and the PDFs it produces, and nothing else. Do not describe an installer design view, an installer SLD, or design editing by an installer. Full detail: [Roof Vision](/quoting/roof-design) and the [Roof Vision contract](/reference/roof-design-contract).
+  ArcSolar now has authenticated Technician access to assigned Work visits. That access is separate from Roof Vision design editing. Use issued estimate/PDF artefacts and documents deliberately shared to the job for the handover. Do not describe an installer design editor, an independently certified SLD or design approval by a technician. Full detail: [Job portal](/delivery/job-portal), [Roof Vision](/quoting/roof-design) and the [Roof Vision contract](/reference/roof-design-contract).
 
   **Which renderer produces which PDF.** The **estimate PDF** (`src/lib/quotes/estimate-pdf.ts`) builds the two drawings as pdfmake content inside a section headed **PROPOSED ROOFTOP DESIGN**, captioned **PROPOSED PANEL LAYOUT** and **PANEL STRINGS & COMPONENT MARKINGS**. The **contract PDF** (`contract-pdf.ts`) and the **tenant-document PDF** (`tenant-document-pdf.ts`) append one A4 landscape page per image through `appendRoofDesignPages`. Do not attach `appendRoofDesignPages` to the estimate PDF.
 
   **What the design editor itself can hand to an installer.** The editor, not ArcSolar, produces the installer-oriented downloads: the A4-landscape **project sheet** single line diagram PDF from **Download PDF** in the SLD editor, plus the roof reports **Panel Design**, **Annotation Design**, **Site Plan** and **Battery Site Plan**, footer-stamped `Roof Vision · <date> · Preliminary design — verify on site`. The **Voltage rise report** exists in the editor's code, but the toolbar control is disabled and marked **Coming Soon**, so it is not reachable from the deployed editor; for the same reason a fixed **A3** installation sheet has no control in the shipped interface. These are preliminary design outputs, not certification. The voltage rise report's own text states `No reactance, thermal cable-capacity, protection or regulatory compliance assessment is included.` and `The entered comparison limit is a design input, not a certification of compliance.`
 
-  Both statements are true together: ArcSolar has no installer design surface, and the design editor can export installer-oriented documents. Neither product has an installer login, role or workspace.
+  Both statements are true together: the Work portal provides technician sign-in for assigned visits, and the design editor can export installer-oriented documents. Technician login does not grant access to draw, edit or approve a Roof Vision design.
 </Visibility>
 
 ## During and after the visit

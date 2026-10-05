@@ -15,7 +15,62 @@ Highlights tagged **feature** or **major** appear in **New in ArcSolar** when yo
 
 Release notes begin on 1 October 2026.
 
+<Update label="Version 1.0.17" tags={["major","New features"]} description="5 October 2026" rss={{ title:"Calendar, rep availability and booking safeguards",description:"Plan appointments and field work in one calendar, with fullscreen views, team and role filters, and colors by event type or team member. Reps set onsite and phone/video hours, confirm them every 28 days and import subscribed busy calendars. Managers control service areas, booking eligibility and buffers. Customer and rep SMS/email confirmations and reminders follow workspace activation; reviewed scheduling tools are ready for the next integration phase." }}>
+  ## Calendar, rep availability and booking safeguards
 
+  Calendar and scheduling now share the rules that staff, mobile clients and future scheduling integrations use when finding and confirming appointment times.
+
+  ### A calendar for appointments and delivery work
+
+  - Choose month, week, day or list views, search events and open details alongside the timetable.
+  - Use **Full screen calendar** to remove the surrounding page scroll. Filter event types, team members and roles, and color events by type or responsible person.
+  - Keep customer appointments, meetings, busy blocks, installations, field operations, milestones and task deadlines connected to their records. Task deadlines do not reserve time.
+  - Subscribe to ArcSolar in Apple, Google or Outlook, or download a one-time calendar file.
+
+  ### Availability that stays current
+
+  Sales reps confirm a timezone and separate onsite and phone/video weekly hours before initial CRM access. Availability can be edited in **Calendar → My availability**, **Profile Settings → Availability** and the availability page.
+
+  Confirm the schedule every **28 days**. An overdue review pauses automatic bookings while keeping CRM access and existing appointments. A deliberately confirmed empty schedule means the rep is unavailable for bookings. Use busy blocks for holidays and one-off commitments.
+
+  Incoming HTTPS/webcal subscriptions import private, read-only **External busy** time. Failed refreshes retain the last successful snapshot; an unhealthy required feed pauses automatic bookings. Subscriptions do not write changes back to external calendars.
+
+  ### Buffers, travel and rep assignment
+
+  New phone/video policies use **45-minute consultations and 10-minute buffers**; in-person policies use **60-minute consultations and 30-minute buffers**. Existing appointments and saved policies keep their settings. The larger adjacent requirement applies to the shared gap rather than adding the same buffer twice.
+
+  Managers approve channel eligibility, service-area postcodes and minimum buffers. Reps can adjust their own defaults within those limits. Known travel locations can require a longer gap; staff exceptions record a reason and cannot bypass busy time, holidays or manager minimums.
+
+  Assigned customers retain their rep. Unassigned leads can be offered to approved, available reps covering the postcode, with nearby appointments and verified travel considered. Customer assignment happens with the successful booking. Offers reserve no time; booking rechecks current records before saving.
+
+  ### Confirmations and reminders
+
+  Once a manager enables **Appointment messages**, customer-associated consultations send eligible customer and rep SMS/email confirmations plus reminders **24 hours and 30 minutes** before the appointment. Rescheduling replaces stale reminders; cancellation stops remaining reminders and notifies both parties.
+
+  Messages include the actual date, timezone, channel and duration. Customers are asked for their electricity bill; phone/video consultations also request a switchboard photo and include the secure site-information form. Rep messages include preparation status and an authenticated CRM link. SMS uses the rep's authorized work line; rep alerts go to their personal notification mobile. Consent, preferences, contacts and sender readiness still apply. Delivery failures and uncertain outcomes remain visible.
+
+  ### Reviewed scheduling tools
+
+  **Booking settings → Scheduling tools** lets authorized staff prepare a booking, reschedule or cancellation, review the proposal and explicitly confirm the exact change. Mobile and future AI integrations use the same permission, availability and retry checks. This foundation release does not activate the AI voice appointment setter.
+
+  Read [Calendar and scheduling](/delivery/calendar) and [Sales availability setup](/setup/sales-availability).
+</Update>
+
+<Update label="Version 1.0.16" tags={["major","New features"]} description="5 October 2026" rss={{ title:"Job portal and technician sign-in",description:"Give invited technicians a focused view of their assigned field work. Open the job portal from Projects & Jobs, review site and job details, record visit progress, capture notes and photos, complete forms and share files with the office. Access requires the technician's own sign-in and current assignment; sending a portal link does not grant access. Availability depends on the retailer's enabled Work capability." }}>
+  ## Job portal and technician sign-in
+
+  The Work portal connects named technician users to their assigned field visits, while keeping office coordination in **Projects & Jobs** and **Field Operations**.
+
+  - Invite the person as a **Technician** in **Team & Access**, then link that user to the installer record. An installer-company record alone does not create login access.
+  - Technicians use the dedicated email sign-in and their own verified account to open assigned work. Staff continue to use the normal workspace login.
+  - Use **Open portal** on a linked job to review its office view, or **Copy installer job portal link** to share the job location. The recipient must sign in and still hold the current assignment.
+  - Review site and job information, record visit progress and capture notes, photos, files and form submissions through the available controls. The office can review the same visit history and evidence.
+  - Complete or record a follow-up through the visit workflow. Keep a site visit's outcome separate from project close-out, compliance, rebates and financial obligations.
+
+  Access depends on the retailer's enabled Work capability, the person's active membership and named assignment. Technicians do not gain access to the retailer's wider customer list, quoting or financial workspace. Reassignment or revoked access prevents further use of the old job link. Native mobile access has its own rollout; the web portal is not a claim of offline or device acceptance.
+
+  Read [Job portal and technician access](/delivery/job-portal) and [Field operations](/delivery/field-operations).
+</Update>
 
 <Update label="Version 1.0.15" description="1 October 2026 · 17:09 AEST" tags={["Improvements"]} rss={{ title: "A clearer changelog", description: "Release notes now use friendly version numbers and shorter descriptions of what's new." }}>
   ## A clearer changelog
