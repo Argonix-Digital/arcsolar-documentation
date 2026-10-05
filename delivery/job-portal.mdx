@@ -1,0 +1,88 @@
+---
+title: "Use the job portal and technician sign-in"
+sidebarTitle: "Job portal and technicians"
+description: "Connect named technicians to assigned field visits and keep job evidence linked to the office."
+icon: "helmet-safety"
+keywords: ["job portal", "technician login", "assigned jobs", "site evidence", "field visit"]
+---
+
+The Work portal gives invited technicians a focused view of their assigned field visits. The office can open the linked portal from **Projects & Jobs** to review the same work and its evidence.
+
+<Info>
+Web Work is available to retailers with the Work capability enabled. Access also requires an active account and a current assignment. Native mobile Work has a separate rollout; these instructions describe the web portal.
+</Info>
+
+## Prepare technician access
+
+An installer or installer-company record does not create a user account. Set up both the person and their assignment.
+
+1. In [**Team & Access**](https://app.arcsolar.com.au/dashboard/team-access), use **Invite team member** and choose **Technician** for the person who will carry out the work.
+2. Use their own email address. Ask them to complete the invitation and verify their email.
+3. Open the installer in [**Installers**](https://app.arcsolar.com.au/dashboard/installers), select the matching **Technician user**, then **Save technician user**.
+4. Assign the installer to the correct field visit. Check its linked customer, project and job in [**Field Operations**](https://app.arcsolar.com.au/dashboard/field-operations).
+5. Ask the technician to sign in and confirm that the intended job appears.
+
+If no technician is available to select, check the invitation, active membership and role. Do not reuse another person's login or create a duplicate organisation.
+
+## Sign in as a technician
+
+Open [**Technician sign in**](https://app.arcsolar.com.au/auth/v2/work-sign-in). Enter the email used for your team invitation, then open the sign-in link sent to that email. If you started from a job link, sign-in returns you to that work when access is valid.
+
+The email entry does not create a new account or grant a role. An expired or failed sign-in link requires a new link; an unassigned job requires the office to check your current assignment.
+
+Office staff use **Staff sign in** and their normal workspace account. A technician account does not open the retailer's wider customer register, quote builder or financial workspace.
+
+## Open or share a job portal
+
+In [**Projects & Jobs**](https://app.arcsolar.com.au/dashboard/projects), open the job's **Installer portal** controls. **Open portal** opens the office view of the linked field visit. **Copy link** copies the installer job portal URL for the recipient.
+
+A field visit must be linked before a portal location is available. The link points to `/work/<work-order-id>`; it is not a public share token. The recipient must use their own account and still hold the current assignment. Reassignment, archived membership or revoked access prevents further access through an old link.
+
+Opening the office view does not impersonate the technician. Use staff scheduling and assignment controls for decisions that require office authority.
+
+## Review the visit before starting
+
+On the Work page, open your assigned job. Review its scheduled date, time, timezone, site address and responsible people. The available sections depend on the job and your access.
+
+| Section | What to review |
+| --- | --- |
+| Overview | The work brief and current visit status |
+| Site | Address and the shared site details needed for the visit |
+| Site activity | Related visits and site work |
+| System & BOM | The shared system and equipment information |
+| Rebate tracking | Shared rebate-related progress, where available |
+| Project files | Documents the office has made available to the job |
+| Activity and Diary | Job history, visit notes and updates |
+| Forms | Available job forms, saved drafts and submissions |
+| Photos & files | Visit evidence and supporting uploads |
+
+If a section is unavailable, do not assume that its contents are empty or that you should have wider access. Ask the office to check the linked records and sharing.
+
+## Record work and evidence
+
+Use the available visit controls to record progress and notes against the correct field visit. Upload photos or files with the required evidence type, and add a note where useful. The upload flow accepts up to **20 files per batch**, with a **20 MiB limit per file**; supported formats and the on-screen validation still apply.
+
+Check that uploads have completed and appear on the job before relying on them. A queued or failed upload is not saved evidence. Use **Forms** to save a draft while collecting information, then submit only after reviewing the required answers.
+
+The office reviews evidence, forms and visit history through the linked records. Sharing or annotating a file does not make every project document visible to every technician. Follow the access and file controls offered for that job.
+
+## Complete a visit or arrange follow-up
+
+Use **Mark field visit as complete** when the current visit's work is complete, then verify the resulting status and history. Use **Schedule another visit** for a follow-up when that action is available to your role, and review the proposed date, timezone and assignment before saving.
+
+Completing a field visit is separate from closing the entire project. Missing compliance, inspections, grid or metering work, rebates, customer handover and financial obligations still need their own review. If work cannot proceed, record the reason and arrange an owned next action instead of marking it complete.
+
+## Resolve access or connection problems
+
+| What you see | Next action |
+| --- | --- |
+| No assigned work | Ask the office to check your named installer-user link and field-visit assignment |
+| Work unavailable or access denied | Check the retailer's Work capability and your active membership; do not reuse another account |
+| Sign-in could not be completed | Request a fresh link or ask the office to check your invitation |
+| A save, form or upload cannot be verified | Follow the retry or refresh guidance and check the saved record before repeating the action |
+
+This release does not promise offline operation or establish that a provider received an ArcSolar update. ServiceM8 and other connected systems keep their separate setup and confirmation requirements.
+
+## ArgonixIntelligence in this workflow
+
+Use shared site and job context to prepare the handover. Intelligence cannot create technician access, replace accreditation or safety checks, invent evidence or certify compliant completion. The assigned people and canonical visit records remain the authority for the work.
