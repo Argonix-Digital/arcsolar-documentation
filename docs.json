@@ -61,6 +61,7 @@
           "setup/onboarding",
           "setup/payto",
           "setup/team",
+          "setup/sales-availability",
           "setup/checklist",
           "setup/retailer-settings",
           "setup/notifications",
@@ -121,6 +122,7 @@
         "group": "Deliver and get paid",
         "pages": [
           "delivery/projects",
+          "delivery/job-portal",
           "delivery/calendar",
           "delivery/field-operations",
           "delivery/catalogue",
