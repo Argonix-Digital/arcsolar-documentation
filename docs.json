@@ -98,6 +98,7 @@
         "group": "Assess and quote",
         "pages": [
           "quoting/walkthrough",
+          "quoting/compare-estimates",
           "quoting/site-information",
           "quoting/bill-analysis",
           "quoting/savings",
