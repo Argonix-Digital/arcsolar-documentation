@@ -25,8 +25,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible { outline:2px solid v
 .docs-home h2 { font-size:20px; margin:48px 0 22px; font-weight:500; letter-spacing:-.02em; }
 .docs-home-intro { max-width:650px; color:var(--docs-muted); font-size:18px; line-height:1.65; }
 .docs-topic-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-.docs-topic { display:flex; flex-direction:column; color:var(--docs-ink)!important; text-decoration:none!important; background:var(--docs-surface); border:1px solid var(--docs-line)!important; box-shadow:none!important; font-weight:400; border-radius:8px; overflow:hidden; transition:background .15s,box-shadow .15s; }
-.docs-topic:hover { background:var(--docs-stage); border-color:var(--docs-muted)!important; }
+.docs-topic { --docs-card-border:var(--docs-line); display:flex; flex-direction:column; color:var(--docs-ink)!important; text-decoration:none!important; background:var(--docs-surface); border:0!important; padding:1px; box-shadow:inset 0 0 0 1px var(--docs-card-border)!important; font-weight:400; border-radius:8px; overflow:hidden; transition:background .15s,box-shadow .15s; }
+.docs-topic:hover { --docs-card-border:var(--docs-muted); background:var(--docs-stage); }
 .docs-topic-art { min-height:142px; display:flex; align-items:flex-start; padding:24px; color:var(--docs-ink); }
 .docs-topic-copy { border-top:1px solid var(--docs-line); padding:20px 24px 24px; flex:1; }
 .docs-topic-copy h3 { margin:0!important; font-size:15px!important; font-weight:510; line-height:24px; letter-spacing:-.011em; }
@@ -127,8 +127,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible { outline:2px solid v
 .docs-topic { height:280px; }
 .docs-topic-art { flex:1; min-height:0; padding:24px 20px; }
 .docs-topic-copy { flex:none; padding:20px; min-height:132px; }
-.dark .docs-topic { background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.05)!important; }
-.dark .docs-topic:hover { background:rgba(255,255,255,.075); border-color:rgba(255,255,255,.09)!important; }
+.dark .docs-topic { --docs-card-border:rgba(255,255,255,.05); background:rgba(255,255,255,.05); }
+.dark .docs-topic:hover { --docs-card-border:rgba(255,255,255,.09); background:rgba(255,255,255,.075); }
 .dark .docs-topic-copy { border-color:rgba(255,255,255,.05); }
 .docs-home h2 { font-size:20px; line-height:26.6px; font-weight:590; letter-spacing:-.012em; }
 .docs-home-links a { font-weight:400; }
