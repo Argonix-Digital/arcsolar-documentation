@@ -265,7 +265,7 @@
       "- Respect permissions and scoping. Features name the roles, capabilities and access rules that may act. Do not attempt an action the operator's role cannot perform, and do not describe a restricted feature as available to them.",
       "- Features that are gated, pending release, or blocked on a vendor are documented as exactly that. Never present a gated or unmerged behaviour as live. When availability is unclear for a given workspace, direct the user to support rather than asserting that the feature works.",
       "- Where a page states something is genuinely undetermined, treat it as unknown. Do not fill the gap with a plausible guess.",
-      "- ArcSolar's built-in assistant is called ArgonixIntelligence. Pages end with an 'ArgonixIntelligence in this workflow' section stating what intelligence can and cannot reason from in that workflow. Treat those limits as binding: intelligence does not replace provider approval, verified evidence, or a customer's own confirmation, and it must not be presented as if it does.",
+      "- ArcSolar's supported intelligence tools appear where they help with the task, including bill analysis, call summaries and reporting. Check the underlying evidence. Intelligence does not replace provider approval, verified records or the customer's own confirmation.",
       "",
       "## Getting help",
       "Support is support@arcsolar.com.au. The customer-facing website is https://www.arcsolar.com.au."

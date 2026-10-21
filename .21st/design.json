@@ -23,14 +23,16 @@
     "colors": {
       "canvas": "#08090A",
       "lightCanvas": "#FFFFFF",
-      "ink": "#F3F4F5",
-      "muted": "#96999F",
-      "line": "#26282C"
+      "ink": "#F7F8F8",
+      "muted": "#8A8F98",
+      "line": "#23252A"
     },
     "typography": {
       "family": "Inter",
-      "body": "16px/1.75",
-      "heading": "42px/1.16, weight 500"
+      "body": "15px/24px, weight 400",
+      "heading": "32px/36px, weight 590",
+      "indexHeading": "40px/44px, weight 590",
+      "cardTitle": "15px/24px, weight 510"
     },
     "density": "Quiet navigation; focused reading column; large product illustrations"
   },
@@ -57,7 +59,8 @@
   "decisions": [
     "Linear docs information hierarchy and restraint; Interfere typography and neutral surface roles",
     "Outcome-led start page and a short start guide before deep administration",
-    "Reuse native Mintlify navigation, search, TOC and contextual actions; no 21st components needed"
+    "Reuse native Mintlify navigation, search, TOC and contextual actions; no 21st components needed",
+    "Match live Linear documentation measurements recorded in review/linear-design-measurements.md"
   ],
   "evidence": [
     {
