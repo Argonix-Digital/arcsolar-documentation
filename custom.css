@@ -5,6 +5,10 @@ html { scroll-behavior:smooth; scroll-padding-top:100px; }
 body { font-feature-settings:'cv01' 1,'ss03' 1; -webkit-font-smoothing:antialiased; background:var(--docs-canvas); }
 #navbar, #sidebar, #sidebar-content { background:var(--docs-canvas); }
 #navbar { border-color:var(--docs-line); }
+#topbar-cta-button > a { padding:8px 16px; border-radius:999px; }
+#topbar-cta-button > a > span { background:#e5e5e6; border-radius:inherit; opacity:1; }
+#topbar-cta-button > a > div, #topbar-cta-button > a > div > span { color:#08090a; }
+#topbar-cta-button svg { display:none; }
 #sidebar { border-right:1px solid var(--docs-line); }
 #sidebar a { font-size:14px; font-weight:400; }
 #sidebar a[aria-current='page'] { color:var(--docs-ink); font-weight:500; }
