@@ -19,7 +19,7 @@ Open **Product Catalogue** and select the relevant selling brand's price book. A
 
 ## Prepare a price
 
-Open the product, enter the brand price and check region and date requirements. Save the draft, then publish using the offered controls. A saved draft is not a current selling price.
+Open the product, enter or change its fixed brand price, then save. **Set price now** is selected by default when publishing is available. Choose **Schedule for a date** to apply the price later. If publishing is unavailable, the confirmation explains why and offers **Save draft price**. A saved draft is not a current selling price.
 
 ## Use the status labels
 
@@ -48,13 +48,17 @@ The row has these columns:
 | **Pricing method** | **Fixed** or **Upon request** (shown as **Included in system pricing** for a panel that is priced as part of a system) |
 | **Sell price** | The amount, in AUD, with room for two decimals |
 | **Price book** | Which book receives the price |
-| **Effective from** | The date the price starts applying |
 | **History** | Past prices, once there are any |
 
-Under the row, two checkboxes:
+Set **Sell prices include GST** to match the amount you entered. **Fixed** is the default pricing method.
 
-- **Sell prices include GST**
-- **Publish price immediately** — *"Requires an active product and a currently effective Price Book."*
+After entering or changing a fixed sell price and saving, the confirmation makes timing explicit:
+
+- **Set price now** is selected by default when the product and price book allow publishing. Confirm **Set price now** to apply it to new quotes from today.
+- **Schedule for a date** lets you choose a future **Start date** covered by the price book, then confirm **Schedule price**.
+- If publishing is unavailable, **Save a draft price?** explains the reason and requires **Save draft price**.
+
+Scheduling applies to the base price. Other product changes, including state prices, save now. Sent quotes keep their original prices. When editing, leave the amount blank to keep the existing price.
 
 <Warning>
   **One price per save.** The **Add a selling brand** action is not an action at all: the row closes with the note *"One price per save. Add another selling brand's price from this product's own editor afterwards."* Save the first brand's price, reopen the product, then set the next brand's.
@@ -143,7 +147,7 @@ The order matters. A published price that already ended outranks a draft, and a 
 | **Future** | Ignore it until the date arrives | Nothing — it is waiting its turn |
 | **Expired** | Ignore it | Enter a new price |
 
-**Publish price immediately** is only available *"with an active product and a currently effective Price Book"*, so a draft product or a book that is not yet in effect cannot publish a price. A copied price always lands as a draft — see below.
+**Set price now** requires an active product and a currently effective Price Book. Scheduling also requires a future date within that book’s effective period. When publishing is unavailable, the confirmation explicitly offers **Save draft price**. A copied price always lands as a draft — see below.
 
 </Accordion>
 

@@ -10,6 +10,12 @@ import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="comms" />
 
+<Accordion title="Current phone workspace">
+  <Frame caption="The Phone tab keeps outbound caller ID inside the keypad. Displayed calls and contact details are fictional.">
+    <img src="/images/v2/comms-keypad-final.jpg" alt="ArcSolar Comms with fictional call history, the keypad and its outbound caller ID." />
+  </Frame>
+</Accordion>
+
 Open [**Comms**](https://app.arcsolar.com.au/comms?tab=messages) or the call and SMS actions on a customer record.
 
 ## Make a call
@@ -17,7 +23,7 @@ Open [**Comms**](https://app.arcsolar.com.au/comms?tab=messages) or the call and
 Your account, assigned line and communications billing must be active. Allow microphone access and check your audio devices.
 
 1. Open **Comms → Phone** and confirm the customer and number.
-2. Check **Outbound caller ID**, then select **Call from assigned line**.
+2. Check **Outbound caller ID** inside **Keypad**. If your role offers several active lines, choose the intended line from its dropdown, then select **Call from assigned line**.
 3. Wait for **Connected**. Tell the customer the call is being recorded.
 4. Use **Mute**, **Touch tones** and **Hang up** as needed.
 5. Review the recorded outcome and the next task.
@@ -30,7 +36,7 @@ The floating call bar keeps the contact and duration visible. Use **Back to app*
 
 ## Send a message
 
-Open the customer's conversation, read the latest activity and confirm the destination and sender. Write the message, send it and check the status. **Queued**, **Sent** and **Delivered** mean different things.
+Open the customer's conversation, read the latest activity and confirm the destination and sender. Write the message, send it and check the status. **Queued**, **Sent** and **Delivered** mean different things. For a new conversation, use **From** to choose a line when that choice is available. Replies and retries keep the conversation’s original number.
 
 Respect STOP, do-not-contact and channel consent. SMS length and characters can create multiple billable segments; your agreed rates apply.
 
@@ -43,7 +49,7 @@ Check PayTo, member setup and the assigned line. Use the offered **Connect phone
 <Visibility for="agents">
 - The keypad lives in the **Phone** tab of Comms (`/comms?tab=phone`, and `/comms?tab=phone&pane=keypad` opens the keypad pane directly). The numbered input holds at most 24 characters and its accessible label is "Number to call"; **Delete last character** is a tooltip and an aria-label, and it is disabled while a call is active and the field is empty.
 - **Multiple contact numbers.** When a call was launched for a customer with more than one verified number, a **Choose the number to call** radio group appears. Each option shows the contact name, channel label, number and a **Primary** marker. A call cannot start until one is selected.
-- **Outbound caller ID.** The header item shows the assigned line, or **No number assigned**. Its helper text is "This assigned business line is the number the customer will see." when active, and "An administrator must finish provisioning this line before live calls can start." when not.
+- **Outbound caller ID.** The keypad shows the assigned line, or **No number assigned**. Eligible managers choose an authorised active line from the dropdown here; a current call, draft or bulk operation locks line selection. Its active helper text is "This business line is the number the customer will see."; an unprovisioned line says "An administrator must finish provisioning this line before live calls can start."
 - **Call button.** Live label **Call from assigned line** (compact label **Call**). It stays disabled until at least 8 digits are entered and the phone is ready.
 - **Phase labels.** `Authorising`, `Dialling`, `Ringing`, `Incoming call`, `Connected`, `Ending`, `Ended`, `Failed`. Incoming calls show **Decline** and **Answer**; a connected call shows **Mute** / **Unmute** and **Hang up** / **Ending…**.
 - **Touch tones.** While a call is active the input is read-only and relabelled **Touch tones** with the placeholder "Use the keypad for touch tones". Keypad presses send DTMF only once the call is **Connected**; the tone string is capped at 24 digits. **Delete last character** removes the last tone, not the dialled number.
