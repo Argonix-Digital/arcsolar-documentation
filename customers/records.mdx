@@ -2,54 +2,48 @@
 icon: "address-book"
 sidebarTitle: "Customer records"
 keywords: ["contacts","customer records","activity","documents","delete","bulk actions"]
-title: "Manage customer records"
-description: "Find the complete history and keep contact, site and ownership details current."
+title: "Customer records"
+description: "Keep the customer, their history and the next step together."
 ---
-**Open:** [**Customers → Customer Records**](https://app.arcsolar.com.au/dashboard/customers). Search before adding a customer to avoid duplicates.
 
-<Frame caption="Fictional customer records in the updated register.">
-  <img src="/images/v2/customer-records.png" alt="ArcSolar v2 Customer Records with compact rows, search and display controls." />
-</Frame>
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
+<ProductPreview type="customers" />
 
-## Create or update a record
+Open [**Customers → Customer Records**](https://app.arcsolar.com.au/dashboard/customers). Search by name, phone, email or reference before adding a new record.
 
-1. Search by name, phone, email or reference.
-2. Open the existing record, or use the new-customer action.
-3. Enter accurate contact and installation-address details.
-4. Select the lead source and appropriate owner.
-5. Record the communication permissions supported by the form.
-6. Save, then reopen the record to confirm the details and assignment.
+## Create or update a customer
 
-An archived custom lead source can remain on historical records. Use a current source for new work. Do not create spelling variations of the same source.
+1. Open the existing record or choose the new-customer action.
+2. Confirm contact details and installation address.
+3. Choose the lead source and assigned owner. Record communication permissions.
+4. Save, then reopen the record to check the details.
 
-## Find the right information
+Use a current lead source for new work. Historical records can retain an archived source.
 
-The expanded customer view separates these areas:
+## Find the context
 
-| Tab | Use it for |
+| Area | What you will find |
 | --- | --- |
-| Overview | Customer context, ownership and current work |
-| Activity & audit | Calls, messages, notes, changes and upcoming automatic follow-ups |
-| Site details | Dwelling, roof, phase, access and information supplied |
-| Projects & jobs | Delivery work linked to the customer |
-| Finance | Deposit, balance, payment and finance-application context |
-| Documents | Available customer and project documents |
-| Internal | Staff-only context |
+| Overview | Ownership and current work |
+| Activity & audit | Conversations, notes, changes and upcoming follow-ups |
+| Site details | Property information and customer uploads |
+| Projects & jobs | Linked delivery work |
+| Finance | Payments, balances and finance context |
+| Documents | Customer and project files |
+| Internal | Staff-only information |
 
-Some compact views show only **Overview** and **Activity**. Open the full customer view for more detail. A customer name may also open a quick peek with contextual actions.
+Compact views may show only **Overview** and **Activity**. Open the full customer view for more detail.
 
-## Keep ownership explicit
+## Keep the next step clear
 
-The lead owner and opportunity owner can represent different responsibilities. Check the owner for the actual work before reassigning. A tagged colleague is not automatically the owner.
+Check the owner of the actual lead or opportunity before reassigning work. Tagging a colleague does not transfer ownership. Use a [task](/customers/tasks) for anything that must happen next.
 
-## Delete customer records
+<Accordion title={"Delete a customer record"}>
+Select the record in the customer list and choose **Delete**. Type **delete**, then select **Confirm Delete**. This removes the record from active customer workflows and cannot be undone in the interface. Closing completed work is a different action.
+</Accordion>
 
-<Visibility for="humans">
-To remove records from active work, select them in the customer list and choose **Delete**.
-
-You are asked to confirm: type **delete** exactly, then select **Confirm Delete**. The records are then removed from the active workspace and from linked customer workflows. Please be sure — inside the interface this cannot be undone, and it is not the same as completing or closing a customer's work.
-</Visibility>
+<NextGuide href="/customers/calls-sms" title="Calls and SMS" />
 
 <Visibility for="agents">
 - Bulk removal is a two-step confirmation. The dialog title is **Permanently delete N customer record(s)?** and the body states the records "will be permanently removed from the active workspace and linked customer workflows. This is irreversible in the interface."
@@ -57,7 +51,3 @@ You are asked to confirm: type **delete** exactly, then select **Confirm Delete*
 - Success toasts are "Customer deleted" / "Customers deleted" — "N customer record(s) have been removed from active workflows."
 - This is an archive-style removal from active workflows, not a hard delete of history; describe it as removal from active work, not as erasing the customer's file. Do not present it as reversible from the interface.
 </Visibility>
-
-## ArgonixIntelligence in this workflow
-
-Use available summaries to understand history quickly, then inspect the relevant message, call or quote. Keep verified facts in the record and actionable work in tasks.

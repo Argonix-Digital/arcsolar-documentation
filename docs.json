@@ -1,183 +1,189 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "ArcSolar Documentation | The Solar Retailer Operating System",
+  "name": "ArcSolar Docs",
   "colors": {
-    "primary": "#3D88F2",
-    "light": "#95C1FF",
-    "dark": "#E05E39"
+    "primary": "#626A78",
+    "light": "#626A78",
+    "dark": "#A5ACBA"
   },
   "favicon": {
     "light": "/images/ArgonixConnectIcon.svg",
     "dark": "/images/arcsolar-icon.svg"
   },
   "navigation": {
+    "groups": [
+      {
+        "group": "Documentation",
+        "pages": [
+          {
+            "group": "Getting started",
+            "expanded": true,
+            "pages": [
+              "index",
+              "start-guide",
+              "quickstart",
+              "reference/workspace"
+            ]
+          },
+          {
+            "group": "Customers and conversations",
+            "expanded": false,
+            "pages": [
+              "customers/records",
+              "customers/pipeline",
+              "customers/calls-sms",
+              "customers/call-intelligence",
+              "customers/tasks",
+              "customers/daily-routine"
+            ]
+          },
+          {
+            "group": "Quoting",
+            "expanded": false,
+            "pages": [
+              "quoting/walkthrough",
+              "quoting/site-information",
+              "quoting/bill-analysis",
+              "quoting/savings",
+              "quoting/incentives-stcs",
+              "quoting/payment-options",
+              "quoting/customer-view",
+              "quoting/compare-estimates",
+              "quoting/revisions",
+              "quoting/follow-ups",
+              "quoting/energy-data"
+            ]
+          },
+          {
+            "group": "Roof Vision",
+            "expanded": false,
+            "pages": [
+              "quoting/roof-design",
+              "roof-design/editor",
+              "roof-design/stringing",
+              "roof-design/sld"
+            ]
+          },
+          {
+            "group": "Projects and delivery",
+            "expanded": false,
+            "pages": [
+              "delivery/projects",
+              "delivery/calendar",
+              "delivery/field-operations",
+              "delivery/job-portal",
+              "delivery/catalogue",
+              "delivery/inventory",
+              "delivery/rebates",
+              "delivery/finance"
+            ]
+          },
+          {
+            "group": "Reporting",
+            "expanded": false,
+            "pages": [
+              "reporting/rep-overview",
+              "reporting/sales",
+              "reporting/overview",
+              "reporting/sales-pipeline",
+              "reporting/accountability",
+              "reporting/operations-platform"
+            ]
+          },
+          {
+            "group": "Workspace setup",
+            "expanded": false,
+            "pages": [
+              "setup/onboarding",
+              "setup/checklist",
+              "setup/team",
+              "setup/sales-availability",
+              "setup/payto",
+              "setup/settings-screens",
+              "setup/retailer-settings",
+              "setup/selling-brands",
+              "setup/branding",
+              "setup/price-books",
+              "setup/selling-contract",
+              "setup/notifications"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "expanded": false,
+            "pages": [
+              "integrations/overview",
+              "integrations/stripe",
+              "integrations/meta",
+              "integrations/greendeal",
+              "integrations/formbay",
+              "integrations/servicem8"
+            ]
+          },
+          {
+            "group": "Sales onboarding",
+            "expanded": false,
+            "pages": [
+              "sales-onboarding",
+              "sales-onboarding/workspace",
+              "sales-onboarding/customer",
+              "sales-onboarding/conversation",
+              "sales-onboarding/assessment",
+              "sales-onboarding/quote",
+              "sales-onboarding/follow-through",
+              "sales-onboarding/ready"
+            ]
+          },
+          {
+            "group": "Help and reference",
+            "expanded": false,
+            "pages": [
+              "reference/support",
+              "reference/availability",
+              "reference/glossary",
+              "reference/selling-brands-faq",
+              "reference/roof-design-contract",
+              "reference/whats-new",
+              "changelog"
+            ]
+          }
+        ]
+      }
+    ],
     "global": {
       "anchors": [
         {
-          "anchor": "ArcSolar",
-          "href": "https://arcsolar.com.au",
-          "icon": "book-open-cover"
+          "anchor": "Changelog",
+          "href": "/changelog",
+          "icon": "clock-rotate-left"
         },
         {
           "anchor": "Get support",
           "href": "mailto:support@arcsolar.com.au",
-          "icon": "newspaper"
+          "icon": "comment"
         }
       ]
-    },
-    "groups": [
-      {
-        "group": "Start here",
-        "boost": 3,
-        "pages": [
-          "index",
-          "changelog"
-        ]
-      },
-      {
-        "group": "Sales rep onboarding",
-        "pages": [
-          "sales-onboarding",
-          "sales-onboarding/workspace",
-          "sales-onboarding/customer",
-          "sales-onboarding/conversation",
-          "sales-onboarding/assessment",
-          "sales-onboarding/quote",
-          "sales-onboarding/follow-through",
-          "sales-onboarding/ready"
-        ]
-      },
-      {
-        "group": "The customer journey",
-        "boost": 3,
-        "pages": [
-          "quickstart"
-        ]
-      },
-      {
-        "group": "Set up your business",
-        "pages": [
-          "setup/onboarding",
-          "setup/payto",
-          "setup/team",
-          "setup/sales-availability",
-          "setup/checklist",
-          "setup/retailer-settings",
-          "setup/notifications",
-          "setup/selling-brands",
-          "setup/branding",
-          "setup/selling-contract",
-          "setup/price-books",
-          "setup/settings-screens"
-        ]
-      },
-      {
-        "group": "Connect your tools",
-        "pages": [
-          "integrations/overview",
-          "integrations/stripe",
-          "integrations/greendeal",
-          "integrations/formbay",
-          "integrations/meta",
-          "integrations/servicem8"
-        ]
-      },
-      {
-        "group": "Customers and communications",
-        "pages": [
-          "customers/daily-routine",
-          "customers/records",
-          "customers/pipeline",
-          "customers/calls-sms",
-          "customers/call-intelligence",
-          "customers/tasks"
-        ]
-      },
-      {
-        "group": "Assess and quote",
-        "pages": [
-          "quoting/walkthrough",
-          "quoting/compare-estimates",
-          "quoting/site-information",
-          "quoting/bill-analysis",
-          "quoting/savings",
-          "quoting/incentives-stcs",
-          "quoting/payment-options",
-          "quoting/follow-ups",
-          "quoting/customer-view",
-          "quoting/revisions",
-          "quoting/energy-data"
-        ]
-      },
-      {
-        "group": "Roof Vision",
-        "pages": [
-          "quoting/roof-design",
-          "roof-design/editor",
-          "roof-design/stringing",
-          "roof-design/sld"
-        ]
-      },
-      {
-        "group": "Deliver and get paid",
-        "pages": [
-          "delivery/projects",
-          "delivery/job-portal",
-          "delivery/calendar",
-          "delivery/field-operations",
-          "delivery/catalogue",
-          "delivery/inventory",
-          "delivery/rebates",
-          "delivery/finance"
-        ]
-      },
-      {
-        "group": "Dashboards and reporting",
-        "pages": [
-          "reporting/overview",
-          "reporting/rep-overview",
-          "reporting/sales",
-          "reporting/sales-pipeline",
-          "reporting/accountability",
-          "reporting/operations-platform"
-        ]
-      },
-      {
-        "group": "Reference and support",
-        "pages": [
-          "reference/workspace",
-          "reference/availability",
-          "reference/glossary",
-          "reference/support",
-          "reference/roof-design-contract",
-          "reference/whats-new",
-          "reference/selling-brands-faq"
-        ]
-      }
-    ]
+    }
   },
   "logo": {
     "light": "/images/ArcSolar-Wordmark.png",
     "dark": "/images/ArcSolar-Wordmark-1.png",
-    "href": "https://www.arcsolar.com.au"
+    "href": "/"
   },
   "navbar": {
-    "links": [
-      {
-        "href": "https://app.arcsolar.com.au",
-        "label": "Go to App"
-      },
-      {
-        "href": "mailto:support@arcsolar.com.au",
-        "label": "Contact Support"
-      }
-    ]
+    "links": [],
+    "primary": {
+      "type": "button",
+      "label": "Open app",
+      "href": "https://app.arcsolar.com.au"
+    }
   },
   "contextual": {
     "options": [
       "copy",
-      "view"
+      "view",
+      "chatgpt"
     ]
   },
   "footer": {
@@ -197,20 +203,19 @@
       }
     ]
   },
-  "description": "Your guide to a considered customer experience. Learn ArcSolar, prepare your team and move confidently from first enquiry to installation.",
+  "description": "Learn ArcSolar. Work with customers, create quotes and take the installation through to handover.",
   "background": {
-    "decoration": "gradient",
     "color": {
-      "light": "#FFF",
-      "dark": "#0C0A09"
+      "light": "#FFFFFF",
+      "dark": "#08090A"
     }
   },
   "fonts": {
-    "family": "Geist"
+    "family": "Inter"
   },
   "thumbnails": {
     "fonts": {
-      "family": "Geist"
+      "family": "Inter"
     },
     "background": "/images/og-background.jpg"
   },
@@ -261,10 +266,14 @@
       "- Respect permissions and scoping. Features name the roles, capabilities and access rules that may act. Do not attempt an action the operator's role cannot perform, and do not describe a restricted feature as available to them.",
       "- Features that are gated, pending release, or blocked on a vendor are documented as exactly that. Never present a gated or unmerged behaviour as live. When availability is unclear for a given workspace, direct the user to support rather than asserting that the feature works.",
       "- Where a page states something is genuinely undetermined, treat it as unknown. Do not fill the gap with a plausible guess.",
-      "- ArcSolar's built-in assistant is called ArgonixIntelligence. Pages end with an 'ArgonixIntelligence in this workflow' section stating what intelligence can and cannot reason from in that workflow. Treat those limits as binding: intelligence does not replace provider approval, verified evidence, or a customer's own confirmation, and it must not be presented as if it does.",
+      "- ArcSolar's supported intelligence tools appear where they help with the task, including bill analysis, call summaries and reporting. Check the underlying evidence. Intelligence does not replace provider approval, verified records or the customer's own confirmation.",
       "",
       "## Getting help",
       "Support is support@arcsolar.com.au. The customer-facing website is https://www.arcsolar.com.au."
     ]
+  },
+  "appearance": {
+    "default": "dark",
+    "strict": false
   }
 }

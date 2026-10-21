@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "project": {
+    "name": "ArcSolar Docs",
+    "productType": "Product documentation",
+    "stack": [
+      "Mintlify",
+      "MDX",
+      "React snippets",
+      "CSS"
+    ]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [],
+    "assets": [],
+    "instructions": [
+      "AGENTS.md"
+    ]
+  },
+  "design": {
+    "colorMode": "dark and light",
+    "colors": {
+      "canvas": "#08090A",
+      "lightCanvas": "#FFFFFF",
+      "ink": "#F7F8F8",
+      "muted": "#8A8F98",
+      "line": "#23252A"
+    },
+    "typography": {
+      "family": "Inter",
+      "body": "15px/24px, weight 400",
+      "heading": "32px/36px, weight 590",
+      "indexHeading": "40px/44px, weight 590",
+      "cardTitle": "15px/24px, weight 510"
+    },
+    "density": "Quiet navigation; focused reading column; large product illustrations"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [
+      "Preserve changelog content and anchors",
+      "Use real product labels and fictional example data",
+      "Native HTML/SVG for sharp product previews",
+      "Retain imagery attribution on Roof Vision",
+      "Keyboard access and both colour modes"
+    ],
+    "avoid": [
+      "Introductory AI sales copy",
+      "Long repeated disclaimers",
+      "Rebuilding Mintlify navigation in React",
+      "Full app screenshots shrunk into illegible frames"
+    ]
+  },
+  "decisions": [
+    "Linear docs information hierarchy and restraint; Interfere typography and neutral surface roles",
+    "Outcome-led start page and a short start guide before deep administration",
+    "Reuse native Mintlify navigation, search, TOC and contextual actions; no 21st components needed",
+    "Match live Linear documentation measurements recorded in review/linear-design-measurements.md"
+  ],
+  "evidence": [
+    {
+      "fact": "project.instructions",
+      "source": "AGENTS.md"
+    }
+  ],
+  "generatedAt": "2026-10-21T10:39:17.578Z"
+}

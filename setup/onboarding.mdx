@@ -1,51 +1,38 @@
 ---
 icon: "building"
-sidebarTitle: "Onboarding"
+sidebarTitle: "Organisation setup"
 keywords: ["signup","onboarding","business profile","subscription"]
-title: "Create your organisation"
-description: "Complete business setup, subscription, PayTo and Stripe customer payments."
+title: "Organisation setup"
+description: "Create the workspace and complete its separate billing arrangements."
 ---
-<Info>This guide follows the organisation onboarding flow in the qa release. If your workspace uses an invitation or an older setup screen, follow the prompts shown and contact support if you cannot continue.</Info>
 
-## Before you begin
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-The business owner needs the organisation's ABN, legal and trading details, billing email, phone, business address and bank details. Have access to your email and banking app. Enter financial and identity details only in the secure setup flow.
+<ProductPreview type="settings" />
 
-<Steps>
-<Step title="Create your account and verify your email">
-Open your organisation's ArcSolar sign-up page. Complete the account prompts and email verification. Return to the original setup flow after verification.
-</Step>
-<Step title="Complete the business profile">
-Enter your name, organisation name, ABN, legal name, address, state, postcode, timezone, billing email and business phone. Website is optional.
+The organisation owner completes the setup. Have the ABN, business details, billing email, phone, address and bank details ready.
 
-Select retailer, installer or both; residential, commercial or both; services offered and operating states. Enter expected quote and installation volumes, sales representatives and team size. Complete the final prompts, then choose **Create organisation**.
-</Step>
-<Step title="Choose your plan">
-Review **Spark** and **Arc**, including the displayed monthly price and GST. The plan screen identifies whether Intelligence and Roof Vision are included. Choose **Review VoIP rates**.
-</Step>
-<Step title="Accept separate communications usage billing">
-Read the rates for calls, SMS segments and numbers. Tick **I accept these VoIP rates and separate usage billing**, then choose **Continue to subscription**.
-</Step>
-<Step title="Activate the software subscription">
-Choose **Open Stripe in new tab** and complete checkout. Keep ArcSolar open; it checks for confirmation and continues automatically. If the tab is blocked, allow pop-ups for your ArcSolar site and try again.
-</Step>
-<Step title="Activate calls and SMS with PayTo">
-Review the [PayTo agreement](/setup/payto), continue to the bank authorisation and approve it in your banking app. Wait for the mandate to become active.
+This guide follows the documented qa onboarding flow. If your workspace uses an invitation or different prompts, follow those and ask support if you cannot continue.
 
-You can choose **Skip for now** and complete this later in [**Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-billing). Calls and SMS remain unavailable until PayTo is active.
-</Step>
-<Step title="Set up customer payments">
-Open Stripe and submit the requested business, identity and bank information. Submission is required before entering the workspace. You can enter while Stripe reviews the account; customer collection starts only when Stripe enables it.
-</Step>
-<Step title="Enter your workspace">
-Confirm **Your workspace is ready**, review any outstanding Stripe or PayTo message and select **Enter workspace**. Continue with the [setup checklist](/setup/checklist).
-</Step>
-</Steps>
+## Create the workspace
+
+1. Create your account and verify your email.
+2. Complete the business profile: identity, address, timezone, services, operating states and team information.
+3. Choose **Create organisation**, then review the **Spark** and **Arc** plans and their inclusions.
+
+## Complete billing
+
+| Step | What to do |
+| --- | --- |
+| Communications rates | Choose **Review VoIP rates**, read them and accept separate usage billing |
+| Software subscription | Choose **Open Stripe in new tab**, complete checkout and return to ArcSolar |
+| Calls and SMS | [Authorise PayTo](/setup/payto) in your banking app and wait for active status; **Skip for now** leaves communications unavailable |
+| Customer payments | Complete [Stripe business verification](/integrations/stripe); collection starts when Stripe enables it |
+
+At **Your workspace is ready**, review outstanding items and choose **Enter workspace**.
 
 ## If setup stops
 
-Return to the same organisation instead of creating another. A Stripe payment or verification may need time to update. A subscription payment, PayTo agreement and customer-payment account each have their own status. Non-owners may need the organisation owner to finish setup.
+Return to the same organisation rather than creating another. Subscription, PayTo and customer-payment setup have separate statuses. Stripe review or bank confirmation can take time. Enter financial and identity details only in the secure setup flow.
 
-## ArgonixIntelligence in this workflow
-
-Choose the plan needed for the intelligence features your team will use. Intelligence does not complete bank authorisation or business verification for you.
+<NextGuide href="/setup/checklist" title="Setup checklist" />

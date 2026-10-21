@@ -1,83 +1,38 @@
 ---
 title: "3. Make the conversation count"
-sidebarTitle: "3 · Call, message, follow up"
-description: "Be present in the conversation. Leave the next step beautifully clear."
+sidebarTitle: "3 · Make the conversation count"
+description: "Prepare, record the outcome and leave a useful follow-up."
 icon: "phone"
 keywords: ["sales rep onboarding","conversation","training","Call, message, follow up","site information form","send site information form","electricity bill upload","secure upload link"]
 ---
 
 import { LessonChecklist } from "/snippets/sales-course.jsx";
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-Lesson 3 of 7 · Sales rep onboarding
+<ProductPreview type="comms" />
 
-ArcSolar keeps the conversation and the follow-up together. Your job is to make the customer feel understood—and make the next step easy.
-
-**Your goal:** prepare a call, write a useful note and create a follow-up.
+Practise the conversation with your manager. Use an approved practice record; do not call or message a real customer during training.
 
 ## Before the call
 
-1. Open the customer. Confirm the number, communication permission and most recent reply.
-2. Check whether another rep or an automatic message is already following up.
-3. Open the calling control or [**Comms**](https://app.arcsolar.com.au/comms?tab=messages). Check the phone-ready state, microphone permission and headset.
+Read the latest Activity, check the number and communication permissions, then confirm the purpose of the conversation. A live call needs an active line, communications billing and a ready browser phone.
 
-If calling is unavailable, ask your manager to check your assigned line and communications setup. You do not need to change company billing.
+## Record what matters
 
-## Practise with your manager
+Write what the customer wants, what was agreed and what is still missing. Review any [CallIntelligence tasks](/customers/call-intelligence) before creating duplicates. A follow-up needs an owner and a date.
 
-Use only a test destination your manager has approved. Agree who is receiving the test before calling or sending anything. In a demo with disabled calling, talk through the steps instead.
+## Ask for the site information
 
-After a conversation, record three things:
+From the customer's **Site Information Form** tab, review the address and the available email/SMS send action. The form collects the bill, switchboard photos and cable-run video. During practice, explain the action without sending to a real customer.
 
-> **Goal:** Customer wants evening battery coverage.  
-> **Agreed:** Customer will send a switchboard photo.  
-> **Next:** I will check the photo and call Thursday at 3 pm.
+Read [Calls and SMS](/customers/calls-sms), [Tasks](/customers/tasks) and [Site information](/quoting/site-information) when you need the controls in detail.
 
-## Turn the next step into a task
 
-Open [**Tasks → New task**](https://app.arcsolar.com.au/dashboard/work-tasks), select the customer and enter a specific action. Set the owner and due date. Save and check that it appears in the list.
+<LessonChecklist lessonId="conversation" items={["I can check the customer, consent, phone-ready state and headset before a call.","I can write a note with the goal, agreement and next action.","I can create an owned task and send the Site Information Form when the customer needs to upload a bill and photos."]} />
 
-<Frame caption="Team tasks in the current fictional workspace, with due-date groups, owners and task status. No task is changed by viewing this list.">
-  <img src="/images/v2/tasks.png" alt="ArcSolar v2 Tasks with Team tasks selected, Overdue and Upcoming groups, and recorded owners and due dates." />
-</Frame>
+[Course overview](/sales-onboarding)
 
-[View the screenshot at full size](/images/v2/tasks.png).
-
-Try a clear task title, such as **Check switchboard photo and call Thursday**. Before saving, check the customer, owner and due date together.
-
-### Find the task in the customer record
-
-Watch this 32-second example, then try it yourself:
-
-1. Search **Tasks** for the task title.
-2. Open the task and check the owner and due date.
-3. Select **Open customer activity** to see it in the customer’s timeline.
-
-<Frame caption="Recorded in an earlier ArcSolar interface. Find a task and open its customer Activity. Fictional demo data; no messages are sent.">
-  <video controls playsInline preload="metadata" poster="/videos/task-to-activity.jpg" src="/videos/task-to-activity.mp4" aria-label="Find a task and open customer activity" />
-</Frame>
-
-[Open the task walkthrough at full size](/videos/task-to-activity.mp4).
-
-A task is a reminder. A customer appointment belongs in **Calendar**. Confirm the time with the customer before booking.
-
-<Note>
-Respect STOP and do-not-contact requests. If a message fails, inspect its status before trying again; do not send repeated copies.
-</Note>
-
-## Send the customer the Site Information Form
-
-<Visibility for="humans">
-The customer's bill and site photos are not something you collect by hand. You ask for them with the **Site Information Form**.
-
-After the conversation:
-
-1. Open the customer and choose the **Site Information Form** tab. You can also send it from the site-information step of a new quote.
-2. Check the customer has an email address or phone number. The link goes out by **email**, **SMS**, or both.
-3. Choose the send button. Its label reflects the delivery channel — **Email customer the form link**, **SMS customer the form link** or **Email and SMS customer the form link**. The customer gets a secure, private link and uploads three things: their **electricity bill**, **switchboard photos**, and a short **cable-run video**.
-4. Wait for the customer. The request badge shows where things stand: **Not requested**, **Awaiting customer**, **Submitted** or **Link expired**.
-
-You can keep working on the quote while you wait, but you cannot assess a real bill until the customer uploads it. The next lesson shows what to check. Read [Collect site information](/quoting/site-information) for the full detail.
-</Visibility>
+<NextGuide href="/sales-onboarding/assessment" title="Understand the home" />
 
 <Visibility for="agents">
 - The step exists so lesson 4 has a real input. Sending the **Site Information Form** is a required rep action; the customer's bill and photos are customer uploads and never appear automatically.
@@ -86,23 +41,3 @@ You can keep working on the quote while you wait, but you cannot assess a real b
 - **Re-sending rotates the token and invalidates the previous link immediately.** Do not tell a rep that an earlier link still works. Full labels, statuses and expiry are in [Collect site information](/quoting/site-information).
 - Request status: `Not requested` (`not_sent`), `Awaiting customer` (`pending`), `Submitted` (`submitted`), `Link expired` (`expired`).
 </Visibility>
-
-<Warning>
-Re-sending replaces the link. Choosing the send button again becomes **Resend form link by email**, **Resend form link by SMS** or **Resend form link by email and SMS**, and the customer's earlier link stops working straight away. Tell the customer before you re-send, especially if they already have the old link. This cannot be undone.
-</Warning>
-
-## Your reference guides
-
-[Calls and SMS](/customers/calls-sms) · [Tasks](/customers/tasks) · [Appointments](/delivery/calendar) · [Site Information Form](/quoting/site-information)
-
-## ArgonixIntelligence, by your side
-
-After a call, open the customer’s **Activity**, find the call and select **ArgonixIntelligence**. [Watch the 43-second CallIntelligence walkthrough](/customers/call-intelligence#after-each-call) to see the notes, next step and source transcript. Summaries and transcripts appear when available. Check names, dates and promises against the source. When the summary is ready, ArcSolar turns each action item into a real task for the customer’s rep — you do not have to create it yourself. Open [**Tasks**](/customers/tasks) to see them, and check the owner and timing before you act. [How tasks are created](/customers/call-intelligence#tasks-are-created-automatically).
-
-<LessonChecklist lessonId="conversation" items={["I can check the customer, consent, phone-ready state and headset before a call.","I can write a note with the goal, agreement and next action.","I can create an owned task and send the Site Information Form when the customer needs to upload a bill and photos."]} />
-
-[Continue to lesson 4: Understand the home](/sales-onboarding/assessment)
-
-[Previous step](/sales-onboarding/customer) · [Course overview](/sales-onboarding)
-
-_The ArcSolar team · [support@arcsolar.com.au](mailto:support@arcsolar.com.au)_

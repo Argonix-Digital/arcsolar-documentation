@@ -1,7 +1,7 @@
 ---
-title: "Use Roof Vision"
+title: "Roof Vision"
 icon: "solar-panel"
-sidebarTitle: "Getting started"
+sidebarTitle: "Roof Vision"
 keywords:
   - "Roof Vision"
   - "roof design"
@@ -14,40 +14,38 @@ keywords:
   - "MPPT"
   - "installer roof design"
   - "solar design"
-description: "Design the panel layout, the stringing and the single line diagram in Roof Vision, then see the finished drawings on the customer's quote."
+description: "Design the panel layout, stringing and single line diagram for the quote."
 ---
 
-Roof Vision is where the roof design for a quote is drawn. Place the panels on satellite imagery, string them into the inverter, and draw the single line diagram. Roof Vision saves as you work, the saved design attaches to the quote on its own, and the customer's offer carries the two drawings.
+import { RoofPreview } from "/snippets/docs-visuals.jsx";
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-**Open:** the quote's solar step, then the **Roof Vision** area.
+Roof Vision turns a saved draft quote into a roof design. It is included with the **Arc** plan.
 
-Open the quote from [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes). Roof Vision is included with the **Arc** plan, and saved designs also live on the **Roof Vision** page in the app sidebar.
+<RoofPreview />
 
-<Steps>
-<Step title="Open the design">
-Choose **Open Roof Vision**. The editor opens over the quote; choose **Open in new tab** to work in a separate window. The quote must be saved as a draft first.
-</Step>
-<Step title="Place the panels">
-Choose **Build**, then pick the panel in the **Catalogue** — the **Solar panel** tab. Search by manufacturer or model, or use **Add custom panel**. Click for one panel, or drag to lay a row.
-</Step>
-<Step title="Adjust the array">
-Set **Portrait** or **Landscape**, then the **Row gap** and **Col gap**. Use **Rotate** and **Tilt** for the angle and the projected footprint, and mark panels that are already on the roof with **Existing**. More detail is on [the design editor](/roof-design/editor).
-</Step>
-<Step title="String the panels">
-Choose **Strings**, pick the inverter, then drag across the panels in wiring order and assign each string to an MPPT input. See [Stringing](/roof-design/stringing).
-</Step>
-<Step title="Draw the single line diagram">
-Choose **Open SLD** — the diagram arrives seeded with your panels, strings and inverter — then set the supply with the **Phases** buttons and check the wiring. Choose **Download PDF** for a copy. See [the single line diagram](/roof-design/sld).
-</Step>
-<Step title="Check the drawings attached">
-Roof Vision saves while you work, and the newest saved design adds itself to the quote. The line under the drawings reads **Latest saved design included in this quote.** If it says the design has changed, wait for the save and choose **Refresh**.
-</Step>
-<Step title="Review, then send">
-Check the address, the panel model and the panel count against the quote. The customer receives **Solar panel layout** and **Stringing and component layout** with the offer.
-</Step>
-</Steps>
+## Open and design
 
-## Common errors to catch
+1. Save the quote as a draft. In its solar step, choose **Open Roof Vision**.
+2. Use **Build** and **Catalogue → Solar panel** to choose the exact model and place panels.
+3. Adjust orientation, gaps, rotation and tilt. Mark existing panels **Existing**.
+4. Use **Strings** to choose the inverter, connect panels in order and assign MPPT inputs.
+5. Choose **Open SLD** to review the seeded diagram, phases and wiring.
+
+## Check the drawings
+
+Roof Vision saves as you work. The quote picks up the latest saved design. Confirm **Latest saved design included in this quote.** If the design changed, wait for the save and choose **Refresh**.
+
+Check address, panel model, count and stringing before issuing. The customer receives **Solar panel layout** and **Stringing and component layout**. The customer record also receives the current exported design PDFs when linked.
+
+## Continue the design
+
+Read [the editor](/roof-design/editor), [stringing](/roof-design/stringing) and [the single line diagram](/roof-design/sld). Review the technical design with the responsible people; ArcSolar stores the editor's document without recalculating its electrical content.
+
+
+## Details
+
+<Accordion title={"Common errors to catch"}>
 
 | Check | Why it matters |
 | --- | --- |
@@ -57,6 +55,63 @@ Check the address, the panel model and the panel count against the quote. The cu
 | Stringing | Every string needs its MPPT input before the drawing is finished |
 | Stale drawings | If the design changed after the drawings were made, choose **Refresh** |
 | Missing drawings | A design with no completed drawings has nothing to attach to the quote |
+
+</Accordion>
+
+<Accordion title={"What happens when you save"}>
+
+There is no save step and nothing to attach by hand. The quote picks up the newest saved design, and the line under the drawings tells you where it stands:
+
+  - **Latest saved design included in this quote.** — the drawings are current.
+  - **The design has changed in Roof Vision since these images were generated. Refresh once it has saved.** — wait for the save, then choose **Refresh**.
+  - **This design has no completed images yet. Open Roof Vision, place the panels and let it save; the images appear here automatically.** — nothing has been drawn for this quote yet.
+
+  Every save also files the finished PDFs against the customer — the site plan, the panel design, the annotation design, the battery site plan and the single line diagram — so the customer's documents stay current without anyone exporting by hand.
+
+  Use **Edit** to reopen the design, **Refresh** for the newest drawings, and **Open in new tab** to work in a separate window.
+
+</Accordion>
+
+<Accordion title={"Where the customer sees it"}>
+
+Once the quote is issued, the two drawings appear in the customer's estimate portal under **Roof design**, with the site address and the imagery attribution.
+
+  The **estimate PDF** shows them in a section headed **PROPOSED ROOFTOP DESIGN**, captioned **PROPOSED PANEL LAYOUT** and **PANEL STRINGS & COMPONENT MARKINGS**. The **agreement (contract) PDF** adds them as extra landscape pages. A customer sees one roof section, never two.
+
+</Accordion>
+
+<Accordion title={"Roof Vision documents on the customer record"}>
+
+Roof Vision files these PDFs against the customer by itself as the design is worked on, so the site team can find them without opening the quote. A design that is not linked to a customer has nowhere to file them until it is linked:
+
+  - **Roof Vision · Site plan**
+  - **Roof Vision · SLD** — the single line diagram
+  - **Roof Vision · Panel design**
+  - **Roof Vision · Annotation design**
+  - **Roof Vision · Battery site plan**
+
+  Each file is replaced when the design is published again, so the customer keeps one current copy. If a drawing needs confirming, the editor says so at the top of the sheet and files it anyway — confirming is the rep's call.
+
+</Accordion>
+
+<Accordion title={"Who produces the design"}>
+
+The single line diagram and the stringing design are produced in **Roof Vision**, not by ArcSolar. ArcSolar stores the editor's document exactly as the editor saved it and presents the two layout drawings the editor renders. ArcSolar never reads, recalculates or reproduces the electrical content of that document.
+
+
+  Roof Vision draws the design; ArcSolar stores it and shows the result. ArcSolar does not size strings, work out voltages or cable lengths, or check the design against the equipment. If a figure is not drawn on the drawings, ArcSolar does not hold it.
+
+  Installers do not get a separate design screen. They receive the issued quote — the same two drawings the customer sees — with the exported reports and the project's work orders in [field operations](/delivery/field-operations). The API-level contract is on [the Roof Vision integration contract](/reference/roof-design-contract).
+
+</Accordion>
+
+<Accordion title={"Availability"}>
+
+Roof Vision is included with the **Arc** plan. Administrators, developers, operations members and sales representatives can open it; a finance member cannot, and writing to a quote's design also needs permission to revise quotes.
+
+  If Roof Vision is missing entirely, the workspace is on a plan that does not include it — an administrator can check the plan in Retailer Settings. If the quote area is missing but the sidebar page works, check that the quote is saved as a draft.
+
+</Accordion>
 
 <Visibility for="agents">
   **Where the feature lives.** The rep surface is the **Roof Vision** section (`aria-label="Roof Vision"`) in the quote builder's solar step. It renders only when a quote draft key exists. Its heading is **Roof Vision**; its empty state reads `Design the panel layout and stringing on the roof. The latest saved images appear here automatically.` The saved summary on the section header is `<panelCount> panels · <address>`.
@@ -99,20 +154,6 @@ Check the address, the panel model and the panel count against the quote. The cu
   **Persistence.** Saves are optimistic: every save, link, archive, rename, duplicate and revision request carries `expectedVersion`. If the stored version has moved on, the save is refused with `409 VERSION_CONFLICT` and the message `The design changed. Reload before saving.` Reload and re-apply rather than retrying blind. Revisions are immutable — correcting a saved revision means creating a new one, never editing the old one.
 </Visibility>
 
-## What happens when you save
-
-<Visibility for="humans">
-  There is no save step and nothing to attach by hand. The quote picks up the newest saved design, and the line under the drawings tells you where it stands:
-
-  - **Latest saved design included in this quote.** — the drawings are current.
-  - **The design has changed in Roof Vision since these images were generated. Refresh once it has saved.** — wait for the save, then choose **Refresh**.
-  - **This design has no completed images yet. Open Roof Vision, place the panels and let it save; the images appear here automatically.** — nothing has been drawn for this quote yet.
-
-  Every save also files the finished PDFs against the customer — the site plan, the panel design, the annotation design, the battery site plan and the single line diagram — so the customer's documents stay current without anyone exporting by hand.
-
-  Use **Edit** to reopen the design, **Refresh** for the newest drawings, and **Open in new tab** to work in a separate window.
-</Visibility>
-
 <Visibility for="agents">
   **Attach is automatic and idempotent.** After each save the app reads the project's newest revision, and when that revision has a complete image pair it calls `attach` with the revision id and the quote draft key. The attempt is keyed by revision id and the current commercial inputs, so an unchanged design is not re-attached and a failed attach is not retried in a loop. The attached pair is written to the draft as `solar.roofDesign`.
 
@@ -140,14 +181,6 @@ Check the address, the panel model and the panel count against the quote. The cu
   - NMI is populated only from unambiguous **accepted** bill evidence whose normalised supply-site address matches the project address exactly. It is never taken from the customer's latest bill or from the customer record. Missing or conflicting evidence yields `null` — treat `null` as unknown, never as "no NMI".
   - An incomplete image bundle never replaces a previously complete one. Retrying an upload cannot destroy a good bundle.
   - Imagery does not prove structural suitability, electrical compliance, clearances or installer approval. The layout is indicative and final placement remains subject to physical site verification.
-</Visibility>
-
-## Where the customer sees it
-
-<Visibility for="humans">
-  Once the quote is issued, the two drawings appear in the customer's estimate portal under **Roof design**, with the site address and the imagery attribution.
-
-  The **estimate PDF** shows them in a section headed **PROPOSED ROOFTOP DESIGN**, captioned **PROPOSED PANEL LAYOUT** and **PANEL STRINGS & COMPONENT MARKINGS**. The **agreement (contract) PDF** adds them as extra landscape pages. A customer sees one roof section, never two.
 </Visibility>
 
 <Visibility for="agents">
@@ -182,34 +215,10 @@ Check the address, the panel model and the panel count against the quote. The cu
   Version-4 solar estimates must carry a `roofDesign` bundle; an estimate without one is refused with `Version-four solar estimates require a customer-safe roof design.`
 </Visibility>
 
-## Roof Vision documents on the customer record
-
-<Visibility for="humans">
-  Roof Vision files these PDFs against the customer by itself as the design is worked on, so the site team can find them without opening the quote. A design that is not linked to a customer has nowhere to file them until it is linked:
-
-  - **Roof Vision · Site plan**
-  - **Roof Vision · SLD** — the single line diagram
-  - **Roof Vision · Panel design**
-  - **Roof Vision · Annotation design**
-  - **Roof Vision · Battery site plan**
-
-  Each file is replaced when the design is published again, so the customer keeps one current copy. If a drawing needs confirming, the editor says so at the top of the sheet and files it anyway — confirming is the rep's call.
-</Visibility>
-
 <Visibility for="agents">
   The five generated document kinds are registered in `src/lib/roof-design/generated-documents.server.ts` with stable filenames — `roof-vision-site-plan.pdf`, `roof-vision-single-line-diagram.pdf`, `roof-vision-panel-design.pdf`, `roof-vision-annotation-design.pdf`, `roof-vision-battery-site-plan.pdf` — and the customer-document panel reads them from the customer's document list. A re-publish replaces the row with the same filename rather than adding a second copy. Do not tell an operator that these files live on the quote; they belong to the customer record.
 
   **Filing is automatic and content-gated.** The editor subscribes to the design session and files each document after the design saves. Publication is debounced and fingerprinted, so an unchanged document is not re-rendered, and a document with nothing to draw is skipped: the panel design needs placed panels, the annotation design needs annotations, and the battery site plan needs the room and equipment on the floor plan. The destination customer is the linked project customer, or an exact address match when the design is address-only; an address-only design with no unambiguous match has no destination until it is linked.
-</Visibility>
-
-## Who produces the design
-
-The single line diagram and the stringing design are produced in **Roof Vision**, not by ArcSolar. ArcSolar stores the editor's document exactly as the editor saved it and presents the two layout drawings the editor renders. ArcSolar never reads, recalculates or reproduces the electrical content of that document.
-
-<Visibility for="humans">
-  Roof Vision draws the design; ArcSolar stores it and shows the result. ArcSolar does not size strings, work out voltages or cable lengths, or check the design against the equipment. If a figure is not drawn on the drawings, ArcSolar does not hold it.
-
-  Installers do not get a separate design screen. They receive the issued quote — the same two drawings the customer sees — with the exported reports and the project's work orders in [field operations](/delivery/field-operations). The API-level contract is on [the Roof Vision integration contract](/reference/roof-design-contract).
 </Visibility>
 
 <Visibility for="agents">
@@ -237,14 +246,6 @@ The single line diagram and the stringing design are produced in **Roof Vision**
   | Installer | **No design surface** | The issued quote and its PDF, plus project work orders in field operations. |
 
   Do not invent an installer design view, an installer-specific SLD, or a design hand-off screen.
-</Visibility>
-
-## Availability
-
-<Visibility for="humans">
-  Roof Vision is included with the **Arc** plan. Administrators, developers, operations members and sales representatives can open it; a finance member cannot, and writing to a quote's design also needs permission to revise quotes.
-
-  If Roof Vision is missing entirely, the workspace is on a plan that does not include it — an administrator can check the plan in Retailer Settings. If the quote area is missing but the sidebar page works, check that the quote is saved as a draft.
 </Visibility>
 
 <Visibility for="agents">
@@ -276,7 +277,3 @@ The single line diagram and the stringing design are produced in **Roof Vision**
   | `VALIDATION` | No | Payload or document invalid (for example a document over 5 MB). Fix the input. |
   | `UNAVAILABLE` | Yes | Temporary outage or an unresolvable draft. Retry later. |
 </Visibility>
-
-## ArgonixIntelligence in this workflow
-
-Roof Vision and supported recommendations assist assessment. The rep and installer must verify the final equipment and the feasible installation layout.

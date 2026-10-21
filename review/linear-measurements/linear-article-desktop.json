@@ -1,0 +1,607 @@
+{
+  "article": {
+    "cls": "_em0sW_article",
+    "rect": {
+      "height": 5623.4921875,
+      "width": 650,
+      "x": 372,
+      "y": 112
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderBottom": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "borderTop": "0px none rgb(247, 248, 248)",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "columnGap": "normal",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontFeatureSettings": "\"cv01\", \"ss03\"",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "letterSpacing": "normal",
+      "lineHeight": "24px",
+      "margin": "0px",
+      "maxWidth": "100%",
+      "padding": "0px",
+      "rowGap": "normal",
+      "width": "650px"
+    },
+    "tag": "ARTICLE",
+    "text": "ProjectsCreate Projects for features or large units of "
+  },
+  "description": {
+    "cls": "",
+    "rect": {
+      "height": 24,
+      "width": 650,
+      "x": 372,
+      "y": 172
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(208, 214, 224)",
+      "borderBottom": "0px none rgb(208, 214, 224)",
+      "borderRadius": "0px",
+      "borderTop": "0px none rgb(208, 214, 224)",
+      "boxShadow": "none",
+      "color": "rgb(208, 214, 224)",
+      "columnGap": "normal",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontFeatureSettings": "\"cv01\", \"ss03\"",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "letterSpacing": "-0.165px",
+      "lineHeight": "24px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "rowGap": "normal",
+      "width": "650px"
+    },
+    "tag": "P",
+    "text": "Create Projects for features or large units of work."
+  },
+  "h1": {
+    "cls": "sc-KOGVz djbVxU",
+    "rect": {
+      "height": 36,
+      "width": 650,
+      "x": 372,
+      "y": 112
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderBottom": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "borderTop": "0px none rgb(247, 248, 248)",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "columnGap": "normal",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontFeatureSettings": "\"cv01\", \"ss03\"",
+      "fontSize": "32px",
+      "fontWeight": "590",
+      "letterSpacing": "-0.704px",
+      "lineHeight": "36px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "rowGap": "normal",
+      "width": "650px"
+    },
+    "tag": "H1",
+    "text": "Projects"
+  },
+  "h2": {
+    "cls": "",
+    "rect": {
+      "height": 31.9140625,
+      "width": 650,
+      "x": 372,
+      "y": 683.2109375
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderBottom": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "borderTop": "0px none rgb(247, 248, 248)",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "columnGap": "normal",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontFeatureSettings": "\"cv01\", \"ss03\"",
+      "fontSize": "24px",
+      "fontWeight": "590",
+      "letterSpacing": "-0.288px",
+      "lineHeight": "31.92px",
+      "margin": "56px 0px 0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "rowGap": "normal",
+      "width": "650px"
+    },
+    "tag": "H2",
+    "text": "Overview⁠"
+  },
+  "h3": {
+    "cls": "",
+    "rect": {
+      "height": 32,
+      "width": 650,
+      "x": 372,
+      "y": 2794.3203125
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderBottom": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "borderTop": "0px none rgb(247, 248, 248)",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "columnGap": "normal",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontFeatureSettings": "\"cv01\", \"ss03\"",
+      "fontSize": "20px",
+      "fontWeight": "590",
+      "letterSpacing": "normal",
+      "lineHeight": "32px",
+      "margin": "56px 0px 0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "rowGap": "normal",
+      "width": "650px"
+    },
+    "tag": "H3",
+    "text": "External links⁠"
+  },
+  "layoutAncestors": [
+    {
+      "cls": "_em0sW_content",
+      "rect": {
+        "height": 5783.4921875,
+        "width": 1024,
+        "x": 348,
+        "y": 0
+      },
+      "style": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgb(247, 248, 248)",
+        "borderBottom": "0px none rgb(247, 248, 248)",
+        "borderRadius": "0px",
+        "borderTop": "0px none rgb(247, 248, 248)",
+        "boxShadow": "none",
+        "color": "rgb(247, 248, 248)",
+        "columnGap": "76px",
+        "display": "flex",
+        "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+        "fontFeatureSettings": "\"cv01\", \"ss03\"",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "letterSpacing": "normal",
+        "lineHeight": "24px",
+        "margin": "0px",
+        "maxWidth": "1024px",
+        "padding": "112px 24px 48px",
+        "rowGap": "76px",
+        "width": "1024px"
+      },
+      "tag": "DIV",
+      "text": "ProjectsCreate Projects for features or large units of "
+    },
+    {
+      "cls": "_em0sW_root",
+      "rect": {
+        "height": 5783.4921875,
+        "width": 1160,
+        "x": 280,
+        "y": 0
+      },
+      "style": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgb(247, 248, 248)",
+        "borderBottom": "0px none rgb(247, 248, 248)",
+        "borderRadius": "0px",
+        "borderTop": "0px none rgb(247, 248, 248)",
+        "boxShadow": "none",
+        "color": "rgb(247, 248, 248)",
+        "columnGap": "normal",
+        "display": "block",
+        "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+        "fontFeatureSettings": "\"cv01\", \"ss03\"",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "letterSpacing": "normal",
+        "lineHeight": "24px",
+        "margin": "0px",
+        "maxWidth": "none",
+        "padding": "0px",
+        "rowGap": "normal",
+        "width": "1160px"
+      },
+      "tag": "DIV",
+      "text": "Projects and initiativesProjectsCopy pageSign upOpen ap"
+    },
+    {
+      "cls": "z14_UG_wrapper",
+      "rect": {
+        "height": 5783.4921875,
+        "width": 1440,
+        "x": 0,
+        "y": 0
+      },
+      "style": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgb(247, 248, 248)",
+        "borderBottom": "0px none rgb(247, 248, 248)",
+        "borderRadius": "0px",
+        "borderTop": "0px none rgb(247, 248, 248)",
+        "boxShadow": "none",
+        "color": "rgb(247, 248, 248)",
+        "columnGap": "normal",
+        "display": "flex",
+        "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+        "fontFeatureSettings": "\"cv01\", \"ss03\"",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "letterSpacing": "normal",
+        "lineHeight": "24px",
+        "margin": "0px",
+        "maxWidth": "none",
+        "padding": "0px 0px 0px 280px",
+        "rowGap": "normal",
+        "width": "1440px"
+      },
+      "tag": "DIV",
+      "text": "DocsSign upOpen appGetting startedIntakeProjects and in"
+    }
+  ],
+  "matchedRules": [
+    {
+      "media": null,
+      "selector": ".jjY06q_aside li a",
+      "style": "display: block;"
+    },
+    {
+      "media": null,
+      "selector": ".jjY06q_ul li a",
+      "style": "color: var(--color-base); padding: 4px 0px; text-decoration: none;"
+    },
+    {
+      "media": null,
+      "selector": ".jjY06q_ul li.jjY06q_active a",
+      "style": "color: var(--color-active);"
+    },
+    {
+      "media": null,
+      "selector": ".djbVxU",
+      "style": "font-size: var(--title-4-size); line-height: var(--title-4-line-height); letter-spacing: var(--title-4-letter-spacing); font-weight: var(--font-weight-semibold);"
+    },
+    {
+      "media": "(max-width: 640px)",
+      "selector": ".djbVxU",
+      "style": "font-size: var(--title-4-size); line-height: var(--title-4-line-height); letter-spacing: var(--title-4-letter-spacing);"
+    },
+    {
+      "media": null,
+      "selector": "*, ::before, ::after",
+      "style": "transition: none !important;"
+    },
+    {
+      "media": null,
+      "selector": "*, ::before, ::after",
+      "style": "transition: none !important;"
+    }
+  ],
+  "paragraph": {
+    "cls": "",
+    "rect": {
+      "height": 72,
+      "width": 650,
+      "x": 372,
+      "y": 727.125
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(208, 214, 224)",
+      "borderBottom": "0px none rgb(208, 214, 224)",
+      "borderRadius": "0px",
+      "borderTop": "0px none rgb(208, 214, 224)",
+      "boxShadow": "none",
+      "color": "rgb(208, 214, 224)",
+      "columnGap": "normal",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontFeatureSettings": "\"cv01\", \"ss03\"",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "letterSpacing": "-0.165px",
+      "lineHeight": "24px",
+      "margin": "12px 0px 0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "rowGap": "normal",
+      "width": "650px"
+    },
+    "tag": "P",
+    "text": "A project is a grouping of issues that have a clear out"
+  },
+  "sheets": [
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Tpxbzi3N.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/BNNY1qpD.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/pcGZUK31.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/BYDaMjMd.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/dcAi4KbO.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Bl8l9ltc.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/C-dCEHFh.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/BEZjGLsi.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/DCkYdNzn.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/3p32EmO1.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/mgHd0F-S.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/ByHmXOx_.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/CNiZpoOa.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/mYgpGelO.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Blq4ZW3W.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Cidbg-cz.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/B3f9yiOq.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/BluMS353.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/B6ktxgTN.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/BUY_OmUN.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/krMPHN5w.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/BNdf6sgA.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/YOXuIHmI.css",
+      "readable": true
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Cvu1x9Ry.css",
+      "readable": true
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/BRfelXq9.css",
+      "readable": true
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/BfZYz5nq.css",
+      "readable": true
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/QI7y5qtN.css",
+      "readable": true
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/waNookeF.css",
+      "readable": true
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/rU3Qdugy.css",
+      "readable": true
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/layout.CGKNFvmu.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/DocsLayout.BDv5c8P9.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Spacer.mYgpGelO.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Layout.tvkMFESE.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/utils.BNNY1qpD.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Header.BNHV4lAU.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Icon.B18TDZc7.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/IconButton.3p32EmO1.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/DefaultRenderer.tdbxckB2.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Prose.DBLOnC2O.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Separator.RnTSqYU1.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Navigation.CRQmer4I.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/GridSection.Dfa5ttI_.css",
+      "readable": false
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Breadcrumbs.O5D4jzbE.css",
+      "readable": false
+    },
+    {
+      "href": null,
+      "readable": true
+    },
+    {
+      "href": null,
+      "readable": true
+    },
+    {
+      "href": null,
+      "readable": true
+    },
+    {
+      "href": null,
+      "readable": true
+    },
+    {
+      "href": null,
+      "readable": true
+    },
+    {
+      "href": null,
+      "readable": true
+    }
+  ],
+  "toc": {
+    "cls": "",
+    "rect": {
+      "height": 27.5,
+      "width": 228,
+      "x": 1112,
+      "y": 112
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderBottom": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "borderTop": "0px none rgb(247, 248, 248)",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "columnGap": "normal",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontFeatureSettings": "\"cv01\", \"ss03\"",
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "letterSpacing": "normal",
+      "lineHeight": "19.5px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "4px 0px",
+      "rowGap": "normal",
+      "width": "228px"
+    },
+    "tag": "A",
+    "text": "Overview"
+  },
+  "tocParent": {
+    "cls": "jjY06q_active",
+    "rect": {
+      "height": 27.5,
+      "width": 228,
+      "x": 1112,
+      "y": 112
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderBottom": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "borderTop": "0px none rgb(247, 248, 248)",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "columnGap": "normal",
+      "display": "list-item",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontFeatureSettings": "\"cv01\", \"ss03\"",
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "letterSpacing": "normal",
+      "lineHeight": "19.5px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "rowGap": "normal",
+      "width": "228px"
+    },
+    "tag": "LI",
+    "text": "Overview"
+  },
+  "url": "https://linear.app/docs/projects",
+  "viewport": {
+    "height": 1000,
+    "width": 1440
+  }
+}

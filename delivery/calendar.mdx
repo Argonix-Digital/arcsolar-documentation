@@ -1,108 +1,55 @@
 ---
 icon: "calendar-days"
-sidebarTitle: "Calendar and scheduling"
+sidebarTitle: "Calendar"
 keywords:
   - "appointments"
   - "calendar"
   - "scheduling"
   - "field days"
-title: "Calendar, appointments and field work"
-description: "Plan appointments, confirm rep availability, import busy calendars and coordinate delivery work."
+title: "Calendar"
+description: "Plan customer appointments, protect busy time and coordinate field work."
 ---
 
-**Open:** [**Calendar**](https://app.arcsolar.com.au/dashboard/operations-calendar). Use it to coordinate customer appointments, meetings, busy time, installations, field operations, milestones and task deadlines.
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-## Find the right view
+<ProductPreview type="calendar" />
 
-Choose a month, week, day or list view. Use **Today**, the previous/next controls and the small calendar to move between dates. Open an event to review its details alongside the calendar.
+Open [**Calendar**](https://app.arcsolar.com.au/dashboard/operations-calendar). Choose month, week, day or list, then filter event types, roles and team members.
 
-- Turn on **Full screen calendar** to give the timetable the full window and keep the page from scrolling around it.
-- Filter **Event types**, **Roles** and **Team members** to show the work you need. Role filters narrow the selected team members; leaving roles unchecked includes every role you can access.
-- Use **Color by → Event type** to distinguish appointments, meetings, time blocks and delivery work, or **Team member** to follow responsibility.
-- Search the calendar for an event. Task deadlines remain deadlines; they do not reserve appointment time.
+## Book an appointment
 
-Your role and record access still determine what appears. Selecting another person in a filter does not grant access to their private records.
+1. Choose **Phone appointment** or **New**, then the available appointment type.
+2. Select the customer and responsible rep.
+3. Check date, timezone, duration, buffers and location or meeting link.
+4. Review the booking and confirm.
+5. Open the saved event to check preparation and notification status.
 
-## Book a customer appointment
+Task deadlines appear in Calendar but do not reserve appointment time. Reschedule or cancel through the appointment controls; switching the displayed timezone does not move a booking.
 
-1. Use **Phone appointment** or **New** and choose the appointment type offered to you.
-2. Select the customer and responsible team member. Choose **Phone**, **Video** or an in-person consultation as appropriate.
-3. Review the date, timezone, duration and buffers. Include the site address for an in-person visit or the meeting link for a video consultation.
-4. Complete the required fields and review the final booking before confirming.
-5. Open the saved appointment to check its customer association, assigned rep, preparation status and notification status.
+## Keep availability current
 
-New consultation policies use these defaults. A previously saved policy or appointment keeps its recorded settings.
+Reps use **My availability** for recurring hours, holidays, busy blocks and incoming calendars. Confirm availability every 28 days. Managers control service areas, booking eligibility and minimum buffers. See [Sales availability](/setup/sales-availability).
 
-| Consultation | Duration | Buffer between appointments |
-| --- | --- | --- |
-| Phone or video | 45 minutes | 10 minutes |
-| In person | 60 minutes | 30 minutes |
+## Check reminders
 
-The larger adjacent buffer applies to the shared gap: two 10-minute requirements need a 10-minute gap. Saved older reservations remain unchanged until you explicitly edit them. Managers set minimums, and reps can adjust their own defaults within those limits.
+Where **Appointment messages** is enabled, consultations queue confirmations and reminders 24 hours and 30 minutes before the appointment. Rescheduling replaces stale reminders; cancellation invalidates them. Consent, preferences and sender readiness still apply.
 
-Known travel locations can require more time than the saved buffer. An unknown starting location uses the saved allowance. Authorized staff can record a manual exception and its reason, but cannot override a busy appointment, holiday or manager minimum.
+Check the event's delivery status. Queued or sent messages do not prove delivery.
 
-Reschedule or cancel through the appointment's controls. Changing a displayed timezone does not move its booked instant. Cancellation releases the appointment's time without automatically removing the customer's assigned rep.
+## Coordinate delivery
 
-## Prepare reps for bookings
+Change installation and work-order schedules through their linked records, then verify the Calendar entry. Use **Field days → Plan field day** to review crew, visits, travel and conflicts before confirming a day.
 
-Sales reps complete [availability setup](/setup/sales-availability) on first sign-in and confirm it every 28 days. They can edit it from **Calendar → My availability**, **Profile Settings → Availability**, or the availability page.
+<Accordion title={"Booking durations, buffers and conflicts"}>
+New phone/video policies default to 45 minutes with a 10-minute buffer; in-person policies default to 60 minutes with 30 minutes. Saved older settings remain until edited. The larger adjacent buffer applies to a shared gap. Known travel can require more time. Manual exceptions cannot override busy appointments, holidays or manager minimums. Offered slots are checked again when booked and do not reserve time.
+</Accordion>
 
-Managers open **Booking settings → Booking rules** to review a rep's availability freshness, service areas, channel policies, buffers, subscribed calendars and notification readiness. Automatic booking eligibility is a manager action.
+<Accordion title={"Calendar subscriptions"}>
+Use **Subscribe** to view ArcSolar events in Apple, Google or Outlook. A download is a one-time snapshot. Add an HTTPS or webcal feed under **My availability → Incoming calendars** to import read-only External busy time. Feeds refresh every five minutes, subject to publisher delay. A required feed unvalidated for ten minutes pauses automatic bookings; a failed refresh retains the last successful snapshot. Protect subscription URLs as private links. Subscriptions do not provide two-way job editing.
+</Accordion>
 
-An assigned customer stays with their rep. For an unassigned lead, eligible reps must cover the customer's approved postcode. Offers favor nearby same-postcode appointments and verified travel requirements. The customer is assigned only when the booking succeeds. An offered slot does not reserve time; the final booking checks availability again.
+<Accordion title={"Scheduling assistance"}>
+Authorised managers can prepare a booking, reschedule or cancellation in **Booking settings → Scheduling tools**, then review and explicitly confirm it. Preparation creates no appointment. AI voice appointment setting has a separate rollout; these controls do not enable autonomous calls.
+</Accordion>
 
-## Block holidays and busy time
-
-Use **New** to add a busy time block for holidays, travel or another commitment. A busy block protects time; an availability rule describes recurring hours when you can be offered appointments. Use separate onsite and phone/video availability where your working pattern differs.
-
-Adding a new block or discovering an external conflict does not automatically cancel an existing appointment. Review the conflict and use the appointment's reschedule or cancellation controls if a change is needed.
-
-## Subscribe and import calendars
-
-| Direction | How to use it | What it does |
-| --- | --- | --- |
-| ArcSolar to Apple, Google or Outlook | Open **Subscribe**, then follow the subscription instructions | Shows ArcSolar events in your other calendar; a downloaded file is only a one-time snapshot |
-| Another calendar to ArcSolar | Add its HTTPS or webcal feed in **My availability → Incoming calendars** | Imports busy time as read-only **External busy** entries without sharing personal event titles or contents |
-
-Incoming feeds refresh every five minutes, subject to the publisher's own delay. A required feed that cannot be validated for ten minutes pauses automatic bookings. A failed refresh retains the last successful busy snapshot. Use **Refresh busy time** or fix the feed if its health status needs attention.
-
-Protect subscription URLs as private links and revoke or replace them when needed. Subscription imports are read-only; editing an ArcSolar appointment does not write it back to the external publisher.
-
-## Appointment confirmations and reminders
-
-Once a manager enables **Appointment messages**, customer-associated consultations queue customer and rep confirmations plus reminders 24 hours and 30 minutes before the appointment. Reminder times that have already passed are skipped. Rescheduling replaces stale reminders and sends the revised details; cancellation invalidates remaining reminders and notifies both parties.
-
-- Customer messages include the actual date, timezone, channel, location or meeting link and duration. They request the electricity bill. Phone/video messages also request a switchboard photo and provide the secure site-information form link.
-- Rep messages include customer details, preparation status and an authenticated CRM link. Rep SMS goes to their configured personal notification mobile and comes from their authorized work line.
-- Email uses the verified company sender, identifies the rep and uses their work email as Reply-To.
-- Consent, suppression, contact details, member preferences and sender readiness determine which messages can send. A missing customer email does not prevent booking; missing channels and failed or uncertain delivery remain visible for follow-up.
-
-**Queued** or **Sent** is not proof of **Delivered**. Check the appointment's notification status before assuming a recipient received it. Enabling delivery adds eligible future reminders without sending old booking confirmations.
-
-## Keep delivery work connected
-
-Appointments, projects, jobs and field operations retain their linked records. Update installation and work-order schedules through their owning controls, then verify the calendar entry. Customer SMS threads distinguish **Upcoming appointment** from **Upcoming field operation** where applicable.
-
-The subscribed-calendar busy import is separate from these ArcSolar record links. Do not treat an external calendar subscription as two-way editing of jobs or customer records.
-
-## Plan a field day
-
-1. Open **Field days** and select **Plan field day**, if available.
-2. Choose the date, crew and intended jobs.
-3. Enter visit durations, working hours and arrival constraints.
-4. Review visit order, travel and feasibility.
-5. Resolve conflicts before using the final confirmation action.
-6. Check the resulting job/calendar entries.
-
-<Frame caption="Field days in Projects & Jobs. The fictional manual preview does not save a live schedule.">
-  <img src="/images/v2/field-days.png" alt="Projects & Jobs with Field days selected and the manual planning entry point visible." />
-</Frame>
-
-If the screen is labelled **Manual preview** or **Authenticated preview**, follow that limitation. Route calculation is not itself a confirmed schedule. An unavailable route service does not prove that a crew can meet the proposed times.
-
-## ArgonixIntelligence in this workflow
-
-Managers can use **Booking settings → Scheduling tools** to prepare a booking, reschedule or cancellation, review the exact proposal and explicitly confirm it. Preparation alone creates no appointment. Mobile and future AI scheduling integrations use the same availability and permission checks.
-
-The AI voice appointment setter is a separate rollout. This release does not enable autonomous calls. Intelligence cannot invent availability, change customer ownership outside its authority or substitute its own confirmation for the approved scheduling action.
+<NextGuide href="/setup/sales-availability" title="Sales availability" />

@@ -8,3 +8,6 @@ drafts/
 
 # Agent instruction files (Mintlify does not auto-ignore AGENTS.md)
 AGENTS.md
+.agents
+.21st
+review

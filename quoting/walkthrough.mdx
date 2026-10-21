@@ -2,68 +2,37 @@
 icon: "file-invoice-dollar"
 sidebarTitle: "Create a quote"
 keywords: ["quoting","estimates","proposal","send quote"]
-title: "Create and send a quote"
-description: "Work through the builder from customer selection to the issued offer."
+title: "Create a quote"
+description: "Build the offer, check the customer view and send it when ready."
 ---
-import { QuotingVideo } from "/snippets/quoting-video.jsx";
 
-**Open:** [**Quick Create Quote**](https://app.arcsolar.com.au/dashboard/quotes/new) or the new-quote action in [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes).
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-## Watch the quoting walkthrough
+<ProductPreview type="quote" />
 
-Follow one fictional customer from the builder to the customer preview. Pause whenever you want to try a step yourself.
+Open [**Quick Create Quote**](https://app.arcsolar.com.au/dashboard/quotes/new) or the new-quote action in **Quotes**.
 
-<Frame caption="Recorded in an earlier ArcSolar interface. A practice quote in the ArcSolar demo. Bill analysis and form delivery are simulations; no message is sent.">
-  <QuotingVideo label="ArcSolar quoting walkthrough: bill review, equipment, price adjustment and customer preview" />
-</Frame>
+## Build the offer
 
-[Watch the quoting walkthrough full size](https://mintcdn.com/arc-solar/ECLoOeBu_2hQztaN/videos/quoting-walkthrough.mp4)
+1. **Choose the customer.** Confirm the opportunity, contact details and installation address. Resolve duplicate warnings.
+2. **Review the site.** Check the [site information](/quoting/site-information), bill and outstanding questions.
+3. **Choose the services.** Select solar, battery or the supported combination. Review the [energy profile](/quoting/bill-analysis).
+4. **Select the system.** Confirm exact models, quantities, phases and installation conditions. Use [Roof Vision](/quoting/roof-design) for the panel layout and drawings.
+5. **Review the numbers.** Check [savings](/quoting/savings), [incentives](/quoting/incentives-stcs), pricing and the [payment schedule](/quoting/payment-options).
+6. **Check Review & BOM.** Confirm materials and any services or adjustments.
 
-In **Form**, use the fictional example bill to practise analysis and review the suggested values. In a connected workspace, upload the customer's actual bill and check the extracted information before applying it. The form-link button sends a real request only in the connected workspace.
+In **Extras & adjustments**, **Add to price** increases the total and **Discount** reduces it. Use only approved amounts and recheck the payment schedule.
 
-**Adjusting the price:** in **Review & BOM → Extras & adjustments**, **Add to price** increases the customer price and **Discount** reduces it. Enter only amounts approved under your retailer's policy, then recheck the total and payment schedule.
+## Preview, then send
 
-<Note>
-  The example equipment, tariffs and prices are for training, not a recommended system or an approved offer. Stop at the preview when practising.
-</Note>
+Open the customer preview. Check the recipient, address, system, total, conditional incentives, savings, agreement and payment milestones. Internal costs, margin, commission and staff notes must stay internal.
 
-## Follow each step
+Use the final send confirmation, then check the quote in the register and review delivery warnings. Sending creates the snapshot used by the customer page and PDF; later catalogue changes do not rewrite it.
 
-<Steps>
-<Step title="Choose the customer">
-Search for the existing customer and opportunity. Confirm email, phone and installation address. Resolve any duplicate warning before continuing.
-</Step>
-<Step title="Review site information">
-Review the customer form, uploaded bill and site details. Request missing photos or information. See [site information](/quoting/site-information).
-</Step>
-<Step title="Select services and energy profile">
-Choose solar, battery or the supported combination. Enter the energy profile or use [bill analysis](/quoting/bill-analysis). Only the equipment steps relevant to the chosen services appear.
-</Step>
-<Step title="Select solar and battery equipment">
-Choose the exact package, panel model, quantities, inverter, battery and phase-compatible equipment. Review installation conditions, panel removal, extra storeys, cable runs and indoor requirements. Lay out the panels, stringing and single line diagram in [Roof Vision](/quoting/roof-design).
-</Step>
-<Step title="Review savings">
-Confirm usage, tariff and existing-system assumptions in the energy/savings step. Review the estimate and any warnings. If savings are omitted, the customer preview must reflect that.
-</Step>
-<Step title="Review pricing, incentives and payment">
-Check the package-price basis, dated STCs, other selected benefits, services, discounts and the final total. Choose direct payment or configured finance and review all milestones and fees.
-</Step>
-<Step title="Review the bill of materials">
-Check exact equipment and quantities plus any required detailed materials. Internal costs and notes belong in the internal review, not customer copy.
-</Step>
-<Step title="Preview, then send">
-Open the customer preview. Check the recipient, site, selected system, total, savings, payment schedule and agreement. Use the final confirmation to issue the quote. Confirm the quote appears in the register and review delivery warnings.
-</Step>
-</Steps>
+If you are practising, use a manager-approved record and stop at the preview. Example equipment and prices are not an approved offer.
 
-## Before you click send
+## Offer two options
 
-A draft is not an issued offer. Sending fixes the commercial snapshot used by the customer page and PDF. Later catalogue changes do not automatically change that issued quote.
+Send both eligible quotes to the same customer, then [link them for comparison](/quoting/compare-estimates). Linking does not accept an offer or collect a deposit.
 
-Check [incentives and STCs](/quoting/incentives-stcs), [payments](/quoting/payment-options) and [follow-ups](/quoting/follow-ups) before your first live send.
-
-If you send two quotes to the same customer, [link them for comparison](/quoting/compare-estimates) so the customer can review both options in one place.
-
-## ArgonixIntelligence in this workflow
-
-Bill extraction and supported recommendations reduce preparation work. Review all inputs and the final customer document yourself; intelligence does not approve eligibility or commercial terms.
+<NextGuide href="/quoting/customer-view" title="The customer quote view" />

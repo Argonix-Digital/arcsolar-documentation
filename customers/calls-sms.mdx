@@ -2,53 +2,43 @@
 icon: "phone"
 sidebarTitle: "Calls and SMS"
 keywords: ["VoIP","SMS","phone","messages","calling","keypad","touch tones","call bar","recording"]
-title: "Make calls and send SMS"
-description: "Prepare the browser phone, contact the customer and confirm the outcome."
+title: "Calls and SMS"
+description: "Keep the conversation and customer context in one place."
 ---
-**Open:** [**Comms**](https://app.arcsolar.com.au/comms?tab=messages), or the call/SMS action on a customer record.
 
-<Frame caption="The Comms workspace with fictional conversations and call context.">
-  <img src="/images/v2/comms.png" alt="ArcSolar v2 Comms with the conversation workspace and an available intelligence brief." />
-</Frame>
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
+<ProductPreview type="comms" />
 
-## Before your first call
+Open [**Comms**](https://app.arcsolar.com.au/comms?tab=messages) or the call and SMS actions on a customer record.
 
-Confirm your account is active, first-time setup is complete, your number is allocated and communications billing is active. Allow microphone access when your browser asks. Select the intended microphone and speaker/headset and check the phone-ready state.
+## Make a call
 
-Keep the calling tab open. Mobile browsers and background tabs can suspend activity; a desktop headset is useful for regular calling.
+Your account, assigned line and communications billing must be active. Allow microphone access and check your audio devices.
 
-## Make and finish a call
+1. Open **Comms → Phone** and confirm the customer and number.
+2. Check **Outbound caller ID**, then select **Call from assigned line**.
+3. Wait for **Connected**. Tell the customer the call is being recorded.
+4. Use **Mute**, **Touch tones** and **Hang up** as needed.
+5. Review the recorded outcome and the next task.
 
-1. Open the customer and verify the number.
-2. Start the call from the available call control.
-3. Wait for the connected state before speaking.
-4. Use mute and audio controls as needed.
-5. End the call and confirm the recorded outcome.
-6. Add the next task or appointment.
+Keep the calling tab open. ArcSolar calling is not for emergency calls.
 
-Only one outbound call should be active on a line. A failed or unanswered call is not connected talk time.
+## Keep working during a call
 
-## Use the keypad and the call bar
+The floating call bar keeps the contact and duration visible. Use **Back to app** to collapse it. You can reopen the keypad, message the customer, add a note or book an appointment. Call notes accept up to 1,000 characters.
 
-<Visibility for="humans">
-Open [**Comms → Phone**](https://app.arcsolar.com.au/comms?tab=phone). The **Keypad** is on the right.
+## Send a message
 
-1. Type the number, or pick a customer to fill it in. The field holds up to 24 characters, and **Delete last character** removes the last digit.
-2. If the customer has more than one verified number, choose one under **Choose the number to call** before dialling.
-3. Check **Outbound caller ID** — that is the business number the customer sees. If your line is not active yet, an administrator has to finish provisioning it before live calls can start.
-4. Select **Call from assigned line**.
+Open the customer's conversation, read the latest activity and confirm the destination and sender. Write the message, send it and check the status. **Queued**, **Sent** and **Delivered** mean different things.
 
-Once the call connects, the number field becomes **Touch tones**. Use the keypad to answer a phone menu; each press sends a tone, and you can hold up to 24 digits. **Delete last character** removes the last tone you entered.
+Respect STOP, do-not-contact and channel consent. SMS length and characters can create multiple billable segments; your agreed rates apply.
 
-The call state is shown as **Authorising**, **Dialling**, **Ringing**, **Incoming call**, **Connected**, **Ending**, **Ended** or **Failed**. An incoming call offers **Answer** and **Decline**. On a connected call you can **Mute**, **Unmute** and **Hang up**. If the browser blocks sound, choose **Enable call audio**.
+<Accordion title={"Phone or audio unavailable"}>
+Check PayTo, member setup and the assigned line. Use the offered **Connect phone**, retry or repair action. If sound is blocked, choose **Enable call audio**. **Use phone on this device** can move an idle phone from another device; an active call cannot be moved. After sleep or a network change, wait for reconnection before trying again.
+</Accordion>
 
-If the phone is not ready, use the control the keypad offers: **Connect phone**, **Retry phone registration**, **Retry phone connection** or **Waiting for network**. **Repair phone connection** clears an incompatible browser media setting and reconnects, and **Use phone on this device** moves the phone across from another browser or device — a phone with an active call cannot be moved.
-
-A live call also shows a floating **call bar**. Collapse it with **Back to app** and expand it again when you need it. It keeps the contact, number, duration and a **Call recording active** indicator in view, and offers **Open Keypad**, **Message customer**, **Mute**, **Add a note**, **Book customer appointment**, **Open customer profile** and **Hang up**. **Add a note** saves up to 1,000 characters into the customer's Activity as a call note.
-
-Live calls carry the reminder **Tell the customer this call is being recorded.** and **Not for emergency calls.**
-</Visibility>
+<NextGuide href="/customers/call-intelligence" title="CallIntelligence" />
 
 <Visibility for="agents">
 - The keypad lives in the **Phone** tab of Comms (`/comms?tab=phone`, and `/comms?tab=phone&pane=keypad` opens the keypad pane directly). The numbered input holds at most 24 characters and its accessible label is "Number to call"; **Delete last character** is a tooltip and an aria-label, and it is disabled while a call is active and the field is empty.
@@ -63,19 +53,3 @@ Live calls carry the reminder **Tell the customer this call is being recorded.**
 - **Call note.** The dialog title is **Add a call note** and its description is "Add context from this call to the Customer activity." It lists Client, Number, Direction, Status and Duration, takes a note of up to 1,000 characters, and saves with **Save call note**. The note is written to the customer's Activity.
 - **Recording notice.** Live mode always shows "Tell the customer this call is being recorded." and "Not for emergency calls." under the call controls. Do not describe ArcSolar calling as available for emergencies.
 </Visibility>
-
-## Send a message
-
-Open the customer's conversation, confirm the destination and sender, read recent activity, enter the message and send. Check its status afterwards. Queued, sent and delivered are different states.
-
-SMS can use multiple billable segments depending on length and characters. Check the communications rates agreed during onboarding.
-
-Respect STOP, do-not-contact and channel consent. Do not switch channels to bypass a customer's request not to be contacted.
-
-## Resolve problems
-
-If the phone is unavailable, check PayTo, member setup and the assigned line. If audio fails, check browser permission and selected devices. After returning from sleep or a network change, wait for reconnection before trying again. For a failed SMS, read the message's status instead of repeatedly sending duplicates.
-
-## ArgonixIntelligence in this workflow
-
-[CallIntelligence](/customers/call-intelligence) can provide a summary when recording/transcription is available. Missing transcripts cannot support a verified summary.

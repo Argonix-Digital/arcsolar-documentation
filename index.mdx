@@ -1,70 +1,40 @@
 ---
-icon: "house"
-sidebarTitle: "Welcome"
-keywords: ["ArcSolar","introduction","ArgonixIntelligence"]
-title: "Welcome to ArcSolar"
-description: "One workspace, from first enquiry to completed installation."
-mode: "default"
+title: "ArcSolar Docs"
+sidebarTitle: "Overview"
+description: "Learn the essentials, then find the guide for the work in front of you."
+icon: "book-open"
+mode: "wide"
 ---
 
-ArcSolar brings your customers, quotes, communications, installation work and payments together. These guides help owners configure the business, sales teams move customers forward and operations teams deliver the work.
+import { TopicCard, DocIcon } from "/snippets/docs-visuals.jsx";
 
-## Meet ArgonixIntelligence
-
-ArgonixIntelligence appears inside supported workflows: electricity-bill analysis, call summaries and dashboard briefs. It helps you understand information and decide what to do next. Availability depends on your plan, permissions and the data available.
-
-Always check extracted bill values, call summaries and recommendations against their source. A summary does not approve finance, confirm a rebate, settle a payment or complete an installation.
-
-The separate **ArgonixIntelligence Agentic Chat interface tab in the sidebar** will be coming **Soon in a future release**. Embedded tools can still be available. Each guide ends with a practical explanation of how intelligence fits that workflow.
-
-## Start with your role
-
-<CardGroup cols={2}>
-  <Card title="Owners, admins and operations" icon="building" href="/quickstart">
-    Start with the customer journey, then follow the setup guides for your role.
-  </Card>
-  <Card title="Joining the sales team" icon="graduation-cap" href="/sales-onboarding">
-    Seven short lessons, with a practice step in each. Start here for a confident first day.
-  </Card>
-</CardGroup>
-
-Setting up or running the business? You can skip the sales rep course. Return to it if you also sell or coach your team.
-
-## Explore the workspace
-
-<CardGroup cols={2}>
-  <Card title="Set up your business" icon="building" href="/setup/onboarding">
-    Create your organisation, activate billing and prepare your team.
-  </Card>
-
-  <Card title="Follow the customer journey" icon="route" href="/quickstart">
-    Move from a new enquiry to a quote, installation and close-out.
-  </Card>
-
-  <Card title="Create a confident quote" icon="file-invoice" href="/quoting/walkthrough">
-    Understand bills, savings, equipment, incentives and payment choices.
-  </Card>
-
-  <Card title="Run the business" icon="chart-line" href="/reporting/overview">
-    Review sales, calls, tasks, delivery and outstanding payments.
-  </Card>
-</CardGroup>
-
-## Choose your starting point
-
-| Your role | Start with |
-| --- | --- |
-| Business owner or administrator | [Customer journey](/quickstart), then [onboarding](/setup/onboarding), [team access](/setup/team) and the [setup checklist](/setup/checklist) |
-| Sales representative | [Start your seven-lesson onboarding](/sales-onboarding) |
-| Operations | [Customer journey](/quickstart), then [projects and jobs](/delivery/projects), [calendar](/delivery/calendar) and [rebate tracking](/delivery/rebates) |
-| Finance or management | [Payments](/delivery/finance), [reporting](/reporting/overview), [accountability](/reporting/accountability) |
-
-## Read the screen labels
-
-**Mock data**, **Fictional preview** and **Manual preview** identify demonstrations. Their values are examples; some actions do not save. Screenshots in these guides use fictional examples and may show these labels.
-
-A missing menu can reflect your role or plan. A **Coming soon** label is not an instruction to connect a service. See [availability](/reference/availability).
-
-The organisation onboarding guide follows the **qa** onboarding release. Other guides describe the inspected workflow; your organisation's enabled features and saved settings determine what appears.
-
-_The ArcSolar team · [support@arcsolar.com.au](mailto:support@arcsolar.com.au)_
+<div className="docs-home">
+  <h2>Start here</h2>
+  <div className="docs-topic-grid">
+    <TopicCard href="/start-guide" icon="book" title="Start guide" description="Find your way around and follow your first customer." />
+    <TopicCard href="/customers/records" icon="customer" title="Customer records" description="The customer, their history and the next step." />
+    <TopicCard href="/quoting/walkthrough" icon="quote" title="Create a quote" description="Build the offer, review it and send with confidence." />
+    <TopicCard href="/delivery/projects" icon="project" title="Projects and jobs" description="Prepare the installation and keep delivery moving." />
+  </div>
+  <h2>Your everyday work</h2>
+  <div className="docs-topic-grid">
+    <TopicCard href="/customers/pipeline" icon="grid" title="Pipeline" description="See each opportunity and its next action." />
+    <TopicCard href="/customers/calls-sms" icon="phone" title="Calls and SMS" description="Have the conversation with the context in view." />
+    <TopicCard href="/customers/tasks" icon="task" title="Tasks" description="Give each follow-up an owner and a date." />
+    <TopicCard href="/quoting/site-information" icon="roof" title="Site information" description="Collect the bill, photos and video you need." />
+    <TopicCard href="/quoting/bill-analysis" icon="bolt" title="Bill analysis" description="Review the bill and prepare the energy profile." />
+    <TopicCard href="/delivery/calendar" icon="calendar" title="Calendar" description="Plan customer appointments and field work." />
+    <TopicCard href="/quoting/customer-view" icon="quote" title="Customer quote view" description="Review the offer your customer receives." />
+    <TopicCard href="/delivery/finance" icon="report" title="Project finances" description="Check payments, milestones and balances." />
+  </div>
+  <h2>Go further</h2>
+  <div className="docs-home-links">
+    <a href="/quoting/roof-design"><DocIcon name="roof" />Roof Vision<DocIcon name="arrow" size={16}/></a>
+    <a href="/reporting/overview"><DocIcon name="report" />Dashboards and reporting<DocIcon name="arrow" size={16}/></a>
+    <a href="/sales-onboarding"><DocIcon name="book" />Sales onboarding<DocIcon name="arrow" size={16}/></a>
+    <a href="/setup/checklist"><DocIcon name="settings" />Set up your workspace<DocIcon name="arrow" size={16}/></a>
+    <a href="/integrations/overview"><DocIcon name="plug" />Connect your tools<DocIcon name="arrow" size={16}/></a>
+    <a href="/changelog"><DocIcon name="grid" />What’s new<DocIcon name="arrow" size={16}/></a>
+  </div>
+  <p className="docs-home-support">Need a hand? <a href="/reference/support">Contact support</a>.</p>
+</div>

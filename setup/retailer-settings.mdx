@@ -10,32 +10,39 @@ keywords:
   - "selling brand"
   - "documents"
 title: "Retailer Settings"
-description: "Set the pricing, finance, branding and contract rules for the selling brand you are editing."
+description: "Set the commercial rules for the selling brand you are editing."
 ---
 
-**Open:** [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings) in the Business section.
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-Check **Selling brand** before changing commercial settings. Prices, fees and quote terms apply to the selected brand. **Appearance defaults** holds workspace branding defaults; **Agreements** holds the selected brand's document identity.
+<ProductPreview type="settings" />
 
-| Tab | What to configure |
-| --- | --- |
-| [Pricing & fees](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=pricing) | Package price basis, quote defaults and BOM completeness requirements |
-| [Services & fees](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=services) | Chargeable services, quantities, allowances, regions and companion items. This entry is hidden when the service catalogue is available, and choosing it then opens **Product Catalogue → Services** instead |
-| [Payments & finance](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=finance) | Available finance terms, fees, the deposit limit, the stock delivery payment and the installation window |
-| [Automated messages](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=quote-sms) | Automatic quote SMS wording and timing |
-| [Appearance defaults](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) | Names, website, sending address, logos, colours and contract fonts — see [Branding](/setup/branding) |
-| [Agreements](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=documents) | This brand's agreement wording and consent text — see [The NETCC contract](/setup/selling-contract) |
-| [Integrations](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations) | Connected providers and optional rebate tracking |
+Open **Retailer Settings** and check **Selling brand** before changing anything. Prices, fees and quote terms follow the selected brand.
 
-When you are in **Pricing & fees**, **Services & fees** or **Payments & finance**, a **Product Catalogue** link sits in the title row, because the amounts behind a quote come from there.
+## Make a change
 
-## Switch the brand you are editing
+Choose the relevant tab, review the current rule and save your changes. Where offered, review the before-and-after values, then **Apply immediately** or **Schedule a start time**. Check a new sample quote afterwards.
+
+Issued offers keep their saved values. Use the revision process to change an existing offer.
+
+## Choose the right section
+
+**Pricing & fees** controls the price basis and defaults. **Payments & finance** controls terms, deposits and installation windows. **Automated messages** controls follow-up SMS. **Appearance defaults** and **Agreements** cover customer-facing identity and documents. **Integrations** connects providers.
+
+Tab visibility and the ability to apply changes depend on your role. Service pricing may open **Product Catalogue → Services** instead.
+
+
+## Details
+
+<Accordion title={"Switch the brand you are editing"}>
 
 Use the **Selling brand** box in the title row. The commercial settings and agreements follow it, and the readiness report is recalculated for the brand you chose. If only one brand is available to you the box is a plain label instead — with a single brand there is nothing to choose.
 
 See [Sell under more than one selling brand](/setup/selling-brands) for the states that make an entry unselectable, and for who may edit which brand.
 
-## Who can open which tab
+</Accordion>
+
+<Accordion title={"Who can open which tab"}>
 
 The strip is filtered to the sections your role can use, so a tab you cannot use is absent rather than empty:
 
@@ -50,7 +57,9 @@ Opening a **Appearance defaults** or **Agreements** address directly as another 
 
 The readiness report above the tabs follows the same administrator-and-developer rule, because the document rows behind it are not readable by every role — and a brand that cannot be read must never be reported as an incomplete one.
 
-## Apply a commercial change
+</Accordion>
+
+<Accordion title={"Apply a commercial change"}>
 
 1. Open the relevant tab and review the current settings.
 2. Change the specific rule. Check whether a package price is **After federal STCs** or **Before incentives**.
@@ -62,7 +71,9 @@ The readiness report above the tabs follows the same administrator-and-developer
 
 Published changes apply according to their effective date. Sent quotes retain their issued values. Changing a setting is not permission to rewrite an accepted contract.
 
-## Finance and deposits
+</Accordion>
+
+<Accordion title={"Finance and deposits"}>
 
 The **Payments & finance** tab has three cards.
 
@@ -98,19 +109,12 @@ The card closes with the rule that stops confusion about arithmetic: _"The depos
 
 The quote's own payment controls are explained in [Payment options](/quoting/payment-options).
 
-## Services and materials
+</Accordion>
+
+<Accordion title={"Services and materials"}>
 
 Choose whether a service is rep-selected or triggered by a condition such as indoor installation, cable run, extra storeys or panel removal. Check the region, quantity and whether the price comes from the catalogue or a custom selling price.
 
 Choose when detailed materials must be complete: optional, before issuing a quote or at operational handover. Equipment and quantities still need to match the proposed system.
 
-## ArgonixIntelligence in this workflow
-
-Bill analysis and quoting assistance work alongside these rules. Staff must review and apply commercial changes; intelligence does not silently approve a pricing policy.
-
-## Related
-
-- [Sell under more than one selling brand](/setup/selling-brands)
-- [Finance and deposits in the contract](/setup/selling-contract)
-- [Prices per brand](/setup/price-books)
-- [Which settings screen do I want?](/setup/settings-screens)
+</Accordion>

@@ -1,7 +1,7 @@
 ---
-sidebarTitle: "The NETCC contract"
-title: "Edit and publish a selling brand's agreement"
-description: "Change the agreement wording customers accept, save a draft, get it published, and restore an earlier version."
+sidebarTitle: "Customer agreements"
+title: "Customer agreements"
+description: "Review, approve and publish the agreement used for future offers."
 keywords:
   - "NETCC"
   - "contract"
@@ -13,15 +13,30 @@ keywords:
   - "approval"
 ---
 
-**Open:** [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=documents) → **Agreements**.
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-The **Agreements** tab holds one brand's agreement: the wording the customer reads and accepts when they sign, plus the details that appear on it. It edits the brand the **Selling brand** box has selected, so the agreement you are changing is always named in front of you.
+<ProductPreview type="contract" />
 
-<Info>
-  **Who can open it.** The tab follows the administrator-and-developer rule: other roles are sent back to **Pricing & fees**, so the tab is absent from the strip rather than shown empty. **Publishing is narrower still — the workspace owner or a developer can publish.**
-</Info>
+Open **Retailer Settings → Agreements** and confirm the selected selling brand. Editing and publishing require the permissions offered on screen.
 
-## Who can edit and who can publish
+## Prepare the agreement
+
+Review supplier identity, contact and sender details, agreement wording, consent text and appearance. The original brand's legal details come from **ArcSolar Settings**; additional brands hold their own document identity.
+
+## Review and publish
+
+Save a draft, inspect the branded preview and complete the required approval confirmation. Publish the approved version using an authorised account. A saved or restored draft does not become the customer agreement until published.
+
+## Keep terms consistent
+
+Deposit limits, stock-delivery percentages and installation windows come from **Payments & finance**. Agreement wording cannot override those settings. Review the final rendered contract and its version before approval.
+
+Issued agreements retain their original snapshot. Use revision history and the supported quote workflow for later changes.
+
+
+## Details
+
+<Accordion title={"Who can edit and who can publish"}>
 
 | | An administrator who is not the owner | The workspace owner or a developer |
 | --- | --- | --- |
@@ -39,7 +54,9 @@ When you can publish, the editor tells you exactly what a save will do:
 
 When you cannot, you can still edit and save drafts — but the version customers receive is not published until **the workspace owner or a developer** publishes it.
 
-## What the agreement contains
+</Accordion>
+
+<Accordion title={"What the agreement contains"}>
 
 ### Supplier and contact details
 
@@ -77,9 +94,7 @@ The Markdown field supports *"Headings, paragraphs, emphasis, links and numbered
 
 Where the workspace has older clauses on file, **Replace wording with existing JBE clauses** copies them into this unapproved draft for you to review.
 
-<Frame caption="Agreements in the current fictional workspace. Editing, approving and rendering a live agreement require the corresponding access and saved document.">
-  <img src="/images/v2/settings-agreements.png" alt="The current Agreements settings view with its fictional preview notice." />
-</Frame>
+
 
 <Warning>
   An empty **Unsolicited-sale notice** means that version **cannot issue an unsolicited-sale contract**. The owner's review says so before you approve: *"No unsolicited-sale notice. This version cannot issue an unsolicited-sale contract."* If your team ever signs up a customer who did not come to you first, fill this in.
@@ -97,7 +112,9 @@ Leave the box clear and the owner's review reports *"Finance offers are unavaila
   **This is not where the deposit and installation terms live.** This section is the lender's approved wording. The deposit limit, stock-delivery payment and installation window are finance settings that apply to every contract — see [Finance is the single source of truth](#finance-is-the-single-source-of-truth).
 </Info>
 
-## Save a draft, then publish
+</Accordion>
+
+<Accordion title={"Save a draft, then publish"}>
 
 The button at the bottom of the editor says what it will do:
 
@@ -125,7 +142,9 @@ At the top of the card, one line always states where the brand stands:
 
 An alert reads **Owner status could not be verified** — *"You can still edit and save a draft, but publishing is unavailable until the page can confirm that you hold owner authority. Reload the page to retry."* The page fails closed: not being able to *prove* the actor holds the workspace owner's authority (the owner, or a developer acting under it) is treated the same as not holding it, so no version is published on a guess.
 
-## How a version is approved
+</Accordion>
+
+<Accordion title={"How a version is approved"}>
 
 The approval surface is in [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-documents) → **Customer documents** → **Approve brand documents**. Administrators prepare drafts in Retailer Settings → Documents, and **the workspace owner or a developer** reviews the current sources and retains an approved version here. Approval does not enable multi-brand selling or change payment accounts.
 
@@ -140,7 +159,9 @@ The flow:
 
 The line above the button always states the last retained approval — *"Latest retained approval: draft N, approved DATE. Changes to its sources may require a new approval before issuing."*
 
-## Revision history and restoring a version
+</Accordion>
+
+<Accordion title={"Revision history and restoring a version"}>
 
 **Published revisions** lists *"every version published for BRAND, newest first"*, each row showing **Draft N · date** and **Published by NAME**. Its description states the important property:
 
@@ -156,12 +177,15 @@ The outcome is reported plainly: *"Draft version N was restored and published."*
 
 An empty list is honest about itself: *"No revision has been published for this brand yet."* A failure to load the history is reported as a failure to load, never as an empty history.
 
-## Preview the branded contract
+</Accordion>
+
+<Accordion title={"Preview the branded contract"}>
 
 **Contract preview** sits with the editor and on [Branding](/setup/branding). It renders the brand's saved draft — its logo, colours, retained fonts and agreement wording — through the real contract renderer, and the dialog states *"A preview is never an approval."*
 
+</Accordion>
 
-## Finance is the single source of truth
+<Accordion title={"Finance is the single source of truth"}>
 
 Three numbers on every direct-payment contract come from **Retailer Settings → Payments & finance**, not from the document:
 
@@ -179,14 +203,18 @@ Keep that sentence's meaning in mind if you shorten the window: the phrase is pa
 
 See [Finance and deposits](/setup/retailer-settings#finance-and-deposits) for the fields, and [Prices per brand](/setup/price-books) for what sits behind the amounts.
 
-## When the tab has nothing to show
+</Accordion>
+
+<Accordion title={"When the tab has nothing to show"}>
 
 | Message | Cause |
 | --- | --- |
 | **No selling brand to document** — *"This workspace has no selling brand you can configure yet. Create or enable one in ArcSolar Settings before editing its agreement."* | No brand is available to you |
 | **Fictional preview** — *"Documents read from the workspace, so this preview has none to edit or publish."* | You are in a demo workspace |
 
-## Before you approve a version
+</Accordion>
+
+<Accordion title={"Before you approve a version"}>
 
 - The **legal name and ABN** are exactly right. They appear on the customer's contract and receipt.
 - The **trading name** is the name customers know the business by.
@@ -195,9 +223,4 @@ See [Finance and deposits](/setup/retailer-settings#finance-and-deposits) for th
 - The **installation window** on the preview matches what your Finance settings say, because that is what the next quote will promise.
 - The **finance terms** match the lender's current offer, if finance is offered at all.
 
-## Related
-
-- [What a selling brand is](/setup/selling-brands)
-- [Branding](/setup/branding)
-- [Which settings screen do I want?](/setup/settings-screens)
-- [Selling brands FAQ](/reference/selling-brands-faq)
+</Accordion>

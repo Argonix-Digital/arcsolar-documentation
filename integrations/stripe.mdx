@@ -2,9 +2,14 @@
 icon: "credit-card"
 sidebarTitle: "Stripe payments"
 keywords: ["Stripe Connect","customer payments","payouts"]
-title: "Set up Stripe customer payments"
+title: "Stripe payments"
 description: "Connect your business so customers can pay against their issued quote."
 ---
+
+import { ProductPreview } from "/snippets/docs-visuals.jsx";
+
+<ProductPreview type="stripe" />
+
 **Open:** **Set up customer payments** during onboarding, or the Stripe card under [**Retailer Settings → Integrations**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations), where available.
 
 ## Complete setup
@@ -37,7 +42,3 @@ The organisation's subscription and [VoIP PayTo mandate](/setup/payto) are separ
 If collection is disabled, finish Stripe's outstanding requirements. If the customer returned from checkout but ArcSolar still shows processing, check the payment record before sending a second link. Do not create a duplicate charge to resolve a display delay.
 
 For reconciliation, use [Finance](/delivery/finance), the customer record and the provider payment reference together.
-
-## ArgonixIntelligence in this workflow
-
-Intelligence may help identify a payment that needs attention. Only confirmed payment records establish that money was collected.

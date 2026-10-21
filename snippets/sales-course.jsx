@@ -5,8 +5,8 @@ const lessons = [
   { id: "customer", title: "Meet your customer", path: "/sales-onboarding/customer" },
   { id: "conversation", title: "Make the conversation count", path: "/sales-onboarding/conversation" },
   { id: "assessment", title: "Understand the home", path: "/sales-onboarding/assessment" },
-  { id: "quote", title: "Build a confident quote", path: "/sales-onboarding/quote" },
-  { id: "follow-through", title: "Follow through beautifully", path: "/sales-onboarding/follow-through" },
+  { id: "quote", title: "Build a quote", path: "/sales-onboarding/quote" },
+  { id: "follow-through", title: "Follow through", path: "/sales-onboarding/follow-through" },
   { id: "ready", title: "Get ready for your first customer", path: "/sales-onboarding/ready" },
 ];
 const readProgress = () => {
@@ -33,9 +33,9 @@ const complete = (value) => Array.isArray(value) && value.length === 3 && value.
     <section aria-label="Your course progress" className="my-8 border-y border-zinc-200 py-6 dark:border-zinc-700">
       <p className="m-0 text-sm font-medium" aria-live="polite">{loaded ? `${count} of 7 lessons checked off` : "Your course, at your pace"}</p>
       <div role="progressbar" aria-label="Completed lessons" aria-valuenow={count} aria-valuemin={0} aria-valuemax={7} aria-valuetext={`${count} of 7 lessons checked off`} className="my-4 h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
-        <div className="h-full rounded-full" style={{ width: `${count / 7 * 100}%`, backgroundColor: "#3D88F2" }} />
+        <div className="h-full rounded-full" style={{ width: `${count / 7 * 100}%`, backgroundColor: "var(--docs-accent)" }} />
       </div>
-      <p className="mb-4 mt-0">{count === 7 ? "Practice complete. Bring your checklist to your manager before your first live quote." : "Small steps. A clear path. Pick up exactly where you left off."}</p>
+      <p className="mb-4 mt-0">{count === 7 ? "Practice complete. Bring your checklist to your manager before your first live quote." : "Continue with the next lesson."}</p>
       <a className="inline-block py-2 font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href={next ? next.path : "/sales-onboarding/ready"}>
         {next ? `${count === 0 ? "Start" : "Continue"}: ${next.title}` : "Review your final checklist"}
       </a>
@@ -79,7 +79,7 @@ export const LessonChecklist = ({ lessonId, items }) => {
       <p className="mt-0 text-sm">Tick each box when you have tried it or talked it through with your manager. You can untick a box to revisit it.</p>
       {items.map((item, index) => (
         <label key={item} className="my-2 flex cursor-pointer items-start gap-3 py-2">
-          <input type="checkbox" checked={checks[index] || false} disabled={!loaded} onChange={() => toggle(index)} className="mt-1 h-5 w-5 shrink-0" style={{ accentColor: "#3D88F2" }} />
+          <input type="checkbox" checked={checks[index] || false} disabled={!loaded} onChange={() => toggle(index)} className="mt-1 h-5 w-5 shrink-0" style={{ accentColor: "var(--docs-accent)" }} />
           <span>{item}</span>
         </label>
       ))}
