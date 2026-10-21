@@ -20,9 +20,9 @@ A **selling brand** is the identity your customer is buying from. One brand owns
 
 | Part | Where you set it |
 | --- | --- |
-| **Legal name, trading name and ABN** on the contract | Retailer Settings → **Documents** (or **ArcSolar Settings** for the original brand) |
-| **Logo, colours and contract fonts** on customer documents | Retailer Settings → **Branding** |
-| **Agreement wording and consent text** the customer accepts | Retailer Settings → **Documents** |
+| **Legal name, trading name and ABN** on the contract | Retailer Settings → **Agreements** (or **ArcSolar Settings** for the original brand) |
+| **Logo, colours and contract fonts** on customer documents | Retailer Settings → **Appearance defaults** |
+| **Agreement wording and consent text** the customer accepts | Retailer Settings → **Agreements** |
 | The **price book** a quote under that brand is priced from | [**Product Catalogue**](https://app.arcsolar.com.au/dashboard/product-catalogue) |
 
 <Warning>
@@ -39,7 +39,7 @@ Each brand you add after that is an **additional brand**. It carries its own pri
 | --- | --- | --- |
 | How many | Exactly one per workspace | As many as you add |
 | Price book | Your existing price book | Its own, created empty for it |
-| Logos, colours, fonts | The workspace's, set on **Branding** | Its own, set with its own document |
+| Logos, colours, fonts | The workspace's, set on **Appearance defaults** | Its own, set with its own document |
 | Legal name and ABN | From **ArcSolar Settings** | Typed on its own document |
 | Marked in the **Selling brands** card as | _Original brand · workspace appearance and existing price book_ | _draft · separate quote price book_ (becomes _active_ once prepared) |
 
@@ -51,10 +51,10 @@ Both kinds are edited on the same screen. Retailer Settings edits whichever bran
 2. In the title row, on the right, find the box labelled **Selling brand**.
 3. Open it and choose the brand you want to edit.
 
-The whole page re-scopes to that brand: **Pricing**, **Finance & deposits**, **Customer journeys**, **Branding** and **Documents** all follow the selection, and the readiness report above the tabs is recalculated for it. You stay on the section you were in. The choice is written into the page address as `?brand=…`, so a link you copy reopens on the same brand.
+The commercial sections and **Agreements** follow that brand, and the readiness report is recalculated for it. **Appearance defaults** remains the workspace defaults section. You stay on the section you were in. The choice is written into the page address as `?brand=…`, so a link you copy reopens on the same brand.
 
-<Frame caption="The Selling brand box in the title row of Retailer Settings, with more than one brand available so the box is a control rather than a plain label. Captured from a synthetic workspace.">
-  <img src="/images/selling-brand-switcher.png" alt="Retailer Settings title row under the label Per selling brand, showing the page summary Edits whichever brand is selected, the Selling brand box reading Acme Solar (default brand), the note Every section below edits this brand. Switch brands at any time., and a Select allowed users button." />
+<Frame caption="Pricing & fees in the current fictional workspace. The displayed selling brand identifies the settings context; other brands and selling access depend on your workspace.">
+  <img src="/images/v2/settings-pricing.png" alt="Current Pricing & fees settings with the actual fictional selling-brand context." />
 </Frame>
 
 <Info>
@@ -62,10 +62,10 @@ The whole page re-scopes to that brand: **Pricing**, **Finance & deposits**, **C
 </Info>
 
 <Info>
-  **With one brand, there is nothing to choose.** When only one brand is available to you, the box shows the brand's name as plain text instead of a list, with the note *"Prices, fees and quote terms below apply to this selling brand."* With more than one brand the note reads *"Every section below edits this brand. Switch brands at any time."*
+  **With one brand, there is nothing to choose.** When only one brand is available to you, the box shows the brand's name as plain text instead of a list, with the note *"Prices, fees and quote terms below apply to this selling brand."* With more than one brand the note reads *"Prices and agreements follow the selected brand."*
 </Info>
 
-If your role may manage the workspace's brands, a **Select allowed users** button sits beside the box and grants access to the brand you are looking at.
+If your role may manage the workspace's brands, **Selling access** sits beside the box and grants access to the brand you are looking at.
 
 ### Why an option is greyed out
 
@@ -110,11 +110,8 @@ The card that creates and retires brands is called **Selling brands**:
 It appears in two places:
 
 - [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=selling-brands) → **Selling Brands** — the workspace-wide home for creating and retiring brands.
-- [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) → **Branding** — the same card, beside the appearance it shares with the original brand.
+- [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) → **Appearance defaults** — the same card, beside the appearance it shares with the original brand.
 
-<Frame caption="The Selling brands card, captured with multi-brand already enabled in a synthetic workspace: the original brand's row, one additional brand still in draft beside an active one, the multi-brand switch, and the Additional brand name field.">
-  <img src="/images/selling-brands-card.png" alt="Selling brands card listing Acme Solar as the original brand with workspace appearance and existing price book, Cascade Solar as a draft with a separate quote price book, and Northwind Energy as active, each row carrying its own actions and Copy brand ID, with Enable multi-brand labelled above a Disable multi-brand button, an Additional brand name field and Create draft brand." />
-</Frame>
 
 On the card:
 
@@ -156,7 +153,7 @@ Work through the four readiness requirements above, in whatever order suits you:
 
 1. **Products and prices** — publish at least one price in this brand's price book.
 2. **Edit documents** — fill in the legal name, trading name and ABN, write the NETCC wording and consent text, and supply both logos.
-3. **Edit documents** → its fonts — if you want this brand's contract to use particular fonts, choose its **Heading font** and **Body font** there. The **Contract appearance** card on the **Branding** tab belongs to the original brand, not to this one.
+3. **Edit documents** → its fonts — if you want this brand's contract to use particular fonts, choose its **Heading font** and **Body font** there. The **Contract appearance** card on the **Appearance defaults** tab belongs to the original brand, not to this one.
 4. Choose **Allow draft preparation**, then select the brand in Retailer Settings to confirm the readiness badge reads **Ready to sell**.
 
 ### Archive a brand
@@ -204,15 +201,12 @@ For a role that already sells every brand, the card says so instead of offering 
 
 ### Or grant people to a brand
 
-The other direction starts from the brand. **Select allowed users** — on the **Selling brands** card, or beside the brand box in Retailer Settings — opens **Who may sell BRAND?**:
+The other direction starts from the brand. **Select allowed users** on the **Selling brands** card, or **Selling access** beside the brand box in Retailer Settings, opens **Who may sell BRAND?**:
 
 > _"Ticking a member grants this brand only. Their role still decides which records they can see, and every other brand keeps its own list."_
 
 This dialog lists **people**, not brands, and a member whose role already sells every brand is shown as permanently allowed rather than as a checkbox. Both directions write the same list, so a save in one place shows up in the other, and an invitation to a new member can carry the same grants before they accept. An archived brand offers no access control at all — **Copy brand ID** is the only control left on its row.
 
-<Frame caption="The Who may sell BRAND? dialog, opened from Select allowed users in a synthetic workspace. Each member shows the role that decides which records they can see, and a role that already sells every brand is named rather than offered as a tick box.">
-  <img src="/images/selling-brands-allowed-users.png" alt="Who may sell Acme Solar? dialog with Select all and Clear above a list of members: [DEMO] Acme administrator shown as Administrator with every brand including ones added later, Priya Raman shown as Sales representative, and Tom Alvarez shown as Operations with every brand including ones added later, over Reload, Close and Save allowed users actions." />
-</Frame>
 
 ## What an additional brand can and cannot do today
 

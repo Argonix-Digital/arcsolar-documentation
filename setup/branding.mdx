@@ -12,9 +12,9 @@ keywords:
   - "brand name"
 ---
 
-**Open:** [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) → **Branding**. A direct link can also name a brand: `?tab=branding&brand=…`.
+**Open:** [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) → **Appearance defaults**. A direct link can also name a brand: `?tab=branding&brand=…`.
 
-The **Branding** tab is where the workspace's appearance is decided: the names customers see, the logos and colours on every customer-facing page and email, and the fonts in the contract PDF. It also carries the **Selling brands** card, so you can add and manage brands from here as well as from ArcSolar Settings.
+The **Appearance defaults** tab is where the workspace's appearance is decided: the names customers see, the logos and colours on every customer-facing page and email, and the fonts in the contract PDF. It also carries the **Selling brands** card, so you can add and manage brands from here as well as from ArcSolar Settings.
 
 <Info>
   **Who can open Branding.** The tab follows the same administrator-and-developer rule as the organisation settings, so it is hidden from other roles. For everyone else, the tab is absent from the strip rather than shown empty.
@@ -98,8 +98,8 @@ A live preview sits beside the cards so you can see the palette, logo and websit
 2. Choose **Save contract fonts**.
 3. Choose **Preview contract** to see the result.
 
-<Frame caption="The Contract appearance card on the Branding tab, captured in a synthetic workspace, with a family chosen in each of the two font fields and the save and preview actions beneath them.">
-  <img src="/images/branding-contract-fonts.png" alt="Contract appearance card headed The heading and body fonts in Acme Solar's contract PDF, with a Heading font field and a Body font field each showing the selected family Satoshi, the status Selected Satoshi., the Save contract fonts and Preview contract buttons, and the note that saving stores these families against the brand's draft while approved versions keep the font files they were approved with." />
+<Frame caption="Appearance defaults in the current fictional workspace. Contract font editing remains available only where your access and saved document allow it.">
+  <img src="/images/v2/settings-appearance.png" alt="Current Appearance defaults settings with the workspace branding controls and fictional preview notice." />
 </Frame>
 
 The saved fonts are stored against the brand's **draft** document, so the card needs a saved draft to exist. If none does, it says so and links you to the right place: *"No draft has been saved for this brand yet. Save the agreement in Retailer Settings → Documents first, then choose its fonts here."*
@@ -130,7 +130,7 @@ If Google Fonts search returns nothing, either the search genuinely has no match
 
 ## Preview the branded contract
 
-**Preview contract** is available on **Branding** (the **Contract appearance** card) and on **Documents**.
+**Preview contract** is available on **Appearance defaults** (the **Contract appearance** card) and on **Agreements**.
 
 <Visibility for="humans">
   The preview runs the **real renderer** against the brand's saved draft — its logo, colours, retained fonts and agreement wording — so it cannot drift from the contract a customer would receive. The customer and pricing blocks are the labelled layout sample, because a contract preview has no customer or accepted quote behind it.
@@ -159,7 +159,7 @@ See [Selling brands](/setup/selling-brands) for the full walkthrough.
 
 | Not here | Where it is |
 | --- | --- |
-| The contract's legal wording and consent text | Retailer Settings → **Documents** — see [The NETCC contract](/setup/selling-contract) |
-| Deposit percentages and installation weeks | Retailer Settings → **Finance & deposits** |
+| The contract's legal wording and consent text | Retailer Settings → **Agreements** — see [The NETCC contract](/setup/selling-contract) |
+| Deposit percentages and installation weeks | Retailer Settings → **Payments & finance** |
 | Per-brand prices | **Product Catalogue**, with the brand's price book selected — see [Prices per brand](/setup/price-books) |
 | Your own interface theme and dark mode | **Profile Settings** → **Appearance** — see [Which settings screen do I want?](/setup/settings-screens) |

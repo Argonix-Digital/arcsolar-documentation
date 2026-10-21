@@ -13,12 +13,12 @@ keywords:
   - "approval"
 ---
 
-**Open:** [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=documents) → **Documents**.
+**Open:** [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=documents) → **Agreements**.
 
-The **Documents** tab holds one brand's agreement: the wording the customer reads and accepts when they sign, plus the details that appear on it. It edits the brand the **Selling brand** box has selected, so the agreement you are changing is always named in front of you.
+The **Agreements** tab holds one brand's agreement: the wording the customer reads and accepts when they sign, plus the details that appear on it. It edits the brand the **Selling brand** box has selected, so the agreement you are changing is always named in front of you.
 
 <Info>
-  **Who can open it.** The tab follows the administrator-and-developer rule: other roles are sent back to **Pricing**, so the tab is absent from the strip rather than shown empty. **Publishing is narrower still — the workspace owner or a developer can publish.**
+  **Who can open it.** The tab follows the administrator-and-developer rule: other roles are sent back to **Pricing & fees**, so the tab is absent from the strip rather than shown empty. **Publishing is narrower still — the workspace owner or a developer can publish.**
 </Info>
 
 ## Who can edit and who can publish
@@ -59,7 +59,7 @@ On the **original brand** these come from **ArcSolar Settings**, so the card is 
 
 For the **original brand** the card points at [Branding](/setup/branding) — *"Your original brand uses the organisation logos, colours and contract fonts in Retailer Settings → Branding. Approval captures their current version, so this editor keeps no appearance controls of its own."*
 
-For an **additional brand** you set **Primary colour**, **Secondary colour**, **Tertiary colour**, **Logo on light background** and **Logo on dark background** here, because they belong to that brand rather than to the workspace. Fonts for an additional brand are set from the **Selling brands** card's **Edit documents** on the **Branding** tab; this page links you there.
+For an **additional brand** you set **Primary colour**, **Secondary colour**, **Tertiary colour**, **Logo on light background** and **Logo on dark background** here, because they belong to that brand rather than to the workspace. Fonts for an additional brand are set from the **Selling brands** card's **Edit documents** on the **Appearance defaults** tab; this page links you there.
 
 ### Agreement wording
 
@@ -77,8 +77,8 @@ The Markdown field supports *"Headings, paragraphs, emphasis, links and numbered
 
 Where the workspace has older clauses on file, **Replace wording with existing JBE clauses** copies them into this unapproved draft for you to review.
 
-<Frame caption="The Agreement wording card on the Documents tab, captured for an additional brand in a synthetic workspace: the Terms and conditions (Markdown) field holds the agreement body, the .md import control sits beneath it, and the rendered wording follows underneath.">
-  <img src="/images/selling-contract-agreement-editor.png" alt="Documents tab showing the Agreement wording card with a Terms and conditions (Markdown) field containing a sales and installation agreement for Northwind Energy Pty Ltd, the note listing the supported Markdown, a Replace wording from a .md file control, and the rendered agreement preview below it." />
+<Frame caption="Agreements in the current fictional workspace. Editing, approving and rendering a live agreement require the corresponding access and saved document.">
+  <img src="/images/v2/settings-agreements.png" alt="The current Agreements settings view with its fictional preview notice." />
 </Frame>
 
 <Warning>
@@ -103,8 +103,8 @@ The button at the bottom of the editor says what it will do:
 
 | Where you are | Button | Meaning |
 | --- | --- | --- |
-| Documents tab, without publish authority | **Save draft** | Saves the version for the owner or a developer to review |
-| Documents tab, with publish authority | **Save and publish** | Saves *and* publishes in one step |
+| Agreements section, without publish authority | **Save draft** | Saves the version for the owner or a developer to review |
+| Agreements section, with publish authority | **Save and publish** | Saves *and* publishes in one step |
 | **Edit documents** dialog from the **Selling brands** card | **Save document draft** | Saves the draft only |
 
 Alongside them: **Contract preview**, **Discard edits and reload**, and **Close** in the dialog form.
@@ -160,13 +160,10 @@ An empty list is honest about itself: *"No revision has been published for this 
 
 **Contract preview** sits with the editor and on [Branding](/setup/branding). It renders the brand's saved draft — its logo, colours, retained fonts and agreement wording — through the real contract renderer, and the dialog states *"A preview is never an approval."*
 
-<Frame caption="Contract preview for a brand in a synthetic workspace, showing the rendered PDF inside the dialog with the synthetic customer and amount banner, the preview footer stamp, and the Render again and Download actions.">
-  <img src="/images/selling-contract-preview.png" alt="Contract preview for Acme Solar dialog describing the render, above a PDF viewer at page 1 of 6 showing the DRAFT PREVIEW synthetic customer and amounts banner, the unsolicited-sale notice, the supplier block for [DEMO] Acme Solar Pty Ltd, a sample customer and installation address, and a footer reading Draft version 3, not approved, with Render again, Download and Close below." />
-</Frame>
 
 ## Finance is the single source of truth
 
-Three numbers on every direct-payment contract come from **Retailer Settings → Finance & deposits**, not from the document:
+Three numbers on every direct-payment contract come from **Retailer Settings → Payments & finance**, not from the document:
 
 - the **deposit limit** as a percentage of the customer balance,
 - the **stock delivery payment** percentage, and
