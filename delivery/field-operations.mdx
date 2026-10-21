@@ -9,9 +9,13 @@ keywords:
   - "design handover"
   - "remove installer"
   - "archive installer"
-title: "Coordinate field operations and installers"
+title: "Field operations"
 description: "Prepare the people, work orders and evidence needed on site."
 ---
+
+import { ProductPreview } from "/snippets/docs-visuals.jsx";
+
+<ProductPreview type="work" />
 
 **Open:** [**Field Operations**](https://app.arcsolar.com.au/dashboard/field-operations) and [**Installers**](https://app.arcsolar.com.au/dashboard/installers).
 
@@ -27,17 +31,9 @@ Technicians can open their assigned visits through the authenticated [job portal
 
 ## Remove an installer
 
-<Visibility for="humans">
 When you stop working with an installer, select their record in [**Installers**](https://app.arcsolar.com.au/dashboard/installers) and choose **Delete**. Confirm with **Confirm delete**.
 
 They are removed from the active installer directory and from assignment options, but historical project and job records stay intact. An installer with active work cannot be removed.
-</Visibility>
-
-<Visibility for="agents">
-- Bulk removal is the **Delete** button and opens **Remove N installer(s)?** — "The selected installer(s) will be removed from active directories and assignment options. Historical project and job records will remain intact. Installers with active work cannot be removed."
-- The confirm action is **Confirm delete** (in flight, **Removing…**). Success toasts are "Installer removed" / "Installers removed" — "N installer records are no longer active."
-- Describe this as removal from active directories, not as deleting the installer's history. Do not present it as available while the installer has active work.
-</Visibility>
 
 ## Prepare field work
 
@@ -56,6 +52,18 @@ If a job needs more, the **design editor** can export installer-oriented documen
 
 There is **no separate installer design screen** in ArcSolar. Installers do not draw, edit or approve a design here. If the site differs from what the design shows, record the difference against the job and raise the next action rather than editing the design.
 
+## During and after the visit
+
+Record the outcome and missing items. Attach required evidence through the supported file controls. Keep installation, inspection, grid/metering and rebate progress separate.
+
+If an installer cannot complete the job, record the reason and arrange an owned next action. Do not use completion as a substitute for a revisit or missing compliance document.
+
+<Visibility for="agents">
+- Bulk removal is the **Delete** button and opens **Remove N installer(s)?** — "The selected installer(s) will be removed from active directories and assignment options. Historical project and job records will remain intact. Installers with active work cannot be removed."
+- The confirm action is **Confirm delete** (in flight, **Removing…**). Success toasts are "Installer removed" / "Installers removed" — "N installer records are no longer active."
+- Describe this as removal from active directories, not as deleting the installer's history. Do not present it as available while the installer has active work.
+</Visibility>
+
 <Visibility for="agents">
   ArcSolar now has authenticated Technician access to assigned Work visits. That access is separate from Roof Vision design editing. Use issued estimate/PDF artefacts and documents deliberately shared to the job for the handover. Do not describe an installer design editor, an independently certified SLD or design approval by a technician. Full detail: [Job portal](/delivery/job-portal), [Roof Vision](/quoting/roof-design) and the [Roof Vision contract](/reference/roof-design-contract).
 
@@ -65,13 +73,3 @@ There is **no separate installer design screen** in ArcSolar. Installers do not 
 
   Both statements are true together: the Work portal provides technician sign-in for assigned visits, and the design editor can export installer-oriented documents. Technician login does not grant access to draw, edit or approve a Roof Vision design.
 </Visibility>
-
-## During and after the visit
-
-Record the outcome and missing items. Attach required evidence through the supported file controls. Keep installation, inspection, grid/metering and rebate progress separate.
-
-If an installer cannot complete the job, record the reason and arrange an owned next action. Do not use completion as a substitute for a revisit or missing compliance document.
-
-## ArgonixIntelligence in this workflow
-
-Use customer and job context to prepare the handover. Intelligence does not establish installer accreditation, site safety or compliant completion.

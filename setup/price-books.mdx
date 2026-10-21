@@ -1,7 +1,7 @@
 ---
-sidebarTitle: "Prices per brand"
-title: "Read and set prices per selling brand"
-description: "Understand why a product can show a price under one brand and \"Missing price\" under another."
+sidebarTitle: "Brand prices"
+title: "Brand prices"
+description: "Give each selling brand the prices its quotes should use."
 keywords:
   - "price book"
   - "pricing status"
@@ -11,11 +11,28 @@ keywords:
   - "per brand price"
 ---
 
-**Open:** [**Product Catalogue**](https://app.arcsolar.com.au/dashboard/product-catalogue) → **Catalogue**, or **Retailer Settings → Branding → Selling brands → Products and prices** for one brand's own list.
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-A product is one record with one set of specifications. Its **price** is not one number — it is one number *per selling brand's price book*. That single idea explains every confusing label in this section.
+<ProductPreview type="catalogue" />
 
-## One product, one price per brand
+Open **Product Catalogue** and select the relevant selling brand's price book. A product is shared; its selling price belongs to a brand and effective period.
+
+## Prepare a price
+
+Open the product, enter the brand price and check region and date requirements. Save the draft, then publish using the offered controls. A saved draft is not a current selling price.
+
+## Use the status labels
+
+Catalogue status summarises the current position. The brand price list shows the publication and effective-date state. A future or expired price can be published without being effective today.
+
+Copying prices from the original brand creates drafts. Review and publish them before expecting quotes to use them. Product availability by state remains a separate check.
+
+Existing issued quotes and purchasing history retain their snapshots. Read the field details below when resolving a missing or unexpected price.
+
+
+## Details
+
+<Accordion title={"One product, one price per brand"}>
 
 Every price row you enter is written against a **price book**, and a price book belongs to one selling brand. Add a battery and price it at $2,400 in your original brand's book, and your second brand's book still knows nothing about that battery until you put a price there too.
 
@@ -43,7 +60,9 @@ Under the row, two checkboxes:
   **One price per save.** The **Add a selling brand** action is not an action at all: the row closes with the note *"One price per save. Add another selling brand's price from this product's own editor afterwards."* Save the first brand's price, reopen the product, then set the next brand's.
 </Warning>
 
-## The status labels, and why there are two sets
+</Accordion>
+
+<Accordion title={"The status labels, and why there are two sets"}>
 
 The badge beside a price does not just say whether a number exists — it says **whether that number is usable today, in the brand you are looking at**.
 
@@ -79,7 +98,9 @@ The same states are worded in book terms, because that surface is about one book
 
 Those lists share their table with the catalogue: **Product**, **Brand price** (with *Including GST* or *Excluding GST* underneath) and **Status**, with **Find a product** to filter and an edit action on each row.
 
-## "Priced in BRAND" is not an error
+</Accordion>
+
+<Accordion title={"\"Priced in BRAND\" is not an error"}>
 
 This is the single most confusing state, and it is worth understanding rather than working around.
 
@@ -95,7 +116,9 @@ Where a row is priced outside the book you are looking at, ArcSolar names the br
   **Missing price is the only state that means "nobody sells this today".** If you see it, no sellable price book prices or quotes the product. Check that the brand you meant to price it under is the brand selected, then enter the price in that brand's book.
 </Warning>
 
-## How the status is decided
+</Accordion>
+
+<Accordion title={"How the status is decided"}>
 
 ArcSolar resolves a status in a fixed order, and the first rule that matches wins:
 
@@ -109,7 +132,9 @@ ArcSolar resolves a status in a fixed order, and the first rule that matches win
 
 The order matters. A published price that already ended outranks a draft, and a draft never satisfies a quote.
 
-## Draft, published, future and expired
+</Accordion>
+
+<Accordion title={"Draft, published, future and expired"}>
 
 | State | What quotes do | What to do |
 | --- | --- | --- |
@@ -120,7 +145,9 @@ The order matters. A published price that already ended outranks a draft, and a 
 
 **Publish price immediately** is only available *"with an active product and a currently effective Price Book"*, so a draft product or a book that is not yet in effect cannot publish a price. A copied price always lands as a draft — see below.
 
-## Copy the original brand's prices into a new brand
+</Accordion>
+
+<Accordion title={"Copy the original brand's prices into a new brand"}>
 
 On the **Selling brands** card, an additional brand's **Copy draft prices** action opens **Copy draft prices to BRAND**:
 
@@ -128,13 +155,13 @@ On the **Selling brands** card, an additional brand's **Copy draft prices** acti
 
 Each candidate is listed as *product — amount, incl./excl. GST*. A product that already has a draft in the destination is shown as **Draft already exists** and cannot be ticked. Where nothing is available, it says *"No current fixed prices are available to copy."*
 
-<Frame caption="Current Pricing & fees settings in a fictional workspace. Additional-brand controls are available only in workspaces with the required setup and access.">
-  <img src="/images/v2/settings-pricing.png" alt="Current Pricing & fees settings showing the fictional workspace and selling-brand context." />
-</Frame>
+
 
 The action is **Copy selected as drafts** (in flight, **Copying…**). It deliberately publishes nothing, so a copied number never reaches a customer without someone choosing it.
 
-## Prices and state availability are separate
+</Accordion>
+
+<Accordion title={"Prices and state availability are separate"}>
 
 A brand's price row holds that brand's **standard** price. A state that charges differently is set in **Availability and price by state** above the rule — that is where per-state overrides belong, so the standard price keeps one meaning.
 
@@ -144,20 +171,19 @@ The footnote on state availability is worth reading before you uncheck anything:
 
 The heading adapts to the product (*"Which states can sell this battery"*, *"Which states can quote this system"*, *"Which states can quote this panel"*).
 
-## Two things that do not change
+</Accordion>
+
+<Accordion title={"Two things that do not change"}>
 
 - **Product specifications are shared across brands.** The per-brand editor opens with *"Product specifications remain shared across brands."* Changing a capacity, a phase requirement or a datasheet changes it for every brand that sells the product. Only the price and the book are per brand.
 - **An issued quote keeps its price.** Changing a catalogue price does not reprice a quote that has already been sent. See [Quote revisions](/quoting/revisions).
 
-## Does this affect whether a brand can quote?
+</Accordion>
+
+<Accordion title={"Does this affect whether a brand can quote?"}>
 
 Yes — indirectly. **Active price book** is one of the four things a brand needs to reach the quoting minimum: at least one **published** price effective for that brand today. A brand whose book holds only drafts will not be reported as **Ready to sell**, even though the product looks priced in the list.
 
 That is why the badge and the readiness panel can appear to disagree: **Draft only** is a real price that quotes cannot use yet.
 
-## Related
-
-- [What a selling brand is](/setup/selling-brands)
-- [The NETCC contract](/setup/selling-contract)
-- [Product catalogue](/delivery/catalogue)
-- [Selling brands FAQ](/reference/selling-brands-faq)
+</Accordion>

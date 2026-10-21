@@ -2,38 +2,35 @@
 icon: "eye"
 sidebarTitle: "Customer quote view"
 keywords: ["customer portal","quote acceptance","payment"]
-title: "Understand the customer's quote view"
-description: "Know what customers see, accept and pay."
+title: "Customer quote view"
+description: "See the offer as your customer sees it."
 ---
-After sending, the customer receives a secure link to the issued offer. Treat that link as private.
 
-When two eligible quotes are [linked for comparison](/quoting/compare-estimates), either link opens both options before the customer reviews one in full. A single quote keeps the view described below.
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-<Frame caption="The fictional customer portal on a phone. Viewing the page does not accept the agreement or make a payment.">
-  <img src="/images/v2/customer-portal-mobile.png" alt="A mobile customer estimate with quote details and its separate agreement, payment and installation information." style={{ maxWidth: "390px", width: "100%", margin: "0 auto" }} />
-</Frame>
+<ProductPreview type="portal" />
 
-## Walk the customer through it
+After sending, the customer receives a private link to the issued offer. If [two offers are linked](/quoting/compare-estimates), either link opens their comparison first.
 
-1. Confirm the customer and installation address.
-2. Review the selected system and included services.
-3. Explain the total, incentive conditions and payment schedule.
-4. Review savings only when included in the issued offer.
-5. Read the agreement and available documents.
-6. Follow the displayed acceptance/signature and payment steps.
+## Walk through the offer
 
-The customer view and PDF use the issued snapshot. They should not expose internal equipment costs, commission, margin or staff notes. Internal BOM detail belongs in the staff workflow.
+Confirm the customer and site, then review the system, included services, total, incentives, payment schedule and agreement. Savings appear only when included in the issued offer.
 
-## Understand status changes
+The portal and PDF use the issued snapshot. Internal equipment costs, margin, commission and staff notes stay in the staff workflow.
 
-A view records engagement with the link. Acceptance records agreement. Payment processing and successful collection are separate states. Do not tell operations the deposit is paid merely because the customer signed or returned from checkout.
+## Follow the decision
 
-If a revised offer is published, the customer should review the current offer before accepting. An old browser tab may need refreshing.
+| Event | What it records |
+| --- | --- |
+| Viewed | Engagement with the link |
+| Accepted / signed | Agreement to the offer |
+| Processing | Payment awaiting confirmation |
+| Paid | Confirmed collection |
 
-## Customer questions
+Opening a quote does not accept it. Signing does not prove a deposit has been paid. Check the payment record before handing work to operations or requesting another payment attempt.
 
-If payment appears pending, check the payment record before requesting another attempt. If the secure link has expired, use the supported staff action for the quote. If the displayed terms differ from an earlier discussion, resolve that before asking for acceptance.
+## If the offer changes
 
-## ArgonixIntelligence in this workflow
+Use the supported [revision flow](/quoting/revisions). The customer should review the current offer; an older open tab may need refreshing. Use the staff quote controls for an expired link, and resolve any disputed terms before seeking acceptance.
 
-Intelligence helps staff explain the offer. It does not accept terms on the customer's behalf, certify the savings forecast or confirm payment.
+<NextGuide href="/quoting/follow-ups" title="Follow-up journeys" />

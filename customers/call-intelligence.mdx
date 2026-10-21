@@ -2,78 +2,47 @@
 icon: "microphone"
 sidebarTitle: "CallIntelligence"
 keywords: ["transcripts","recordings","summaries","CallIntelligence","automatic tasks","action items","review timing","follow-up tasks"]
-title: "Use Argonix CallIntelligence"
-description: "Prepare for follow-up with call summaries, transcripts and recordings."
+title: "CallIntelligence"
+description: "Review what was discussed and follow through on the next action."
 ---
-**Open:** a call in [**Comms**](https://app.arcsolar.com.au/comms?tab=messages), the customer's call history or an authorised reporting call-detail view.
 
-1. Choose the correct customer and call date.
-2. Check whether the summary, transcript and recording are available.
-3. Read the summary for the discussion and next steps.
-4. Open the transcript or recording to verify important details.
-5. Record confirmed follow-up work with an owner and due date.
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-Summary availability depends on your plan, access and the captured source material. A call can exist without a recording or transcript. Processing, unavailable and available are different states.
+<ProductPreview type="intelligence" />
+
+Open a customer call in **Comms**, customer **Activity**, or an authorised reporting view. Summaries, transcripts and recordings depend on captured material, processing and your access.
 
 ## After each call
 
-1. Open the customer’s **Activity** tab and find the correct call.
-2. Select **ArgonixIntelligence** beside that call.
-3. Read **Intelligence notes** and **Next steps**. Check the owner and due date.
-4. Under **Calls behind these notes**, select **Transcript** to verify important details. Use the recording when available.
-5. Open **Tasks**: ArcSolar has already created a task for each action item, so review the existing one rather than adding a duplicate. See [Tasks are created automatically](#tasks-are-created-automatically).
+1. Find the correct call in the customer's **Activity**.
+2. Select **ArgonixIntelligence**.
+3. Read **Intelligence notes** and **Next steps**.
+4. Under **Calls behind these notes**, open **Transcript** or the recording to check important details.
+5. Review the resulting tasks before adding more follow-up.
 
-<Frame caption="Recorded in an earlier ArcSolar interface. Open CallIntelligence from a customer call, review the next step, then check the transcript. Fictional demo data.">
-  <video controls playsInline preload="metadata" poster="/videos/call-intelligence.jpg" src="/videos/call-intelligence.mp4" aria-label="Open post-call ArgonixIntelligence and verify the transcript" />
-</Frame>
-
-[Watch the 43-second CallIntelligence walkthrough at full size](/videos/call-intelligence.mp4).
-
-This is the embedded intelligence on the call—not the separate sidebar chat marked **Soon**. If processing is still underway, return later. Not every call has a recording, transcript or summary.
-
-## Use the source carefully
-
-Names, prices, technical terms and dates can be transcribed incorrectly. Verify commitments before quoting them back to the customer. If a summary combines recent context, inspect the listed source calls and timestamps.
-
-A call summary does not establish consent to a contract, payment or finance application. Use the corresponding acceptance or payment record.
+Names, dates, prices and commitments need checking against the source. A summary does not establish contract consent or confirm payment.
 
 ## Tasks are created automatically
 
-<Visibility for="humans">
-You do not have to create the follow-up yourself. As soon as a call summary is ready, ArcSolar turns each action item from the call into a real task and assigns it to the customer's sales rep.
+Action items become tasks assigned to the customer's sales rep. Rep work starts in **To do**; **Await customer: …** starts in **Waiting**. A call without a customer or assigned rep may produce no tasks.
 
-The summary takes a moment to arrive after the call ends, so the tasks appear shortly afterwards. If you cannot see them yet, the summary may still be processing.
+| Timing discussed | What the task receives |
+| --- | --- |
+| Specific date and time | The discussed due date |
+| Relative timeframe | An internal review date, using the earliest date in a range |
+| No timing | An internal review date three days after creation |
 
-Each task is marked **ArgonixIntelligence** so you know it came from a call. Open it to check the wording, who was discussed as the owner, and when it should be reviewed.
+**Review timing** is a prompt to review work. It is not a booked appointment or a commitment made by the customer.
 
-Two kinds of task appear:
+## Book a follow-up
 
-- **Your work** — something the rep agreed to do, such as calling back or sending a proposal.
-- **Await customer: …** — something the customer agreed to do, such as sending a bill or a photo. These sit in **Waiting** until the customer acts.
+An outstanding rep-owned task can become a phone appointment. Booking moves it to **Waiting**; completing the appointment completes the task. Cancelling returns the task to **To do**. Rescheduling moves its due date with the appointment. Customer-owned tasks cannot be booked this way.
 
-If a colleague's call has no tasks yet, that can be normal: a call with no customer, or a customer with no assigned sales rep, produces no tasks. Cancelled calls, and calls replaced by a newer summary, do not recreate work.
+<Accordion title={"If notes or tasks are missing"}>
+Processing may still be underway. Not every call has a transcript or recording. Cancelled or superseded calls do not recreate work, and existing completed, edited or appointment-linked tasks are preserved. Review the source call and contact support with its reference if needed.
+</Accordion>
 
-### When a task is due
-
-- If a **specific date and time** were discussed, that becomes the task's due date.
-- If the call only mentioned a **relative timeframe** — "in three to four months", "in a couple of weeks" — ArcSolar adds an internal **review date** instead, using the earliest date in a range and marking it **Review timing**. It is a prompt for you to review, not an appointment booked with the customer.
-- If nothing about timing was discussed, the task gets a review date three days after it was created, also marked **Review timing**.
-
-Never tell a customer a time was agreed based only on a review date. Only a due date that came from a specific date and time on the call is a real commitment.
-
-### Book the call from the task
-
-A follow-up task with an outstanding status can be turned into a phone appointment. Booking it moves the task to **Waiting** and shows **Phone appointment booked; awaiting the call.** Completing the appointment completes the task. Cancelling the appointment returns the task to **To do** so you can reschedule it, and rescheduling the appointment moves the task's due date with it.
-
-Only rep-owned follow-up tasks can be booked this way. A customer-owned task cannot.
-
-### What ArcSolar will not do
-
-- It does not re-create an action you have already completed, cancelled or edited.
-- It does not overwrite a task that already has an appointment booked, or a due date you set yourself.
-- It does not book an appointment, send a message or contact a customer. It only creates the internal task.
-- It does not create tasks on the strength of a call that has no customer, and it leaves a newer summary in charge when an older call is superseded.
-</Visibility>
+<NextGuide href="/customers/tasks" title="Tasks" />
 
 <Visibility for="agents">
 **Creation is automatic and trigger-driven.** No user action and no AI chat session is involved.
@@ -123,11 +92,3 @@ Detected by ArgonixIntelligence. Discussed owner: <owner>. Review the source cal
 - The Tasks list and the call's next-steps view show **ArgonixIntelligence** beside a linked task. The next-steps view shows the linked task, or states "No task linked to this next step" when a summary action has no matching task.
 - `public.create_phone_appointment` accepts a `source_task_id` only when the task is type `follow_up`, belongs to the same customer, is owned by the acting member (Operations, Administrator and Developer may act on others), and has status `todo`, `in_progress` or `waiting`. Booking sets the task to `waiting`, sets `blocked_reason` to `Phone appointment booked; awaiting the call.`, and copies the appointment start into the task's due date and `starts_at`. Completing the appointment completes the task; cancelling or archiving it returns the task to `todo`; rescheduling it updates the task due date. One appointment links to one task.
 </Visibility>
-
-## Troubleshooting
-
-If there is no transcript, check whether the call was captured and whether processing is still underway. If the summary seems wrong, use the original recording/transcript and report the call reference to support without emailing private audio unnecessarily.
-
-## ArgonixIntelligence in this workflow
-
-CallIntelligence is the conversation-focused part of ArgonixIntelligence. It helps you recover context; you remain responsible for checking evidence and following through.

@@ -1,7 +1,7 @@
 ---
 sidebarTitle: "Branding"
-title: "Set your branding and contract appearance"
-description: "Set the names, logos, colours, fonts and sending address your customers see."
+title: "Branding"
+description: "Make customer documents look and read like your business."
 keywords:
   - "branding"
   - "logo"
@@ -12,19 +12,26 @@ keywords:
   - "brand name"
 ---
 
-**Open:** [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) → **Appearance defaults**. A direct link can also name a brand: `?tab=branding&brand=…`.
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-The **Appearance defaults** tab is where the workspace's appearance is decided: the names customers see, the logos and colours on every customer-facing page and email, and the fonts in the contract PDF. It also carries the **Selling brands** card, so you can add and manage brands from here as well as from ArcSolar Settings.
+<ProductPreview type="brand" />
 
-<Info>
-  **Who can open Branding.** The tab follows the same administrator-and-developer rule as the organisation settings, so it is hidden from other roles. For everyone else, the tab is absent from the strip rather than shown empty.
-</Info>
+Open **Retailer Settings → Appearance defaults** for workspace branding. The original selling brand uses these defaults; additional brands keep their own appearance with their document settings.
 
-<Info>
-  **Branding is the single place a contract's appearance is decided.** Logos, colours and the contract's fonts are all set here, for the brand the title row has selected. An **additional** brand's logos and colours are set with its own document instead, because they belong to that brand — the **Contract appearance** card names the original brand and stays out of the additional brand's way.
-</Info>
+## Set the identity
 
-## Names
+Review customer-facing names, website and sending address. Upload the appropriate logos, choose the colours, and set heading and body fonts for contracts.
+
+## Check the result
+
+Open the branded contract preview. Check both document variants, text wrapping and logo legibility. Save through the controls shown. Updating appearance does not rewrite an already issued offer.
+
+Keep legal identity, agreement wording and payment rules in their owning settings. The sections below cover the exact fields and font options.
+
+
+## Details
+
+<Accordion title={"Names"}>
 
 *"What customers and your team see. Leave a field blank to use your organisation's name."*
 
@@ -35,7 +42,9 @@ The **Appearance defaults** tab is where the workspace's appearance is decided: 
 
 Under each field the page shows what the current value resolves to, for example *"Customers see “Excel Energy”."* Leave a field blank rather than retyping your organisation's name — the fallback is the single source of truth, and a value you type can drift from it.
 
-## Website
+</Accordion>
+
+<Accordion title={"Website"}>
 
 **Website URL** is your public website. *"Your customers get a link to it from the tracking page they use to follow their installation. Leave it blank to show no link."*
 
@@ -45,7 +54,9 @@ You can type a bare host such as `example.com.au`; ArcSolar adds `https` for you
   The **Website** card is only shown when your workspace's database supports the field. If you cannot find it, that part of branding is not part of your database yet — ask support rather than entering the address somewhere else.
 </Info>
 
-## Email address
+</Accordion>
+
+<Accordion title={"Email address"}>
 
 *"The address your customers see when they receive a quote, a receipt or a request from you. Leave it blank to use your organisation's name."*
 
@@ -58,7 +69,9 @@ Two behaviours are worth knowing:
 
 The **"Your customers will see"** panel shows the finished address before you save.
 
-## Logos
+</Accordion>
+
+<Accordion title={"Logos"}>
 
 *"Upload a logo for light backgrounds and one for dark. A single logo rarely reads well on both, so each surface picks the version it needs."*
 
@@ -71,7 +84,9 @@ The **"Your customers will see"** panel shows the finished address before you sa
 
 Each slot has its own upload and remove action.
 
-## Colours
+</Accordion>
+
+<Accordion title={"Colours"}>
 
 *"These are used on every customer-facing page, in the quote and deposit emails, and in the proposal PDF."*
 
@@ -90,7 +105,9 @@ Each colour has a swatch that opens a picker and accepts a six-digit hex value. 
 
 A live preview sits beside the cards so you can see the palette, logo and website before saving.
 
-## Contract appearance (fonts)
+</Accordion>
+
+<Accordion title={"Contract appearance (fonts)"}>
 
 *"The heading and body fonts in BRAND's contract PDF. Its logos and colours are the ones above."*
 
@@ -98,9 +115,7 @@ A live preview sits beside the cards so you can see the palette, logo and websit
 2. Choose **Save contract fonts**.
 3. Choose **Preview contract** to see the result.
 
-<Frame caption="Appearance defaults in the current fictional workspace. Contract font editing remains available only where your access and saved document allow it.">
-  <img src="/images/v2/settings-appearance.png" alt="Current Appearance defaults settings with the workspace branding controls and fictional preview notice." />
-</Frame>
+
 
 The saved fonts are stored against the brand's **draft** document, so the card needs a saved draft to exist. If none does, it says so and links you to the right place: *"No draft has been saved for this brand yet. Save the agreement in Retailer Settings → Documents first, then choose its fonts here."*
 
@@ -128,21 +143,20 @@ A family that does not publish all four required faces cannot be selected, and i
 
 If Google Fonts search returns nothing, either the search genuinely has no match, or the deployment has no Google Fonts search configured — the ArcSolar-hosted product has it configured, but a self-hosted or local deployment may not. In that case ArcSolar reports the deployment's own message rather than pretending there were no results. You can still upload a **licensed font file** through the assets control below the font fields.
 
-## Preview the branded contract
+</Accordion>
+
+<Accordion title={"Preview the branded contract"}>
 
 **Preview contract** is available on **Appearance defaults** (the **Contract appearance** card) and on **Agreements**.
 
-<Visibility for="humans">
+
   The preview runs the **real renderer** against the brand's saved draft — its logo, colours, retained fonts and agreement wording — so it cannot drift from the contract a customer would receive. The customer and pricing blocks are the labelled layout sample, because a contract preview has no customer or accepted quote behind it.
 
   The dialog is titled **Contract preview for BRAND** and says *"A preview is never an approval."* You can choose **Render again** or **Download** the PDF.
-</Visibility>
 
-<Visibility for="agents">
-  The preview is gated on the document-manager authority — an administrator or a developer in the caller's own workspace — not on the owner identity, even though it assembles the same candidate approval uses and stamps it with the workspace's recorded owner. A caller without that authority sees the reason the call gave rather than a blank frame, and the button stays available so the reason is discoverable. Footer reads `Draft version N, not approved.`
-</Visibility>
+</Accordion>
 
-## The Selling brands card
+<Accordion title={"The Selling brands card"}>
 
 Below the appearance cards, the **Selling brands** card lists the brands and, once multi-brand is enabled, lets you add one:
 
@@ -155,7 +169,9 @@ It closes with the two rules worth remembering: *"Manage and publish prices in P
 
 See [Selling brands](/setup/selling-brands) for the full walkthrough.
 
-## What Branding does not cover
+</Accordion>
+
+<Accordion title={"What Branding does not cover"}>
 
 | Not here | Where it is |
 | --- | --- |
@@ -163,3 +179,9 @@ See [Selling brands](/setup/selling-brands) for the full walkthrough.
 | Deposit percentages and installation weeks | Retailer Settings → **Payments & finance** |
 | Per-brand prices | **Product Catalogue**, with the brand's price book selected — see [Prices per brand](/setup/price-books) |
 | Your own interface theme and dark mode | **Profile Settings** → **Appearance** — see [Which settings screen do I want?](/setup/settings-screens) |
+
+</Accordion>
+
+<Visibility for="agents">
+  The preview is gated on the document-manager authority — an administrator or a developer in the caller's own workspace — not on the owner identity, even though it assembles the same candidate approval uses and stamps it with the workspace's recorded owner. A caller without that authority sees the reason the call gave rather than a blank frame, and the button stays available so the reason is discoverable. Footer reads `Draft version N, not approved.`
+</Visibility>

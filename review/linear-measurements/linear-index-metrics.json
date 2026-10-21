@@ -1,0 +1,350 @@
+{
+  "card": {
+    "cls": "ArZWDa_anchor",
+    "rect": {
+      "height": 280,
+      "width": 242,
+      "x": 352,
+      "y": 298.59375
+    },
+    "style": {
+      "backgroundColor": "rgba(255, 255, 255, 0.05)",
+      "border": "1px solid rgba(255, 255, 255, 0.05)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "display": "flex",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "gap": "normal",
+      "gridTemplateColumns": "none",
+      "height": "280px",
+      "letterSpacing": "normal",
+      "lineHeight": "24px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "width": "242px"
+    },
+    "tag": "A",
+    "text": "Start GuideLearn how to use the app and follow best practice"
+  },
+  "cardChildren": [
+    {
+      "cls": "ArZWDa_header",
+      "rect": {
+        "height": 74.5,
+        "width": 240,
+        "x": 353,
+        "y": 299.59375
+      },
+      "style": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "0px none rgb(247, 248, 248)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "color": "rgb(247, 248, 248)",
+        "display": "block",
+        "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "height": "74.5px",
+        "letterSpacing": "normal",
+        "lineHeight": "24px",
+        "margin": "0px",
+        "maxWidth": "none",
+        "padding": "24px 20px",
+        "width": "240px"
+      },
+      "tag": "DIV",
+      "text": ""
+    },
+    {
+      "cls": "ArZWDa_content",
+      "rect": {
+        "height": 132,
+        "width": 240,
+        "x": 353,
+        "y": 445.59375
+      },
+      "style": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "border": "",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "color": "rgb(247, 248, 248)",
+        "display": "block",
+        "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "height": "132px",
+        "letterSpacing": "normal",
+        "lineHeight": "24px",
+        "margin": "71.5px 0px 0px",
+        "maxWidth": "none",
+        "padding": "20px",
+        "width": "240px"
+      },
+      "tag": "DIV",
+      "text": "Start GuideLearn how to use the app and follow best practice"
+    }
+  ],
+  "cardDescription": {
+    "cls": "sc-KOGVz iDRyoQ ArZWDa_subtitle",
+    "rect": {
+      "height": 63,
+      "width": 200,
+      "x": 373,
+      "y": 494.59375
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(138, 143, 152)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "color": "rgb(138, 143, 152)",
+      "display": "flow-root",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "gap": "normal",
+      "gridTemplateColumns": "none",
+      "height": "63px",
+      "letterSpacing": "-0.182px",
+      "lineHeight": "21px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "width": "200px"
+    },
+    "tag": "P",
+    "text": "Learn how to use the app and follow best practices for softw"
+  },
+  "cardTitle": {
+    "cls": "sc-KOGVz ijzZqW",
+    "rect": {
+      "height": 24,
+      "width": 200,
+      "x": 373,
+      "y": 466.59375
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "display": "flow-root",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontSize": "15px",
+      "fontWeight": "510",
+      "gap": "normal",
+      "gridTemplateColumns": "none",
+      "height": "24px",
+      "letterSpacing": "-0.165px",
+      "lineHeight": "24px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "width": "200px"
+    },
+    "tag": "H3",
+    "text": "Start Guide"
+  },
+  "description": {
+    "cls": "sc-KOGVz jqlWID",
+    "rect": {
+      "height": 24,
+      "width": 976,
+      "x": 372,
+      "y": 168
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(138, 143, 152)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "color": "rgb(138, 143, 152)",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "gap": "normal",
+      "gridTemplateColumns": "none",
+      "height": "24px",
+      "letterSpacing": "-0.165px",
+      "lineHeight": "24px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "width": "976px"
+    },
+    "tag": "P",
+    "text": "Get an overview of Linear's features, integrations, and how "
+  },
+  "grid": {
+    "cls": "DrJ0sW_grid",
+    "rect": {
+      "height": 280,
+      "width": 1024,
+      "x": 348,
+      "y": 298.59375
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "display": "grid",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "gap": "16px",
+      "gridTemplateColumns": "242px 242px 242px 242px",
+      "height": "280px",
+      "letterSpacing": "normal",
+      "lineHeight": "24px",
+      "margin": "0px -24px",
+      "maxWidth": "none",
+      "padding": "0px 4px",
+      "width": "1024px"
+    },
+    "tag": "DIV",
+    "text": "Start GuideLearn how to use the app and follow best practice"
+  },
+  "h1": {
+    "cls": "sc-KOGVz bSZJft",
+    "rect": {
+      "height": 44,
+      "width": 976,
+      "x": 372,
+      "y": 112
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontSize": "40px",
+      "fontWeight": "590",
+      "gap": "normal",
+      "gridTemplateColumns": "none",
+      "height": "44px",
+      "letterSpacing": "-0.88px",
+      "lineHeight": "44px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "width": "976px"
+    },
+    "tag": "H1",
+    "text": "Linear Docs"
+  },
+  "h2": {
+    "cls": "sc-KOGVz khPkGF",
+    "rect": {
+      "height": 26.59375,
+      "width": 976,
+      "x": 372,
+      "y": 240
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "display": "block",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontSize": "20px",
+      "fontWeight": "590",
+      "gap": "normal",
+      "gridTemplateColumns": "none",
+      "height": "26.5938px",
+      "letterSpacing": "-0.24px",
+      "lineHeight": "26.6px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "width": "976px"
+    },
+    "tag": "H2",
+    "text": "Popular"
+  },
+  "header": {
+    "cls": "eKExYq_header",
+    "rect": {
+      "height": 64,
+      "width": 279,
+      "x": 0,
+      "y": 0
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "display": "flex",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "gap": "12px",
+      "gridTemplateColumns": "none",
+      "height": "64px",
+      "letterSpacing": "normal",
+      "lineHeight": "24px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px 16px 0px 24px",
+      "width": "279px"
+    },
+    "tag": "HEADER",
+    "text": "DocsSign upOpen app"
+  },
+  "main": {
+    "cls": "_5l06ia_content",
+    "rect": {
+      "height": 1309.1875,
+      "width": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "style": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "border": "0px none rgb(247, 248, 248)",
+      "borderRadius": "0px",
+      "boxShadow": "none",
+      "color": "rgb(247, 248, 248)",
+      "display": "flex",
+      "fontFamily": "\"Inter Variable\", \"SF Pro Display\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "gap": "normal",
+      "gridTemplateColumns": "none",
+      "height": "1309.19px",
+      "letterSpacing": "normal",
+      "lineHeight": "24px",
+      "margin": "0px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "width": "1440px"
+    },
+    "tag": "MAIN",
+    "text": "DocsSign upOpen appGetting startedIntakeProjects and initiat"
+  },
+  "url": "https://linear.app/docs",
+  "viewport": {
+    "height": 1000,
+    "width": 1440
+  }
+}

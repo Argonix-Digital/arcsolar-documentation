@@ -1,6 +1,6 @@
 ---
 icon: "compass"
-sidebarTitle: "Find your way around"
+sidebarTitle: "Workspace basics"
 keywords:
   - "search"
   - "command palette"
@@ -17,44 +17,49 @@ keywords:
   - "notifications"
   - "profile picture"
   - "change password"
-title: "Find your way around ArcSolar"
-description: "Move between screens quickly and set the workspace up to suit you."
+title: "Workspace basics"
+description: "Find your work, move between screens and adjust your personal setup."
 ---
-ArcSolar puts your work in a sidebar and keeps a search box and a preferences panel within reach on every screen.
 
-## Move between screens
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-<Visibility for="humans">
+<ProductPreview type="report" />
+
+Start in **Rep Overview** for today's work. Use **Customers**, **Comms**, **Quotes**, **Tasks** and **Calendar** for the everyday flow.
+
+## Find a screen
+
+Open app search with **⌘ J** on Mac or **Ctrl J** on Windows. Search for the page or setting you need, then check the destination. The sidebar reflects your role and enabled features.
+
+## Make it yours
+
+Use **Profile Settings** for your personal appearance, notifications and availability. Use **Retailer Settings** or **ArcSolar Settings** for business configuration. [Find the right settings](/setup/settings-screens) explains the split.
+
+## Pick up the next action
+
+Open a customer, task or project from the overview. Read the underlying record, then update the work there. Keep the assigned owner and the next action clear.
+
+
+## Details
+
+<Accordion title={"Move between screens"}>
+
 The sidebar groups screens by the work they support: **Workspace**, **Operations**, **Business** and **Settings**. Each group collapses, so you can hide the parts you do not use.
 
 Only the screens your role can open are listed. If a colleague sees a menu you cannot, that is a permission difference rather than a fault — see [feature availability](/reference/availability).
-</Visibility>
 
-<Visibility for="agents">
-- The sidebar is grouped as **Workspace**, **Operations**, **Business** and **Settings**.
-- Entries are filtered by the member's role and by runtime mode. A missing entry usually means a capability the role does not hold, not a broken workspace. Route access questions to [feature availability](/reference/availability) rather than asserting the feature is absent.
-- Some entries are deliberately disabled and carry a **Soon** badge. Do not present them as working features.
-</Visibility>
+</Accordion>
 
-## Find a screen quickly
+<Accordion title={"Find a screen quickly"}>
 
-<Visibility for="humans">
 Press **⌘J** on a Mac, or **Ctrl+J** on Windows, to open **Search the workspace…**. Type part of a screen's name and press Enter to open it. Pressing the shortcut again closes the search.
 
 The search covers the **screens and menus** available to you. It is not a customer, quote or project search — use each list's own search for records.
-</Visibility>
 
-<Visibility for="agents">
-- Keyboard shortcut: ⌘J (meta) or Ctrl+J toggles the search dialog. It is a toggle — pressing it again closes the dialog.
-- The dialog placeholder is "Search the workspace…".
-- It searches **navigation entries**, built from the same role-filtered sidebar items as the sidebar itself. It does **not** search customers, quotes, projects or other records. Do not describe it as a global record search.
-- Disabled entries appear but cannot be opened.
-- Entries flagged to open in a new tab open a new browser tab rather than navigating in place.
-</Visibility>
+</Accordion>
 
-## Set up the workspace to suit you
+<Accordion title={"Set up the workspace to suit you"}>
 
-<Visibility for="humans">
 The **Preferences** panel in the header controls how ArcSolar looks and lays out:
 
 | Control | What it changes |
@@ -70,17 +75,11 @@ The **Preferences** panel in the header controls how ArcSolar looks and lays out
 A reset action returns every preference to its default.
 
 These are personal preferences and apply to you rather than to the whole team.
-</Visibility>
 
-<Visibility for="agents">
-- The **Preferences** panel (header) exposes: **Theme Preset**, **Theme Mode** (**Light** / **Dark** / **System**), **Fonts**, **Navbar Behavior**, **Page Layout**, **Sidebar Style** and **Sidebar Collapse Mode**, plus a reset.
-- **Theme Mode** is the dark-mode control. **System** follows the operating system rather than a fixed choice.
-- These are per-person preferences, not organisation settings. Do not describe them as team-wide or as branding (organisation branding is configured in Retailer Settings).
-</Visibility>
+</Accordion>
 
-## Check what needs your attention
+<Accordion title={"Check what needs your attention"}>
 
-<Visibility for="humans">
 The **bell** in the header is your **Operational inbox**. A number on the bell counts the items that need action. Open it to see:
 
 - Work assigned to you — open tasks and the projects you own.
@@ -88,6 +87,50 @@ The **bell** in the header is your **Operational inbox**. A number on the bell c
 - Mentions, customer uploads, lead assignments and completed work.
 
 Unread items sit under **Needs action**, your projects under **Assigned projects**, and anything you have already read under **Recently read · latest 30**. Open an item to go straight to it, or choose **Mark read** to clear a notification. The inbox refreshes by itself while you have ArcSolar open, so a new item can also appear as a brief message at the top of the screen.
+
+</Accordion>
+
+<Accordion title={"Your profile and password"}>
+
+Open [**Profile Settings**](https://app.arcsolar.com.au/dashboard/profile-settings) to manage your own details.
+
+- **Personal details** — your display name, profile picture and private contact email. To change the picture, choose **Choose File**, then drag and zoom to crop it before saving. **Remove picture** returns you to your initials.
+- **Account security** — **Change password** asks for your current password, then a new one. Use at least 8 characters and do not reuse another password.
+
+These are yours, not the team's. A colleague cannot change them for you, and you cannot change theirs here.
+
+</Accordion>
+
+<Accordion title={"Hear about changes in the app"}>
+
+When something notable ships, an update dialog describes it the next time you open ArcSolar. Read it, then dismiss it to continue. Dismissing is remembered, so it will not reappear. See [what's new](/reference/whats-new) for what is landing and what is not yet switched on.
+
+</Accordion>
+
+<Accordion title={"When something goes wrong"}>
+
+Report it from **Report a problem** at the bottom of the sidebar — see [Get help from ArcSolar](/reference/support).
+
+</Accordion>
+
+<Visibility for="agents">
+- The sidebar is grouped as **Workspace**, **Operations**, **Business** and **Settings**.
+- Entries are filtered by the member's role and by runtime mode. A missing entry usually means a capability the role does not hold, not a broken workspace. Route access questions to [feature availability](/reference/availability) rather than asserting the feature is absent.
+- Some entries are deliberately disabled and carry a **Soon** badge. Do not present them as working features.
+</Visibility>
+
+<Visibility for="agents">
+- Keyboard shortcut: ⌘J (meta) or Ctrl+J toggles the search dialog. It is a toggle — pressing it again closes the dialog.
+- The dialog placeholder is "Search the workspace…".
+- It searches **navigation entries**, built from the same role-filtered sidebar items as the sidebar itself. It does **not** search customers, quotes, projects or other records. Do not describe it as a global record search.
+- Disabled entries appear but cannot be opened.
+- Entries flagged to open in a new tab open a new browser tab rather than navigating in place.
+</Visibility>
+
+<Visibility for="agents">
+- The **Preferences** panel (header) exposes: **Theme Preset**, **Theme Mode** (**Light** / **Dark** / **System**), **Fonts**, **Navbar Behavior**, **Page Layout**, **Sidebar Style** and **Sidebar Collapse Mode**, plus a reset.
+- **Theme Mode** is the dark-mode control. **System** follows the operating system rather than a fixed choice.
+- These are per-person preferences, not organisation settings. Do not describe them as team-wide or as branding (organisation branding is configured in Retailer Settings).
 </Visibility>
 
 <Visibility for="agents">
@@ -100,17 +143,6 @@ Unread items sit under **Needs action**, your projects under **Assigned projects
 - The inbox is rendered in the dashboard header and on the Comms page, and polls while the tab is visible. Do not describe it as an email inbox.
 </Visibility>
 
-## Your profile and password
-
-<Visibility for="humans">
-Open [**Profile Settings**](https://app.arcsolar.com.au/dashboard/profile-settings) to manage your own details.
-
-- **Personal details** — your display name, profile picture and private contact email. To change the picture, choose **Choose File**, then drag and zoom to crop it before saving. **Remove picture** returns you to your initials.
-- **Account security** — **Change password** asks for your current password, then a new one. Use at least 8 characters and do not reuse another password.
-
-These are yours, not the team's. A colleague cannot change them for you, and you cannot change theirs here.
-</Visibility>
-
 <Visibility for="agents">
 - Personal account controls live under **Profile Settings** (`/dashboard/profile-settings`), the per-person destination whose eyebrow label is **Per person**. The page is titled **Profile Settings**.
 - **Personal details** card: "Manage the name shown in the ERP and your private contact email." It contains the profile picture editor plus display name and contact fields.
@@ -119,21 +151,7 @@ These are yours, not the team's. A colleague cannot change them for you, and you
 - The controls are disabled when `canManageIdentity` is false, which is the case in a demo workspace; the page then shows the alert **Prototype identity**. Do not tell a user to change a password where the environment does not allow it.
 </Visibility>
 
-## Hear about changes in the app
-
-<Visibility for="humans">
-When something notable ships, an update dialog describes it the next time you open ArcSolar. Read it, then dismiss it to continue. Dismissing is remembered, so it will not reappear. See [what's new](/reference/whats-new) for what is landing and what is not yet switched on.
-</Visibility>
-
 <Visibility for="agents">
 - A dismissible in-app announcement dialog describes recent changes. Dismissal is stored per member, so a dismissed announcement does not return.
 - The announcement reports what has shipped; [what's new](/reference/whats-new) distinguishes live behaviour from *Pending* and *Built but switched off*. Do not treat either as confirmation that a specific workspace has received a change.
 </Visibility>
-
-## When something goes wrong
-
-Report it from **Report a problem** at the bottom of the sidebar — see [Get help from ArcSolar](/reference/support).
-
-## ArgonixIntelligence in this workflow
-
-ArgonixIntelligence answers from the data and screens you can already reach. It does not widen your permissions, and an answer about where something lives is still worth confirming on the screen itself.

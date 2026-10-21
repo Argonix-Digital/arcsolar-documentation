@@ -1,32 +1,37 @@
 ---
 icon: "plug"
-sidebarTitle: "Integration overview"
+sidebarTitle: "Integrations"
 keywords: ["integrations","connections","credentials"]
-title: "Connect your tools"
-description: "Set up one provider at a time and verify the linked record."
+title: "Integrations"
+description: "Connect the tools your team uses, then verify a real record."
 ---
-**Open:** [**Retailer Settings → Integrations**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations). Meta lead setup is reached from [**Customers**](https://app.arcsolar.com.au/dashboard/customers).
 
-<Frame caption="Find an app in Integrations, then open its connection settings. This fictional preview does not connect provider accounts.">
-  <img src="/images/v2/integrations.png" alt="The ArcSolar v2 integrations gallery with search, app tiles and the GreenDeal Beta spotlight." />
-</Frame>
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-| Connection | Purpose | Guide |
-| --- | --- | --- |
-| Stripe | Receive customer payments | [Set up Stripe](/integrations/stripe) |
-| GreenDeal | Link applications, evidence and claim information | [Connect GreenDeal](/integrations/greendeal) |
-| Formbay | Link rebate applications and reported evidence | [Connect Formbay](/integrations/formbay) |
-| Meta | Import leads and send supported qualification feedback | [Connect Meta](/integrations/meta) |
-| ServiceM8 | Link field-service jobs where enabled | [Connect ServiceM8](/integrations/servicem8) |
-| REC Registry | Check public certificate activity by accreditation code | [Track rebates](/delivery/rebates) |
+<ProductPreview type="integrations" />
 
-## Connection checklist
+Open [**Retailer Settings → Integrations**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations). Meta lead setup starts from **Customers**.
 
-Confirm the account belongs to the correct business. Verify access before saving. Link one known record and check the customer, site and provider reference. Read the last successful sync time; a connected badge alone does not prove every project is current.
+## Choose a connection
 
-Store credentials only in the provider's secure connection fields. Do not paste secrets into customer notes or support emails.
+| Connection | What it brings into the workflow |
+| --- | --- |
+| [Stripe](/integrations/stripe) | Customer payments |
+| [Meta](/integrations/meta) | Enquiries and supported qualification feedback |
+| [GreenDeal](/integrations/greendeal) | Applications, evidence and claim information |
+| [Formbay](/integrations/formbay) | Rebate applications and evidence |
+| [ServiceM8](/integrations/servicem8) | Linked field-service jobs, where enabled |
+| [REC Registry](/delivery/rebates) | Public certificate activity by accreditation code |
 
-**Fiskil** may be shown as **Coming soon**. Use the supported bill-analysis or manual-rate workflow until a working connection is offered.
+## Confirm the connection
+
+Verify the correct business account, then link one known record. Check the customer, site, provider reference and last successful sync. A connected badge alone does not mean every project is current.
+
+Keep credentials in secure connection fields. Never add them to customer notes or support email.
+
+A provider labelled **Coming soon**, such as Fiskil, is not ready to connect. Use bill analysis or manual rates where supported.
+
+<NextGuide href="/integrations/stripe" title="Connect Stripe" />
 
 <Visibility for="agents">
   **Availability semantics for this page.** The table above is the canonical list of what ArcSolar can connect to. Do not infer availability from a row's presence: a row means the integration exists in the product, not that it is switched on for the workspace you are advising.
@@ -43,7 +48,3 @@ Store credentials only in the provider's secure connection fields. Do not paste 
 
   When the page does not state an integration is unconditionally available, treat availability as unknown for that workspace and route the user to support rather than asserting it works.
 </Visibility>
-
-## ArgonixIntelligence in this workflow
-
-Intelligence can only reason from information available to its supported workflow. It cannot turn a disconnected provider, stale snapshot or missing application into a verified result.

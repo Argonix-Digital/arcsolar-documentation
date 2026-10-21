@@ -2,57 +2,40 @@
 icon: "list-check"
 sidebarTitle: "Setup checklist"
 keywords: ["setup","go live","checklist"]
-title: "Prepare the workspace for daily use"
-description: "A practical go-live checklist for owners and administrators."
+title: "Setup checklist"
+description: "Prepare the essentials before your team starts working with customers."
 ---
-Complete this in order. Use a clearly identified test customer with your own approved contact details for any real message or payment verification.
 
-| Step | Check before moving on |
-| --- | --- |
-| [Onboarding](/setup/onboarding) | Correct organisation, timezone and active subscription |
-| [PayTo](/setup/payto) | Active agreement before calls and SMS |
-| [Stripe](/integrations/stripe) | Business details submitted; customer collection enabled before taking payment |
-| [Team](/setup/team) | Members can sign in; roles and number allocations are correct |
-| [Retailer Settings](/setup/retailer-settings) | Pricing, services, deposits and finance rules reviewed and applied for the selected selling brand |
-| [Selling brands](/setup/selling-brands) | Original brand confirmed; every additional brand priced, documented and granted to the right people |
-| [Branding](/setup/branding) | Logo, colours and contract fonts confirmed on the contract preview |
-| [The NETCC contract](/setup/selling-contract) | Agreement wording and consent text approved and published |
-| [Catalogue](/delivery/catalogue) | Correct equipment, quantities, regions and technical sheets — priced in this brand's price book |
-| [Energy data](/quoting/energy-data) | Offered programs and source freshness reviewed |
-| [Integrations](/integrations/overview) | Correct provider accounts connected; one record checked end to end |
-| [Customer journeys](/quoting/follow-ups) | Approved wording, timing and consent; sending mode confirmed |
-| [Notifications](/setup/notifications) | Team understands inbox, email preferences and escalation |
-| [First quote](/quoting/walkthrough) | Customer preview, incentives, BOM and schedule checked |
-| [Delivery](/delivery/projects) | Installer, readiness, compliance and payment handoffs agreed |
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-<Frame caption="The short workspace introduction is separate from the operational setup checklist. This example changes only local demo appearance.">
-  <img src="/images/v2/onboarding.png" alt="The Appearance step in ArcSolar’s fictional six-step workspace introduction." />
-</Frame>
+Work through these with the organisation owner. Use an approved test customer and environment when verifying messages or payments.
 
-## If quoting or calling is locked
+## Set up the business
 
-While your workspace is being set up, quoting and calling are held back until the steps a quote is priced from are done. They are:
+- [Organisation setup](/setup/onboarding): identity, timezone and subscription.
+- [Team access](/setup/team): correct roles, active accounts and phone allocations.
+- [Retailer Settings](/setup/retailer-settings): pricing, services, finance and deposit rules.
+- [Branding](/setup/branding) and [agreements](/setup/selling-contract): review the customer-facing identity and publish approved wording.
+- [Catalogue and prices](/delivery/catalogue): exact products, regions and current brand prices.
 
-- [How your pricing is quoted](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=pricing)
-- [Upload your pricing documents](https://app.arcsolar.com.au/dashboard/product-catalogue)
-- [Your services and fees](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=services)
-- [Finance and deposits](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=finance)
-- [Incentives you offer](https://app.arcsolar.com.au/dashboard/energy-data)
+## Connect the workflow
 
-Finish those first. Everything else on this checklist still matters, but it no longer stops your team quoting or calling. See [What's new](/reference/whats-new) for the full rule.
+- Activate [PayTo](/setup/payto) before calls and SMS.
+- Finish [Stripe setup](/integrations/stripe) before customer collections.
+- Verify each required [integration](/integrations/overview) with one known record.
+- Review [follow-up messages](/quoting/follow-ups) and [notification preferences](/setup/notifications).
+- Agree who owns lead assignment, quote review, readiness, rebates and reconciliation.
+
+## Check one customer journey
+
+Walk the team through a customer, a conversation, a quote preview and project preparation. Confirm the actual provider result for authorised test sends or payments; a demo does not verify your live connections.
+
+<Accordion title={"Quoting or calling is locked"}>
+Complete the pricing foundations: **How your pricing is quoted**, **Upload your pricing documents**, **Your services and fees**, **Finance and deposits**, and **Incentives you offer**. The setup panel identifies outstanding work. Finish those first, then return to the remaining checklist.
+</Accordion>
+
+<NextGuide href="/quoting/walkthrough" title="Create a quote" />
 
 <Visibility for="agents">
   This page is about go-live preparation. The lock that withholds quoting and calling is documented in full at [What's new](/reference/whats-new), including the exact blocking messages. In short: `pricing-basis`, `pricing-documents`, `services`, `finance` and `incentives` withhold revenue work; `integrations`, `appearance`, `notifications`, `team` and `reviews` do not. Do not tell an operator they cannot quote because of an unfinished optional step, and do not tell them the opposite without checking which steps are outstanding.
 </Visibility>
-
-## Agree on ownership
-
-Name the person who owns new-lead assignment, quote review, installation readiness, rebate follow-up and reconciliation. Agree when a task needs escalation.
-
-## Verify with the team
-
-Walk one sample enquiry through creation, contact, quote preview and project preparation. Only send messages, issue documents or take test payments when the intended recipient and environment are confirmed. A demo success does not prove your provider account is ready.
-
-## ArgonixIntelligence in this workflow
-
-Demonstrate one bill review, one available call summary and one dashboard brief. Teach the team to open the underlying evidence and record a clear next action.

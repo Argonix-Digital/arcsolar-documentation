@@ -1,0 +1,34 @@
+[
+  {
+    "cardWidth": 288,
+    "grid": "288px 288px",
+    "h1width": 592,
+    "h1x": 24,
+    "h1y": 176,
+    "viewport": 640
+  },
+  {
+    "cardWidth": 352,
+    "grid": "352px 352px",
+    "h1width": 720,
+    "h1x": 24,
+    "h1y": 176,
+    "viewport": 768
+  },
+  {
+    "cardWidth": 340,
+    "grid": "340px 340px",
+    "h1width": 696,
+    "h1x": 304,
+    "h1y": 112,
+    "viewport": 1024
+  },
+  {
+    "cardWidth": 226,
+    "grid": "226px 226px 226px 226px",
+    "h1width": 952,
+    "h1x": 304,
+    "h1y": 112,
+    "viewport": 1280
+  }
+]

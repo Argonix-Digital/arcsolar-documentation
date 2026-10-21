@@ -1,7 +1,7 @@
 ---
-sidebarTitle: "Which settings screen?"
-title: "Retailer Settings or ArcSolar Settings or Profile Settings?"
-description: "Tell the three settings screens apart, and find the one that owns the setting you want to change."
+sidebarTitle: "Find the right settings"
+title: "Find the right settings"
+description: "Choose business, workspace or personal settings before making a change."
 keywords:
   - "settings"
   - "retailer settings"
@@ -13,23 +13,30 @@ keywords:
   - "per person"
 ---
 
-ArcSolar has three settings screens, and their names are easy to confuse. Each answers a different question, and each page states its audience in the small grey label above its title.
+import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-| Screen | Label above the title | The question it answers |
-| --- | --- | --- |
-| [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings) | **Per selling brand** | *Who sells, and on what commercial terms?* |
-| [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings) | **Per workspace** | *What is this business, and what may it sell under?* |
-| [**Profile Settings**](https://app.arcsolar.com.au/dashboard/profile-settings) | **Per person** | *What is mine to change?* |
+<ProductPreview type="settings" />
 
-Check the **Selling brand** value before changing commercial settings. Prices and agreements follow the selected brand. Personal preferences and workspace appearance defaults have their own scope.
+## Choose your settings area
 
-## Retailer Settings — per selling brand
+| Area | What belongs there |
+| --- | --- |
+| **Retailer Settings** | Selling-brand pricing, payments, appearance, agreements and integrations |
+| **ArcSolar Settings** | Workspace identity, organisation-wide setup and selling-brand administration |
+| **Profile Settings** | Your account, appearance, notifications and availability |
+
+Check the selected selling brand before changing a commercial rule. Check the role and organisation before making a workspace change. Your role determines the available tabs.
+
+The field-by-field map below helps you find a setting that has moved or changed its label.
+
+
+## Details
+
+<Accordion title={"Retailer Settings \u2014 per selling brand"}>
 
 The **Selling brand** value names the commercial context. **Appearance defaults** is identified separately as workspace branding defaults.
 
-<Frame caption="Pricing & fees in the current fictional workspace. The displayed selling brand identifies the settings context; other brands and selling access depend on your workspace.">
-  <img src="/images/v2/settings-pricing.png" alt="Current Pricing & fees settings with the actual fictional selling-brand context." />
-</Frame>
+
 
 | Tab | What it changes |
 | --- | --- |
@@ -45,7 +52,9 @@ The **Selling brand** box in the title row decides which brand all of this appli
 
 Go here for: prices and fees, deposit and installation terms, the customer SMS wording, the customer-facing branding, the agreement, and which providers are connected for a brand.
 
-## ArcSolar Settings — per workspace
+</Accordion>
+
+<Accordion title={"ArcSolar Settings \u2014 per workspace"}>
 
 > *"Platform administration for the organisation. Administrators and owners only — nothing here is per brand or per person."*
 
@@ -65,7 +74,9 @@ Go here for: the business's legal identity, the numbers the workspace uses, bill
   **Selling Brands sits here rather than in Retailer Settings**, and that is deliberate: creating or retiring a commercial identity changes the workspace, while editing one brand's terms does not. The same card is also shown on **Retailer Settings → Branding** for convenience — both edit the same thing.
 </Info>
 
-## Profile Settings — per person
+</Accordion>
+
+<Accordion title={"Profile Settings \u2014 per person"}>
 
 > _"Each user manages their own account. Nothing here changes what anyone else sees or can do."_
 
@@ -87,11 +98,9 @@ Go here for: anything about *you*. A colleague cannot change these for you, and 
   **Appearance here is not branding.** **Profile Settings → Appearance** changes the interface for you alone — the theme, dark mode and interface font. **Retailer Settings → Branding** changes what your *customers* see: logos, colours, your sending address and the contract fonts. They are two different screens on purpose.
 </Warning>
 
-<Frame caption="Personal preferences in the current fictional workspace. These are separate from workspace branding defaults.">
-  <img src="/images/v2/account-appearance.png" alt="Profile Settings showing interface theme, increased contrast and the available personal preferences." />
-</Frame>
+</Accordion>
 
-## Where did the old Settings tabs go?
+<Accordion title={"Where did the old Settings tabs go?"}>
 
 Three sections that used to be tabs of Settings now live on Profile Settings, and older links still work:
 
@@ -104,15 +113,12 @@ Three sections that used to be tabs of Settings now live on Profile Settings, an
 
 If a bookmarked link or an email footer sends you to an old tab, it will open the right screen rather than an empty frame.
 
-## A quick way to decide
+</Accordion>
+
+<Accordion title={"A quick way to decide"}>
 
 1. **Is it about one brand selling on its own terms?** Retailer Settings, with that brand selected in the **Selling brand** box.
 2. **Is it about the business itself, or which brands exist?** ArcSolar Settings.
 3. **Is it about you?** Profile Settings.
 
-## Related
-
-- [What a selling brand is](/setup/selling-brands)
-- [Branding](/setup/branding)
-- [Finance and deposits](/setup/retailer-settings)
-- [Selling brands FAQ](/reference/selling-brands-faq)
+</Accordion>
