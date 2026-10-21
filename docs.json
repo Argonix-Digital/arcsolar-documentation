@@ -28,12 +28,13 @@
     },
     "groups": [
       {
-        "group": "Start here",
+        "group": "Getting started",
         "boost": 3,
         "pages": [
           "index",
           "changelog"
-        ]
+        ],
+        "expanded": true
       },
       {
         "group": "Sales rep onboarding",
