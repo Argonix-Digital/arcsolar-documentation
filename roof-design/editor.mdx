@@ -12,7 +12,7 @@ keywords:
   - "address search"
   - "panel model"
   - "catalogue"
-  - "voltage rise report"
+  - "export design"
   - "site plan"
   - "annotations"
   - "floor plan"
@@ -25,65 +25,72 @@ import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <RoofPreview />
 
-Open a saved design in **Roof Vision**, or choose **Open Roof Vision** from the quote's solar step.
+Open a design from the quote's **Solar** step (**Open Roof Vision**) or from the [**Roof Vision**](https://app.arcsolar.com.au/dashboard/roof-vision) page.
 
-## Place the array
+<Frame caption="The design editor: tools on the left, settings on the right. Demo shown.">
+  <img src="/images/v2/dl-rv-editor.jpg" alt="The Roof Vision editor with the tool rail, a panel array on a roof and the Panels & layout panel." />
+</Frame>
 
-1. Check the property address and imagery.
-2. Choose **Build**, then select the exact panel in **Catalogue → Solar panel**.
-3. Click for a panel or drag to place a row. Hover beside an existing panel to extend it.
-4. Set **Portrait** or **Landscape**, **Row gap**, **Col gap**, **Rotate** and **Tilt**.
-5. Mark panels already on the roof **Existing** so they stay outside the new capacity and quote equipment.
+## Place the panels
 
-## Finish the design
+<Steps>
+<Step title="Choose the module">
+Under **Panels & layout → Panels**, search for and choose the exact panel you are quoting. Use **Add custom panel** if it isn't listed.
+</Step>
+<Step title="Set the layout">
+Choose **Portrait** or **Landscape**. Set **Row spacing**, **Column spacing**, **Rotation** and **Roof pitch**. Enter rotation and pitch yourself when the roof values aren't available.
+</Step>
+<Step title="Build on the roof">
+Choose **Build on the roof** (or press **B**). Click to place one panel, or drag to place a block. Hover beside a panel and click **+** to extend a row.
+</Step>
+<Step title="Mark existing panels">
+Select panels already on the roof and turn on **Existing**. They stay on the plan but don't count toward the new system.
+</Step>
+</Steps>
 
-Use **Select** to adjust, **Erase** to remove and **Measure** or **Edit** for measurements. **Cabling**, **Annot.** and **Floor plan** add the supporting site detail.
+<Frame caption="Panels & layout after choosing a module. Demo shown.">
+  <img src="/images/v2/dl-rv-panels-layout.png" alt="The Panels & layout panel with the selected module, kW total, layout, spacing, rotation, roof pitch, Existing switch and Build on the roof button." />
+</Frame>
 
-Continue with [Stringing](/roof-design/stringing) and the [single line diagram](/roof-design/sld). Roof Vision saves while you work and files available reports to the linked customer.
+The panel shows the system size in kW and the number of panels on the roof.
 
-Imagery and roof direction are estimates. Check the layout on site; tilt is your input, not a surveyed measurement.
-
-
-## Details
-
-<Accordion title={"The tools"}>
+## Use the tools
 
 | Tool | What it does |
 | --- | --- |
-| **Select** | Select and move panels; drag a box, shift-click to toggle, drag a corner to rotate |
+| **Select** | Select and move panels. Drag a box or shift-click to select several. |
 | **Pan** | Move the map |
 | **Build** | Place panels |
 | **Erase** | Remove panels |
-| **Measure** / **Edit** | Draw and adjust ground-distance measurements |
-| **Strings** | Wire panels into strings and assign them to the inverter's MPPT inputs |
-| **Cabling** | Draw cable runs with bends |
-| **Annot.** | Place site-plan symbols such as the meter, inverter or battery location |
-| **Floor plan** | Draw rooms, doors, windows and equipment footprints |
+| **Measure** / **Edit** | Draw and adjust distance measurements |
+| **Strings** | Wire panels into strings. See [Stringing](/roof-design/stringing). |
+| **Cabling** | Draw cable runs |
+| **Annot.** | Place site-plan symbols, such as the meter, inverter or battery |
+| **Floor plan** | Draw rooms, doors, windows and equipment |
 
-**Images and plans** calibrates a floor plan or photo you supply against a known distance and a north direction, and **Solar production** overlays Google Solar production and shade.
+The icons below the tools are **Open SLD** ([Single line diagram](/roof-design/sld)), **Images and plans** (line up your own plan or photo against the map), **Sun exposure** and **Export design**.
 
-</Accordion>
+## Download the design
 
-<Accordion title={"Design downloads"}>
+Choose **Export design** to open **Download design**.
 
-| Download | What it produces |
+<Frame caption="Export design lists the documents you can download. Demo shown.">
+  <img src="/images/v2/dl-rv-export.png" alt="The Download design panel listing Panel design, Annotation design, Site plan and Battery site plan." />
+</Frame>
+
+| Download | What it is |
 | --- | --- |
-| **Download Panel Design** | The panel design report |
-| **Download Annotation Design** | The annotation report |
-| **Open SLD** | The single line diagram editor |
-| **Download site plan** | The site plan |
-| **Download Battery Site Plan** | The battery site plan, once the floor plan has the room and the equipment |
-| **Voltage rise report** | Coming Soon — the control is disabled |
+| **Panel design** | The roof layout with your array |
+| **Annotation design** | Site features and equipment |
+| **Site plan** | The site plan for installation |
+| **Battery site plan** | The battery location. Draw a floor plan first. |
 
-These give you a copy to use. The same documents are filed against the customer's record automatically after each save, once the design has the content each one needs.
+You don't have to download them for the customer record. Roof Vision files them on the linked customer after each save.
 
-</Accordion>
+## Before you rely on the drawing
 
-<Accordion title={"Before you rely on the drawing"}>
+Imagery can be out of date. Roof direction read from imagery is an estimate. Rotation and pitch are your inputs, not a survey. Every report is a preliminary design marked `Preliminary design — verify on site`. Check it on site.
 
-Imagery can be out of date, and a roof direction read from a photo is an estimate, not a survey. Tilt is your own input, not a measurement. Check the layout against the actual roof, and treat every report as a preliminary design marked `Preliminary design — verify on site`.
-
-</Accordion>
 
 <Visibility for="agents">
   ### Where the editor runs
@@ -120,24 +127,13 @@ Imagery can be out of date, and a roof direction read from a photo is an estimat
 
   ### Inspector
 
-  `aria-label="Inspector"`. The first tab is **Catalogue** (`aria-label="Catalogue"`), which itself has the **Solar panel** and **Solar batteries** tabs. Under them: the list of panel models on the roof, the search field `Search manufacturer or model`, the filters button, the catalogue results, and the **Add custom panel** disclosure.
+Verified on the demo editor (design.arcsolar.com.au/demo) on 2026-11-16. The right-hand inspector is titled **Panels & layout** with **Panels** and **Batteries** tabs. With no module chosen it shows `Choose a module`, the `Search manufacturer or model` field, a filters button, the catalogue list and **Add custom panel**. After a module is chosen it shows **Selected module** (name, watts, dimensions), **Change module**, the system kW and `<n> panels on this roof`, **Layout** (**Portrait** / **Landscape**), **Row spacing** and **Column spacing** (mm, default 20), **Rotation** (°), **Roof pitch** (°), **Roof helpers**, an **Existing** switch and **Build on the roof** (shortcut `B`).
 
-  Selecting a tool that has settings adds its own tab beside Catalogue: `Measure`, `Measurements`, `Strings`, `Cabling`, `Annotations` and `Floor plan`. A tool with no settings leaves the Catalogue tab showing.
+The **Strings** tool replaces the inspector with **Inverter & strings** (tabs **Strings** and **Equipment**); **Export design** replaces it with **Download design**.
 
-  ### Bottom bar
+  ### Status bar
 
-  The canvas bottom bar carries the live status chip — `<n> selected` or `Nothing selected` — followed by the selected panel's size and wattage, the active roof status (for example `Saved design restored`, or `Search an address` before a design is loaded), and the array controls.
-
-  | Control | Label | Notes |
-  | --- | --- | --- |
-  | Undo / Redo | **Undo** and **Redo** | `⌘/Ctrl Z` reverses; `⇧⌘/Ctrl Z` redoes |
-  | Orientation | **Portrait** / **Landscape** | `role="group" aria-label="Panel orientation"` |
-  | Gaps | **Row gap** and **Col gap** | Millimetre number inputs, default 20 mm |
-  | Rotation | **Rotate** | `aria-label="Panel rotate in degrees"`, one decimal place |
-  | Tilt | **Tilt** | `aria-label="Panel tilt in degrees"`, one decimal place |
-  | Existing | **Existing** | `aria-label="Selected panels are existing"`; existing panels stay on the plan but are excluded from new capacity, production and quote equipment |
-
-  The address search sits in the project bar (`aria-label="Property address"`). The project bar also carries **Open another project**, **Link customer / site** and **Local export**; a new design shows `Address-only design · Saved`, and linking reports `Saved under this customer and linked to their installation site.`
+The canvas status chip reads `<n> selected` or `Nothing selected`, then the module size and wattage and a roof-values note such as `Google roof values unavailable · enter rotation and pitch`. Map controls: **Zoom out**, **Zoom in**, **Face north**, and a scale bar. Undo/redo keyboard shortcuts are `⌘/Ctrl Z` and `⇧⌘/Ctrl Z`.
 
   ### Placement rules
 
@@ -147,7 +143,7 @@ Imagery can be out of date, and a roof direction read from a photo is an estimat
   - Free placement: hold `⌘`/`Ctrl`. Within an 8-pixel snap tolerance, capped at 350 mm, the candidate snaps perpendicular to an existing panel edge and slides along it, preserving staggered offsets.
   - **Erase** deletes on click, or on release after dragging across panel centres; targeted panels turn red during the gesture.
   - Physical size comes from the catalogue, never from the user: `width = widthMm/1000` and `length = heightMm/1000`.
-  - **Tilt** is an explicit user input that shortens the overhead projected footprint by cosine. It never changes the manufacturer's width or length.
+  - **Roof pitch** (tilt) is an explicit user input that shortens the overhead projected footprint by cosine. It never changes the manufacturer's width or length.
   - Panels marked **Existing** remain physical objects for layout and collision checks but are excluded from new kW, production and string assignment.
 
   ### Roof direction — azimuth only
@@ -176,18 +172,7 @@ Imagery can be out of date, and a roof direction read from a photo is an estimat
 
   ### Design downloads
 
-  `aria-label="Design downloads"`. Each control is an icon button whose tooltip and accessible name are the label below.
-
-  | Label | Effect |
-  | --- | --- |
-  | **Download Panel Design** | Downloads the panel design drawing straight away; with nothing placed, `Place panels on the roof before downloading a panel design.` |
-  | **Download Annotation Design** | Downloads the annotation drawing straight away; with nothing annotated, `Add an annotation before downloading an annotation design.` |
-  | **Open SLD** | Opens the [single line diagram](/roof-design/sld) editor as `role="dialog" aria-label="Single line diagram editor"`, loading with `Loading diagram editor…` |
-  | **Download site plan** | Prepares and publishes the site plan through the Site Information flow; failures surface as `Site plan failed` |
-  | **Download Battery Site Plan** | Prepares the battery site plan. It needs floor-plan content first, otherwise the toast reads `Battery site plan not started` — `Add the room and place the battery or inverter on the floor plan first.` |
-  | **Voltage rise report (Coming Soon)** | Disabled. The report exists in the editing code, but the control does not run it. |
-
-  `aria-label="Image and solar tools"`: **Images and plans** (mode `imagery`) and **Solar production** / **Close solar production**.
+The rail's icon buttons (below the drawing tools) have accessible names **Open SLD**, **Images and plans**, **Sun exposure** and **Export design**. **Export design** opens a **Download design** inspector panel headed `Ready for the next step.` with four entries (accessible names in brackets): **Panel design** — `Roof layout with your array` (Download Panel Design); **Annotation design** — `Site features and equipment` (Download Annotation Design); **Site plan** — `Installation-ready documentation` (Download site plan); **Battery site plan** — `Create a floor plan to enable` (Download Battery Site Plan, disabled until the floor plan has content). No voltage rise report control is shown in the current editor. **Open SLD** opens the [single line diagram](/roof-design/sld) editor.
 
   ### What the printed sheets say
 

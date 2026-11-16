@@ -14,31 +14,54 @@ import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="calendar" />
 
-Open [**Calendar**](https://app.arcsolar.com.au/dashboard/operations-calendar). Choose month, week, day or list, then filter event types, roles and team members.
+Open [**Calendar**](https://app.arcsolar.com.au/dashboard/operations-calendar). Choose month, week, day or list, then filter by event type, role or team member.
 
-## Book an appointment
+Calendar shows appointments, tasks, time blocks and scheduled installs and site visits in one place.
 
-1. Choose **Phone appointment** or **New**, then the available appointment type.
+## Add to the calendar
+
+Choose **New**, then what to add:
+
+<Frame caption="The New menu. Field work opens Field Operations. Sample data.">
+  <img src="/images/v2/dl-calendar-new.png" alt="The Calendar New menu with Event / meeting, Time block, Task / reminder and Field work." />
+</Frame>
+
+| Option | Use it for |
+| --- | --- |
+| **Event / meeting** | A meeting with a title, owner and time |
+| **Time block** | Busy time, such as a training day |
+| **Task / reminder** | A task with a due date. It doesn't block time. |
+| **Field work** | A site visit or install. Opens [Field Operations](/delivery/field-operations). |
+
+## Book a customer appointment
+
+1. Choose **Phone appointment**, or the appointment type you need.
 2. Select the customer and responsible rep.
-3. Check date, timezone, duration, buffers and location or meeting link.
+3. Check the date, timezone, duration, buffers and location or meeting link.
 4. Review the booking and confirm.
-5. Open the saved event to check preparation and notification status.
+5. Open the saved event to check preparation and message status.
 
-Task deadlines appear in Calendar but do not reserve appointment time. Reschedule or cancel through the appointment controls; switching the displayed timezone does not move a booking.
+Reschedule or cancel through the appointment itself. Switching the timezone you view doesn't move a booking.
+
+## Schedule an install
+
+Set the install date on the project, not in Calendar:
+
+1. Open the project in [**Projects & Jobs**](https://app.arcsolar.com.au/dashboard/projects).
+2. Assign the installer under **Associate an installer**.
+3. Choose **Add installation date** under **Review installation schedule**.
+
+The install then appears in Calendar. See [Projects and jobs](/delivery/projects#schedule-the-installation). To group several jobs into one crew's day, use **Field days**. See [Field operations](/delivery/field-operations#plan-a-field-day).
 
 ## Keep availability current
 
-Reps use **My availability** for recurring hours, holidays, busy blocks and incoming calendars. Confirm availability every 28 days. Managers control service areas, booking eligibility and minimum buffers. See [Sales availability](/setup/sales-availability).
+Reps use **My availability** for recurring hours, holidays, busy blocks and incoming calendars. Confirm your availability every 28 days. Managers control service areas, booking eligibility and minimum buffers. See [Sales availability](/setup/sales-availability).
 
 ## Check reminders
 
 Where **Appointment messages** is enabled, consultations queue confirmations and reminders 24 hours and 30 minutes before the appointment. Rescheduling replaces stale reminders; cancellation invalidates them. Consent, preferences and sender readiness still apply.
 
 Check the event's delivery status. Queued or sent messages do not prove delivery.
-
-## Coordinate delivery
-
-Change installation and work-order schedules through their linked records, then verify the Calendar entry. Use **Field days → Plan field day** to review crew, visits, travel and conflicts before confirming a day.
 
 <Accordion title={"Booking durations, buffers and conflicts"}>
 New phone/video policies default to 45 minutes with a 10-minute buffer; in-person policies default to 60 minutes with 30 minutes. Saved older settings remain until edited. The larger adjacent buffer applies to a shared gap. Known travel can require more time. Manual exceptions cannot override busy appointments, holidays or manager minimums. Offered slots are checked again when booked and do not reserve time.

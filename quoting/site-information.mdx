@@ -3,45 +3,60 @@ icon: "location-dot"
 sidebarTitle: "Site information"
 keywords: ["site information form","send site information form","site assessment","property","installation address","electricity bill upload","switchboard photos","cable-run video","secure upload link"]
 title: "Site information"
-description: "Ask for the bill, photos and video needed to assess the home."
+description: "Ask the customer for their bill, switchboard photos and cable-run video."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="site" />
 
-Open **Site Information Form** on a customer record or in the quote's site-information step.
+You can send the form from two places:
+
+- A customer record: open the **Site Information Form** tab and select **Send Site Information Form**.
+- A quote: on the **Site details** step, use the send button. It is named after the channel, for example **Email and SMS customer the form link**.
 
 ## Send the form
 
-1. Confirm the installation address and known property details.
-2. Choose **Email customer the form link**, **SMS customer the form link** or **Email and SMS customer the form link**.
-3. Check the destination, then send.
+1. Check the customer's email address and mobile number. You need at least one.
+2. Select the send button.
+3. The customer gets a private link by email, SMS or both.
 
-The private form asks for a recent **electricity bill**, **switchboard photos** and a **cable-run video** from the switchboard to the proposed battery location.
+The form asks for a recent **Electricity bill**, **Switchboard photos** and a **Cable-run video** from the switchboard to where the new equipment will go.
 
-Re-sending invalidates the previous link immediately. Tell the customer to use the new one.
+Sending again creates a new link. The old link stops working straight away. Tell the customer to use the newest one.
 
-## Review what comes back
+<Frame caption="The Site details step in a quote shows the form status and every uploaded file. Sample data.">
+  <img src="/images/v2/qt-site-details.png" alt="Site information panel showing the Assess bills with ArgonixIntelligence button, a Not requested status, the send button and the uploaded electricity bill and switchboard photo." />
+</Frame>
 
-The request moves through **Not requested**, **Awaiting customer**, **Submitted** or **Link expired**. Check the bill's customer, site and period. Make sure the photos and video show the requested detail. Record anything needing installer review.
+## Check what comes back
 
-You can continue a quote without these files, but bill analysis needs an uploaded bill. Submission does not accept a quote, approve finance or reserve a date.
+The status shows where the request is:
 
-## If something is missing
+| Status | Meaning |
+| --- | --- |
+| **Not requested** | The form has not been sent |
+| **Awaiting customer** | Sent, nothing submitted yet |
+| **Submitted** | The customer sent their files |
+| **Link expired** | The link timed out. Send the form again |
 
-For **Link expired**, re-send the form. If the customer cannot upload, follow your approved collection process and record the source and date. Reconfirm older information when site conditions change.
+Each file is tagged **Customer** (from the form) or **Rep upload** (added by your team). The newest file is tagged **Latest**. Select **Preview customer form** to see what the customer sees.
 
-Keep customer form links private. Use [bill analysis](/quoting/bill-analysis) once the correct bill is available.
+Check that the bill matches the customer and site, and that the photos and video show what you need.
+
+You can finish a quote without these files. But bill assessment needs an uploaded bill. Submitting the form does not accept a quote or book a date.
+
+Next, use [bill analysis](/quoting/bill-analysis) to read the bill.
 
 <NextGuide href="/quoting/bill-analysis" title="Bill analysis" />
 
 <Visibility for="agents">
 - Feature name: the **Site Information Form**. Do not call it a "site form" or a "site information request form".
-- Surfaces: the **Site Information Form** tab on a customer record and the **Site Information Form** step on a new quote. Both render one shared panel and call `sendSiteInformationFormLinkAction`.
+- Surfaces: the **Site Information Form** tab on a customer record and the **Site details** step on a new quote (panel heading "Site information"). Both use one shared panel and call `sendSiteInformationFormLinkAction`.
 - Delivery channels: `email` and/or `sms`, resolved from the customer's contact record. With neither configured the send button is disabled with `Add an email address or phone number before sending the form.`
-- Send labels. First send: `Email customer the form link`, `SMS customer the form link` or `Email and SMS customer the form link`, depending on the customer's available channels. `Send customer the form link` appears only when no channel is configured, where the button is also disabled. Any send after the first is a resend: `Resend form link by email`, `Resend form link by SMS` or `Resend form link by email and SMS`.
-- **Re-sending invalidates the previous link.** Every send rotates the token. Customer-record resend toast: `Form link refreshed` — `The previous link is now invalid and a fresh link was sent by <channel>.` Quote-step toast: `Site Information Form sent` — `A fresh secure link was sent by <channel>; any older link is no longer valid.` Never say an earlier link still works.
+- Customer-record labels: `Send Site Information Form`; after a first send, `Re-send Site Information Form`, which opens a confirmation (`Re-send Site Information Form?` → `Re-send`).
+- Quote-step labels. First send: `Email customer the form link`, `SMS customer the form link` or `Email and SMS customer the form link`, depending on the customer's channels. `Send customer the form link` appears only when no channel is configured (button disabled). Later sends: `Resend form link by email`, `Resend form link by SMS` or `Resend form link by email and SMS`.
+- **Re-sending invalidates the previous link.** Every send rotates the token. Success toast on both surfaces: `Site Information Form sent` — `A fresh secure link was sent by <channel>; any older link is no longer valid.` Never say an earlier link still works.
 - Send failure shows `Form link not sent`. Delivery errors read `The secure form link could not be sent. Check the email configuration and try again.` or `The form link could not be sent. Check the email and SMS configuration and try again.`
 - Request status badge: `Not requested` (`not_sent`), `Awaiting customer` (`pending`), `Submitted` (`submitted`), `Link expired` (`expired`, destructive). A generated link is time-limited, so `Link expired` means the request must be re-sent.
 - A role without send permission sees a read-only panel with the reason `Your role has read-only access.`

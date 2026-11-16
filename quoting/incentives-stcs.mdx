@@ -1,45 +1,66 @@
 ---
 icon: "certificate"
 sidebarTitle: "Incentives and STCs"
-keywords: ["STC","rebates","incentives","back calculation"]
+keywords: ["STC","rebates","incentives","back calculation","VEEC","Victorian Energy Upgrades","Cheaper Home Batteries","Solar Homes","state rebates","interest-free loan"]
 title: "Incentives and STCs"
-description: "Keep rebates, loans and customer price separate."
+description: "How STCs, rebates and loans show on a quote, and what your reps must confirm."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="quote" />
 
-**Open:** the quote's incentive/review controls. Administrators choose offered support under [**Energy data**](https://app.arcsolar.com.au/dashboard/energy-data).
+A quote can include three kinds of support:
 
-## Apply an incentive
-
-1. Confirm the installation location and date.
-2. Select the program offered by your retailer.
-3. Answer its eligibility checklist from current customer evidence.
-4. Review whether it reduces the system price or funds part of the balance.
-5. Resolve missing information or review warnings.
-6. Check the conditional wording and amount in the customer preview.
-
-Selection and rep confirmation are not government or lender approval. Changing the customer, equipment, date or relevant provider can require fresh answers. Do not carry an old eligibility answer into a materially different quote.
-
-## How STC back-calculation works
-
-Check **Retailer Settings → Pricing** for the package-price basis.
-
-| Basis | Treatment |
+| Kind | How it works |
 | --- | --- |
-| After federal STCs | The calculated STC value is added back to show the full system price, then deducted separately |
-| Before incentives | The package starts at the full price and the eligible incentive is deducted |
+| **Federal STCs** | Worked out for you from the system, postcode and installation date. They reduce the price. |
+| **State rebates and promotions** | Only show if your business offers them. The rep confirms eligibility in the quote. |
+| **Interest-free loans** | Repayable. They lower what the customer pays you, not the system price. |
 
-For illustration only: a $10,000 after-STC package with a calculated $2,000 STC benefit is displayed as $12,000 before that benefit and $10,000 after it. Subtracting the same $2,000 again would double-count it.
+## Federal STCs
 
-Open **How STCs are calculated** to inspect the dated certificate count, value per certificate and total. Confirm equipment capacity, installation date and CER zone. If postcode mapping is unresolved, verify the correct zone before selecting it manually.
+STCs are added automatically for solar and batteries. They show in the **Price breakdown** and on the preview as **Federal Solar STCs** and **Federal Battery STCs**. Hot water STCs are handled on the **Hot water** step (see below).
 
-A future-date comparison, where shown, is a scenario. It does not change the current quote or establish future eligibility.
+The amount depends on:
 
-## Other benefits
+- the system size and products,
+- the **CER rebate zone** on the **Solar** step (set from the postcode), and
+- the **Expected installation date** on the **Review** step.
 
-A **rebate** may reduce the price. A **government loan** is repayable funding, not a discount. Commercial finance and retailer promotions are separate again.
+STCs stay estimates until the installation is done. If you change the date, zone or equipment, check the total again.
 
-Read the current program checklist and official source linked in Energy data. Scheme amounts and eligibility can change; the quote's saved terms and evidence matter.
+In the live estimate, select **Jan 2027** to see what the STCs would be if the system is installed from 1 January 2027. This is only a comparison. Your quote does not change, and eligibility is not confirmed.
+
+## How package prices treat STCs
+
+An admin sets this once in [**Retailer Settings → Pricing & fees**](https://app.arcsolar.com.au/dashboard/quoting-settings), under **Package selling price basis**.
+
+| Setting | What happens |
+| --- | --- |
+| **After federal STCs** | Your package price already has STCs taken off. ArcSolar adds the STC value back to show the full price, then takes it off again as its own line. The total stays your package price. |
+| **Before incentives** | Your package price is the full price. ArcSolar takes the STC value off it. |
+
+Example: with **After federal STCs**, a $10,000 package with $2,000 of STCs shows $12,000 before STCs and $10,000 after. Don't take the $2,000 off again.
+
+The same tab sets **Commercial STC price per certificate ($)**, **Hot-water STC price per certificate ($)** and **VEEC price per certificate ($)** for Victorian Energy Upgrades.
+
+## State rebates and loans
+
+Admins choose which programs your team can offer on the [**Rebate Settings**](https://app.arcsolar.com.au/dashboard/energy-data) page. See [Rebate settings](/quoting/energy-data).
+
+When a program is on, it appears on the quote's **Review** step under **Incentives & eligibility**:
+
+1. Answer each eligibility question with **Yes — confirmed by rep**, **No — not eligible** or **Not answered**.
+2. Fill in any extra fields, such as **Customer's electricity provider (not the battery brand)** or **Requested loan amount ($)**.
+3. Check the amount in the live estimate and the preview.
+
+Hot water and air conditioning rebates, such as **Federal hot water STCs**, **Victorian Energy Upgrades** and the **Solar Victoria hot water rebate**, appear on their own service step under **Rebates**. Tick each item listed to include the rebate.
+
+When you select **Confirm & send**, you also confirm the eligibility requirements you ticked. Answer from what the customer told you or showed you. Your answer is not government or lender approval.
+
+If the customer, address, equipment or date changes, answer the questions again.
+
+## Promotions
+
+Your own offers, such as a dollar discount for a month, are set up under **Retailer promotions** on the Rebate Settings page. They are kept separate from government support.

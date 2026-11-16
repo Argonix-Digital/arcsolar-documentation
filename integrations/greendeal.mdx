@@ -1,41 +1,55 @@
 ---
 icon: "leaf"
 sidebarTitle: "GreenDeal"
-keywords: ["GreenDeal","credentials","rebate applications"]
+keywords: ["GreenDeal","APP credentials","rebate applications","STC"]
 title: "GreenDeal"
-description: "Verify your retailer account and link the correct application."
+description: "Connect your GreenDeal account and link rebate jobs to your projects."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="greendeal" />
 
-**Open:** [**Retailer Settings → Integrations → GreenDeal**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations). You need integration-management access.
+GreenDeal is in **Beta**. Administrators and Operations can connect it.
+
+## What syncs
+
+- Create supported GreenDeal rebate applications from a project.
+- See GreenDeal's job status and evidence on the linked project.
+- Final STC lodgement still happens in GreenDeal.
+
+## Connect GreenDeal
 
 <Steps>
-<Step title="Find your credentials">
-In **GreenDeal Retail Portal → Settings → APP Credentials**, obtain the Client ID and Client Secret for your retailer.
+<Step title="Get your credentials">
+In the GreenDeal Retail Portal, go to **Settings → APP Credentials**. Copy your Client ID and Client Secret.
 </Step>
-<Step title="Verify the account">
-Choose **Connect account**. Select **Live account** or **Staging / test account**, then enter **Client ID** and **Client Secret**. Choose **Verify credentials**.
+<Step title="Open the form">
+Open [**Retailer Settings → Integrations → GreenDeal**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations) and select **Connect account**.
 </Step>
-<Step title="Confirm the identity">
-Read the verified Client ID and environment. Confirm they belong to this retailer, then choose **Connect verified account**.
+<Step title="Enter and verify">
+Choose **Live account** (or **Staging / test account** for testing). Enter **Client ID** and **Client Secret**, then select **Verify credentials**.
 </Step>
-<Step title="Link a project">
-Open **Projects & Jobs**, select the project and open its GreenDeal area. Review a suggested match or search for the provider record. Compare the customer, installation address and reference before confirming the association.
-</Step>
-<Step title="Check the result">
-Review application details, evidence/files, certificate information and reported payment details. Check the last successful update and any error message.
+<Step title="Confirm">
+Check the verified Client ID is yours, then select **Connect verified account**.
 </Step>
 </Steps>
 
-## Use the linked information
+<Frame caption="The Connect GreenDeal form. Sample data.">
+  <img src="/images/v2/ri-greendeal-connect.png" alt="Connect GreenDeal form with Environment set to Live account, Client ID and Client Secret fields, and a Verify credentials button." />
+</Frame>
 
-GreenDeal application progress, certificate progress, inspection and payment can move independently. A reported certificate quantity is not proof that the rebate has settled. Open supporting details when the status needs explanation.
+## Link a project
 
-Refresh or sync using the action available on the linked record. If it fails, retain the known information and resolve the account or provider error. Do not treat an empty response as a confirmed absence of applications.
+1. Open the project in [Projects & Jobs](/delivery/projects) and go to its GreenDeal section.
+2. Under **Find an existing GreenDeal job**, search by customer, address, NMI or reference.
+3. Check the customer and site match, then select **Confirm association**.
 
-## Change accounts carefully
+The linked job's status, evidence and certificate details then show on the project. GreenDeal's application, inspection and payment can move at different times. A certificate count is not proof that the rebate has been paid.
 
-Use **Update credentials** when access changes. Recheck the identity and environment. Before disconnecting, review which linked projects depend on the connection and the confirmation shown.
+## Manage the connection
+
+- **Refresh now** fetches the latest information.
+- **Open GreenDeal** opens the GreenDeal portal.
+- **Update credentials** replaces the Client ID and Secret.
+- **Disconnect** stops syncing and removes the saved secret. Linked projects and information already synced stay in ArcSolar.

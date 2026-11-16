@@ -1,37 +1,58 @@
 ---
 icon: "magnifying-glass"
 sidebarTitle: "Bill analysis"
-keywords: ["electricity bill","OCR","ArgonixIntelligence","assessment"]
+keywords: ["electricity bill","OCR","ArgonixIntelligence","assessment","assess bills","energy profile"]
 title: "Bill analysis"
-description: "Turn a customer bill into reviewed inputs for the quote."
+description: "Read the customer's electricity bill and use its values in the quote."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="bill" />
 
-Open **Electricity bill** in the quote's energy profile.
+Bill analysis lives on the **Energy profile** step of a quote. It also appears on **Site details** and **Savings**. It needs a bill the customer uploaded through the [Site Information Form](/quoting/site-information), or one your team uploaded.
 
-## Review and apply the bill
+## Assess the bill
 
-1. Upload the bill, or use **Choose electricity bill** to select the right one.
-2. Choose **Assess bill with ArgonixIntelligence**.
-3. Open **Review bill assessment** and compare the extracted values with the source.
-4. Apply the reviewed values using the offered controls. Check existing fields before replacing them.
-5. Confirm the resulting energy profile before reviewing savings.
+1. On **Energy profile**, find **Electricity bill**.
+2. If there is more than one upload, choose the bill. You can also choose all uploads to combine every bill period.
+3. Select **Assess bills with ArgonixIntelligence**. It shows **Assessing bills…** while it works.
+4. Open **Review bill assessment**. Check the supplier and bill period it found.
+5. Tick the values you want to use. Each one shows its current value so you can compare.
+6. Select **Apply selected values**.
+
+Values you already entered stay unless you tick them. If the result looks wrong, select **Reassess** or type the values yourself.
+
+<Frame caption="The Energy profile step. Assess the bill or type the values. Sample data.">
+  <img src="/images/v2/qt-energy-profile.png" alt="Energy profile step with Skip energy profile, the Assess bills with ArgonixIntelligence button and fields for average monthly bill, annual use, usage type, time of use and existing solar." />
+</Frame>
+
+## Fill in the energy profile
+
+These values carry through to battery suggestions and **Savings**:
+
+- **Average monthly bill ($)**
+- **Annual electricity use (kWh)**
+- **What does this usage measure?** Choose **Total household consumption** or **Grid purchases shown on the bill**.
+- **When is power mostly used?**
+- **Existing solar**
+
+Open **Advanced energy details** for more inputs.
 
 ## Check the details that matter
 
 | Check | Watch for |
 | --- | --- |
 | Customer and site | Billing and installation addresses can differ |
-| Billing period | Quarterly and monthly amounts are different |
-| Usage rate | Cents/kWh and dollars/kWh differ by 100 |
+| Bill period | Quarterly and monthly amounts are different |
+| Usage rate | Cents per kWh, not dollars |
 | Supply charge | A daily charge, separate from usage |
-| Tariffs | Peak, shoulder and off-peak may need separate treatment |
-| Consumption basis | Grid purchases exclude solar used at home |
-| Feed-in tariff | Export credit differs from the import rate |
+| Tariff | Flat rate, or peak, shoulder and off-peak |
+| Usage basis | Grid purchases leave out solar used at home |
+| Feed-in tariff | Different from the usage rate |
 
-Use manual entry when the source is unreadable or unsupported. Label estimates and verify site details separately. Extraction helps prepare the inputs; your review confirms which values to use.
+If the bill can't be read, type the values in. The assessment helps fill the fields. You still decide which values to use.
+
+No bill yet? Tick **Skip energy profile** to keep quoting. The quote is then sent without savings. Untick it any time to add them.
 
 <NextGuide href="/quoting/savings" title="Savings estimates" />

@@ -1,7 +1,7 @@
 ---
 title: "ArcSolar Docs"
 sidebarTitle: "Overview"
-description: "Learn the essentials, then find the guide for the work in front of you."
+description: "Set up your solar business in ArcSolar, or learn your job in it. Start here."
 icon: "book-open"
 mode: "wide"
 ---
@@ -9,12 +9,12 @@ mode: "wide"
 import { TopicCard, DocIcon } from "/snippets/docs-visuals.jsx";
 
 <div className="docs-home">
-  <h2>Start here</h2>
+  <h2>New to ArcSolar? Start here</h2>
   <div className="docs-topic-grid">
-    <TopicCard href="/start-guide" icon="book" title="Start guide" description="Find your way around and follow your first customer." />
-    <TopicCard href="/customers/records" icon="customer" title="Customer records" description="The customer, their history and the next step." />
-    <TopicCard href="/quoting/walkthrough" icon="quote" title="Create a quote" description="Build the offer, review it and send with confidence." />
-    <TopicCard href="/delivery/projects" icon="project" title="Projects and jobs" description="Prepare the installation and keep delivery moving." />
+    <TopicCard href="/reference/workspace" icon="grid" title="Find your way around" description="The sidebar, search, inbox and your settings." />
+    <TopicCard href="/start-guide" icon="book" title="Start guide" description="Your first day, step by step." />
+    <TopicCard href="/quickstart" icon="project" title="The customer journey" description="How a customer moves from enquiry to installed." />
+    <TopicCard href="/reference/support" icon="phone" title="Get help" description="Report a problem or contact support." />
   </div>
   <h2>Set up your company</h2>
   <div className="docs-topic-grid">
@@ -23,26 +23,33 @@ import { TopicCard, DocIcon } from "/snippets/docs-visuals.jsx";
     <TopicCard href="/setup/team" icon="customer" title="Invite your team" description="Add people and pick their roles." />
     <TopicCard href="/customers/import-leads" icon="grid" title="Import your leads" description="Bring in up to 500 leads from a spreadsheet." />
   </div>
+  <h2>Learn your job</h2>
+  <div className="docs-topic-grid">
+    <TopicCard href="/sales-onboarding" icon="book" title="Sales reps" description="Seven short lessons, from first call to signed quote." />
+    <TopicCard href="/customers/daily-routine" icon="task" title="Your daily routine" description="What to check each morning and before you log off." />
+    <TopicCard href="/delivery/projects" icon="project" title="Operations" description="Turn a won deal into a booked, finished install." />
+    <TopicCard href="/delivery/finance" icon="report" title="Finance" description="Check payments, milestones and balances." />
+  </div>
   <h2>Your everyday work</h2>
   <div className="docs-topic-grid">
+    <TopicCard href="/customers/records" icon="customer" title="Customer records" description="The customer, their history and the next step." />
     <TopicCard href="/customers/pipeline" icon="grid" title="Pipeline" description="See each opportunity and its next action." />
     <TopicCard href="/customers/calls-sms" icon="phone" title="Calls and SMS" description="Have the conversation with the context in view." />
     <TopicCard href="/customers/tasks" icon="task" title="Tasks" description="Give each follow-up an owner and a date." />
+    <TopicCard href="/quoting/walkthrough" icon="quote" title="Create a quote" description="Build the offer, check it and send it." />
     <TopicCard href="/quoting/site-information" icon="roof" title="Site information" description="Collect the bill, photos and video you need." />
-    <TopicCard href="/quoting/bill-analysis" icon="bolt" title="Bill analysis" description="Review the bill and prepare the energy profile." />
     <TopicCard href="/delivery/calendar" icon="calendar" title="Calendar" description="Plan customer appointments and field work." />
-    <TopicCard href="/quoting/customer-view" icon="quote" title="Customer quote view" description="Review the offer your customer receives." />
-    <TopicCard href="/delivery/finance" icon="report" title="Project finances" description="Check payments, milestones and balances." />
+    <TopicCard href="/quoting/customer-view" icon="quote" title="Customer quote view" description="See the offer your customer receives." />
   </div>
   <h2>Go further</h2>
   <div className="docs-home-links">
     <a href="/quoting/roof-design"><DocIcon name="roof" />Roof Vision<DocIcon name="arrow" size={16}/></a>
     <a href="/reporting/overview"><DocIcon name="report" />Dashboards and reporting<DocIcon name="arrow" size={16}/></a>
-    <a href="/sales-onboarding"><DocIcon name="book" />Sales onboarding<DocIcon name="arrow" size={16}/></a>
     <a href="/agent"><DocIcon name="bolt" />Agent<DocIcon name="arrow" size={16}/></a>
     <a href="/customers/intake-form"><DocIcon name="customer" />Lead intake form<DocIcon name="arrow" size={16}/></a>
     <a href="/setup/roles"><DocIcon name="settings" />Roles and permissions<DocIcon name="arrow" size={16}/></a>
     <a href="/integrations/overview"><DocIcon name="plug" />Connect your tools<DocIcon name="arrow" size={16}/></a>
+    <a href="/reference/glossary"><DocIcon name="book" />Glossary<DocIcon name="arrow" size={16}/></a>
     <a href="/changelog"><DocIcon name="grid" />What’s new<DocIcon name="arrow" size={16}/></a>
   </div>
   <p className="docs-home-support">Need a hand? <a href="/reference/support">Contact support</a>.</p>

@@ -1,29 +1,41 @@
 ---
 icon: "gauge-high"
 sidebarTitle: "Operations and platform"
-keywords: ["operations","platform information","exceptions"]
+keywords: ["operations","work type performance","platform information","call minutes","SMS","platform fees"]
 title: "Operations and platform"
-description: "Separate delivery performance from software and billing setup."
+description: "Check delivery work by type, and your monthly calls, SMS and platform fees."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="operations" />
 
-**Open:** [**Reporting → Operations**](https://app.arcsolar.com.au/dashboard/reporting?reportTab=operations) or [**Platform information**](https://app.arcsolar.com.au/dashboard/reporting?reportTab=platform-information).
+Administrators, Operations and Finance can see both tabs.
 
 ## Operations
 
-Review the operational-performance table for delivery progress and exceptions. Open the relevant project to understand the cause: missing customer information, installer allocation, rebate work, grid approval, inspection or metering.
+**Open:** [**Reporting → Operations**](https://app.arcsolar.com.au/dashboard/reporting?reportTab=operations).
 
-A job's stage is a summary. Check readiness, compliance and financial detail before deciding that delivery is complete.
+**Work Type Performance** lists each type of work, such as solar installation, battery installation or site assessment. For each one it shows **Scheduled**, **Completed** and **Rescheduled** jobs, and the completion rate.
+
+A high reschedule count is a prompt to look closer. Open the jobs in [Projects & Jobs](/delivery/projects) to find the cause, such as missing customer details, no installer assigned or a grid approval delay.
 
 ## Platform information
 
-Review the platform information and billing/setup controls your role can access. If a PayTo setup action is offered, it requires the appropriate permission. Follow [PayTo setup](/setup/payto) rather than changing customer-payment records.
+**Open:** [**Reporting → Platform information**](https://app.arcsolar.com.au/dashboard/reporting?reportTab=platform-information).
 
-## Monthly reports
+<Frame caption="Platform information for one month. Sample data.">
+  <img src="/images/v2/ri-platform-information.png" alt="Platform information card showing inbound and outbound minutes, SMS parts, the end-of-month VOIP charge and platform fees." />
+</Frame>
 
-Where enabled, monthly company reports provide a period summary. Check the month and timezone and your notification preferences. A report is a snapshot; a current dashboard can differ because later records or updates exist.
+Choose a month at the top right. The card shows:
 
-Compare like-for-like measures. Accepted sales, installations and collected cash represent different events and can fall in different months.
+| Item | Meaning |
+| --- | --- |
+| **Total inbound minutes** | Connected inbound calls, each rounded up to whole minutes |
+| **Total outbound minutes** | Connected Australian outbound calls |
+| **SMS parts** | Inbound and outbound message segments. SMS charges are not shown here |
+| **End-of-month VOIP charge** | Estimate from recorded usage, ex GST, with the GST-inclusive amount below |
+| **Platform fees** | Accepted deals in the month at the per-deal fee, ex GST. A monthly minimum can apply |
+
+The current month is an estimate until the month ends. To manage your subscription or phone payments, see [Billing](/setup/billing) and [PayTo setup](/setup/payto).

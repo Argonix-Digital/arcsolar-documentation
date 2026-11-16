@@ -1,7 +1,7 @@
 ---
 icon: "microphone"
 sidebarTitle: "CallIntelligence"
-keywords: ["transcripts","recordings","summaries","CallIntelligence","automatic tasks","action items","review timing","follow-up tasks"]
+keywords: ["ArgonixIntelligence","deal readiness score","client mood","transcripts","recordings","summaries","CallIntelligence","automatic tasks","action items","review timing","follow-up tasks"]
 title: "CallIntelligence"
 description: "Review what was discussed and follow through on the next action."
 ---
@@ -10,21 +10,46 @@ import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="intelligence" />
 
-Open a customer call in **Comms**, customer **Activity**, or an authorised reporting view. Summaries, transcripts and recordings depend on captured material, processing and your access.
+ArgonixIntelligence reads each call's transcript and writes a short summary: how the customer felt, what they want and what happens next. It also creates follow-up tasks for you.
+
+Summaries need a finished transcript, so they appear a little while after the call ends.
+
+## Open a call summary
+
+Use either place:
+
+- **Comms → Messages**: open the customer's conversation. On the call in the thread, select **ArgonixIntelligence summary**. **View transcript** shows the full transcript.
+- **Comms → Phone**: expand the call in **Call history**, then select **ArgonixIntelligence**, **Call Transcription** or **Call Recording**.
+
+<Frame caption="An ArgonixIntelligence call summary. Sample data.">
+  <img src="/images/v2/cu-intelligence-summary.png" alt="An ArgonixIntelligence summary showing Conversation read with client mood, tonality, disposition, interest and urgency, a deal readiness score of 82 out of 100, and intelligence notes." />
+</Frame>
+
+## What the summary shows
+
+| Section | What it tells you |
+| --- | --- |
+| **Conversation read** | **Client mood**, **Tonality**, **Disposition**, **Interest** and **Urgency**, plus **What we heard** |
+| **Deal readiness score** | How close the customer seems to buying, out of 100, based on their calls |
+| **Intelligence notes** | The useful context without the transcript noise |
+| **Next steps** | Each agreed action, its owner, status and due date, with a link to its task |
+| **Calls behind these notes** | The calls used, with **Recording** and **Transcript** links. Up to two earlier calls are combined with the current one |
 
 ## After each call
 
-1. Find the correct call in the customer's **Activity**.
-2. Select **ArgonixIntelligence**.
-3. Read **Intelligence notes** and **Next steps**.
-4. Under **Calls behind these notes**, open **Transcript** or the recording to check important details.
-5. Review the resulting tasks before adding more follow-up.
+1. Open the summary and read **Intelligence notes** and **Next steps**.
+2. Check names, dates, prices and promises against the **Transcript** or recording.
+3. Review the tasks it created before adding your own.
 
-Names, dates, prices and commitments need checking against the source. A summary does not establish contract consent or confirm payment.
+A summary is a helper, not a record of consent. It does not confirm a contract, deposit or payment.
 
 ## Tasks are created automatically
 
-Action items become tasks assigned to the customer's sales rep. Rep work starts in **To do**; **Await customer: …** starts in **Waiting**. A call without a customer or assigned rep may produce no tasks.
+Every action item becomes a task for the customer's sales rep. You don't need to create them.
+
+- Work for you starts in **To do**.
+- Work for the customer starts with **Await customer: …** and sits in **Waiting**.
+- A call with no matching customer or sales rep may create no tasks.
 
 | Timing discussed | What the task receives |
 | --- | --- |
@@ -36,7 +61,14 @@ Action items become tasks assigned to the customer's sales rep. Rep work starts 
 
 ## Book a follow-up
 
-An outstanding rep-owned task can become a phone appointment. Booking moves it to **Waiting**; completing the appointment completes the task. Cancelling returns the task to **To do**. Rescheduling moves its due date with the appointment. Customer-owned tasks cannot be booked this way.
+When the next step is a phone call, select **Book follow up** in the summary to book it as a phone appointment.
+
+- Booking moves the task to **Waiting**.
+- Completing the appointment completes the task.
+- Cancelling the appointment returns the task to **To do**.
+- Rescheduling moves the task's due date with it.
+
+Tasks the customer owns can't be booked this way.
 
 <Accordion title={"If notes or tasks are missing"}>
 Processing may still be underway. Not every call has a transcript or recording. Cancelled or superseded calls do not recreate work, and existing completed, edited or appointment-linked tasks are preserved. Review the source call and contact support with its reference if needed.

@@ -19,58 +19,40 @@ keywords:
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-<figure className="docs-roof-figure"><img src="/images/roof-design-string-editor-panel.png" alt="Stringing in Roof Vision, showing the actual editor and design controls." /></figure>
+Open **Strings** in Roof Vision, or press **T** when you're not typing in a field. Place the panels first. See [The design editor](/roof-design/editor).
 
-Open **Strings** in Roof Vision, or press **T** when a text field is not focused. Place the panels first.
-
-## Connect the array
-
-Choose the inverter under **Roof** or **Battery**. A typed model must match a known model; use **Add inverter** otherwise.
-
-Drag across the panels in wiring order to create a string. Assign each string to its MPPT input and review the string controls and findings. Check the actual product data and any missing design inputs before relying on a result.
-
-## Review the output
-
-The stringing appears in **Stringing and component layout** on the quote. Open the [single line diagram](/roof-design/sld) to review how the roof design feeds the drawing.
-
-The editor’s preliminary checks are limited. They do not replace a qualified review of equipment compatibility or installation design. ArcSolar stores what Roof Vision produces.
-
-
-## Details
-
-<Accordion title={"String the panels"}>
+## String the panels
 
 <Steps>
 <Step title="Choose the inverter">
-Pick the inverter with the dropdown under the **Roof** or **Battery** tab. A typed name is only kept when it matches a known model; use **Add inverter** for anything else.
+Under **Inverter & strings**, pick the inverter from the list. Use **Change inverter** to swap it later, or **Add** for a second inverter.
 </Step>
-<Step title="Assign the string to an MPPT input">
-Choose the string, then the MPPT input it connects to.
+<Step title="Draw a string">
+Drag across the panels in wiring order, from the first panel to the last. The string is added to an MPPT input, for example **String A** under **MPPT 1**. **Alt-click** a panel to take it out of a string.
 </Step>
-<Step title="Drag across the panels in wiring order">
-Start at the first module and finish at the last. **Alt-click** a panel to disconnect it from the string.
-</Step>
-<Step title="Check the voltage window">
-The count bar shows the voltage-only series-length window for the connected modules and warns when a string runs past it. The header states which class of inverter data is in play: **Manufacturer specifications · preliminary design checks**, **Demo inverter limits · preliminary design checks**, or **Manufacturer specifications and demo models · preliminary design checks**.
-</Step>
-<Step title="Confirm against the manufacturer data">
-Mixed panel models, or incomplete temperature data, give no recommendation at all. Check the limits and temperature coefficients against the datasheet before the design is built.
+<Step title="Review the checks">
+Open a string to see its readings and checks. Fix anything marked **checks need review** before you rely on the design.
 </Step>
 </Steps>
 
-<Visibility for="humans">
-  The stringing drawing — labelled **Stringing and component layout** on the quote — shows the result. It carries no brand footer of its own; the revision is recorded in the image metadata.
+<Frame caption="A 16-panel string on MPPT 1, with the inverter's limits and checks. Demo shown.">
+  <img src="/images/v2/dl-rv-strings.png" alt="Strung panels on the roof and the Inverter & strings panel showing inverter limits, datasheet checks, temperature settings and String A on MPPT 1 with 4 checks needing review." />
+</Frame>
 
+## Read the checks
 
+The panel shows the inverter's **Max. input current**, **Max. DC input** and the **Connected DC** power. Under **Datasheet**, a green tick means a check passed. A warning means it failed or data is missing.
 
-  String voltages are checked against the selected inverter. Current, protection, connectors, shading and installation compliance are not — and a series-length window is not a string design approval.
+Each string checks its cold and hot voltages against the inverter's limits and MPPT range. If the panel's datasheet values are missing, the check says **specifications missing** and can't pass.
 
+The temperature row (cold, hot and standard) sets the conditions used. They are editable assumptions, not local weather.
 
+These checks are a guide. They don't replace a qualified review of the equipment and installation.
 
+## Where the stringing appears
 
-</Visibility>
+The quote shows the result as **Stringing and component layout**. The [single line diagram](/roof-design/sld) is drawn from your strings and inverter.
 
-</Accordion>
 
 <Visibility for="agents">
   ### Workflow and labels
@@ -81,11 +63,11 @@ Mixed panel models, or incomplete temperature data, give no recommendation at al
 
   | Control | Behaviour |
   | --- | --- |
-  | **Roof** / **Battery** tabs | `role="tablist"`, `aria-label="Inverter group"` |
-  | Inverter dropdown | `aria-label` = `Roof inverter` or `Battery inverter`. A suggested list plus **Custom inverter** |
+  | Inspector | Titled **Inverter & strings**, with **Strings** and **Equipment** tabs (Equipment shows the Panels & layout controls). Verified on the demo editor, 2026-11-16 |
+  | Inverter choice | `Choose an inverter` list sorted `Power, low to high`; once chosen, the card shows phase, model, `<kW> AC · <n> MPPT`, **Change inverter** and **Add · Remove** |
   | Inverter typing | `role="combobox"`; a typed name is honoured only on an exact, case-insensitive match to a known model, otherwise it reverts |
   | **Add inverter** | Creates a vendor-and-model inverter |
-  | **Strings** / **Inputs** | `role="tablist"`, `aria-label="Stringing view mode"` |
+  | Limits and checks | **Max. input current**, **Max. DC input**, **Installation** (**New** / **Existing**), **Connected DC**, a **Datasheet** check list, and a cold / hot / STC temperature row. Each MPPT group (`MPPT <n>`, `<A> / <limit> A`) lists its strings (`String A`, `<n> panels`, `<n> checks need review`); opening a string shows `Electrical readings for String <x>` (Design ISC, VOC, VMP, cold and hot) and the checks, with **Copy info** |
   | String rows | `role="button"`, `aria-label="Assign panel to string <index> on MPPT <index>"` |
   | MPPT section | `aria-label="MPPT <n> strings"`; MPPT group labels render as `MPPT <n>` |
   | Inverter removability | Removal is offered only when no string contains panels |

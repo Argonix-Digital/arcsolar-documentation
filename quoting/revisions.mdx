@@ -1,29 +1,59 @@
 ---
 icon: "file-pen"
 sidebarTitle: "Quote revisions"
-keywords: ["revisions","quote history","accepted quote"]
+keywords: ["revisions","quote history","accepted quote","edit quote","publish revision","duplicate estimate","reason for change"]
 title: "Quote revisions"
-description: "Update an eligible offer while preserving its issued history."
+description: "Change a sent quote, keep the same customer link and keep the history."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="quote" />
 
-Find the offer in [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes) and choose **Edit quote** when available.
+A revision updates a quote you already sent. The customer keeps the same link. ArcSolar keeps the old version in staff history.
 
 ## Publish a revision
 
-1. Make the changes in the builder.
-2. Check the full customer preview, including price and payment schedule.
-3. Enter a staff-only **Reason for change**.
-4. Review **Notify the customer by email and SMS**.
-5. Choose **Publish revision** and confirm the result.
+1. Open [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes).
+2. Select **⋯** on the quote and choose **Edit quote**. The quote builder opens with the sent quote loaded.
+3. Make your changes. The selling brand stays the same.
+4. On **Review**, select **Preview quote**.
+5. Fill in **Reason for change**. Only your team sees it.
+6. Leave **Notify the customer by email and SMS** ticked to tell the customer. Untick it to update quietly.
+7. Select **Publish revision**.
 
-The quote reference and customer link remain attached. Staff history retains the earlier snapshot and PDF; the revised offer has its own saved document. A revision also ends an active comparison.
+**Publish revision** stays off until you enter a reason and clear everything under **Before sending**.
 
-## If editing is locked
+## What changes
 
-Acceptance, signature evidence or a processing or settled deposit can lock revision. A refund does not automatically unlock it. Use the supported follow-up process rather than issuing a conflicting offer.
+- The customer's link shows the new version straight away. Ask them to refresh if the page is already open.
+- The revised quote gets its own PDF.
+- If the quote was in a [comparison](/quoting/compare-estimates), the comparison ends.
+
+If the customer has no mobile number, or automated SMS is off, only the email is sent. ArcSolar tells you no SMS was sent and why.
+
+## See the history
+
+Select **⋯** on the quote and choose **View estimate history**. **Revision history** lists each version, when it was published, and whether the customer was notified.
+
+## When you can't edit
+
+**Edit quote** does not show once a quote is:
+
+- accepted,
+- marked as lost, or
+- has a deposit that is processing, paid or refunded.
+
+Some changes need a new quote instead:
+
+| Message | What to do |
+| --- | --- |
+| **To change upfront or finance payment, duplicate this quote and send it as a new quote.** | Choose **Duplicate estimate**, change the payment option and send. |
+| **Accepted quotes are immutable.** | The customer already accepted. Talk to your manager about next steps. |
+| **Another user revised this quote. Reload before editing.** | Reload the page to get the latest version. |
+
+## Duplicate a quote
+
+**Duplicate estimate** in the **⋯** menu starts a new quote with the same details. Use it to make a second option or to change the payment type. The new quote gets its own reference and link.
 
 <NextGuide href="/quoting/customer-view" title="Customer quote view" />

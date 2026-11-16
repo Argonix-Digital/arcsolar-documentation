@@ -1,61 +1,117 @@
 ---
 icon: "phone"
 sidebarTitle: "Calls and SMS"
-keywords: ["VoIP","SMS","phone","messages","calling","keypad","touch tones","call bar","recording"]
+keywords: ["VoIP","SMS","phone","calling","keypad","caller ID","touch tones","call bar","call notes","recording","voicemail","disposition","follow-up reminder"]
 title: "Calls and SMS"
-description: "Keep the conversation and customer context in one place."
+description: "Call customers from your browser, keep notes during the call and record the outcome."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="comms" />
 
-<Accordion title="Current phone workspace">
-  <Frame caption="The Phone tab keeps outbound caller ID inside the keypad. Displayed calls and contact details are fictional.">
-    <img src="/images/v2/comms-keypad-final.jpg" alt="ArcSolar Comms with fictional call history, the keypad and its outbound caller ID." />
-  </Frame>
-</Accordion>
+You call customers from ArcSolar in your browser. Calls use your business line, so customers see your company number, not your mobile.
 
-Open [**Comms**](https://app.arcsolar.com.au/comms?tab=messages) or the call and SMS actions on a customer record.
+## Before your first call
+
+- An administrator must assign you a phone line.
+- Allow microphone access when your browser asks.
+- Keep the ArcSolar tab open while you call.
+
+ArcSolar calling is not for emergency calls.
 
 ## Make a call
 
-Your account, assigned line and communications billing must be active. Allow microphone access and check your audio devices.
+You can start a call three ways:
 
-1. Open **Comms → Phone** and confirm the customer and number.
-2. Check **Outbound caller ID** inside **Keypad**. If your role offers several active lines, choose the intended line from its dropdown, then select **Call from assigned line**.
-3. Wait for **Connected**. Tell the customer the call is being recorded.
-4. Use **Mute**, **Touch tones** and **Hang up** as needed.
-5. Review the recorded outcome and the next task.
+- From a customer: **Actions → Communicate → Call customer**.
+- From call history: select the call-back button on a call in **Comms → Phone**.
+- From the keypad: open [**Comms → Phone**](https://app.arcsolar.com.au/comms?tab=phone) and type the number.
 
-Keep the calling tab open. ArcSolar calling is not for emergency calls.
+<Steps>
+  <Step title="Check the caller ID">
+    **Outbound caller ID** shows the line the customer will see. If you have more than one line, choose the right one.
+  </Step>
+  <Step title="Pick the number">
+    If the customer has more than one number, choose one under **Choose the number to call**.
+  </Step>
+  <Step title="Call">
+    Select **Call from selected line**. Wait for **Connected**.
+  </Step>
+  <Step title="Tell the customer the call is recorded">
+    The keypad reminds you: **Tell the customer this call is being recorded.**
+  </Step>
+</Steps>
+
+<Frame caption="The keypad and outbound caller ID in Comms → Phone. Sample data.">
+  <img src="/images/v2/cu-keypad.png" alt="The Comms keypad panel showing Outbound caller ID, the Number to call field and the number keys." />
+</Frame>
+
+During a call, use **Mute**, **Hang up** and the keypad for **Touch tones** (for example, to get through a phone menu).
 
 ## Keep working during a call
 
-The floating call bar keeps the contact and duration visible. Use **Back to app** to collapse it. You can reopen the keypad, message the customer, add a note or book an appointment. Call notes accept up to 1,000 characters.
+A call bar stays on screen while you move around ArcSolar. It shows the customer, number and call time. From the bar you can:
 
-## Send a message
+- **Open Keypad**
+- **Message customer**
+- **Add a note**: up to 1,000 characters, saved to the customer's Activity with **Save call note**
+- **Book customer appointment**
+- **Open customer profile**
+- **Mute** or **Hang up**
 
-Open the customer's conversation, read the latest activity and confirm the destination and sender. Write the message, send it and check the status. **Queued**, **Sent** and **Delivered** mean different things. For a new conversation, use **From** to choose a line when that choice is available. Replies and retries keep the conversation’s original number.
+Select **Back to app** to shrink the bar while the call continues. Select the bar to expand it again.
 
-Respect STOP, do-not-contact and channel consent. SMS length and characters can create multiple billable segments; your agreed rates apply.
+## After the call
 
-<Accordion title={"Phone or audio unavailable"}>
-Check PayTo, member setup and the assigned line. Use the offered **Connect phone**, retry or repair action. If sound is blocked, choose **Enable call audio**. **Use phone on this device** can move an idle phone from another device; an active call cannot be moved. After sleep or a network change, wait for reconnection before trying again.
+When a call ends, ArcSolar opens **Review lead disposition**. This is where you record what happened.
+
+1. Check the suggested stage. It may come from ArgonixIntelligence or from you.
+2. Change it under **Change disposition** if needed. **Lost** and **Disqualified** need a **Reason**.
+3. Add **Call notes**.
+4. Tick **schedule follow up reminder for me in 24 hours**, or choose **schedule custom date follow up reminder** and pick a time. This adds a task for you in Calendar and **My tasks**.
+5. Select **Save disposition**. Select **Later** to come back to it.
+
+## Review past calls and voicemails
+
+Open **Comms → Phone**. **Call history** has two tabs:
+
+- **Calls**: every call, with its status (for example **Answered** or **Missed**), number, time and length.
+- **Voicemails**: messages left for your team, marked **New** or **Read**.
+
+Expand a call to see who handled it, the line used, and links to the **Call Recording**, **Call Transcription** and **ArgonixIntelligence** summary.
+
+<Frame caption="An expanded call in call history. Sample data.">
+  <img src="/images/v2/cu-call-row.png" alt="An answered call expanded to show Handled by, Line, Reference, and buttons for Call Recording, Call Transcription and ArgonixIntelligence." />
+</Frame>
+
+Not every call has a recording or transcript. See [CallIntelligence](/customers/call-intelligence) for summaries.
+
+## Send an SMS
+
+From a customer, choose **Actions → Communicate → Send SMS** (or **Open SMS thread** if you have texted them before). This opens their conversation in Comms. See [Comms](/customers/comms) for replying, notes and bulk SMS.
+
+<Accordion title="Phone or audio not working">
+- **No number assigned**: ask your administrator to assign you a line.
+- **Connect phone**: select it to connect your browser phone.
+- **Enable call audio**: your browser blocked sound. Select it to allow audio.
+- **Use phone on this device**: moves your phone from another tab or device to this one. You can't move a call that is in progress.
+- **Repair phone connection**: resets the browser phone if it is stuck.
+- After sleep or a network change, wait for **Phone ready** before calling.
 </Accordion>
 
 <NextGuide href="/customers/call-intelligence" title="CallIntelligence" />
 
 <Visibility for="agents">
-- The keypad lives in the **Phone** tab of Comms (`/comms?tab=phone`, and `/comms?tab=phone&pane=keypad` opens the keypad pane directly). The numbered input holds at most 24 characters and its accessible label is "Number to call"; **Delete last character** is a tooltip and an aria-label, and it is disabled while a call is active and the field is empty.
-- **Multiple contact numbers.** When a call was launched for a customer with more than one verified number, a **Choose the number to call** radio group appears. Each option shows the contact name, channel label, number and a **Primary** marker. A call cannot start until one is selected.
-- **Outbound caller ID.** The keypad shows the assigned line, or **No number assigned**. Eligible managers choose an authorised active line from the dropdown here; a current call, draft or bulk operation locks line selection. Its active helper text is "This business line is the number the customer will see."; an unprovisioned line says "An administrator must finish provisioning this line before live calls can start."
-- **Call button.** Live label **Call from assigned line** (compact label **Call**). It stays disabled until at least 8 digits are entered and the phone is ready.
-- **Phase labels.** `Authorising`, `Dialling`, `Ringing`, `Incoming call`, `Connected`, `Ending`, `Ended`, `Failed`. Incoming calls show **Decline** and **Answer**; a connected call shows **Mute** / **Unmute** and **Hang up** / **Ending…**.
-- **Touch tones.** While a call is active the input is read-only and relabelled **Touch tones** with the placeholder "Use the keypad for touch tones". Keypad presses send DTMF only once the call is **Connected**; the tone string is capped at 24 digits. **Delete last character** removes the last tone, not the dialled number.
-- **Phone service labels.** `Phone ready`, `Connecting`, `Phone standby`, `Phone reconnecting`, `Network offline`, `Line unconfigured`, `Phone error`, `Phone offline`. Non-ready controls include **Connect phone**, `Connecting phone`, `Waiting for active phone tab`, **Retry phone registration**, `Waiting for network`, **Retry phone connection**. **Repair phone connection** opens a confirmation ("Repair the browser phone connection?" → **Repair and reconnect**) and **Use phone on this device** opens "Move the phone to this device?" → **Use this device**. The latter disconnect the other browser or device, and a phone with an active call cannot be moved.
-- **Audio.** **Enable call audio** appears when the browser has blocked playback.
-- **Active call bar.** A floating region shows `Active call with <contact>` (or `Collapsed active call with <contact>`), the number, a duration timer, and a **Call recording active** indicator when recording. Controls: **Open Keypad**, **Message customer** (disabled with "Messaging unavailable for this call" / "No exact customer message target" when no customer resolves), **Mute**/**Unmute**, **Add a note**, **Book customer appointment** (only when a customer is resolved), **Open customer profile**, **Hang up**. **Collapse** / **Back to app** and **Expand live call** toggle it.
-- **Call note.** The dialog title is **Add a call note** and its description is "Add context from this call to the Customer activity." It lists Client, Number, Direction, Status and Duration, takes a note of up to 1,000 characters, and saves with **Save call note**. The note is written to the customer's Activity.
-- **Recording notice.** Live mode always shows "Tell the customer this call is being recorded." and "Not for emergency calls." under the call controls. Do not describe ArcSolar calling as available for emergencies.
+- The keypad lives in **Comms → Phone** (`/comms?tab=phone`). The number field is labelled "Number to call" and holds at most 24 characters; **Delete last character** removes the last digit.
+- **Choose the number to call** appears when the customer has more than one verified number; each option shows the channel, number and a **Primary** marker.
+- **Outbound caller ID** shows the selected line or **No number assigned**. Helper text: "This business line is the number the customer will see." An unprovisioned line says "An administrator must finish provisioning this line before live calls can start."
+- **Call button.** Live label **Call from selected line** (compact label **Call**). In the demo it reads **Start simulated call**. It is not "Call from assigned line".
+- **Phase labels.** `Authorising`, `Dialling`, `Ringing`, `Incoming call`, `Connected`, `Ending`, `Ended`, `Failed`.
+- **Touch tones.** During a call the number field becomes **Touch tones** ("Use the keypad for touch tones"); tones send only once **Connected**.
+- **Phone service labels.** `Phone ready`, `Connecting`, `Phone standby`, `Phone reconnecting`, `Network offline`, `Line unconfigured`, `Phone error`, `Phone offline`. **Repair phone connection** → "Repair the browser phone connection?" → **Repair and reconnect**. **Use phone on this device** → "Move the phone to this device?" → **Use this device** (or **Keep other device active**).
+- **Active call bar.** `Active call with <contact>`, number, timer and **Call recording active** when recording. Controls: **Open Keypad**, **Message customer** (disabled with "Messaging unavailable for this call" / "No exact customer message target"), **Mute**/**Unmute**, **Add a note**, **Book customer appointment**, **Open customer profile**, **Hang up**. **Back to app** collapses it.
+- **Call note.** Dialog **Add a call note** — "Add context from this call to the Customer activity." Up to 1,000 characters; **Save call note**.
+- **Post-call disposition.** After a call the user owns ends (busy, ended, failed or no answer), the dialog **Review lead disposition** opens. It shows the current disposition source ("Argonix Intelligence", "Confirmed by salesperson" or "Current disposition"), a **Change disposition** select of pipeline stages, a **Reason** select when required, **Call notes**, the checkbox "schedule follow up reminder for me in 24 hours", the button "schedule custom date follow up reminder" with a **Follow-up reminder** picker ("Creates a task reminder for you in Calendar and My tasks."), and **Later** / **Save disposition**. If the call has no single active lead it says "This call has no single active sales lead to update."
+- Live mode always shows "Tell the customer this call is being recorded." and "Not for emergency calls." Do not describe ArcSolar calling as available for emergencies.
 </Visibility>

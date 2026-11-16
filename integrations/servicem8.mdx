@@ -1,28 +1,54 @@
 ---
 icon: "screwdriver-wrench"
 sidebarTitle: "ServiceM8"
-keywords: ["ServiceM8","jobs","integration"]
+keywords: ["ServiceM8","jobs","field work","technician bookings","API key"]
 title: "ServiceM8"
-description: "Keep field-service records linked where the integration is enabled."
+description: "Link ServiceM8 jobs, site visits and technician bookings to your projects."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="servicem8" />
 
-**Open:** [**Retailer Settings → Integrations → ServiceM8**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations), when available to your organisation.
+ServiceM8 is in **Beta**. Only an Administrator can connect or disconnect it. Administrators and Operations can refresh it and link jobs.
 
-Review the connection card and use its authorisation action. Sign in to the intended ServiceM8 business, approve the requested connection and return to ArcSolar. Check the account and status before linking work.
+## What syncs
 
-## Link a job
+- Job progress, site visits and technician bookings appear on the linked project.
+- You can link an existing ServiceM8 job or create one from ArcSolar.
+- Invoices and customer payments stay in ArcSolar.
 
-1. Open the ArcSolar project.
-2. Open its ServiceM8 area.
-3. Review available matches or search results.
-4. Compare the job reference, address and description.
-5. Confirm the correct association.
-6. Inspect status and the last observed time.
+## Connect ServiceM8
 
-ArcSolar and ServiceM8 records have different responsibilities. Agree which system owns scheduling, technician evidence and invoicing before the team uses both. Do not create a second customer invoice merely because another system also offers an invoice action.
+Open [**Retailer Settings → Integrations → ServiceM8**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations) and select **Connect ServiceM8**.
 
-If an action is unavailable, complete it in ServiceM8 and refresh the linked information where supported. If the integration is not present or cannot connect, ask support about availability for your workspace.
+**Option 1: sign in with ServiceM8.** Select **Connect with ServiceM8**, sign in and approve access. If this button is greyed out, use option 2.
+
+**Option 2: use an API key.**
+
+1. In ServiceM8, go to **Settings → API Keys** and create a key.
+2. Paste it into **ServiceM8 API key**.
+3. Select **Verify account**. Check the business name and time zone shown.
+4. Select **Connect verified account**.
+5. Select **Refresh ServiceM8** to fetch your jobs.
+
+<Frame caption="The Connect ServiceM8 dialog. Sample data.">
+  <img src="/images/v2/ri-servicem8-dialog.png" alt="Connect ServiceM8 dialog with a Connect with ServiceM8 button, a ServiceM8 API key field and a Verify account button." />
+</Frame>
+
+A read-only key can show jobs but can't change bookings. Use a key with write access if you want to make booking changes from ArcSolar.
+
+## Link a job to a project
+
+1. Open the project in [Projects & Jobs](/delivery/projects) and find its ServiceM8 section.
+2. Choose **Link an existing ServiceM8 job** and search by address, description or job number. Or choose **Create a ServiceM8 job** to make one from the project's customer, site and work details.
+3. Check the description, address and reference. Return visits can share an address.
+4. Select **Confirm association** (or **Create and link job**).
+
+## Keep it up to date
+
+- The card shows the account name and **Last confirmed update**.
+- If live updates are unavailable, select **Refresh ServiceM8** to check for changes.
+- **Manage connection → Disconnect ServiceM8** stops syncing. Information already in ArcSolar stays, and your ServiceM8 jobs are not touched.
+
+Agree with your team which system owns scheduling and technician notes, so work isn't entered twice.

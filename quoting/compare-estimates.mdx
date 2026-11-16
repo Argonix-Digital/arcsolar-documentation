@@ -1,37 +1,48 @@
 ---
 title: "Compare estimates"
 sidebarTitle: "Compare estimates"
-description: "Give one customer two clear offers and let them choose."
-keywords: ["quote comparison", "compare estimates", "customer portal", "choose a quote"]
+description: "Send one customer two offers and let them choose on one page."
+keywords: ["quote comparison", "compare estimates", "customer portal", "choose a quote", "option A", "option B"]
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="compare" />
 
-Link two sent offers for the same customer. They can cover different properties, opportunities or selling brands; each keeps its own agreement and payment terms.
+Give a customer two options, for example solar only and solar with a battery. Each quote keeps its own price, agreement and payment terms.
 
-## Link the offers
+## Link two quotes
 
-1. Send both quotes and confirm both customer links are valid.
-2. In **Quotes**, open either row's menu and choose **Compare with another estimate**.
-3. Check the second offer's reference, type, property, retailer, sent date and total.
-4. Select it, then choose **Link estimates**.
+1. [Create and send](/quoting/walkthrough) both quotes to the same customer.
+2. Open [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes).
+3. Select **⋯** on either quote and choose **Compare with another estimate**.
+4. Under **Quote to compare**, pick the other quote. Check its reference, property and total.
+5. Select **Link estimates**.
 
-Both existing links now open the comparison. Linking does not send a message, sign an agreement or charge a deposit.
+Both customer links now open the comparison. Linking sends no message and charges nothing.
+
+If you see **No other sent quote**, send the second quote first, then come back.
 
 ## What the customer sees
 
-Desktop shows the offers side by side. Mobile uses **Option A** and **Option B**. Each shows the property, retailer, system, total after rebates, deposit, payment summary and included items.
+The page is titled **Two offers to compare**. It shows **Option A** and **Option B**, each with:
 
-The customer opens an offer in full to accept or sign. Choosing one returns them to its normal portal; the other can no longer be accepted and redirects while its link remains valid. A signed agreement can be selected while its separate deposit is still pending.
+- **Property** and **Retailer**
+- **System**
+- **Total after rebates**
+- **Payment**, including any indicative finance
+- **Rebates included** and **Included in this estimate**
 
-## Change the pair
+The customer opens one option in full to accept and sign it. Once they accept one, the other can no longer be accepted.
 
-Before acceptance or signature, reopen the comparison action and choose **Remove comparison**. Each offer then opens separately. Revising or marking an offer Lost also ends its active comparison; history stays in the workspace.
+## Remove a comparison
 
-<Accordion title={"An offer is unavailable"}>
-Both must belong to the same customer, be sent, have valid links and use separate opportunities. Accepted, archived, signed or already-linked offers are unavailable. Send a draft or current revision before trying again.
+Open **Compare with another estimate** again and select **Remove comparison**. Each quote then opens on its own.
+
+A comparison also ends by itself when you publish a [revision](/quoting/revisions) of either quote, or mark either one as lost.
+
+<Accordion title="A quote is not available to compare">
+Both quotes must be for the same customer, sent, and linked to a sales opportunity. You can't compare a quote that is accepted, archived, already in a comparison, has an expired link, or is already being signed. The dialog tells you which rule applies.
 </Accordion>
 
 <NextGuide href="/quoting/customer-view" title="Customer quote view" />

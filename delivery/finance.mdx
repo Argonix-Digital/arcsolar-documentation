@@ -1,47 +1,75 @@
 ---
 icon: "money-bill-transfer"
 sidebarTitle: "Project finances"
-keywords: ["payments","reconciliation","financials","balances"]
+keywords: ["payments","milestones","invoices","collect payment","mark paid elsewhere","stock arrival","reconciliation","financials","balances"]
 title: "Project finances"
-description: "Review what is owed, what is processing and what has been collected."
+description: "Collect each milestone payment and see what is still owed."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="finance" />
 
-<Accordion title="Current project financials screen">
-  <Frame caption="Subtle status colours distinguish paid, partially paid and upcoming milestones in this fictional payment schedule.">
-    <img src="/images/v2/project-financials-final.jpg" alt="The project Financials tab with subtle payment status badges and milestone amounts." />
-  </Frame>
-</Accordion>
+Each project has a payment schedule from the accepted quote. Collect each payment from the project's **Financials** tab. Use [**Finance**](https://app.arcsolar.com.au/dashboard/finance-workspace) for the whole business.
 
-Open [**Finance**](https://app.arcsolar.com.au/dashboard/finance-workspace) for the business view, or **Projects & Jobs → Project financials** for a project.
+## Read the payment schedule
 
-| Status | Colour |
+Open the project in [**Projects & Jobs**](https://app.arcsolar.com.au/dashboard/projects) and choose **Financials** (under **More** if it isn't shown).
+
+<Frame caption="A three-payment schedule: the deposit is paid and the stock-arrival payment is ready to collect. Sample data.">
+  <img src="/images/v2/dl-financials.png" alt="The project Financials tab showing contract, collected and outstanding totals and three payments: Deposit paid, Stock arrival ready to collect, Installation awaiting milestone." />
+</Frame>
+
+The top line shows the **Contract**, **Collected** and **Outstanding** amounts. Each payment shows its status:
+
+| Status | Meaning |
 | --- | --- |
-| Paid | Green |
-| Partially paid | Amber |
-| Ready to collect | Blue |
-| Awaiting milestone | Grey |
-| Refunds and payment failures | Red |
+| **Paid** | Received |
+| **Ready to collect** | Its milestone is reached. You can collect it. |
+| **Awaiting milestone** | Not due yet |
 
-## Reconcile a project
+The badge at the top, such as **Partially paid**, sums up the whole project. Lender-managed payments are collected by the finance provider, not through ArcSolar.
 
-1. Find the customer, project and issued payment schedule.
-2. Review deposit, milestone obligations and remaining balance.
-3. Check amount, date, status and provider reference.
-4. Separate customer payments, finance and rebate funding.
-5. Investigate failed, processing or unmatched items.
+## Collect a payment
 
-Use the authorised reconciliation process for manual evidence. A quoted amount is not collected cash; an expected rebate is not a receipt, and finance approval is not necessarily disbursement.
+1. When stock arrives, choose **Record stock arrival**. The next payment becomes ready to collect.
+2. Choose **Collect** on the payment. Stripe sends the customer an invoice by email, and it is queued for SMS.
+3. The status changes to **Paid** when Stripe confirms the payment.
 
-## Resolve a mismatch
+On a sent invoice you can also **View invoice**, **Download PDF**, **Copy link**, **Resend** or **Void Invoice**. Void an unpaid invoice before you issue a new amount.
 
-Compare the issued obligation with Stripe or the relevant provider. Check partial payments, refunds, pending processing and duplicate references before changing a record.
+## Record a payment made another way
 
-For an older project requesting financial setup, review the original agreement and payment evidence. Today's catalogue should not reconstruct an historical offer.
+Use this when the customer paid by bank transfer or another method outside Stripe.
 
-Read the period and definition on finance summaries before comparing them with sales reports.
+1. Check the funds have cleared in your bank account.
+2. Choose **Mark paid elsewhere** on the payment.
+3. Enter the **Amount (AUD)**, **Where paid** and a **Reference**, such as the bank reference or a Xero invoice number.
+4. Type `MARK PAID ELSEWHERE` to confirm.
 
-<NextGuide href="/delivery/rebates" title="Rebate tracking" />
+Every change is kept in **Payment history and adjustments**.
+
+## Change the project value
+
+Choose **Adjustment** to record a change to the contract value, such as a variation. Choose the **Type**, what it applies to and the **Amount (AUD)**. The change is saved in the payment ledger.
+
+## Use the Finance page
+
+[**Finance**](https://app.arcsolar.com.au/dashboard/finance-workspace) shows the business view:
+
+- Deposits collected, accepted quote value, average commission and close rate.
+- Revenue by system type, by month, by product brand and by payment channel.
+- **Payments to collect**: outstanding balances by customer and project.
+- **Finance actions**: links to the Stripe dashboard, the quotes dashboard and Comms for follow-up.
+
+Read the period on each figure before you compare it with sales reports.
+
+## Check before you change anything
+
+- A quoted amount isn't cash collected.
+- An expected rebate isn't money received. See [Rebate tracking](/delivery/rebates).
+- Finance approval isn't the same as the lender paying out.
+
+If a payment looks wrong, compare it with Stripe or the provider first. Look for part payments, refunds, payments still processing and duplicate references.
+
+<NextGuide href="/delivery/projects" title="Projects and jobs" />

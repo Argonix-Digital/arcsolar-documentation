@@ -17,22 +17,23 @@ import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="contract" />
 
-Open **Retailer Settings → Agreements** and confirm the selected selling brand. Editing and publishing require the permissions offered on screen.
+**Open:** [**Settings → Agreements**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=documents). Administrators and developers. Check the **Selling brand** box at the top first.
 
-## Prepare the agreement
+The agreement is what your customer signs. Each selling brand has its own.
 
-Review supplier identity, contact and sender details, agreement wording, consent text and appearance. The original brand's legal details come from **ArcSolar Settings**; additional brands hold their own document identity.
+## Prepare and publish
 
-## Review and publish
+1. Under **Supplier and contact details**, check the legal name, trading name, ABN and contact details. For your original brand these come from **Business details**. Select **Use current organisation details** to refresh them.
+2. Under **Document email sender**, set who the customer sees the email from.
+3. Under **Agreement wording**, write or import the terms, title and consent text.
+4. Select **Preview contract** and read the whole PDF.
+5. Select **Save and publish** (workspace owner or developer) or **Save draft** (other administrators).
 
-Save a draft, inspect the branded preview and complete the required approval confirmation. Publish the approved version using an authorised account. A saved or restored draft does not become the customer agreement until published.
+A draft does nothing until it is published. Quotes already sent keep the agreement they were sent with.
 
-## Keep terms consistent
+Selling under more than one brand? **Copy from another selling brand** fills a new brand's draft from one you already use. Nothing is saved until you save.
 
-Deposit limits, stock-delivery percentages and installation windows come from **Payments & finance**. Agreement wording cannot override those settings. Review the final rendered contract and its version before approval.
-
-Issued agreements retain their original snapshot. Use revision history and the supported quote workflow for later changes.
-
+Deposit limit, delivery payment and installation window come from [**Settings → Payments & finance**](/setup/retailer-settings#finance-and-deposits), not from the wording.
 
 ## Details
 
@@ -44,7 +45,7 @@ Issued agreements retain their original snapshot. Use revision history and the s
 | **Save draft** | Yes | Yes |
 | **Save and publish** | No | Yes |
 | Restore an earlier version | No | Yes |
-| Approve in **ArcSolar Settings → Customer documents** | No | Yes |
+| Approve in **Business details → Existing document approvals** | No | Yes |
 
 The rule exists because the agreement is a promise the business makes. A draft is never an approval — the page says so under the editor: *"Saved draft version: N. A draft is never an approval."*
 
@@ -62,7 +63,7 @@ When you cannot, you can still edit and save drafts — but the version customer
 
 **Legal name**, **Trading name**, **ABN**, **Business address**, **Contact email**, **Contact phone** and an optional **Website URL**.
 
-On the **original brand** these come from **ArcSolar Settings**, so the card is read-only apart from the website — *"Original legal and contact details come from ArcSolar Settings. Refresh a saved draft after changing those details."* Use **Use current organisation details** to pull the latest values into the draft. On an **additional brand**, type them: they are that brand's own legal identity.
+On the **original brand** these come from **Settings → Business details**, so the card is read-only apart from the website — *"Original legal and contact details come from ArcSolar Settings. Refresh a saved draft after changing those details."* Use **Use current organisation details** to pull the latest values into the draft. On an **additional brand**, type them: they are that brand's own legal identity.
 
 ### Document email sender
 
@@ -74,9 +75,9 @@ On the **original brand** these come from **ArcSolar Settings**, so the card is 
 
 ### Appearance
 
-For the **original brand** the card points at [Branding](/setup/branding) — *"Your original brand uses the organisation logos, colours and contract fonts in Retailer Settings → Branding. Approval captures their current version, so this editor keeps no appearance controls of its own."*
+For the **original brand** the card points you to [Appearance defaults](/setup/branding). The original brand uses the workspace logos, colours and contract fonts set there.
 
-For an **additional brand** you set **Primary colour**, **Secondary colour**, **Tertiary colour**, **Logo on light background** and **Logo on dark background** here, because they belong to that brand rather than to the workspace. Fonts for an additional brand are set from the **Selling brands** card's **Edit documents** on the **Appearance defaults** tab; this page links you there.
+For an **additional brand** you set **Primary colour**, **Secondary colour**, **Tertiary colour**, **Logo on light background**, **Logo on dark background**, **Heading font** and **Body font** here, because they belong to that brand.
 
 ### Agreement wording
 
@@ -122,9 +123,8 @@ The button at the bottom of the editor says what it will do:
 | --- | --- | --- |
 | Agreements section, without publish authority | **Save draft** | Saves the version for the owner or a developer to review |
 | Agreements section, with publish authority | **Save and publish** | Saves *and* publishes in one step |
-| **Edit documents** dialog from the **Selling brands** card | **Save document draft** | Saves the draft only |
 
-Alongside them: **Contract preview**, **Discard edits and reload**, and **Close** in the dialog form.
+Alongside them: **Preview contract** and **Discard edits and reload**.
 
 Saving a draft reports the version it wrote and that it is not yet live: a saved draft reaches customers only once **the workspace owner or a developer** publishes it.
 
@@ -140,13 +140,13 @@ At the top of the card, one line always states where the brand stands:
 
 ### If publishing is unavailable
 
-An alert reads **Owner status could not be verified** — *"You can still edit and save a draft, but publishing is unavailable until the page can confirm that you hold owner authority. Reload the page to retry."* The page fails closed: not being able to *prove* the actor holds the workspace owner's authority (the owner, or a developer acting under it) is treated the same as not holding it, so no version is published on a guess.
+An alert reads **Owner status could not be verified** — *"You can still edit and save a draft, but publishing is unavailable until the page can confirm that you hold owner authority. Reload the page to retry."* Reload the page. If it keeps happening, contact support.
 
 </Accordion>
 
 <Accordion title={"How a version is approved"}>
 
-The approval surface is in [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-documents) → **Customer documents** → **Approve brand documents**. Administrators prepare drafts in Retailer Settings → Documents, and **the workspace owner or a developer** reviews the current sources and retains an approved version here. Approval does not enable multi-brand selling or change payment accounts.
+The approval screen is in [**Settings → Business details**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-documents) → **Existing document approvals** → **Approve brand documents**. Administrators prepare drafts in **Agreements**, and **the workspace owner or a developer** approves a version here. Approval does not change payment accounts.
 
 The flow:
 
@@ -181,19 +181,19 @@ An empty list is honest about itself: *"No revision has been published for this 
 
 <Accordion title={"Preview the branded contract"}>
 
-**Contract preview** sits with the editor and on [Branding](/setup/branding). It renders the brand's saved draft — its logo, colours, retained fonts and agreement wording — through the real contract renderer, and the dialog states *"A preview is never an approval."*
+**Preview contract** sits with the editor and on [Appearance defaults](/setup/branding). It builds the PDF from the brand's saved draft: logo, colours, fonts and wording. The dialog states *"A preview is never an approval."*
 
 </Accordion>
 
 <Accordion title={"Finance is the single source of truth"}>
 
-Three numbers on every direct-payment contract come from **Retailer Settings → Payments & finance**, not from the document:
+Three numbers on every direct-payment contract come from **Settings → Payments & finance**, not from the document:
 
 - the **deposit limit** as a percentage of the customer balance,
 - the **stock delivery payment** percentage, and
 - the **installation window** in weeks.
 
-This is deliberate. The installation window is read from the workspace's Finance settings at the moment the contract is rendered, so a change there reaches the next quote immediately — and nobody can quietly store a different window inside an approved agreement. A configuration saved before these settings existed falls back to the platform default, **2–6 weeks**, which is what a fresh workspace also states.
+A change there reaches the next quote straight away. The default window is **2–6 weeks**.
 
 The contract words it in full:
 
@@ -209,8 +209,8 @@ See [Finance and deposits](/setup/retailer-settings#finance-and-deposits) for th
 
 | Message | Cause |
 | --- | --- |
-| **No selling brand to document** — *"This workspace has no selling brand you can configure yet. Create or enable one in ArcSolar Settings before editing its agreement."* | No brand is available to you |
-| **Fictional preview** — *"Documents read from the workspace, so this preview has none to edit or publish."* | You are in a demo workspace |
+| **Choose a selling brand** | No brand is available to you. Create or enable one in [Selling brands](/setup/selling-brands) |
+| **No agreement in this preview** | You are in the demo workspace |
 
 </Accordion>
 

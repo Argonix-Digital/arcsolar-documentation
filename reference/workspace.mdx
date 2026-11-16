@@ -1,157 +1,220 @@
 ---
 icon: "compass"
-sidebarTitle: "Workspace basics"
+sidebarTitle: "Find your way around"
 keywords:
   - "search"
+  - "quick search"
   - "command palette"
   - "keyboard shortcut"
-  - "Ctrl+J"
+  - "Cmd K"
+  - "Ctrl K"
   - "sidebar"
   - "navigation"
-  - "appearance"
   - "dark mode"
   - "theme"
   - "preferences"
-  - "layout"
-  - "operational inbox"
+  - "start page"
+  - "inbox"
   - "notifications"
   - "profile picture"
   - "change password"
-title: "Workspace basics"
-description: "Find your work, move between screens and adjust your personal setup."
+  - "tips"
+  - "mobile app"
+  - "log out"
+title: "Find your way around"
+description: "The sidebar, quick search, inbox, menus and your personal settings, explained for new users."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="report" />
 
-Start in **Rep Overview** for today's work. Use **Customers**, **Comms**, **Quotes**, **Tasks** and **Calendar** for the everyday flow.
+ArcSolar has three areas: the **sidebar** on the left, a **top bar** above each page, and the page itself. This guide walks through each one.
 
-## Find a screen
+## The sidebar
 
-Open app search with **⌘ J** on Mac or **Ctrl J** on Windows. Search for the page or setting you need, then check the destination. The sidebar reflects your role and enabled features.
+<Frame caption="The sidebar with its groups open. You only see the pages your role can open. Sample data.">
+  <img src="/images/v2/gs-sidebar.png" alt="The ArcSolar sidebar: workspace name, search and new-quote icons at the top; Inbox, Agent, Rep Overview, Tasks, Sales, Quotes, Customers and Comms; then the Workspace, Operations and Business groups; Tips and the user's name at the bottom." style={{ maxWidth: "300px" }} />
+</Frame>
 
-## Make it yours
+**At the top**
 
-Use **Profile Settings** for your personal appearance, notifications and availability. Use **Retailer Settings** or **ArcSolar Settings** for business configuration. [Find the right settings](/setup/settings-screens) explains the split.
+- **Your workspace name.** Select it to open the workspace menu.
+- **Search icon.** Opens quick search.
+- **Pencil icon (Quick Create Quote).** Starts a new quote. Shortcut: **C**.
 
-## Pick up the next action
+**Your main pages**
 
-Open a customer, task or project from the overview. Read the underlying record, then update the work there. Keep the assigned owner and the next action clear.
-
-
-## Details
-
-<Accordion title={"Move between screens"}>
-
-The sidebar groups screens by the work they support: **Workspace**, **Operations**, **Business** and **Settings**. Each group collapses, so you can hide the parts you do not use.
-
-Only the screens your role can open are listed. If a colleague sees a menu you cannot, that is a permission difference rather than a fault — see [feature availability](/reference/availability).
-
-</Accordion>
-
-<Accordion title={"Find a screen quickly"}>
-
-Press **⌘J** on a Mac, or **Ctrl+J** on Windows, to open **Search the workspace…**. Type part of a screen's name and press Enter to open it. Pressing the shortcut again closes the search.
-
-The search covers the **screens and menus** available to you. It is not a customer, quote or project search — use each list's own search for records.
-
-</Accordion>
-
-<Accordion title={"Set up the workspace to suit you"}>
-
-The **Preferences** panel in the header controls how ArcSolar looks and lays out:
-
-| Control | What it changes |
+| Page | What it is for |
 | --- | --- |
-| Theme Preset | The accent colours used across the workspace |
-| Theme Mode | **Light**, **Dark** or **System**. **System** follows your device setting |
-| Fonts | The typeface used in the interface |
-| Navbar Behavior | How the top bar behaves as you scroll |
-| Page Layout | The width and spacing of page content |
-| Sidebar Style | How the sidebar is presented |
-| Sidebar Collapse Mode | How groups behave when you collapse them |
+| **Inbox** | Everything that needs you: tasks, mentions, missed calls and customer uploads. Most people start here. |
+| **Agent** | Ask ArcSolar to find or prepare work for you. Marked **Beta**. Only shown when it is on for your workspace. See [Agent](/agent). |
+| **Rep Overview** | Today's sales work at a glance. See [Rep Overview](/reporting/rep-overview). |
+| **Tasks** | Follow-ups with an owner and a due date. See [Tasks](/customers/tasks). |
+| **Sales** | Sales performance. See [Sales](/reporting/sales). |
+| **Quotes** | Every quote and its status. See [Create a quote](/quoting/walkthrough). |
+| **Customers** | Opens **Pipeline** and **Customer Records**. See [Customer records](/customers/records). |
+| **Comms** | Calls and SMS with customers. See [Calls and SMS](/customers/calls-sms). |
 
-A reset action returns every preference to its default.
+**Groups you can open and close**
 
-These are personal preferences and apply to you rather than to the whole team.
+Select a group name to show or hide its pages.
 
-</Accordion>
+| Group | Pages |
+| --- | --- |
+| **Workspace** | **Roof Vision**, and **Amy** when your workspace uses it |
+| **Operations** | **Projects & Jobs**, **Calendar**, **Field Operations**, **Installers**, **Product Catalogue**, **Inventory**. Sales reps also see **My availability**. |
+| **Business** | **Finance**, **Reporting**, **Settings** |
 
-<Accordion title={"Check what needs your attention"}>
+A grey item with a **Soon** badge is not available yet. A colleague may see pages you don't: the sidebar follows each person's role. See [Feature availability](/reference/availability).
 
-The **bell** in the header is your **Operational inbox**. A number on the bell counts the items that need action. Open it to see:
+**At the bottom**
 
-- Work assigned to you — open tasks and the projects you own.
-- Calls — missed calls, and calls that are still coming in.
-- Mentions, customer uploads, lead assignments and completed work.
+- **Tips** — a short list of optional things to try, such as inviting your team or turning on dark mode. It appears a few days after your account is created, and disappears once you have done everything on it.
+- **Report a problem** — send a bug report to the ArcSolar team. See [Get help](/reference/support).
+- **Your name and role** — opens your account menu.
 
-Unread items sit under **Needs action**, your projects under **Assigned projects**, and anything you have already read under **Recently read · latest 30**. Open an item to go straight to it, or choose **Mark read** to clear a notification. The inbox refreshes by itself while you have ArcSolar open, so a new item can also appear as a brief message at the top of the screen.
+On a narrow screen, the sidebar is hidden. Select the sidebar icon at the top left of the page to open it.
 
-</Accordion>
+## Quick search
 
-<Accordion title={"Your profile and password"}>
+Press **⌘K** on a Mac or **Ctrl K** on Windows (**⌘J** / **Ctrl J** also works). You can also select the search icon at the top of the sidebar.
 
-Open [**Profile Settings**](https://app.arcsolar.com.au/dashboard/profile-settings) to manage your own details.
+Type a page name, a setting or a question in your own words, such as "deposit". Use the arrow keys and **Enter** to open a result, or **Esc** to close.
 
-- **Personal details** — your display name, profile picture and private contact email. To change the picture, choose **Choose File**, then drag and zoom to crop it before saving. **Remove picture** returns you to your initials.
-- **Account security** — **Change password** asks for your current password, then a new one. Use at least 8 characters and do not reuse another password.
+<Frame caption="Quick search finds pages, settings and help guides. Sample data.">
+  <img src="/images/v2/gs-search.png" alt="The Search ArcSolar dialog with 'deposit' typed. Results are grouped under Settings and App pages, with keyboard shortcuts shown on the right." />
+</Frame>
 
-These are yours, not the team's. A colleague cannot change them for you, and you cannot change theirs here.
+Quick search finds pages, settings and help guides. It does not find a customer, quote or project. Use the search on that list instead, such as **Customer Records**.
 
-</Accordion>
+## Keyboard shortcuts
 
-<Accordion title={"Hear about changes in the app"}>
+Shortcuts work when you are not typing in a field. For "G then I", press **G**, let go, then press **I**.
 
-When something notable ships, an update dialog describes it the next time you open ArcSolar. Read it, then dismiss it to continue. Dismissing is remembered, so it will not reappear. See [what's new](/reference/whats-new) for what is landing and what is not yet switched on.
+| Shortcut | Opens |
+| --- | --- |
+| **⌘K** / **Ctrl K** | Quick search |
+| **C** | Quick Create Quote |
+| **G** then **I** | Inbox |
+| **G** then **O** | Rep Overview |
+| **G** then **T** | Tasks |
+| **G** then **L** | Quotes |
+| **G** then **P** | Pipeline |
+| **G** then **R** | Customer Records |
+| **G** then **A** | Comms |
+| **G** then **J** | Projects & Jobs |
+| **G** then **S** | Calendar |
+| **G** then **F** | Field Operations |
+| **G** then **,** | Settings |
 
-</Accordion>
+You only get shortcuts for pages your role can open. To see the list in the app, open your account menu → **Keyboard shortcuts**.
 
-<Accordion title={"When something goes wrong"}>
+## The top bar
 
-Report it from **Report a problem** at the bottom of the sidebar — see [Get help from ArcSolar](/reference/support).
+The top bar shows the page name. On the right:
 
-</Accordion>
+- **Signpost icon (Customer lifecycle)** — a quick reference of the eight stages from lead to complete. See [The customer journey](/quickstart).
+- **Bell (Inbox)** — a red number shows how many items need you.
+
+## Your inbox
+
+Select the bell to see what needs you without leaving the page. Open **Inbox** in the sidebar for the full list.
+
+<Frame caption="The inbox panel opened from the bell. Sample data.">
+  <img src="/images/v2/gs-inbox-panel.png" alt="The Inbox panel with All, Mentions and System filters, a Needs action list, and View task, Mark read and Dismiss buttons on each item." style={{ maxWidth: "420px" }} />
+</Frame>
+
+1. Use **All**, **Mentions** or **System** to filter the list.
+2. Select the main button on an item, such as **View task** or **Review availability**, to go to it.
+3. Do the work there. Select **Mark read** or **Dismiss** to clear the alert.
+4. **Mark shown read** marks everything in the list as read.
+
+Marking an alert read does not finish the work. An open task you own stays in your inbox until you complete it.
+
+## The workspace menu
+
+Select your workspace name at the top of the sidebar.
+
+<Frame caption="The workspace menu. Sample data.">
+  <img src="/images/v2/gs-workspace-menu.png" alt="The workspace menu with Settings, Invite and manage members, Download desktop app (Coming soon), Switch workspace, Log out and a Company activity panel." style={{ maxWidth: "380px" }} />
+</Frame>
+
+| Item | What it does |
+| --- | --- |
+| **Settings** | Opens Settings |
+| **Invite and manage members** | Opens your team list. Greyed out if your role can't manage the team. |
+| **Switch workspace** | Moves to another company you belong to. Greyed out if you only have one. |
+| **Log out** | Signs you out |
+| **Company activity** | Hours left in the week and deals so far this week |
+
+## The account menu
+
+Select your name at the bottom of the sidebar.
+
+<Frame caption="The account menu opens beside your name. Sample data.">
+  <img src="/images/v2/gs-account-menu.png" alt="The account menu with Docs, Keyboard shortcuts, ArcSolar status, Download apps (Coming soon), Settings, and a What's new list." style={{ maxWidth: "480px" }} />
+</Frame>
+
+| Item | What it does |
+| --- | --- |
+| **Docs** | Opens these guides |
+| **Keyboard shortcuts** | Lists the shortcuts you can use |
+| **ArcSolar status** | Shows whether ArcSolar is running normally |
+| **Settings** | Opens Settings |
+| **What's new** | The latest updates. Select one to read about it. |
+
+## Your personal settings
+
+Open **Settings** from either menu. Your own settings are under **Personal** in the settings sidebar. They only change things for you, not your team.
+
+<Frame caption="Preferences, under Personal in Settings. Sample data.">
+  <img src="/images/v2/gs-preferences.png" alt="Settings with the Personal group (Profile, Security, Preferences, Notifications, Availability) and the Preferences page showing Start page, Interface theme and Increase contrast." />
+</Frame>
+
+| Section | What you can change |
+| --- | --- |
+| **Profile** | Profile picture, full name, personal email and personal mobile. Your sign-in email is managed by your administrator. |
+| **Security** | **Change password** |
+| **Preferences** | **Start page** (the page you see when you open ArcSolar), **Interface theme** (light, dark, or follow your device) and **Increase contrast** |
+| **Notifications** | Which alerts you get by email and SMS. Changes save automatically. See [Notifications](/setup/notifications). |
+| **Availability** | Sales reps and administrators: your onsite and phone/video hours. See [Sales availability](/setup/sales-availability). |
+
+**Change your profile picture.** Open **Profile** → **Choose File**. Use a JPEG, PNG or WebP up to 5 MB. Drag and zoom to crop it, then save.
+
+**Change your password.** Open **Security** → **Change password**. Enter your current password, then the new one twice. Use at least 8 characters.
+
+**Turn on dark mode.** Open **Preferences** → **Interface theme** → **Dark**. Your choice follows you across workspaces.
+
+The rest of Settings is for your company: pricing, branding, team and more. See [Find the right settings](/setup/settings-screens).
+
+## Mobile and desktop apps
+
+There is no ArcSolar phone or desktop app yet. Both show as **Coming soon** in the menus. On a phone or tablet, open [app.arcsolar.com.au](https://app.arcsolar.com.au) in your browser. Select the sidebar icon at the top left to open the menu.
+
+<Frame caption="The sidebar on a phone browser. Sample data.">
+  <img src="/images/v2/gs-mobile-menu.png" alt="ArcSolar on a phone with the sidebar open, showing the same pages as on a computer." style={{ maxWidth: "260px" }} />
+</Frame>
+
+## Get help
+
+- **Docs** in the account menu opens these guides.
+- **Report a problem** at the bottom of the sidebar sends a bug report.
+- **Profile** → **Help & feedback** has links to your company's **SOPs**, these docs, the changelog, and **Send feedback**.
+
+See [Get help from ArcSolar](/reference/support).
 
 <Visibility for="agents">
-- The sidebar is grouped as **Workspace**, **Operations**, **Business** and **Settings**.
-- Entries are filtered by the member's role and by runtime mode. A missing entry usually means a capability the role does not hold, not a broken workspace. Route access questions to [feature availability](/reference/availability) rather than asserting the feature is absent.
-- Some entries are deliberately disabled and carry a **Soon** badge. Do not present them as working features.
+- Sidebar (v2 layout, default): header has the workspace menu, a search icon and the **Quick Create Quote** pencil (shortcut C, shown only with `quote.mutate`). Pinned items: **Inbox**, **Agent** (Beta, only when the workspace has the agent on), **Rep Overview**, **Tasks**, **Sales**, **Quotes**, **Customers** (Pipeline, Customer Records), **Comms**. Collapsible groups: **Workspace** (Roof Vision; Amy when enabled), **Operations** (Projects & Jobs, Calendar, My availability for sales only, Field Operations, Installers, Product Catalogue, Inventory), **Business** (Finance, Reporting, Selling intelligence shown as disabled **Soon** for every role except Developer, Settings). **Misc** and **Demo previews** appear only in the fictional demo.
+- Footer: **Tips** (appears 3 days after account creation; hidden once every available tip is done), **Report a problem** (live workspaces only), then the account menu.
+- Default landing page: `/dashboard/inbox` for most roles; technicians go to `/work`; external marketing goes to reporting. Members can change it under Preferences → **Start page**.
+- Quick search: ⌘K or Ctrl K, and ⌘J or Ctrl J, toggle the **Search ArcSolar** dialog (placeholder "Search pages, settings and help…"). It returns **Actions**, **Settings**, **App pages** and **Help guides**. It does not search customers, quotes or projects.
+- Navigation shortcuts are two-key sequences (G then a letter) plus C for Quick Create Quote. They are ignored while typing in a field or when a dialog is open, and only exist for pages the role can open.
+- Header: page title, **Customer lifecycle** reference (signpost icon) and the **Inbox** bell (aria-label "Open Inbox, N items need attention"). The panel title is **Inbox**, with **All**, **Mentions** and **System** filters, a **Needs action** list, per-item **Mark read** / **Dismiss**, and **Mark shown read**. Owned open tasks and owned projects clear by changing the record, not by marking read.
+- Workspace menu: **Settings** (G then ,), **Invite and manage members** (needs `page.team`), **Download desktop app** (disabled, Coming soon), **Switch workspace** (disabled with one workspace), **Log out**, **Company activity** (hidden for external marketing).
+- Account menu: **Docs**, **Keyboard shortcuts**, **ArcSolar status** (arcsolar.openstatus.dev), **Download apps** (disabled, Coming soon), **Settings**, and a **What's new** list from the changelog.
+- Personal settings live at `/dashboard/profile-settings` with tabs `profile`, `security`, `appearance` (labelled **Preferences**), `notifications`, and `availability` (sales and administrator). Identity edits are disabled in the demo.
+- There is no native mobile or desktop app. Do not tell a user to download one.
 </Visibility>
 
-<Visibility for="agents">
-- Keyboard shortcut: ⌘J (meta) or Ctrl+J toggles the search dialog. It is a toggle — pressing it again closes the dialog.
-- The dialog placeholder is "Search the workspace…".
-- It searches **navigation entries**, built from the same role-filtered sidebar items as the sidebar itself. It does **not** search customers, quotes, projects or other records. Do not describe it as a global record search.
-- Disabled entries appear but cannot be opened.
-- Entries flagged to open in a new tab open a new browser tab rather than navigating in place.
-</Visibility>
-
-<Visibility for="agents">
-- The **Preferences** panel (header) exposes: **Theme Preset**, **Theme Mode** (**Light** / **Dark** / **System**), **Fonts**, **Navbar Behavior**, **Page Layout**, **Sidebar Style** and **Sidebar Collapse Mode**, plus a reset.
-- **Theme Mode** is the dark-mode control. **System** follows the operating system rather than a fixed choice.
-- These are per-person preferences, not organisation settings. Do not describe them as team-wide or as branding (organisation branding is configured in Retailer Settings).
-</Visibility>
-
-<Visibility for="agents">
-- The header bell is the **Operational inbox**; its tooltip is "Operational inbox". The aria-label is "Open operational inbox", becoming "Open operational inbox, N items need attention" when any item has `needsAttention`.
-- The panel title is **Operational inbox** and its description is "Mentions, customer uploads, assigned work, and missed calls that need attention."
-- Live groups are **Needs action**, **Assigned projects** and **Recently read · latest 30**. Empty state: **Nothing needs your attention** — "Mentions, customer uploads, assigned work, and missed calls will appear here." Unavailable state: **Inbox temporarily unavailable**, "Notifications could not be loaded right now. Refresh the dashboard to try again."
-- **Needs attention** means: an unread notification; a task you own that is not completed or cancelled; a project you own as sales or operations owner; or a missed or in-progress inbound call. Read notifications are not attention items.
-- Item labels include **Assigned task**, **Assigned project**, **Missed call**, **Incoming call**, **Mention**, **Task update**, **Calendar**, **Operations query**, **Upload complete**, **Lead assigned** and **Monthly report**, across the Comms, Finance, Operations, Reporting and Sales areas.
-- **Mark read** appears only on unread notifications, calling `mark_workspace_notification_read`. Missed and in-progress calls, and owned tasks and projects, clear from the inbox by changing the underlying record rather than by being marked read.
-- The inbox is rendered in the dashboard header and on the Comms page, and polls while the tab is visible. Do not describe it as an email inbox.
-</Visibility>
-
-<Visibility for="agents">
-- Personal account controls live under **Profile Settings** (`/dashboard/profile-settings`), the per-person destination whose eyebrow label is **Per person**. The page is titled **Profile Settings**.
-- **Personal details** card: "Manage the name shown in the ERP and your private contact email." It contains the profile picture editor plus display name and contact fields.
-- **Profile picture.** Accepted types and limits are stated as "JPEG, PNG or WebP · Max 5 MB". A source image larger than 16 megapixels is rejected with "Choose an image smaller than 16 megapixels." The crop dialog is **Crop your profile picture** — "Drag your picture to reposition it. Use zoom to adjust the crop." — saved with **Save picture**. Removal asks "Remove your profile picture?" and keeps initials instead. Success toasts are "Profile picture saved" and "Profile picture removed".
-- **Change password.** Dialog title **Change password**, description "Confirm your current password, then choose a new one for this account." Fields are **Current password**, **New password** and **Confirm new password**, with the hint "Use at least 8 characters and avoid reusing another password." The action is **Update password** (in flight, **Updating…**). Success is the toast "Password changed" — "Use your new password the next time you sign in." A failure asks the user to sign in again and retry.
-- The controls are disabled when `canManageIdentity` is false, which is the case in a demo workspace; the page then shows the alert **Prototype identity**. Do not tell a user to change a password where the environment does not allow it.
-</Visibility>
-
-<Visibility for="agents">
-- A dismissible in-app announcement dialog describes recent changes. Dismissal is stored per member, so a dismissed announcement does not return.
-- The announcement reports what has shipped; [what's new](/reference/whats-new) distinguishes live behaviour from *Pending* and *Built but switched off*. Do not treat either as confirmation that a specific workspace has received a change.
-</Visibility>
+<NextGuide href="/reference/support" title="Get help from ArcSolar" />

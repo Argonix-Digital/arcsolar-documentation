@@ -1,44 +1,75 @@
 ---
 icon: "wallet"
 sidebarTitle: "Payment options"
-keywords: ["finance","upfront","deposits","payment schedule"]
+keywords: ["finance","upfront","deposits","payment schedule","direct payment","stock delivery","balance on installation"]
 title: "Payment options"
-description: "Explain exactly what the customer pays and when."
+description: "Set the deposit and payment schedule, or offer finance."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="finance" />
 
-**Open:** the quote's payment controls in the review step.
-
-Open the quote from [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes).
+Payment is set on the quote's **Review** step, under **Payment terms**. Choose a **Payment option**: **Direct payment** or **Finance**. You only see the options your business has turned on.
 
 ## Direct payment
 
-Select direct payment and review the upfront deposit, stock-delivery milestone and installation balance. Use the amount field or slider where available.
+The customer pays in three parts:
 
-The permitted amounts are not fixed in the quote — they come from [**Retailer Settings → Finance & deposits**](/setup/retailer-settings#finance-and-deposits) for the selling brand the quote belongs to:
+| Payment | When |
+| --- | --- |
+| **Deposit on acceptance** | When they accept the quote |
+| **On stock delivery** | When the equipment is delivered |
+| **Balance on installation day** | On the day of installation |
 
-- the **minimum deposit** sets the floor,
-- the **deposit limit (% of customer balance)** sets the ceiling a representative may ask for,
-- the **stock delivery payment (% of customer balance)** sets the delivery milestone, and
-- the balance falls due on installation.
+To set the deposit:
 
-The three payments always sum to the quote total. The per-brand installation window from the same tab is what the customer contract quotes for a direct payment.
+1. Under **Upfront deposit**, drag the slider or type an amount.
+2. The hint under the slider shows the allowed range, for example *Choose $500.00 up to 30% of the customer balance*.
+3. Check the three amounts in the cards below. They always add up to the total.
 
-Always use the limits and final schedule shown for the actual quote.
+On a small quote, the minimum deposit can cover the whole price. The quote is then paid in full upfront.
+
+<Frame caption="Set the deposit. The schedule updates below it. Sample data.">
+  <img src="/images/v2/qt-review-payment.png" alt="Payment terms with Direct payment selected, an Upfront deposit slider and amount field, and cards for deposit on acceptance, on stock delivery and balance on installation day." />
+</Frame>
 
 ## Finance
 
-Choose an available finance option and configured term. Review the finance deposit, amount financed, repayments and merchant/service fees. Check whether a fee is paid upfront or included in the financed amount. The terms, fees and loan range come from the same **Finance & deposits** tab.
+1. Choose **Finance** as the **Payment option**.
+2. Enter an **Optional deposit**. It starts at $0 and lowers the amount financed.
+3. Choose a **Finance term**.
+4. Check the lender, interest rate and fees shown under the term.
 
-A repayment illustration is not lender approval. Record the actual application status and any required evidence before treating finance as ready.
+<Frame caption="Finance settings an admin fills in before reps can offer finance. Sample data.">
+  <img src="/images/v2/qt-settings-finance.png" alt="Customer finance settings with Offer finance, provider name, annual interest rate, default term, fees and loan limits, and retailer merchant fees." />
+</Frame>
 
-## Funding and price
+The preview shows an indicative monthly repayment. This is not lender approval. If the preview says to approve lender finance terms first, ask your account owner to do this in settings.
 
-Government loans reduce the balance funded by other means; they are not a reduction in system price. Check the funding summary so rebates, loans, direct payment and commercial finance are not double-counted.
+## Government loans
 
-## Confirm the customer view
+An interest-free government loan lowers what the customer pays you. It is not a discount on the system. When a loan is included, the quote shows **Repayable government finance**, the **Price payable to retailer** and the **Total including government loan principal**.
 
-Preview the agreement, total and milestones. Do not change a saved payment schedule outside the supported revision flow. A processing payment can lock revision before settlement completes.
+## Where the limits come from
+
+An admin sets these in [**Retailer Settings → Payments & finance**](https://app.arcsolar.com.au/dashboard/quoting-settings). Each selling brand has its own settings. See [Retailer Settings](/setup/retailer-settings#finance-and-deposits).
+
+| Setting | What it controls |
+| --- | --- |
+| **Default deposit ($)** | The starting deposit on a new quote |
+| **Minimum deposit ($)** | The lowest deposit allowed |
+| **Deposit limit (% of customer balance)** | The most a rep can ask for |
+| **Stock delivery payment (% of customer balance)** | The delivery payment |
+| **Installation minimum (weeks)** and **Installation maximum (weeks)** | The installation window on a direct-payment agreement |
+| **Offer finance**, provider, rate, terms and fees | What the **Finance** option shows |
+
+<Frame caption="The deposit settings behind every direct-payment quote. Sample data.">
+  <img src="/images/v2/qt-settings-deposits.png" alt="Direct payments and deposits settings with Offer direct payment on, default and minimum deposit, deposit limit, stock delivery payment and installation window fields." />
+</Frame>
+
+## After sending
+
+The customer pays the deposit online when they accept. See [Customer quote view](/quoting/customer-view).
+
+You can't switch a sent quote between direct payment and finance with a revision. Duplicate the quote and send it as a new one instead.

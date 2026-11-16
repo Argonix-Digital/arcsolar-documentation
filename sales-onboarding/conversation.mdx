@@ -1,9 +1,9 @@
 ---
-title: "3. Make the conversation count"
-sidebarTitle: "3 · Make the conversation count"
-description: "Prepare, record the outcome and leave a useful follow-up."
+title: "3. Call and follow up"
+sidebarTitle: "3 · Call and follow up"
+description: "Call or text a customer, record what was agreed and set the next step."
 icon: "phone"
-keywords: ["sales rep onboarding","conversation","training","Call, message, follow up","site information form","send site information form","electricity bill upload","secure upload link"]
+keywords: ["sales rep onboarding","conversation","training","call","SMS","note","task","site information form","electricity bill upload"]
 ---
 
 import { LessonChecklist } from "/snippets/sales-course.jsx";
@@ -11,33 +11,32 @@ import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="comms" />
 
-Practise the conversation with your manager. Use an approved practice record; do not call or message a real customer during training.
+Practise with your manager on the practice customer. Don't contact a real customer yet.
 
-## Before the call
+## Before you call
 
-Read the latest Activity, check the number and communication permissions, then confirm the purpose of the conversation. A live call needs an active line, communications billing and a ready browser phone.
+1. Read the latest activity on the customer.
+2. Check the phone number and that they're happy to be contacted.
+3. Know why you're calling.
 
-## Record what matters
+To call from ArcSolar you need a business number. Ask your manager if you don't have one. See [Calls and SMS](/customers/calls-sms).
 
-Write what the customer wants, what was agreed and what is still missing. Review any [CallIntelligence tasks](/customers/call-intelligence) before creating duplicates. A follow-up needs an owner and a date.
+## After you call
 
-## Ask for the site information
+1. Write a short note: what they want, what you agreed, what's missing.
+2. Check for tasks ArcSolar already made from the call. See [CallIntelligence](/customers/call-intelligence).
+3. Add a task for the next step, with an owner and a due date. See [Tasks](/customers/tasks).
 
-From the customer's **Site Information Form** tab, review the address and the available email/SMS send action. The form collects the bill, switchboard photos and cable-run video. During practice, explain the action without sending to a real customer.
+> Comparing battery options. Waiting on switchboard photos. Call Thursday after 3 pm.
 
-Read [Calls and SMS](/customers/calls-sms), [Tasks](/customers/tasks) and [Site information](/quoting/site-information) when you need the controls in detail.
+## Ask for the bill and photos
 
+On the customer's **Site Information Form** tab, send the form by email or SMS. The customer uploads their electricity bill, switchboard photos and a cable-run video.
 
-<LessonChecklist lessonId="conversation" items={["I can check the customer, consent, phone-ready state and headset before a call.","I can write a note with the goal, agreement and next action.","I can create an owned task and send the Site Information Form when the customer needs to upload a bill and photos."]} />
+Sending it again makes a new link. The old link stops working. See [Site information](/quoting/site-information).
+
+<LessonChecklist lessonId="conversation" items={["I can check the customer and their contact permissions before a call.","I can write a note with what was agreed and add a task with an owner and date.","I know how to send the Site Information Form."]} />
 
 [Course overview](/sales-onboarding)
 
-<NextGuide href="/sales-onboarding/assessment" title="Understand the home" />
-
-<Visibility for="agents">
-- The step exists so lesson 4 has a real input. Sending the **Site Information Form** is a required rep action; the customer's bill and photos are customer uploads and never appear automatically.
-- Surfaces: the **Site Information Form** tab on a customer record and the **Site Information Form** step on a new quote; both call `sendSiteInformationFormLinkAction`.
-- Delivery channels are `email` and/or `sms`, taken from the customer's contact record. With neither, sending is blocked. The send button is not a one-time control: any send after the first is a resend.
-- **Re-sending rotates the token and invalidates the previous link immediately.** Do not tell a rep that an earlier link still works. Full labels, statuses and expiry are in [Collect site information](/quoting/site-information).
-- Request status: `Not requested` (`not_sent`), `Awaiting customer` (`pending`), `Submitted` (`submitted`), `Link expired` (`expired`).
-</Visibility>
+<NextGuide href="/sales-onboarding/assessment" title="4. Understand the home" />
