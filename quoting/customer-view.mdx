@@ -1,36 +1,83 @@
 ---
 icon: "eye"
 sidebarTitle: "Customer quote view"
-keywords: ["customer portal","quote acceptance","payment"]
+keywords: ["customer portal","quote acceptance","payment","sign agreement","deposit","stripe checkout","hosted estimate"]
 title: "Customer quote view"
-description: "See the offer as your customer sees it."
+description: "What your customer sees, and how they accept, sign and pay the deposit."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="portal" />
 
-After sending, the customer receives a private link to the issued offer. If [two offers are linked](/quoting/compare-estimates), either link opens their comparison first.
+When you send a quote, the customer gets an email with a private link. The link opens their quote in the browser. It works on phones and computers. No login is needed.
 
-## Walk through the offer
+To see it yourself, open [**Quotes**](https://app.arcsolar.com.au/dashboard/quotes), select **⋯** on the quote and choose **Open hosted estimate**. You can also **Copy customer link** or **Open estimate PDF** from the same menu.
 
-Confirm the customer and site, then review the system, included services, total, incentives, payment schedule and agreement. Savings appear only when included in the issued offer.
+<Frame caption="The quote's actions menu in Quotes. Sample data.">
+  <img src="/images/v2/qt-estimate-actions.png" alt="Estimate actions menu with Open hosted estimate, Duplicate estimate, Open estimate PDF, Download estimate PDF, Copy customer link, Open in Projects and Jobs, Mark Quote as lost and Archive estimate." />
+</Frame>
 
-The portal and PDF use the issued snapshot. Internal equipment costs, margin, commission and staff notes stay in the staff workflow.
+## What the customer sees
 
-## Follow the decision
+- **Installation progress**: a tracker that starts once they sign.
+- **Your energy agreement**: who it is for, the reference, the issue date and **Valid until** date.
+- **Your energy outlook**: estimated savings over time, if you included them.
+- **Proposed system**: the equipment and installation work.
+- **Notes for your agreement**: your customer-facing notes.
+- The total, rebates, discount, GST and **Payment schedule**.
 
-| Event | What it records |
-| --- | --- |
-| Viewed | Engagement with the link |
-| Accepted / signed | Agreement to the offer |
-| Processing | Payment awaiting confirmation |
-| Paid | Confirmed collection |
+Your costs, margin and internal notes never appear.
 
-Opening a quote does not accept it. Signing does not prove a deposit has been paid. Check the payment record before handing work to operations or requesting another payment attempt.
+<Frame caption="The total and payment schedule on a computer. Sample data.">
+  <img src="/images/v2/qt-portal-total.png" alt="Agreement total card showing the system subtotal, federal solar incentive, battery rebate, discount, GST, the payment schedule and the Review agreement and Accept agreement buttons." />
+</Frame>
+
+<Frame caption="The same card on a phone. Sample data.">
+  <img src="/images/v2/qt-portal-mobile.png" alt="Mobile view of the agreement total and payment schedule with the Review agreement and Accept agreement buttons at the bottom." />
+</Frame>
+
+## How the customer accepts
+
+What happens depends on the document you chose on the **Review** step.
+
+**Sales & installation agreement**
+
+1. The customer selects **Review agreement** to read the PDF.
+2. They select **Accept agreement**.
+3. They check their **Full legal name** and tick **Accept the agreement** and **Electronic records & notices**.
+4. They select **Sign & continue to Stripe**.
+5. They pay the deposit in secure Stripe Checkout, using any payment method your business accepts.
+
+If the sale was marked **Unsolicited sale**, the customer also sees a **10-business-day cooling-off period** notice.
+
+**Simple estimate**
+
+The customer selects **Accept & pay deposit**, confirms, and pays in Stripe Checkout.
+
+<Frame caption="The customer confirms their name and signs. Sample data.">
+  <img src="/images/v2/qt-portal-accept.png" alt="Accept agreement dialog with the Full legal name field, two acknowledgement checkboxes and the Sign and continue to Stripe button." />
+</Frame>
+
+## After they pay
+
+- The page shows **Deposit received** once payment is confirmed.
+- Bank payments can take a while. The page shows **Bank payment processing** and updates by itself. Tell the customer not to pay again.
+- If they leave Checkout early, their signature stays. They can select **Continue payment** without signing again.
+- Later payments and invoices show in the **Payments** section.
+
+## Track it in ArcSolar
+
+In **Quotes**, the status changes from **Sent** to **Viewed** when the customer opens the link, then **Accepted**. The **Deposit** column shows **Not due**, **Due** or **Paid**.
+
+If the customer can't find the email, choose **Resend estimate to email & SMS** from the **⋯** menu.
+
+Opening a quote is not acceptance. Signing is not payment. Check the deposit shows **Paid** before you hand the job to operations.
 
 ## If the offer changes
 
-Use the supported [revision flow](/quoting/revisions). The customer should review the current offer; an older open tab may need refreshing. Use the staff quote controls for an expired link, and resolve any disputed terms before seeking acceptance.
+Publish a [revision](/quoting/revisions). The customer's link stays the same and shows the new version.
 
-<NextGuide href="/quoting/follow-ups" title="Follow-up journeys" />
+If you [linked two quotes](/quoting/compare-estimates), the link opens the comparison first.
+
+<NextGuide href="/quoting/follow-ups" title="Follow-up messages" />

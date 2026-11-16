@@ -1,31 +1,58 @@
 ---
 icon: "bolt"
-sidebarTitle: "Energy data"
-keywords: ["energy data","tariffs","rates","electricity"]
-title: "Energy data"
-description: "Check incentive rules, approved products and source freshness."
+sidebarTitle: "Rebate settings"
+keywords: ["energy data","rebate settings","rebates","offers","incentives","programs","promotions","equipment data","sources"]
+title: "Rebate settings"
+description: "Choose which rebates and loans your team can offer, and add your own promotions."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="bill" />
 
-**Open:** [**Energy data**](https://app.arcsolar.com.au/dashboard/energy-data).
+Open [**Rebate Settings**](https://app.arcsolar.com.au/dashboard/energy-data). Only admins see this page. It has three tabs.
 
-| Tab | Purpose |
+| Tab | What it's for |
 | --- | --- |
-| Incentives | Review available support and choose what the retailer offers |
-| Approved products | Check the product status and evidence available |
-| Sources & updates | Review source checks, successful updates and freshness |
+| **Rebates & offers** | Turn government programs on or off, and add your own promotions |
+| **Equipment data** | Product data used for hot water and air conditioning incentives |
+| **Sources & evidence** | Links to each official source and its dates |
 
-Before enabling a program, read its scope and conditions. A retailer offering a program does not make every customer eligible. The quote checklist still needs customer-specific answers.
+## Offer a government program
 
-## Check freshness
+1. Open **Rebates & offers**.
+2. Under **Official programs**, find the program.
+3. Open **Details & eligibility** and read the rules.
+4. Turn on **Offer**.
 
-Distinguish the last attempted check from the last successful update and a source's publication/effective date. An unsuccessful check does not prove a product was delisted or that a rule changed.
+The program now shows on quotes where it applies. Each program is tagged by type (**Rebate**, **Certificates**, **Repayable loan** or **VPP offer**) and by state. **Rep confirms in quote** means the rep answers eligibility questions on the quote. See [Incentives and STCs](/quoting/incentives-stcs).
 
-If approval data is unavailable or requires manual verification, use the official source and record the result through the supported process. Do not describe an unverified product as approved.
+Program rules are kept up to date by ArcSolar. Turning on a program does not make every customer eligible.
 
-## Use it with quotes
+<Frame caption="Turn on each program your team can offer. Sample data.">
+  <img src="/images/v2/qt-rebate-settings.png" alt="Official programs list with ACT Home Energy Support, Solar STC discount, Cheaper Home Batteries and Solar Homes panel rebate, each with tags, a Details and eligibility link and an Offer switch." />
+</Frame>
 
-Recheck location, installation date, equipment and eligibility whenever a material quote input changes. Review warnings before issuing. Historical offers retain their issued snapshot rather than following future source changes.
+## Add your own promotion
+
+1. Under **Retailer promotions**, select **Add promotion**.
+2. Choose the **Discount type**: a fixed amount, a percentage, or a percentage with a cap.
+3. Choose what it **Applies to**: all catalogue items or selected products.
+4. Pick the **Available states and territories** and the **Effective from** and **Effective to** dates.
+5. Select **Save promotion**.
+
+To change one later, select **Edit**. Promotions are kept separate from government support on the quote.
+
+## Equipment data
+
+Hot water and air conditioning incentives need exact product data. If the tab says **No equipment dataset published**, you can still quote that equipment at catalogue prices. But those incentives stay unresolved until reviewed product data is published.
+
+## Sources & evidence
+
+Each program lists its official source. Select **Source details & dates** to see when it was last checked, or **Open official source** to read it.
+
+Certificate prices (STCs and VEECs) are set in [**Retailer Settings → Pricing & fees**](https://app.arcsolar.com.au/dashboard/quoting-settings), not here.
+
+## Using it with quotes
+
+If a quote's address, installation date or equipment changes, check its incentives again. A sent quote keeps the rules it was sent with.

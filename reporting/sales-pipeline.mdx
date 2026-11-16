@@ -1,34 +1,69 @@
 ---
 icon: "chart-line"
 sidebarTitle: "Sales and pipeline"
-keywords: ["call heatmap","call minutes","recordings","pipeline"]
-title: "Sales and pipeline"
-description: "See team activity and inspect the calls behind the numbers."
+keywords: ["sales reporting","call minutes","talk time","answer rate","recordings","pipeline","lead sources"]
+title: "Sales reporting and pipeline"
+description: "Compare phone time and selling results per person, and see which lead sources work."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="phone-report" />
 
-**Open:** [**Reporting → Sales & Pipeline**](https://app.arcsolar.com.au/dashboard/reporting?reportTab=sales-leads).
+**Open:** [**Reporting → Sales reporting**](https://app.arcsolar.com.au/dashboard/reporting?reportTab=phone-performance). Administrators, Operations and Finance see the whole team.
 
-## Customer engagement and lead sources
+Sales representatives see only their own calls under **Reporting → Phone performance**.
 
-Review **Customer engagement cadence** for contact/follow-up context and the lead-source table for the displayed acquisition and outcome measures. Read the selected reporting period before comparing sources.
+## Sales reporting tab
 
-## Rep Phone Performance
+The top shows **Workspace talk time**, **Finished calls**, **Answer rate** and **Active members**. Below is one row per team member with talk time, average per day, calls, answered, answer rate and missed calls.
 
-1. Choose the phone-reporting period.
-2. Review team totals.
-3. Expand a representative.
-4. Compare connected talk time, answered calls and total calls.
-5. Review the outcome breakdown and activity heatmap.
-6. Open a call's detail, recording or transcript where available.
+### Filter the list
 
-The heatmap shows when recorded call activity occurred in the reporting timezone. Use it to discuss coverage and follow-up patterns. Inspect the individual calls to understand an unusual day.
+<Frame caption="Phone period, Filter, Display and About this report. Sample data.">
+  <img src="/images/v2/ri-sales-reporting-toolbar.png" alt="Sales reporting toolbar with the Week to date period, a filter button, a display button and an information button." />
+</Frame>
 
-Connected talk time is different from ringing time or number of attempts. Recordings and transcripts depend on capture and permissions; a missing recording does not mean no call happened.
+1. Choose the phone period: **Today**, **Week to date**, **Month to date**, **Last 30 days**, **Year to date** or **All time**. The default is **Week to date**.
+2. Type in **Search members…** to find a person.
+3. Select the filter button to choose **Membership** (active or inactive members) and **Call activity** (with calls or no calls).
+4. Select the display button to group or sort the list.
+5. Select the **i** button to read how each number is worked out.
 
-## Use the numbers fairly
+<Frame caption="Filter options. Sample data.">
+  <img src="/images/v2/ri-sales-filter-menu.png" alt="Filter menu with Membership set to All members and Call activity set to All activity." />
+</Frame>
 
-Check inactive members, attribution, period boundaries and inbound/outbound outcomes where shown. High call volume alone does not establish quality, productivity or sales success. Pair the data with customer outcomes and conversation context.
+### Open one person's report
+
+Select a member's row. Their report has three tabs:
+
+- **Selling stats:** accepted quote value, quotes sent, quote acceptance, deals closed, leads and lead conversion.
+- **Phone summary:** talk time, call outcomes and a calling activity heatmap by day and hour.
+- **Call history:** each finished call. Open a call to play its recording or read its transcript, where one was captured.
+
+<Frame caption="One member's report. Sample data.">
+  <img src="/images/v2/ri-member-report.png" alt="Member report for Amelia Chen showing Selling stats, Phone summary and Call history tabs, with quote and sales activity numbers." />
+</Frame>
+
+Selling stats use the main reporting period (**Last 30 days**, **Last quarter** or **Last 12 months**). Phone numbers use the phone period.
+
+### Read phone numbers fairly
+
+- Talk time counts connected time only, not ringing.
+- Answer rate is answered calls divided by finished calls.
+- A missing recording does not mean the call did not happen.
+- High call volume alone does not prove good work. Look at outcomes too.
+
+## Pipeline tab
+
+**Open:** [**Reporting → Pipeline**](https://app.arcsolar.com.au/dashboard/reporting?reportTab=sales-leads).
+
+- **Customer engagement cadence:** calls, texts, emails and internal notes in the period, plus the average gap between touchpoints. It also flags open leads that need contact.
+- **Lead Source Performance:** for each source, leads, qualified leads, deals, median response time and lead-to-deal rate.
+
+<Frame caption="Lead Source Performance. Sample data.">
+  <img src="/images/v2/ri-lead-sources.png" alt="Lead Source Performance table with Meta ads, Referrals, Organic and Partners rows." />
+</Frame>
+
+Use the reporting period and **Selling brand** filter at the top of the page to change what these cards cover.

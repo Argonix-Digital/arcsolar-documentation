@@ -1,7 +1,7 @@
 ---
 sidebarTitle: "Selling brands FAQ"
 title: "Selling brands and settings: troubleshooting"
-description: "Answers to the questions a second selling brand raises, taken from the behaviour the product actually has."
+description: "Answers to common questions and messages when you sell under more than one brand."
 keywords:
   - "faq"
   - "troubleshooting"
@@ -41,7 +41,7 @@ The appended reason is part of the option's text, so it is visible next to the g
 
 <Accordion title={"My brand is not in the list at all"}>
 
-Your role does not have it. **Administrator**, **Operations**, **Developer** and **Finance** see every brand the workspace has, including brands added later. **Sales** and other roles see only the brands ticked for them, and with none ticked they cannot sell or issue quotes for any brand. See [Who may use which brand](/setup/selling-brands#who-may-use-which-brand).
+Your role does not have it. **Administrator**, **Operations**, **Sales manager**, **Developer** and **Finance** see every brand the workspace has, including brands added later. **Sales representative** and other roles see only the brands ticked for them, and with none ticked they cannot sell or issue quotes for any brand. See [Who may use which brand](/setup/selling-brands#who-may-use-which-brand).
 
 </Accordion>
 
@@ -85,13 +85,11 @@ The workspace's card answers this directly: *"All brands use the workspace's exi
 
 <Accordion title={"Why can I not send a quote under my additional brand?"}>
 
-Because it is deliberately switched off today. An additional brand can hold its own price book, documents, logos, colours, fonts and access list, and a representative can build and **save a draft** under it — but **issuing is blocked**. Three messages say so:
+The brand's agreement isn't published yet. Reps can save drafts under an additional brand straight away, but sending needs a published agreement. Until then the quote shows:
 
-- Under the selling-brand list in the quote: *"Draft preparation is available. Sending requires this brand's approved documents and issuance setup."*
-- Pressing send: **"This selling brand is not ready to issue"** — *"Resolve selling access, brand setup or the saved recovery copy before sending."*
-- If the send reaches the server: *"This brand can save drafts. Sending becomes available after its document and issuance setup is ready."*
+*"Draft preparation is available. Sending requires this brand's approved documents and issuance setup."*
 
-The block is enforced in the database as well as in the interface, so no role, permission or approval turns it on. Do not promise a customer a quote under an additional brand. See [What an additional brand can and cannot do today](/setup/selling-brands#what-an-additional-brand-can-and-cannot-do-today).
+Publish the agreement in [Agreements](/setup/selling-contract), then try again. Also check the brand shows **Ready to sell**. See [Check the brand is ready](/setup/selling-brands#check-the-brand-is-ready).
 
 </Accordion>
 

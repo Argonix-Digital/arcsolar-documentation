@@ -1,35 +1,82 @@
 ---
 icon: "chart-pie"
 sidebarTitle: "Dashboard overview"
-keywords: ["reporting","dashboards","conversions","lifecycle"]
+keywords: ["reporting","dashboards","reports","roles","period","selling brand","export"]
 title: "Dashboard overview"
-description: "Choose the right view and check what each number measures."
+description: "Which dashboards and reports you see, and how to filter them."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="reporting" />
 
-[Rep Overview](/reporting/rep-overview) is a personal work queue: appointments, open pipeline, follow-up work, delivery waiting on others and balances needing attention.
+ArcSolar has three places to check numbers:
 
-[Sales](/reporting/sales) focuses on sales activity and offer outcomes. Use its period and owner controls to understand the displayed pipeline and performance.
-
-[**Reporting**](https://app.arcsolar.com.au/dashboard/reporting) brings together management views. Open the relevant tab:
-
-| Tab | What it summarises |
+| Page | What it is for |
 | --- | --- |
-| [Overview](https://app.arcsolar.com.au/dashboard/reporting?reportTab=overview) | Lifecycle volume, conversion path and exceptions requiring attention |
-| [Sales & Pipeline](https://app.arcsolar.com.au/dashboard/reporting?reportTab=sales-leads) | Customer engagement, lead-source performance and rep phone activity |
-| [Accountability Report](https://app.arcsolar.com.au/dashboard/reporting?reportTab=accountability) | Task ownership, overdue work, escalation and completion |
-| [Operations](https://app.arcsolar.com.au/dashboard/reporting?reportTab=operations) | Delivery performance and operational progress |
-| [Platform information](https://app.arcsolar.com.au/dashboard/reporting?reportTab=platform-information) | Platform/billing information and setup context available to your role |
+| [**Rep Overview**](/reporting/rep-overview) | Your day: appointments, follow-ups, open quotes and tasks |
+| [**Sales**](/reporting/sales) | One rep's quotes, conversion, deal goal and recent wins |
+| [**Reporting**](https://app.arcsolar.com.au/dashboard/reporting) | Team and business reports, in tabs |
 
-## Read reports consistently
+## What you see depends on your role
 
-Check the period, timezone, owner filter, last update and whether the screen uses live or mock data. Phone reporting can have its own period selector. A count from a different time window is not directly comparable.
+| Role | Reporting shows |
+| --- | --- |
+| Administrator, Operations | Every tab |
+| Finance | Every tab except **Accountability Report** |
+| Sales manager | **Team reporting**: you and the reps approved for you |
+| Sales representative | **Phone performance** and **Lead management** for your own work |
+| External marketing | **Lead management** for the customer records shared with you |
+| Technician | No reporting |
 
-Open the underlying customer, call, task or project when investigating a metric. Treat empty/unavailable data differently from a confirmed zero.
+Sales managers and External marketing users who open **Rep Overview** are sent straight to their report.
 
-## Recommended review rhythm
+## Reporting tabs
 
-Review urgent exceptions daily. Review sales activity and unresolved delivery work weekly. Reconcile finance and the period-specific company reports at month end.
+Open [**Reporting**](https://app.arcsolar.com.au/dashboard/reporting) and pick a tab.
+
+<Frame caption="The Reporting tabs. Sample data.">
+  <img src="/images/v2/ri-reporting-tabs.png" alt="Reporting tabs: Overview, Sales reporting, Lead management, Pipeline, Accountability Report, Operations and Platform information." />
+</Frame>
+
+| Tab | What it shows |
+| --- | --- |
+| **Overview** | Four headline numbers, **Lifecycle Volume**, **Conversion Path** and **Work Requiring Attention** |
+| **Sales reporting** | Phone time and selling stats per team member. See [Sales reporting and pipeline](/reporting/sales-pipeline) |
+| **Lead management** | Lead quality and follow-up. See [Lead management](/reporting/lead-management) |
+| **Pipeline** | **Customer engagement cadence** and **Lead Source Performance**. See [Sales reporting and pipeline](/reporting/sales-pipeline#pipeline-tab) |
+| **Deal Outcomes** | Why deals were won, lost or disqualified. Only appears if it is turned on for your business |
+| **Accountability Report** | Open, overdue and completed tasks per person. See [Accountability](/reporting/accountability) |
+| **Operations** | Scheduled, completed and rescheduled work by type. See [Operations and platform](/reporting/operations-platform) |
+| **Platform information** | Monthly call minutes, SMS and platform fees. See [Operations and platform](/reporting/operations-platform#platform-information) |
+
+The four headline numbers at the top are **Lead-to-deal conversion**, **First response**, **Quote acceptance** and **Completed installs**. Each one compares with the period before.
+
+## Filter a report
+
+- **Reporting period:** choose **Last 30 days**, **Last quarter** or **Last 12 months** at the top right.
+- **Sales reporting** has its own phone period (from **Today** to **All time**).
+- **Selling brand:** if your business has more than one selling brand, choose **All selling brands**, one brand or **Unattributed**. Phone activity, engagement, accountability and platform costs always cover the whole business.
+
+The period and tab are saved in the page address, so you can bookmark or share a view.
+
+## Team reporting (Sales managers)
+
+Sales managers see **Team reporting** instead of the tabs. It lists you and your approved reps with **New customers**, **Open opportunities**, **Quotes sent**, **Accepted sales** and **Calls**. Choose the period at the top right.
+
+If only your own row shows, ask an Administrator to add reps to your profile in [Team & Access](/setup/team).
+
+## Communications archive
+
+Administrators see a **Communications archive** button on **Reporting**. It holds read-only SMS history kept from phone numbers that changed owner. Opening a thread is recorded.
+
+## Exporting
+
+Reports have no export button. To take customer data out, use **Export CSV** in the **Customers** actions menu, if your role allows it.
+
+## Read numbers with care
+
+- Check the period before you compare two numbers.
+- **Mock data** means sample numbers, not your business.
+- Open the customer, call, task or project behind a number to see the detail.
+- A blank or unavailable value is not the same as zero.

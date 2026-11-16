@@ -1,32 +1,40 @@
 ---
 icon: "clipboard-check"
 sidebarTitle: "Accountability"
-keywords: ["accountability","overdue tasks","ownership","escalation"]
+keywords: ["accountability","overdue tasks","ownership","escalation","reminders"]
 title: "Accountability"
-description: "See who owns open work and where follow-up is slipping."
+description: "See who owns open tasks and where follow-up is slipping."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="accountability" />
 
-**Open:** [**Reporting → Accountability Report**](https://app.arcsolar.com.au/dashboard/reporting?reportTab=accountability), with an authorised role.
+**Open:** [**Reporting → Accountability Report**](https://app.arcsolar.com.au/dashboard/reporting?reportTab=accountability). Administrators and Operations can see this tab.
+
+<Frame caption="Team task accountability. Sample data.">
+  <img src="/images/v2/ri-accountability.png" alt="Team task accountability table with one row per team member and columns for open, overdue and completed tasks." />
+</Frame>
 
 | Column | Meaning |
 | --- | --- |
-| Open | Open tasks owned by the member |
-| Tagged open | Open work they are tagged in |
-| AI open | Open work identified as AI-related by the task records |
-| Waiting | Tasks waiting for progress |
-| Overdue | Open tasks past their due date |
-| 3+ days | Work at least three days overdue |
-| Completed (30d) | Tasks completed in the last 30 days |
-| On time | Share of those completed tasks finished on time |
+| **Open** | Open tasks the person owns |
+| **Tagged open** | Open tasks they are tagged on but do not own |
+| **AI open** | Open tasks that came from a phone call |
+| **Waiting** | Open tasks marked as waiting |
+| **Overdue** | Open tasks past their due date |
+| **3+ days** | Tasks at least three days overdue |
+| **Completed (30d)** | Tasks completed in the last 30 days |
+| **On time** | Share of those finished by the due date |
 
-Ownership determines accountability. Tagging a person does not transfer it. Waiting tasks remain visible because they still need follow-up.
+The owner is responsible for a task. Tagging someone does not hand it over.
 
-## Run a team review
+## How reminders work
 
-Start with overdue and three-day items. Open the actual task, confirm its owner and blocker, then agree a next action and realistic due date. Review waiting work rather than treating it as complete.
+The line under the table title shows the reminder steps: inbox when due, email after 24 hours, then daily reminders. Rep tasks escalate to Operations after three days.
 
-The displayed reminder flow is inbox when due, email after 24 hours, daily reminders and Operations escalation after three days for rep tasks. Check the applicable settings and delivery status if someone reports missing reminders.
+## Run a weekly review
+
+1. Sort out the **3+ days** and **Overdue** tasks first.
+2. Open each task and agree the next step and a realistic due date with the owner.
+3. Check **Waiting** tasks. They still need follow-up.

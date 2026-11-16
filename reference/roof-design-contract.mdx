@@ -22,7 +22,7 @@ keywords:
 This page is the technical contract behind [Roof Vision](/quoting/roof-design). It is written for integrators and AI agents that need to operate or reason about the feature precisely. Contract version: **1**.
 
 <Visibility for="humans">
-If you only use Roof Vision through the app, you do not need this page. It documents interface-level behaviour — routes, error codes, image requirements and permissions — for technical readers.
+You don't need this page to use Roof Vision. It is technical detail for integrators and AI tools. To learn Roof Vision, read [Use Roof Vision](/quoting/roof-design).
 </Visibility>
 
 <Visibility for="agents">
@@ -126,7 +126,7 @@ Underlying database errors are mapped deterministically: `42501` becomes `403 Yo
 | Surface | Who |
 | --- | --- |
 | Read a design | Active workspace member with access to the linked customer, plus an explicit grant for address-only projects |
-| Mutate a design | Roles `administrator`, `developer`, `operations`, `sales`, with an active auth session |
+| Mutate a design | Roles `administrator`, `developer`, `operations`, `sales`, and `team_leader` within its approved-rep scope, with an active auth session |
 | Grant or share | Workspace owner, `administrator`, or `developer` |
 | Organisation-level defaults | `administrator` or `developer` |
 
@@ -139,7 +139,7 @@ Roof Vision is included with the **Arc** plan. The plan gate is evaluated where 
 | Gate | Applies to | Failure |
 | --- | --- | --- |
 | Arc `roof_vision` entitlement | The Roof Vision page and its design library | Not an error: the page renders the upgrade state — **Roof Vision is not enabled** / `Roof Vision is included with the Arc plan. Upgrade to design roof layouts from satellite imagery and attach them to a quote.` |
-| `page.roof-vision` capability | Reaching the Roof Vision page | Administrator, developer, operations and sales hold it; finance does not |
+| `page.roof-vision` capability | Reaching the Roof Vision page | Administrator, developer, operations, sales manager (`team_leader`, limited to approved reps' customers) and sales representative hold it; finance, technician and external marketing do not |
 | `quote.revise` capability | Cookie-authorised writes — `launch`, `attach`, and cookie writes | `403 You do not have permission to edit quote designs.` |
 | Origin validation | Every cookie-authorised write, and CORS | `403 Request origin denied.` |
 

@@ -1,29 +1,44 @@
 ---
 icon: "bullseye"
 sidebarTitle: "Sales dashboard"
-keywords: ["sales dashboard","goals","appointments","deals"]
+keywords: ["sales dashboard","goals","appointments","deals","commission"]
 title: "Sales dashboard"
-description: "Understand estimate activity, conversion and recently accepted deals."
+description: "One rep's quotes, conversion, deal goal and recent wins."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="sales" />
 
-**Open:** [**Sales**](https://app.arcsolar.com.au/dashboard/sales). Use the representative selector if your role offers it.
+**Open:** [**Sales**](https://app.arcsolar.com.au/dashboard/sales) in the sidebar.
 
-## Read the main areas
+**Reporting for** shows whose numbers you are looking at. Administrators can choose another team member. Everyone else sees their own numbers.
 
-- **Sales metrics:** estimates sent, acceptance, open outcomes and lead-to-deal conversion. Check each metric's period and definition.
-- **Qualified Lead Flow:** assigned leads and their progress toward an estimate or outcome.
-- **Monthly Deal Goal:** recorded wins against the displayed goal.
-- **Appointments:** upcoming conversations that support active opportunities.
-- **Recently Won Deals:** recently accepted work to review for the delivery handoff.
+## What it shows
 
-Live metrics are calculated from assigned leads and owner-visible estimates. Use **Pipeline**, **Customer records** and **Quotes** for record changes.
+| Area | What it shows |
+| --- | --- |
+| **Quotes sent this month** | Total value of estimates sent, compared with last month |
+| **Estimate Acceptance Rate** | Accepted estimates as a share of estimates sent |
+| **Open estimates** | Estimates sent this month with no won or lost outcome |
+| **Lead-to-Deal Rate** | Assigned leads that became closed deals |
+| **Qualified Lead Flow** | Leads assigned and estimates sent over the chosen period |
+| **Appointments** | Upcoming bookings, with **Book appointment** |
+| **Monthly Deal Goal** | Deals won this month against the target |
+| **Recently won deals** | The latest accepted quotes, with deal size and recorded commission |
 
-## Review a result
+If your business has more than one selling brand, use **Selling brand** to filter. Appointments and the deal goal always cover all brands.
 
-Choose the intended representative, inspect the metric or recent win and open the underlying customer/quote. Confirm the offer outcome and any remaining acceptance, deposit or finance requirements. A won-deal count is not a cash-collected total.
+## Check a result
 
-For call volume, connected minutes, the heatmap and recordings, open [Reporting → Sales & Pipeline](/reporting/sales-pipeline).
+1. Choose the rep in **Reporting for** (Administrators only).
+2. Open a quote in **Recently won deals** to check its customer, deposit and finance steps.
+3. Make changes in **Customers** or **Quotes**, not here. This page only reports.
+
+Accepted quote value is not cash collected. For payments, use [Finance](/delivery/finance).
+
+## External marketing
+
+External marketing users see a different **Sales** page with **Sales follow-up** and **Rep analysis** for the leads they supplied.
+
+For call minutes and per-rep phone reports, open [Sales reporting](/reporting/sales-pipeline).

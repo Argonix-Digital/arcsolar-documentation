@@ -6,115 +6,123 @@ keywords:
   - "pricing"
   - "deposits"
   - "services"
-  - "branding"
+  - "review changes"
+  - "apply"
+  - "schedule"
+  - "delegate"
   - "selling brand"
-  - "documents"
 title: "Retailer Settings"
-description: "Set the commercial rules for the selling brand you are editing."
+description: "Change prices, payments and quote defaults, then review and apply them to new quotes."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="settings" />
 
-Open **Retailer Settings** and check **Selling brand** before changing anything. Prices, fees and quote terms follow the selected brand.
+Retailer Settings is the **Selling** group in [Settings](/setup/settings-screens): **Pricing & fees**, **Service areas**, **Payments & finance**, **Projects**, **Automated messages** and **Integrations**.
 
-## Make a change
+**Open:** [**Settings → Pricing & fees**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=pricing).
 
-Choose the relevant tab, review the current rule and save your changes. Where offered, review the before-and-after values, then **Apply immediately** or **Schedule a start time**. Check a new sample quote afterwards.
+Check the **Selling brand** box at the top first. Prices, fees and quote terms follow that brand. With only one brand, the box is plain text.
 
-Issued offers keep their saved values. Use the revision process to change an existing offer.
+## Change pricing or payment settings
 
-## Choose the right section
+Changes to **Pricing & fees** and **Payments & finance** don't go live straight away. You save a draft, review it, then apply it.
 
-**Pricing & fees** controls the price basis and defaults. **Payments & finance** controls terms, deposits and installation windows. **Automated messages** controls follow-up SMS. **Appearance defaults** and **Agreements** cover customer-facing identity and documents. **Integrations** connects providers.
+1. Change the settings you need.
+2. Select **Save draft** to keep your work, or go straight to **Review changes**.
 
-Tab visibility and the ability to apply changes depend on your role. Service pricing may open **Product Catalogue → Services** instead.
+   <Frame caption="The save bar at the bottom of Pricing & fees. Sample data.">
+     <img src="/images/v2/st-pricing-save-bar.png" alt="Save bar showing 'You have unsaved changes', 1 change compared with defaults, and the Reset edits, Save draft and Review changes buttons." />
+   </Frame>
 
+3. **Review changes** saves the draft and opens **Review changes for new quotes**. Check each row's **Before** and **After** value.
+4. Under **Start using these settings**, choose **Apply immediately** or **Schedule a start time**. A scheduled time uses your browser's timezone.
+5. Select **Apply to new quotes** (or **Schedule for new quotes**).
 
-## Details
+<Frame caption="Review changes for new quotes. Sample data.">
+  <img src="/images/v2/st-review-changes.png" alt="The Review changes for new quotes window: a Before and After table, the Start using these settings menu set to Apply immediately, and the apply button." />
+</Frame>
 
-<Accordion title={"Switch the brand you are editing"}>
+Quotes already issued or accepted keep their saved prices. Open a new practice quote afterwards to check the result.
 
-Use the **Selling brand** box in the title row. The commercial settings and agreements follow it, and the readiness report is recalculated for the brand you chose. If only one brand is available to you the box is a plain label instead — with a single brand there is nothing to choose.
+**Reset edits** throws away unsaved changes. Upcoming versions are listed under **Scheduled versions**.
 
-See [Sell under more than one selling brand](/setup/selling-brands) for the states that make an entry unselectable, and for who may edit which brand.
+## Who can edit
 
-</Accordion>
+Administrators, developers and operations can edit all of Retailer Settings.
 
-<Accordion title={"Who can open which tab"}>
+Administrators and developers can also let **Finance** staff edit pricing or finance:
 
-The strip is filtered to the sections your role can use, so a tab you cannot use is absent rather than empty:
+1. Open **Pricing & fees** or **Payments & finance**.
+2. Expand **Team editing permissions**.
+3. For each finance team member, turn on **Pricing editing** (prices, service rules and quote defaults) and/or **Finance editing** (provider terms, merchant fees and deposits).
 
-| Tab | Who sees it |
+If your draft changes a section you can't apply, someone with permission for every changed section must apply it.
+
+## Pricing & fees
+
+| Setting | What it does |
 | --- | --- |
-| **Pricing & fees**, **Payments & finance**, **Integrations** | Everyone who can open Retailer Settings |
-| **Services & fees** | Shown only while the service catalogue is unavailable; otherwise the entry opens **Product Catalogue → Services** |
-| **Automated messages** | Roles that can configure quote SMS |
-| **Appearance defaults**, **Agreements** | Administrators and developers |
+| **Package selling price basis** | **After federal STCs** or **Before incentives**. After-STC prices show the STC deduction separately |
+| **Commercial STC price per certificate** | What you offer per certificate |
+| **Hot-water STC price per certificate** | Uses the commercial STC price when blank |
+| **VEEC price per certificate** | Uses a market estimate when blank |
+| **Quote validity (days)** | How long a new quote stays valid |
+| **Default installation date is in** | Suggested installation date for new quotes |
 
-Opening a **Appearance defaults** or **Agreements** address directly as another role sends you back to **Pricing & fees**.
+**Advanced operations settings** holds **Require detailed bill of materials**: **Optional**, **Before issuing a quote** or **At operational handover**.
 
-The readiness report above the tabs follows the same administrator-and-developer rule, because the document rows behind it are not readable by every role — and a brand that cannot be read must never be reported as an incomplete one.
+Package prices are set in Product Catalogue. See [Pricing](/setup/pricing).
 
-</Accordion>
+## Services & add-ons
 
-<Accordion title={"Apply a commercial change"}>
+Chargeable services, such as a switchboard upgrade, live in [**Product Catalogue → Services & add-ons**](https://app.arcsolar.com.au/dashboard/product-catalogue?tab=services). **Services & fees** in the Settings sidebar opens it.
 
-1. Open the relevant tab and review the current settings.
-2. Change the specific rule. Check whether a package price is **After federal STCs** or **Before incentives**.
-3. Save the draft and review validation messages.
-4. Review the before-and-after changes and payment terms.
-5. Choose **Apply immediately** or **Schedule a start time**, where available.
-6. Apply using an account with the required permission.
-7. Open a new sample quote and confirm the resulting calculation.
+<Frame caption="Product Catalogue → Services & add-ons. Sample data.">
+  <img src="/images/v2/st-services-addons.png" alt="The Services & add-ons tab in Product Catalogue listing three services with price, status and an Edit button, plus Add service." />
+</Frame>
 
-Published changes apply according to their effective date. Sent quotes retain their issued values. Changing a setting is not permission to rewrite an accepted contract.
+Select **Add service** or **Edit** on a row to set its price and when it is added to a quote.
 
-</Accordion>
+## Finance and deposits
 
-<Accordion title={"Finance and deposits"}>
+**Payments & finance** has three parts.
 
-The **Payments & finance** tab has three cards.
+**Customer finance.** Turn on **Offer finance**. Enter **Provider name**, **Annual interest rate (%)** and **Default term**. Under **Fees & loan limits**, set **Credit assistance fee**, **Credit fee treatment** (**Include in amount financed** or **Pay upfront**), **Monthly account fee**, **Minimum finance amount**, **Maximum finance amount** and the **Available terms**.
 
-### Customer finance
+**Retailer finance costs.** **Merchant fee (%)** and **Fixed merchant fee**. These feed the finance dashboard. They are not added to customer repayments.
 
-_"Use the terms agreed with your finance provider. Quotes show an estimate of repayments and the fees included."_
-
-Turn **Offer finance** on or off, then record the **Provider name**, **Annual interest rate (%)**, **Credit assistance fee**, **Credit fee treatment** (**Include in amount financed** or **Pay upfront**), **Monthly account fee**, **Minimum finance amount** and **Maximum finance amount**, and tick the **Available terms** you offer (1 to 10 years) with a **Default term**.
-
-### Retailer finance costs
-
-_"Internal merchant fees for the finance dashboard. These are not added to customer repayments."_ — **Merchant fee (%)** and **Fixed merchant fee**.
-
-### Direct payments & deposits
-
-_"Set the deposit limits and delivery payment. The remaining balance is automatically due on installation, so the three payments always total 100%."_
+**Direct payments & deposits.**
 
 | Field | What it means |
 | --- | --- |
-| **Offer direct payment** | Whether a customer can pay directly at all |
-| **Default deposit** | _"Starting amount for a new quote, adjusted to its permitted deposit range."_ It must be at least the minimum deposit |
-| **Minimum deposit** | The smallest deposit a representative may ask for |
-| **Deposit limit (% of customer balance)** | _"The most a rep can request as a deposit, not a fixed payment percentage. On small quotes, the minimum deposit takes priority, capped at the full balance."_ |
-| **Stock delivery payment (% of customer balance)** | _"Calculated from the full customer balance, capped at what remains after the deposit."_ |
-| **Installation minimum (weeks)** | _"Earliest installation window quoted on a direct-payment contract, counted from acceptance."_ |
-| **Installation maximum (weeks)** | _"Latest installation window quoted on a direct-payment contract, counted from acceptance."_ |
+| **Offer direct payment** | Whether customers can pay you directly |
+| **Default deposit** | Starting deposit for a new quote. Must be at least the minimum |
+| **Minimum deposit** | Smallest deposit a rep can ask for |
+| **Deposit limit (% of customer balance)** | The most a rep can ask for as a deposit |
+| **Stock delivery payment (% of customer balance)** | Paid when stock is delivered, capped at what's left after the deposit |
+| **Installation minimum (weeks)** / **Installation maximum (weeks)** | The installation window quoted on a direct-payment contract, counted from acceptance |
 
-<Info>
-  **These three values are the single source of truth for the customer contract.** The deposit limit, the stock delivery percentage and the installation window are read from here when a contract is rendered, so the next quote picks up a change immediately and no approved agreement can store a different one. The default is **2–6 weeks**, and the contract words it in full: _"N–N weeks from receipt of the deposit and/or Solar Victoria approval, subject to stock availability."_ See [The NETCC contract](/setup/selling-contract).
-</Info>
+The rest of the balance is due on installation. Open **How payments are calculated** to see a worked breakdown.
 
-The card closes with the rule that stops confusion about arithmetic: _"The deposit limit and delivery percentage do not need to add up to 100%. Installation is the customer balance minus the actual deposit and delivery payment."_
+The contract reads its deposit limit, delivery payment and installation window from here. See [Customer agreements](/setup/selling-contract). How reps use these on a quote: [Payment options](/quoting/payment-options).
 
-The quote's own payment controls are explained in [Payment options](/quoting/payment-options).
+## Other Selling screens
 
-</Accordion>
+| Screen | What you set | How it saves |
+| --- | --- | --- |
+| **Service areas** | **Whole states** and **Additional postcodes** your business covers | **Save service areas** |
+| **Projects** | **Estimated days from close to installation**, and whether jobs get a **Send NETCC contract** step | Its own **Save**. Only project managers can change it |
+| **Automated messages** | Customer messages, **Quote-view alerts**, **Quote follow-ups**, **Appointment confirmations & reminders** and **Project completion messages** | Each section saves on its own |
+| **Integrations** | Connected providers and **Grid connection** | Per provider. See [Integrations](/integrations/overview) |
 
-<Accordion title={"Services and materials"}>
+<Frame caption="Service areas. Sample data.">
+  <img src="/images/v2/st-service-areas.png" alt="The Service areas screen with checkboxes for each state and a box for additional postcodes." />
+</Frame>
 
-Choose whether a service is rep-selected or triggered by a condition such as indoor installation, cable run, extra storeys or panel removal. Check the region, quantity and whether the price comes from the catalogue or a custom selling price.
+Service areas are shared with connected ArcLeads agencies. Leave both lists empty until you have decided your coverage.
 
-Choose when detailed materials must be complete: optional, before issuing a quote or at operational handover. Equipment and quantities still need to match the proposed system.
+**Automated messages** shows only for roles that can set up quote SMS. **Appearance defaults** and **Agreements** are covered in [Branding](/setup/branding) and [Customer agreements](/setup/selling-contract).
 
-</Accordion>
+<NextGuide href="/setup/selling-brands" title="Selling brands" />

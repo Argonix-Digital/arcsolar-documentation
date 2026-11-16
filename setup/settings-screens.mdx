@@ -1,124 +1,122 @@
 ---
 sidebarTitle: "Find the right settings"
 title: "Find the right settings"
-description: "Choose business, workspace or personal settings before making a change."
+description: "A map of every Settings screen, grouped the way the Settings sidebar shows them."
 keywords:
   - "settings"
   - "retailer settings"
   - "arcsolar settings"
   - "profile settings"
   - "where is"
-  - "per brand"
-  - "per workspace"
-  - "per person"
+  - "settings map"
+  - "settings sidebar"
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="settings" />
 
-## Choose your settings area
+Open [**Settings**](https://app.arcsolar.com.au/dashboard/settings). The sidebar groups every screen. You only see the groups and screens your role can use.
 
-| Area | What belongs there |
+Not sure where something lives? Type it in **Search settings…** at the top of the sidebar, for example "deposit" or "logo".
+
+## Personal
+
+Settings for you alone. Nobody else is affected.
+
+<Frame caption="The Personal group. Sample data.">
+  <img src="/images/v2/st-nav-personal.png" alt="The Personal group in the Settings sidebar: Profile, Security, Preferences and Notifications." />
+</Frame>
+
+| Screen | What you change |
 | --- | --- |
-| **Retailer Settings** | Selling-brand pricing, payments, appearance, agreements and integrations |
-| **ArcSolar Settings** | Workspace identity, organisation-wide setup and selling-brand administration |
-| **Profile Settings** | Your account, appearance, notifications and availability |
+| [**Profile**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=profile) | Your name, photo, personal email and personal mobile |
+| [**Security**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=security) | Your password |
+| [**Preferences**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=appearance) | Theme, contrast and start page |
+| [**Notifications**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=notifications) | Which updates reach you by email or SMS. See [Notifications](/setup/notifications) |
+| [**Availability**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=availability) | Sales reps only. Your appointment hours. See [Sales availability](/setup/sales-availability) |
 
-Check the selected selling brand before changing a commercial rule. Check the role and organisation before making a workspace change. Your role determines the available tabs.
+## Workspace
 
-The field-by-field map below helps you find a setting that has moved or changed its label.
+Your business as a whole. Administrators and owners.
 
+<Frame caption="The Workspace group. Sample data.">
+  <img src="/images/v2/st-nav-workspace.png" alt="The Workspace group in the Settings sidebar: Business details, Calls & SMS, Billing and Customer payments." />
+</Frame>
 
-## Details
-
-<Accordion title={"Retailer Settings \u2014 per selling brand"}>
-
-The **Selling brand** value names the commercial context. **Appearance defaults** is identified separately as workspace branding defaults.
-
-
-
-| Tab | What it changes |
+| Screen | What you change |
 | --- | --- |
-| **Pricing & fees** | Package price basis, quote defaults, BOM completeness |
-| **Services & fees** | Chargeable services, quantities, allowances and regions |
-| **Payments & finance** | Finance terms and fees, and the direct-payment deposit, stock delivery and installation window |
-| **Automated messages** | Automatic quote SMS wording and timing |
-| **Appearance defaults** | Names, website, sending address, logos, colours and contract fonts |
-| **Agreements** | This brand's agreement wording and consent text |
-| **Integrations** | Connected providers and rebate tracking |
+| [**Business details**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-details) | Legal name, ABN, address, timezone and workspace avatar. **Existing document approvals** sits at the bottom |
+| [**Calls & SMS**](https://app.arcsolar.com.au/dashboard/settings?tab=phone-numbers) | Give team members a phone number and a call alert mobile |
+| [**Billing**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-billing) | Your ArcSolar plan, payment method, and how calls and SMS are paid. See [Billing](/setup/billing) and [Pay for calls and SMS](/setup/payto) |
+| [**Customer payments**](https://app.arcsolar.com.au/dashboard/settings?tab=customer-payments) | The bank account customers can pay by bank transfer when card checkout is unavailable |
 
-The **Selling brand** box in the title row decides which brand all of this applies to, and the readiness panel above the tabs reports that brand's quoting minimum to administrators and developers. Some tabs are absent for some roles — **Appearance defaults** and **Agreements** are administrator-and-developer screens, and **Services & fees** appears only while the service catalogue is unavailable.
+## Brands
 
-Go here for: prices and fees, deposit and installation terms, the customer SMS wording, the customer-facing branding, the agreement, and which providers are connected for a brand.
+Who your customers buy from, and what they see. Administrators and developers.
 
-</Accordion>
+<Frame caption="The Brands group. Sample data.">
+  <img src="/images/v2/st-nav-brands.png" alt="The Brands group in the Settings sidebar: Selling brands, Appearance defaults, Agreements and Selling access." />
+</Frame>
 
-<Accordion title={"ArcSolar Settings \u2014 per workspace"}>
-
-> *"Platform administration for the organisation. Administrators and owners only — nothing here is per brand or per person."*
-
-| Tab | What it changes |
+| Screen | What you change |
 | --- | --- |
-| **Organisation details** | The organisation's own identity and business details |
-| **Phone numbers** | The numbers the workspace answers on |
-| **Organisation billing** | What ArcSolar charges the organisation, and the payment mandate |
-| **Selling Brands** | Creating, enabling, renaming and archiving selling brands |
-| **Customer documents** | The approval by the workspace owner or a developer of each brand's document, and the organisation's own document settings |
+| [**Selling brands**](https://app.arcsolar.com.au/dashboard/settings?tab=selling-brands) | Add, rename or archive a brand. See [Selling brands](/setup/selling-brands) |
+| [**Appearance defaults**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) | Names, logos, colours, sending address and contract fonts. See [Branding](/setup/branding) |
+| [**Agreements**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=documents) | The customer agreement for each brand. See [Customer agreements](/setup/selling-contract) |
+| [**Selling access**](https://app.arcsolar.com.au/dashboard/team-access?tab=brand-access) | Who may sell under each brand |
 
-Each tab is present only when it applies to you, so a tab you cannot use is absent rather than empty. **Customer documents** follows the owner-or-developer rule, and **Selling Brands** needs an administrator or developer. Refunds and rebate settings live under their own screens rather than here.
+## Selling
 
-Go here for: the business's legal identity, the numbers the workspace uses, billing, adding or archiving a selling brand, and approving a brand's document.
+How you price, take payment and deliver. These screens follow the brand chosen in the **Selling brand** box at the top.
 
-<Info>
-  **Selling Brands sits here rather than in Retailer Settings**, and that is deliberate: creating or retiring a commercial identity changes the workspace, while editing one brand's terms does not. The same card is also shown on **Retailer Settings → Branding** for convenience — both edit the same thing.
-</Info>
+<Frame caption="The Selling group. Sample data.">
+  <img src="/images/v2/st-nav-selling.png" alt="The Selling group in the Settings sidebar: Pricing & fees, Service areas, Payments & finance, Projects, Automated messages, Integrations and Services & fees." />
+</Frame>
 
-</Accordion>
-
-<Accordion title={"Profile Settings \u2014 per person"}>
-
-> _"Each user manages their own account. Nothing here changes what anyone else sees or can do."_
-
-Three tabs — **Profile**, **Appearance** and **Notifications**:
-
-| Tab | What it changes |
+| Screen | What you change |
 | --- | --- |
-| **Profile** | Your display name, profile picture (JPEG, PNG or WebP, up to 5 MB) and private contact email, the **Account security** card where you change your password, and a summary of your own role and team |
-| **Appearance** | The interface theme — **Light**, **Dark** or **System** — and the **Increase contrast** switch: _"Stronger text and control colours across the app."_ |
-| **Notifications** | Which notifications you receive |
+| [**Pricing & fees**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=pricing) | Price basis, STC and VEEC values, quote validity and default installation date. See [Retailer Settings](/setup/retailer-settings) and [Pricing](/setup/pricing) |
+| [**Service areas**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=service-areas) | The states and postcodes your business services |
+| [**Payments & finance**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=finance) | Finance terms, deposits, delivery payment and installation window |
+| [**Projects**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=projects) | Days from close to installation, and delivery checklist steps |
+| [**Automated messages**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=quote-sms) | Customer messages, quote-view alerts, quote follow-ups, appointment reminders and completion messages |
+| [**Integrations**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations) | Connected providers. See [Integrations](/integrations/overview) |
+| [**Services & fees**](https://app.arcsolar.com.au/dashboard/product-catalogue?tab=services) | Opens **Product Catalogue → Services & add-ons** |
 
-Go here for: anything about *you*. A colleague cannot change these for you, and you cannot change theirs.
+## Administration
 
-<Info>
-  **More interface preferences sit in the header, not here.** The **Preferences** panel in the top bar also controls theme presets, interface fonts, navbar behaviour, page layout and sidebar style. **Profile Settings → Appearance** holds the theme and the contrast switch specifically. All of them are personal to you.
-</Info>
+Your team. Administrators see every screen.
 
-<Warning>
-  **Appearance here is not branding.** **Profile Settings → Appearance** changes the interface for you alone — the theme, dark mode and interface font. **Retailer Settings → Branding** changes what your *customers* see: logos, colours, your sending address and the contract fonts. They are two different screens on purpose.
-</Warning>
+<Frame caption="The Administration group. Sample data.">
+  <img src="/images/v2/st-nav-administration.png" alt="The Administration group in the Settings sidebar: Members, Invitations, Number assignments, Roles, Access review and Revenue access." />
+</Frame>
 
-</Accordion>
-
-<Accordion title={"Where did the old Settings tabs go?"}>
-
-Three sections that used to be tabs of Settings now live on Profile Settings, and older links still work:
-
-| Old address | Where it lands now |
+| Screen | What you change |
 | --- | --- |
-| `?tab=account` | **Profile Settings → Profile** |
-| `?tab=appearance` | **Profile Settings → Appearance** |
-| `?tab=notifications` | **Profile Settings → Notifications** |
-| `?tab=integrations`, `?tab=quote-sms` | **Retailer Settings** on the matching tab |
+| [**Members**](https://app.arcsolar.com.au/dashboard/team-access?tab=team) | Your team list. Invite, suspend or offboard. See [Invite your team](/setup/team) |
+| [**Invitations**](https://app.arcsolar.com.au/dashboard/team-access?tab=invitations) | Pending invitations |
+| [**Number assignments**](https://app.arcsolar.com.au/dashboard/team-access?tab=phone-numbers) | Who holds each business number, and its history |
+| [**Roles**](https://app.arcsolar.com.au/dashboard/team-access?tab=roles) | What each role can do. See [Roles](/setup/roles) |
+| [**Access review**](https://app.arcsolar.com.au/dashboard/team-access?tab=access-review) | Check who can see what |
+| [**Revenue access**](https://app.arcsolar.com.au/dashboard/team-access?tab=revenue-access) | Temporary quoting or calling access for a member |
 
-If a bookmarked link or an email footer sends you to an old tab, it will open the right screen rather than an empty frame.
+## Rebates
 
-</Accordion>
+Government programs your team can offer.
 
-<Accordion title={"A quick way to decide"}>
+<Frame caption="The Rebates group. Sample data.">
+  <img src="/images/v2/st-nav-rebates.png" alt="The Rebates group in the Settings sidebar: Rebates & offers, Equipment data and Sources & evidence." />
+</Frame>
 
-1. **Is it about one brand selling on its own terms?** Retailer Settings, with that brand selected in the **Selling brand** box.
-2. **Is it about the business itself, or which brands exist?** ArcSolar Settings.
-3. **Is it about you?** Profile Settings.
+| Screen | What you change |
+| --- | --- |
+| [**Rebates & offers**](https://app.arcsolar.com.au/dashboard/energy-data?tab=incentives) | Which rebate and loan programs you offer. See [Rebates and incentives](/delivery/rebates) |
+| [**Equipment data**](https://app.arcsolar.com.au/dashboard/energy-data?tab=equipment) | Official equipment lists |
+| [**Sources & evidence**](https://app.arcsolar.com.au/dashboard/energy-data?tab=sources) | Where rebate rules come from, and when they were checked |
 
-</Accordion>
+## Old links
+
+Older links to `?tab=account`, `?tab=appearance` or `?tab=notifications` on Settings still open the right Profile Settings screen.
+
+<NextGuide href="/setup/retailer-settings" title="Retailer Settings" />

@@ -1,47 +1,64 @@
 ---
 icon: "arrows-rotate"
 sidebarTitle: "Meta lead sync"
-keywords: ["Facebook","Instagram","Meta","leads","conversions"]
+keywords: ["Facebook","Instagram","Meta","Instant Forms","lead ads","Pixel","Dataset","conversions"]
 title: "Meta lead sync"
-description: "Import enquiries and send supported qualification feedback to Meta."
+description: "Bring Facebook and Instagram Instant Form leads into Customers, and send results back to Meta."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="meta" />
 
-**Open:** [**Customers**](https://app.arcsolar.com.au/dashboard/customers) and its **Meta** integration control. Use an account with permission to manage the connection.
+Meta is in **Beta**. Administrators and Operations can connect it. You don't need any technical keys: you sign in with Meta and approve access there.
 
-## Before connecting
+## What it does
 
-Have access to the correct Facebook Page and Pixel/Dataset. Meta consent must allow Page management and the required assets. The platform connection must be available before your business can connect.
+- **Leads in:** new Instant Form submissions from the Pages you choose arrive in Customers at **New**. They are shared round-robin across your sales reps, with an Administrator as the fallback.
+- **Feedback out (optional):** if you pick a Pixel/Dataset for a Page, ArcSolar tells Meta when a lead moves straight from **New** to **Contacted** or **Quoted**. Later stages are not sent.
+
+## Before you start
+
+The person who signs in must be able to manage your Facebook Page in Meta. The Page needs at least one active Instant Form. A Pixel/Dataset is only needed for feedback.
+
+## Connect Meta
 
 <Steps>
-<Step title="Connect Meta">
-Choose **Connect Meta** and sign in through Meta's own authorisation screen.
+<Step title="Open the Meta settings">
+Go to [**Customers**](https://app.arcsolar.com.au/dashboard/customers), open the actions menu (**More customer actions**) and choose **Meta integration**. You can also use **Set up Meta** in [**Retailer Settings → Integrations → Meta**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations).
 </Step>
-<Step title="Choose the business assets in Meta">
-Authorise one intended Page with Page Manage access and one Pixel/Dataset. The CRM does not provide a separate asset picker for this setup.
+<Step title="Sign in with Meta">
+Select **Connect Meta**. Sign in on Meta's screen and approve your Pages, and your Pixel/Dataset if you want feedback.
 </Step>
-<Step title="Check the connection">
-Return to ArcSolar and look for **Connected and syncing**. Review the Page, connected forms and inbound routing.
+<Step title="Choose your Pages">
+If you approved more than one Page, ArcSolar asks you to choose. Tick each Page to sync. For each one, pick a Pixel/Dataset or leave **Feedback off · import leads only**. Then select **Connect 1 Page** (or **Connect 2 Pages**, and so on).
 </Step>
-<Step title="Verify both directions">
-Submit a clearly identified test lead through the intended form. Check that it arrives with the right source and customer details. Follow the supported qualification transition and inspect the integration/provider diagnostics for feedback.
+<Step title="Check it">
+The dialog shows **Connected and syncing**, the business name and each Page with its active forms. Submit a test lead on your form and check it appears in Customers.
 </Step>
 </Steps>
 
-## What two-way means
+<Frame caption="Meta integration in the Customers actions menu. Sample data.">
+  <img src="/images/v2/ri-customers-meta-menu.png" alt="Customers actions menu with Meta integration, Bulk import leads, Export CSV and Copy lead intake form link." />
+</Frame>
 
-**Inbound:** leads from the connected Page's forms enter the CRM.
+<Frame caption="The Meta lead integration dialog before connecting. The sample workspace cannot sign in to Meta.">
+  <img src="/images/v2/ri-meta-dialog.png" alt="Meta lead integration dialog showing inbound routing, qualification and feedback queue, with an Authorise with Meta section and a Connect Meta button." />
+</Frame>
 
-**Outbound:** the inspected connection describes qualification feedback when **New** moves directly to **Contacted** or **Quoted**. Do not assume every later stage, note or message is mirrored back to Meta.
+## Manage the connection
 
-A connected status does not prove attribution or improved advertising results. Verify an actual lead and the supported event before declaring the setup complete.
+- **Pages & feedback:** add or remove Pages, or change a Page's Pixel/Dataset. Turning feedback off cancels feedback not yet sent.
+- **Feedback queue:** how many updates are waiting to be sent to Meta.
+- **Leads that need review:** a red number next to **Meta integration** means some leads could not be added automatically. Open the dialog, fix the contact details, choose the right customer and select **Import reviewed lead**, or delete the lead.
+- **Disconnect:** stops new leads and feedback. Existing customers stay as they are.
 
-## Fix a connection
+## Fix a problem
 
-- **Reconnect Meta:** access expired or was removed; repeat authorisation.
-- **Automatic setup is waiting on Meta:** check the Page and Pixel/Dataset choices in Meta consent.
-- **Management access required:** use an appropriately authorised account.
-- **Sign-in temporarily unavailable:** contact ArcSolar support; clients should not need to supply platform technical credentials.
+| Message | What to do |
+| --- | --- |
+| **Reconnect Meta** | Access expired or was removed. Select **Reconnect Meta** and sign in again |
+| **Nothing to connect yet** | No Page with an active Instant Form was found. Check your forms, then reconnect |
+| **Meta sign-in is temporarily unavailable** | Meta setup isn't ready on ArcSolar's side. Contact ArcSolar support |
+| **Meta connection outside your sharing scope** | Ask an Administrator to check your access |
+| **Managed by an administrator** | Your role can't change Meta. Ask an Administrator or Operations user |

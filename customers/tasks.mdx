@@ -1,50 +1,100 @@
 ---
 icon: "circle-check"
 sidebarTitle: "Tasks"
-keywords: ["tasks","due dates","completion","ownership","ArgonixIntelligence","automatic tasks","review timing"]
+keywords: ["tasks","due dates","completion note","owner","team tasks","overdue","ArgonixIntelligence","automatic tasks","review timing","archive task"]
 title: "Tasks"
-description: "Give every follow-up an owner, a date and a useful outcome."
+description: "Give every follow-up an owner and a due date, then close it with a note."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="tasks" />
 
-Open [**Tasks**](https://app.arcsolar.com.au/dashboard/work-tasks) or the task action on a customer record.
+A task is one thing someone must do for a customer, such as a call back or collecting a bill. Every task has an owner and can have a due date.
+
+Open [**Tasks**](https://app.arcsolar.com.au/dashboard/work-tasks) from the sidebar.
+
+## Find your tasks
+
+- **My tasks** shows tasks you own and tasks where you are tagged (marked **Tagged**).
+- **Team tasks** shows everyone's tasks. It is available to Administrators, Operations and Sales managers.
+
+Use **Task view** to switch between **All open**, **Overdue**, **Today**, **Upcoming**, **Completed** and **Archived**. **Search tasks** finds a title. **Filter tasks** filters by **Status**, **Priority** and **Type**. **Show task summary** counts tasks by status, priority, assignee or type. Select a row in the summary to filter by it.
+
+Overdue tasks are listed first. A date marked **Review timing** is an internal reminder from a call, not a time agreed with the customer.
 
 ## Create a task
 
-Choose **New task**, link the customer and write a specific action. Set the owner, due date, priority and type, then save. Tag colleagues when they need context; the named owner remains responsible.
+<Steps>
+  <Step title="Open the form">
+    Select **New task**. Or, from a customer, choose **Actions → Customer record → Create follow-up task**.
+  </Step>
+  <Step title="Describe the work">
+    Write a clear **Task title**, such as "Call to confirm battery size".
+  </Step>
+  <Step title="Link the customer">
+    Search for the **Customer**. (From a customer record, this is filled in for you.)
+  </Step>
+  <Step title="Set the details">
+    Choose the owner, type and priority. Add a **Due date** and **Notes** if useful.
+  </Step>
+  <Step title="Save">
+    Select **Create task** (or **Add task** from a customer record).
+  </Step>
+</Steps>
 
-**My tasks** includes owned and tagged work. Authorised managers can use **Team tasks**. Filter by date, title, status, priority or type; check pagination when searching.
+<Frame caption="The New task form. Sample data.">
+  <img src="/images/v2/cu-new-task.png" alt="The New task dialog with Task title, Customer search, owner, type and priority buttons, Due date and Notes." />
+</Frame>
 
-## Update the work
+| Setting | Options |
+| --- | --- |
+| Type | **General**, **Follow-up**, **Assign installer**, **Collect document**, **Schedule**, **QA**, **Payment follow-up** |
+| Priority | **Low**, **Normal**, **High**, **Urgent** |
 
-Open the task's **Actions**. Use **To do**, **In progress**, **Completed** or **Archived / incorrectly detected** as appropriate. **Waiting** is offered while a task is already waiting. Archiving removes active follow-up without counting it as completed; **To do** reopens it.
+Tasks don't repeat. Create a new task for each follow-up.
 
-Add an optional **Completion note** when marking work complete. It appears in the customer's Activity.
+## Update or complete a task
+
+Select a task in the list to open it.
+
+<Frame caption="An open task. Sample data.">
+  <img src="/images/v2/cu-task-panel.png" alt="An open task showing Status, Owner, Due date and time, Context, Linked records, a Completion note box, and Archive task and Complete task buttons." />
+</Frame>
+
+- Change **Status** to **To do** or **In progress**. Tasks waiting on the customer show **Waiting**.
+- Change the **Owner** or **Due** date and time, if your access allows. Move a **Waiting** task back to **To do** before changing its owner.
+- Read **Context** and open **Linked records**, such as the customer's activity or the source call.
+- When done, add an optional **Completion note** and select **Complete task**. The note is saved to the customer's Activity.
+- If the task is wrong or no longer needed, select **Archive task**. Archived tasks do not count as completed.
+
+You can do the same from a customer record: on **Overview**, select **Update task** on the next action.
+
+<Frame caption="Update task on a customer record. Sample data.">
+  <img src="/images/v2/cu-update-task.png" alt="The Update task dialog with a Completion note box, Complete task, Change status or due date, and Archive task." />
+</Frame>
+
+A task's due date does not book time. To book a call or visit, use [Calendar](/delivery/calendar) or **Actions → Communicate → Book appointment**.
 
 ## Tasks from calls
 
-When a call summary is ready, ArcSolar creates action-item tasks for the customer's assigned rep. Review those before creating duplicates.
+ArgonixIntelligence creates tasks from the next steps agreed on a call. Check these before you add your own, so you don't duplicate them.
 
-- **To do** is work for the rep.
-- **Await customer: …** stays in **Waiting** until the customer acts.
-- **Review timing** is an internal reminder, not a customer-agreed appointment.
+- Tasks for you start in **To do**.
+- **Await customer: …** tasks wait in **Waiting** until the customer acts.
+- **Review timing** is an internal reminder, not a booked appointment.
 
-Changing a task date does not move an appointment. Use [Calendar](/delivery/calendar) to change a booking. [CallIntelligence](/customers/call-intelligence#tasks-are-created-automatically) explains automatic task timing.
+[CallIntelligence](/customers/call-intelligence#tasks-are-created-automatically) explains how these tasks get their dates.
 
-<NextGuide href="/delivery/calendar" title="Calendar" />
+<NextGuide href="/customers/daily-routine" title="Your sales day" />
 
 <Visibility for="agents">
-- Call-derived tasks are created by the `call_summaries_sync_action_tasks` trigger, not by a user. Never tell a user to create a task that a call summary already produced.
-- They are identifiable by a non-null `intelligence_call_id` and are labelled **ArgonixIntelligence** in the list.
+- Call-derived tasks are created by the `call_summaries_sync_action_tasks` trigger, not by a user. Never tell a user to create a task that a call summary already produced. They have a non-null `intelligence_call_id` and show **ArgonixIntelligence** or "AI-detected follow-up".
 - A rep-owned action is created as `todo`; a customer-owned action is created as `waiting` with the title prefix `Await customer: `.
-- A task dated by inference or by the three-day fallback rather than an explicit call time is shown as **Review timing** and must not be described as an agreed appointment. See [CallIntelligence](/customers/call-intelligence#tasks-are-created-automatically) for the full rules.
-</Visibility>
-
-<Visibility for="agents">
-- Intelligence creates tasks automatically from call summaries; it does not leave them as suggestions for a human to enter. The trigger and field-level rules are on [CallIntelligence](/customers/call-intelligence#tasks-are-created-automatically).
-- It cannot complete, reassign or book a task on its own, and it does not overwrite completed, cancelled, manually dated or appointment-linked tasks.
-- The [Accountability Report](/reporting/accountability) distinguishes owned, tagged and AI-related open work. Do not use it to claim an AI task was actioned.
+- A task dated by inference or the three-day fallback shows **Review timing** and must not be described as an agreed appointment.
+- Team tasks scope is limited to Administrator, Developer, Operations and Sales manager (`team_leader`). Other roles only see tasks they own or are tagged on.
+- Statuses: To do, In progress, Waiting, Completed, Archived (stored as `cancelled`). Views: All open, Overdue, Today, Upcoming, Completed, Archived.
+- Type labels differ slightly by screen: the create dialog says **Schedule** and **QA**; list filters say "Scheduling" and "Quality check".
+- There are no recurring tasks.
+- Intelligence cannot complete, reassign or book a task on its own, and does not overwrite completed, cancelled, manually dated or appointment-linked tasks. The [Accountability Report](/reporting/accountability) separates owned, tagged and AI-related open work.
 </Visibility>

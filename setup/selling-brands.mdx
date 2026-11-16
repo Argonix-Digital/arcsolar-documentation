@@ -1,278 +1,102 @@
 ---
 sidebarTitle: "Selling brands"
 title: "Selling brands"
-description: "Prepare separate selling identities, price books and customer documents."
+description: "Sell under more than one business name, each with its own agreement, prices and team access."
 keywords:
   - "selling brand"
   - "multi-brand"
+  - "multiple selling brands"
   - "original brand"
   - "additional brand"
-  - "default brand"
   - "brand selector"
   - "readiness"
+  - "selling access"
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="brand" />
 
-A selling brand identifies the business your customer buys from. It is separate from an equipment manufacturer.
+A selling brand is the business your customer buys from. It is not the make of a panel or battery.
 
-Every workspace has one original brand. Additional brands can keep their own price book, documents, appearance and selling grants.
+Every workspace starts with one **Original** brand: your own business. You can add more brands, each with its own agreement, price book and list of people who may sell under it.
 
-## Start with the right brand
+**Open:** [**Settings → Selling brands**](https://app.arcsolar.com.au/dashboard/settings?tab=selling-brands). Administrators and developers.
 
-Open **Retailer Settings** and check **Selling brand**. With one available brand, the box is a label. With more than one, use the selector. Save unfinished changes before switching.
+<Frame caption="Settings → Selling brands. Sample data.">
+  <img src="/images/v2/st-selling-brands.png" alt="The Selling brands screen showing the original brand with Agreement and Selling access buttons, and links to Appearance defaults and Products & prices." />
+</Frame>
 
-## Prepare an additional brand
-
-Open **ArcSolar Settings → Selling Brands** or the **Selling brands** card in **Appearance defaults**. Enable multi-brand and choose **Create draft brand**. Configure prices and documents, grant staff access and use **Allow draft preparation** when ready.
-
-The quoting minimum covers legal identity, both logos, contract and consent, and a currently effective published price. Optional customisation does not block readiness.
-
-## Check current availability
-
-**Additional-brand issuance is still blocked in the documented workflow.** You can prepare settings and quote drafts, but cannot yet send or revise an issued offer under an additional brand. Do not promise that changing permissions will enable sending. All brands use the workspace's existing connected payment account.
-
-Administrator, Operations, Developer and Finance roles cover every brand. Sales and other roles require explicit grants. Selling access does not widen record visibility.
-
-
-## Details
-
-<Accordion title={"What a selling brand is"}>
-
-A **selling brand** is the identity your customer is buying from. One brand owns all of these together:
-
-| Part | Where you set it |
-| --- | --- |
-| **Legal name, trading name and ABN** on the contract | Retailer Settings → **Agreements** (or **ArcSolar Settings** for the original brand) |
-| **Logo, colours and contract fonts** on customer documents | Retailer Settings → **Appearance defaults** |
-| **Agreement wording and consent text** the customer accepts | Retailer Settings → **Agreements** |
-| The **price book** a quote under that brand is priced from | [**Product Catalogue**](https://app.arcsolar.com.au/dashboard/product-catalogue) |
-
-<Warning>
-  A selling brand is **not** a product brand. A product brand is the manufacturer recorded on a product (the make of a battery, panel or inverter). Changing a product's brand does not change who a quote is sold by, and changing your selling brand does not change a product's manufacturer.
-</Warning>
-
-</Accordion>
-
-<Accordion title={"The original brand and additional brands"}>
-
-Every workspace has exactly one **original brand**. It is your own business identity: it uses the workspace logos, colours and fonts you set in Retailer Settings → Branding, its legal details come from **ArcSolar Settings**, and it uses your existing price book. In a list of brands its name is followed by **(default brand)**.
-
-Each brand you add after that is an **additional brand**. It carries its own price book and its own approved contract document, so it can quote at different prices and under different terms.
-
-| | Original brand | Additional brand |
-| --- | --- | --- |
-| How many | Exactly one per workspace | As many as you add |
-| Price book | Your existing price book | Its own, created empty for it |
-| Logos, colours, fonts | The workspace's, set on **Appearance defaults** | Its own, set with its own document |
-| Legal name and ABN | From **ArcSolar Settings** | Typed on its own document |
-| Marked in the **Selling brands** card as | _Original brand · workspace appearance and existing price book_ | _draft · separate quote price book_ (becomes _active_ once prepared) |
-
-Both kinds are edited on the same screen. Retailer Settings edits whichever brand the title row has selected, and every tab follows that choice.
-
-</Accordion>
-
-<Accordion title={"Switch the brand you are editing"}>
-
-1. Open [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings).
-2. In the title row, on the right, find the box labelled **Selling brand**.
-3. Open it and choose the brand you want to edit.
-
-The commercial sections and **Agreements** follow that brand, and the readiness report is recalculated for it. **Appearance defaults** remains the workspace defaults section. You stay on the section you were in. The choice is written into the page address as `?brand=…`, so a link you copy reopens on the same brand.
-
-
-
-<Info>
-  If you have unsaved work in the section you are leaving, ArcSolar asks before discarding it. Save first if the change matters — switching brand reloads the section for the new brand.
-</Info>
-
-<Info>
-  **With one brand, there is nothing to choose.** When only one brand is available to you, the box shows the brand's name as plain text instead of a list, with the note *"Prices, fees and quote terms below apply to this selling brand."* With more than one brand the note reads *"Prices and agreements follow the selected brand."*
-</Info>
-
-If your role may manage the workspace's brands, **Selling access** sits beside the box and grants access to the brand you are looking at.
-
-### Why an option is greyed out
-
-A brand stays in the list when it cannot be edited: you can see that it exists, but you cannot select it. There are two causes and they need different responses.
-
-| State | What it means | What to do |
-| --- | --- | --- |
-| **Draft** brand | The brand exists but its setup is not finished, so it cannot be the context for editing sell pricing | Finish its setup, then choose **Allow draft preparation** on the **Selling brands** card |
-| **Archived** brand | The brand has been retired and can no longer be sold under | Nothing — archived brands are kept for history |
-
-<Warning>
-  The reason a brand is unavailable **appears in the list itself**, appended to the brand's own text in the option. An archived brand's entry reads *"Archived. This brand can no longer be sold under."* and a draft brand's reads *"Not ready. Complete this brand's setup before selling under it."* — so a brand named Retired appears as `Retired — Archived. This brand can no longer be sold under.` The appended reason is plain text inside the option, so it is visible beside the greyed-out entry and forms part of the option's accessible name; it is not a separate muted line or a tooltip. To tell a draft brand from an archived one another way, the **Selling brands** card still distinguishes them: a draft brand offers **Allow draft preparation**, and an archived brand does not.
-</Warning>
-
-If the brand you are looking for is not listed at all, your role does not have it. See [Who may use which brand](#who-may-use-which-brand).
-
-### If the selected brand becomes unavailable
-
-If a brand is archived or your access to it is removed while you are working, the box keeps showing it as **Unavailable selling brand** rather than silently moving you onto a different brand, and a line reads *"The previously selected selling brand is not available. Choose another to continue."* Choose another brand to carry on. ArcSolar does not substitute a different seller for you, because the next quote would then be issued under the wrong identity.
-
-</Accordion>
-
-<Accordion title={"Is the brand ready to sell?"}>
-
-Above the tabs, Retailer Settings reports the **quoting minimum** for the selected brand. The badge reads either **Ready to sell** or **N of 4 met**, and each requirement still outstanding is marked **Outstanding**:
-
-| Requirement | What it needs |
-| --- | --- |
-| **Legal identity** | Trading name and ABN, exactly as they must appear on a quote. |
-| **Branding identity** | A logo for both document variants. |
-| **Contract & consent** | NETCC terms and the consent wording saved against this brand. |
-| **Active price book** | At least one published price effective for this brand today. |
-
-Everything else — extra logos, custom fonts, finance plans, preview assets — is **optional**. A brand missing them is fully usable, so ArcSolar never holds back selling over a field that cannot make a quote wrong.
-
-When a brand meets all four, the panel collapses to one line naming the brand and saying it meets the quoting minimum. The readiness report is a convenience, not a permission: the database enforces the same rules when a document is approved and when a quote is priced.
-
-</Accordion>
-
-<Accordion title={"Enable multi-brand"}>
-
-The card that creates and retires brands is called **Selling brands**:
-
-> _"Use your shared catalogue and CRM with separate selling identities, prices and approved documents."_
-
-It appears in two places:
-
-- [**ArcSolar Settings**](https://app.arcsolar.com.au/dashboard/settings?tab=selling-brands) → **Selling Brands** — the workspace-wide home for creating and retiring brands.
-- [**Retailer Settings**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding) → **Appearance defaults** — the same card, beside the appearance it shares with the original brand.
-
-
-On the card:
-
-1. The original brand's row says *"Prepare your original brand's fonts, agreement and document settings."* with **Edit original documents** and **Select allowed users**.
-2. Turn on **Enable multi-brand**. Its help text is _"Your original brand's appearance remains editable above. Team selling grants are independent of record visibility."_
-
-Until multi-brand is enabled, the additional-brand list and the **Additional brand name** field are not shown at all.
-
-### Turn multi-brand off again
-
-Choose **Disable multi-brand**. The button is unavailable while work is unresolved, and the card says why: *"Resolve N additional-brand drafts and M preparing revisions before disabling."* Finish or remove those drafts, then try again.
-
-</Accordion>
-
-<Accordion title={"Add an additional brand"}>
-
-1. Open the **Selling brands** card (ArcSolar Settings → Selling Brands, or Retailer Settings → Branding).
-2. Make sure multi-brand is enabled.
-3. Under **Additional brand name**, type the name and choose **Create draft brand**.
-
-The helper text under the field is the whole procedure: *"Creates an empty price book. Grant staff access in Team & Access; configure prices and documents before issuing."*
-
-The card also states where prices are managed, and that a brand is not a separate merchant: _"Manage and publish prices in Product catalogue, selecting the brand's price book. Copies stay draft until published. All brands use the workspace's existing connected payment account."_
-
-The new brand starts as a **draft**, so Retailer Settings cannot select it yet. In its row:
+Each brand row has:
 
 | Control | What it does |
 | --- | --- |
-| **Copy brand ID** | Copies the brand's identifier — _"Brand ID copied for CSV imports."_ |
-| **Rename** | Changes the label in your workspace. _"Legal identity and approved documents are edited separately."_ |
-| **Products and prices** | Opens this brand's product list — see [Prices per brand](/setup/price-books) |
-| **Edit documents** | Opens this brand's contract document — see [The NETCC contract](/setup/selling-contract) |
-| **Copy draft prices** | Copies selected current original-brand prices into this brand's book **as drafts**. *"Nothing is published by this action."* Choose **Copy selected as drafts** |
-| **Allow draft preparation** | Moves a **draft** brand to active, which is what lets Retailer Settings select it |
-| **Archive** | Retires the brand — see below |
-| **Select allowed users** | Chooses who may sell under this brand |
+| **Agreement** | Opens that brand's customer agreement. See [Customer agreements](/setup/selling-contract) |
+| **Products & prices** | Additional brands only. Opens the brand's own price list. See [Brand prices](/setup/price-books) |
+| **Selling access** | Choose who may sell under this brand |
+| **⋯** (more options) | **Copy brand ID**, **Rename**, **Copy draft prices**, **Allow draft preparation** and **Archive brand…** |
 
-### Get the brand to the quoting minimum
+The original brand uses your [Appearance defaults](/setup/branding) and your existing price book.
 
-Work through the four readiness requirements above, in whatever order suits you:
+## Add an additional brand
 
-1. **Products and prices** — publish at least one price in this brand's price book.
-2. **Edit documents** — fill in the legal name, trading name and ABN, write the NETCC wording and consent text, and supply both logos.
-3. **Edit documents** → its fonts — if you want this brand's contract to use particular fonts, choose its **Heading font** and **Body font** there. The **Contract appearance** card on the **Appearance defaults** tab belongs to the original brand, not to this one.
-4. Choose **Allow draft preparation**, then select the brand in Retailer Settings to confirm the readiness badge reads **Ready to sell**.
+1. Turn on **Multiple selling brands**.
+2. Expand **Add a selling brand**.
+3. Type the **Brand name** and select **Create draft brand**.
 
-### Archive a brand
+The new brand starts as a draft with an empty price book. Then:
 
-Choose **Archive**. The dialog asks **Archive NAME?** — _"This stops new selling under this brand. Historical offers, payments and reporting remain. Resolve its drafts and preparing revisions first."_ The buttons are **Keep brand** and **Archive brand**.
+1. **Agreement**: enter the brand's legal name, trading name, ABN, logos and agreement wording. The workspace owner or a developer publishes it.
+2. **Products & prices**: publish at least one price. Or use **⋯ → Copy draft prices** to copy your original brand's current prices as drafts, then publish them.
+3. **Selling access**: tick who may sell under it.
+4. **⋯ → Allow draft preparation**: makes the brand active so you can select it in the Selling settings.
 
-Archived brands stay listed in the **Selling brand** box so the history stays readable, but they cannot be selected or sold under, and their row keeps only **Copy brand ID**.
+All brands use your workspace's connected payment account.
 
-</Accordion>
+## Check the brand is ready
 
-<Accordion title={"Who may use which brand"}>
+Open any **Selling** screen in Settings and choose the brand in the **Selling brand** box. The readiness line shows **Ready to sell**, or how many of four checks are met:
 
-One setting answers both of these questions, so it is worth keeping them together:
-
-- **Which brands can this person see and configure** on Retailer Settings.
-- **Which brands can this person sell and issue quotes for.**
-
-There are two ways access is decided.
-
-### The live role rule
-
-Four roles sell **every brand the workspace has, including brands added later**, with nothing to set up:
-
-| Role | Selling access |
+| Check | What it needs |
 | --- | --- |
-| **Administrator** | Every brand |
-| **Operations** | Every brand |
-| **Developer** | Every brand |
-| **Finance** | Every brand |
+| **Legal identity** | Trading name and ABN |
+| **Branding identity** | A logo for light and dark backgrounds |
+| **Contract & consent** | Agreement wording and consent text |
+| **Active price book** | At least one published price that applies today |
 
-This is a *rule*, not a stored list. A brand you create tomorrow is already covered for these four roles, and changing someone's role takes effect immediately.
+Each unmet check has a link to the screen that fixes it. Extra logos, fonts and finance terms are optional.
 
-**Sales** and every other role are **grant-based**: they can sell only the brands explicitly ticked for them. With no brands ticked, the field says *"No selling brands selected. This member cannot sell or issue quotes for any brand."*
+## What an additional brand can and cannot do today
 
-<Info>
-  Selling access is about **which brand**, not **which records**. A sales representative's role and assignments still decide which customers, quotes and projects they can open.
-</Info>
+Reps can save quote drafts under an additional brand once it's active. Sending a quote also needs the brand's agreement to be published. Until then, the quote builder shows:
 
-### Grant brands to a person
+> Draft preparation is available. Sending requires this brand's approved documents and issuance setup.
 
-1. Open [**Team & Access**](https://app.arcsolar.com.au/dashboard/team-access).
-2. Open the member.
-3. Find the **Selling permissions** card.
-4. Tick the brands they may sell, then save. **Select all** ticks every brand currently offered; **Clear** removes them all.
+Publish the agreement in [Agreements](/setup/selling-contract), then try again.
 
-For a role that already sells every brand, the card says so instead of offering a list: *"This role sells every brand the workspace has, including brands added later. There is nothing to grant or clear here."*
+## Who may use which brand
 
-### Or grant people to a brand
+These roles can sell under every brand, including brands added later: **Administrator**, **Operations**, **Sales manager**, **Developer** and **Finance**.
 
-The other direction starts from the brand. **Select allowed users** on the **Selling brands** card, or **Selling access** beside the brand box in Retailer Settings, opens **Who may sell BRAND?**:
+Everyone else, including **Sales**, can only sell under the brands ticked for them. Give access either way:
 
-> _"Ticking a member grants this brand only. Their role still decides which records they can see, and every other brand keeps its own list."_
+- **From the brand:** select **Selling access** on its row, then tick the people.
+- **From the person:** open them in [**Team & Access**](https://app.arcsolar.com.au/dashboard/team-access), find **Selling permissions**, tick the brands and save.
 
-This dialog lists **people**, not brands, and a member whose role already sells every brand is shown as permanently allowed rather than as a checkbox. Both directions write the same list, so a save in one place shows up in the other, and an invitation to a new member can carry the same grants before they accept. An archived brand offers no access control at all — **Copy brand ID** is the only control left on its row.
+You can also tick brands when you [invite someone](/setup/team).
 
-</Accordion>
+Selling access decides which brand someone can quote under. It doesn't change which customers they can see.
 
-<Accordion title={"What an additional brand can and cannot do today"}>
+## Rename, archive or restore a brand
 
-This is the most important limitation to understand before you invest time in a second brand.
+- **Rename** changes the brand's label in ArcSolar only. Its legal name is edited in its agreement.
+- **Archive brand…** stops new selling under the brand. Past quotes, payments and reports stay. Finish or remove its drafts first.
+- Archived brands sit under **Archived brands**. **Restore** returns one to draft. Nobody gets selling access back automatically.
 
-**An additional brand can hold a price book, a contract document, branding, fonts and its own access list. It cannot yet issue a quote.**
-
-In the quote builder you can choose an additional brand, and the draft is priced from that brand's own price book, but **Confirm & send is refused**. ArcSolar says so in three places:
-
-- Under the selling-brand list in the quote: *"Draft preparation is available. Sending requires this brand's approved documents and issuance setup."*
-- If you press send anyway: **"This selling brand is not ready to issue"** — *"Resolve selling access, brand setup or the saved recovery copy before sending."*
-- If the send reaches the server: *"This brand can save drafts. Sending becomes available after its document and issuance setup is ready."*
-
-So the practical position today is:
-
-| Task | Original brand | Additional brand |
-| --- | --- | --- |
-| Configure prices, documents, branding, fonts | Yes | Yes |
-| Save a quote **draft** | Yes | Yes |
-| Assign a lead or opportunity | Yes | Yes |
-| **Issue or send a quote** | Yes | **Not yet** |
-| Revise an issued quote | Yes | **Not yet** |
-| Deliver an accepted offer | Yes | **Not yet** |
-
-<Warning>
-  Do not promise a customer a quote under an additional brand, and do not tell a representative they can send one. The block is deliberate and enforced in the database as well as in the interface, so no permission change turns it on.
-</Warning>
-
-</Accordion>
+To turn off **Multiple selling brands**, first resolve every additional-brand draft and preparing revision. The screen tells you how many are left.
 
 <Visibility for="agents">
-  The ceiling is `private.selling_brand_alternate_writes_ready(p_operation)` (migration `20260920012730_selling_brand_price_books_and_catalogue.sql`), which returns `true` for `draft.save` and `opportunity.assign` only. `quote.create`, `quote.revise` and `quote.deliver` return `false`. It is pinned by `supabase/tests/selling_brand_role_access.sql`. The TypeScript ceiling is `alternateIssuanceReady` on `SellingBrandContext`; `useQuoteSellingBrand`'s `canIssue` and `confirmAndSendQuoteAction` both consult it. `permittedActiveSellingBrands` deliberately does **not** apply the ceiling, so an additional brand still appears for draft work and bulk lead import. The role rule is `private.role_sells_every_brand` (`20260923190000_selling_brand_role_access.sql`); invitations use `private.invitation_sells_every_brand`, which requires `role_managed_by = 'system'` for a developer. The disabled brand's reason **is** supplied as `SellingBrandOption.description` by `toRetailerSellingBrandOptions` and **is** appended to the option text by `sellingBrandOptionText` in `SellingBrandSelect`, so it appears in the list and in the option's accessible name — do not tell an operator the reason is hidden.
+  Additional-brand sending: `private.selling_brand_alternate_writes_ready(p_operation)` was redefined in `20261002063611_selling_document_presentation_independence.sql` and now returns `true` for `draft.save`, `opportunity.assign`, `quote.create`, `quote.revise` and `quote.deliver`. `alternateIssuanceReady` comes from `get_selling_brand_context`. Sending is still refused unless `canIssueSellingQuoteDocument` passes, which needs `documentKind === "approved"` (a published agreement revision). The role rule is `private.role_sells_every_brand`: administrator, operations, team_leader (Sales manager), developer, finance (`20261104190000_team_leader_access.sql`). The Selling brands screen is `BrandDirectory` in `src/components/selling-brands/selling-brand-settings.tsx`; it is no longer shown on Appearance defaults, which links to it instead.
 </Visibility>
+
+<NextGuide href="/setup/branding" title="Branding" />

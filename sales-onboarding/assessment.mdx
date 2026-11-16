@@ -1,9 +1,9 @@
 ---
 title: "4. Understand the home"
 sidebarTitle: "4 · Understand the home"
-description: "Review the site, bill and assumptions before choosing equipment."
+description: "Check the bill and photos, and know which numbers are estimates."
 icon: "house"
-keywords: ["sales rep onboarding","assessment","training","Prepare the recommendation","site information form","electricity bill upload","site photos","bill assessment input"]
+keywords: ["sales rep onboarding","assessment","training","site information form","electricity bill","bill analysis","savings"]
 ---
 
 import { LessonChecklist } from "/snippets/sales-course.jsx";
@@ -11,32 +11,40 @@ import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="bill" />
 
-Use the practice customer's site details and approved example bill.
+## Check what came back
 
-## Review the evidence
+Open the customer's **Site Information Form** tab. The status shows **Awaiting customer**, **Submitted** or **Link expired**.
 
-Check installation address, roof, storeys, electrical phases, existing equipment and access. Review the bill, switchboard photos and cable-run video. Record what still needs technical confirmation.
+Nothing uploaded yet? Send the form again and wait. Never guess the customer's usage. See [Site information](/quoting/site-information).
 
-## Review a bill
+Check:
 
-Choose **Assess bill with ArgonixIntelligence**, then compare the suggested period, consumption, rates and charges with the source. Apply only reviewed values. [Bill analysis](/quoting/bill-analysis) explains common errors.
+- The address, roof, number of storeys and phase.
+- Existing solar or battery.
+- The switchboard photos and cable-run video.
 
-## Explain the savings inputs
+Write down anything an installer needs to confirm.
 
-Confirm whether consumption means total household use or grid purchases. Existing solar changes the meaning of a bill's imports. Review use patterns, system assumptions and the available evidence.
+## Check the bill
 
-Explain the result as an estimate. If inputs are insufficient, ask for better evidence or use the omit-savings option where offered. See [Savings estimates](/quoting/savings).
+1. In the quote builder, choose **Assess bills with ArgonixIntelligence**.
+2. Compare the period, usage, rates and charges with the real bill.
+3. Apply only the values you checked.
 
+Got existing solar? The bill shows what they buy from the grid, not their total use. See [Bill analysis](/quoting/bill-analysis).
 
-<LessonChecklist lessonId="assessment" items={["I can send the Site Information Form and check that the customer's bill and photos have arrived.","I can compare a bill assessment with its source before applying values.","I can explain that savings are estimates and identify the assumptions to check."]} />
+## Explain savings
+
+Savings are an estimate. Say so. If you don't have enough information, ask for more before quoting. See [Savings estimates](/quoting/savings).
+
+<LessonChecklist lessonId="assessment" items={["I can check whether the customer's bill and photos have arrived.","I can compare a bill assessment with the real bill before applying it.","I can explain that savings are an estimate."]} />
 
 [Course overview](/sales-onboarding)
 
-<NextGuide href="/sales-onboarding/quote" title="Build a quote" />
+<NextGuide href="/sales-onboarding/quote" title="5. Build a quote" />
 
 <Visibility for="agents">
-- **Precondition for the assessment step below:** a real uploaded bill, collected by the **Site Information Form** in [lesson 3](/sales-onboarding/conversation). Nothing is fetched automatically and no lesson creates the bill.
-- Read the request status before assessing: `Not requested` (`not_sent`), `Awaiting customer` (`pending`), `Submitted` (`submitted`), `Link expired` (`expired`). Only a genuine customer upload gives genuine values.
-- With nothing uploaded, the correct action is to send or re-send the form and wait — never to proceed on assumed or sample values as if they were the customer's. See [Collect site information](/quoting/site-information).
-- Once the correct bill is uploaded, the assessment itself is [Analyse an electricity bill](/quoting/bill-analysis).
+- A real uploaded bill, collected by the **Site Information Form** in [lesson 3](/sales-onboarding/conversation), is the input. Nothing is fetched automatically.
+- Request statuses: `Not requested` (`not_sent`), `Awaiting customer` (`pending`), `Submitted` (`submitted`), `Link expired` (`expired`).
+- With nothing uploaded, the right action is to send or re-send the form and wait, never to proceed on sample values.
 </Visibility>

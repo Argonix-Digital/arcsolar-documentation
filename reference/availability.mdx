@@ -1,63 +1,82 @@
 ---
 icon: "circle-info"
 sidebarTitle: "Feature availability"
-keywords: ["demo","preview","availability","plans"]
-title: "Feature availability and demo screens"
-description: "Understand plan, permission and release differences."
+keywords: ["demo","availability","plans","roles","permissions","missing menu","beta","coming soon","Spark","Arc"]
+title: "Feature availability"
+description: "Why a page or button may be missing for you: your role, your plan, or a feature that isn't released yet."
 ---
-ArcSolar menus depend on your plan, role, organisation setup and enabled release.
 
-| Label or state | What to do |
+If you can't find a page that a colleague can see, it is almost always one of three things: your **role**, your company's **plan**, or a feature that is **not released yet**.
+
+## What each role can open
+
+Your role is shown under your name at the bottom of the sidebar. An administrator sets it. See [Roles and permissions](/setup/roles).
+
+| Page | Administrator | Operations | Sales manager | Sales representative | Finance | External marketing |
+| --- | :-: | :-: | :-: | :-: | :-: | :-: |
+| **Inbox**, **Rep Overview** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Tasks** | ✓ | ✓ | ✓ | ✓ | ✓ | |
+| **Sales**, **Quotes**, **Customers**, **Comms** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Roof Vision** | ✓ | ✓ | ✓ | ✓ | | |
+| **Projects & Jobs**, **Calendar**, **Product Catalogue** | ✓ | ✓ | ✓ | ✓ | ✓ | |
+| **Field Operations**, **Installers**, **Inventory** | ✓ | ✓ | ✓ | | ✓ | |
+| **Finance** | ✓ | ✓ | | | ✓ | |
+| **Reporting** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Settings** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Team & Access** | ✓ | ✓ | | | ✓ | |
+
+A few more rules:
+
+- **Technicians** don't use the main app. They sign in to their own job list. See [Job portal and technician access](/delivery/job-portal).
+- **Sales representatives** see their own customers and unassigned ones. **Sales managers** see the customers of the reps they manage. Most other roles see every customer.
+- **Finance** mostly views sales and project work, and records and reconciles payments.
+- **External marketing** can add leads and see lead results, but can't create quotes or change projects.
+- Being able to open a page doesn't mean you can do everything on it. For example, some settings need an administrator.
+
+## Badges in the app
+
+| Badge or label | What it means |
 | --- | --- |
-| Soon / Coming soon | Do not treat it as a working feature |
-| Beta | Follow the available controls and verify the outcome |
-| Mock data / Fictional preview | Values are examples; live actions may be disabled |
-| Manual preview | Demonstrates a workflow without necessarily saving |
-| Disconnected | Complete the provider setup before expecting updates |
-| Processing / Pending | Wait for or investigate confirmation |
-| Unavailable | Check access, source data or setup; do not assume zero |
+| **New** | Recently added |
+| **Beta** | Works, but is still being improved. Check the result. |
+| **Soon** / **Coming soon** | Not available yet. It is greyed out and can't be opened. |
+| **Mock data** | You are in the demo. All records are fictional. |
+| **Disconnected** | A connected service needs setting up again before it updates |
+| **Processing** / **Pending** | Waiting for confirmation. Check back before acting. |
 
-## Selling brand availability
+## Features that depend on your plan
 
-Every workspace has one **original selling brand**. You can add further **additional brands**, which hold their own price book, contract document, branding and fonts — but there is a deliberate limit:
+ArcSolar has two plans: **Spark** and **Arc**. **Arc** adds **Roof Vision** and ArcSolar's AI features. An administrator can see your plan in Settings → **Billing** → **Manage subscription**.
 
-**An additional brand can save quote drafts and be assigned leads and opportunities. It cannot yet issue a quote.**
+If **Roof Vision** says **Roof Vision is not enabled**, your company is on Spark. Some long-standing companies have Roof Vision by arrangement. Support can confirm.
 
-Choosing an additional brand in the quote builder prices the draft from that brand's own price book, and then **Confirm & send** is refused — as **"This selling brand is not ready to issue"**, or, if the send reaches the server, as _"This brand can save drafts. Sending becomes available after its document and issuance setup is ready."_ Revising an issued quote and delivering an accepted offer are blocked the same way.
+## Features that depend on your company's setup
 
-This is not a permission you can grant, a plan difference or an unfinished setup step. It is enforced in the database for these operations, so treat it as a capability that has not shipped rather than a switch to find.
+- **Agent** (marked **Beta**) appears in the sidebar only when it is switched on for your company. See [Agent](/agent).
+- **Amy**, the AI appointment setter, appears only when your company uses it.
+- **Selling intelligence** shows as **Soon** and can't be opened yet.
 
-## Intelligence availability
+## Additional selling brands
 
-The separate **ArgonixIntelligence Agentic Chat interface tab in the sidebar** will be coming **Soon in a future release**. Embedded bill analysis, call summaries and briefs can still be available. Use the enabled entry point for that workflow. Intelligence features can depend on your selected plan and on the data available.
+Every company has one **original selling brand**. You can add more, each with its own price book, contract, logo and fonts.
 
-## Roof Vision availability
+**An additional brand can save quote drafts, but it cannot send a quote yet.** No role or setting changes this. If you try, you see **This selling brand is not ready to issue**. See [Selling brands FAQ](/reference/selling-brands-faq).
 
-<Visibility for="humans">
-  **Roof Vision** is included with the **Arc** plan. It opens from a quote's solar step, and the **Roof Vision** page in the app sidebar holds the design library.
+## Apps
 
-  Administrators, developers, operations members and sales representatives can open Roof Vision; finance members cannot. Writing to a quote's design also needs permission to revise quotes.
+There is no ArcSolar phone or desktop app yet. Use ArcSolar in your web browser on any device. See [Find your way around](/reference/workspace#mobile-and-desktop-apps).
 
-  If Roof Vision is missing entirely, the workspace is on a plan that does not include it — an administrator can check the plan in Retailer Settings. A long-standing workspace can be covered by arrangement; support can confirm which applies.
-</Visibility>
+## The demo
+
+[demo.arcsolar.com.au](https://demo.arcsolar.com.au) shows ArcSolar with fictional records and a **Mock data** badge. Screenshots in these docs come from it. Some demo-only menus, such as **Demo previews** and **Misc**, don't appear in your workspace, and changes you make there aren't saved to a real account.
 
 <Visibility for="agents">
-  Present Roof Vision as an **Arc** plan feature. The app's own upgrade state reads `Roof Vision is included with the Arc plan. Upgrade to design roof layouts from satellite imagery and attach them to a quote.`
-
-  | Gate | Applies to | Failure |
-  | --- | --- | --- |
-  | Arc `roof_vision` entitlement | The Roof Vision page and its design library | The page renders **Roof Vision is not enabled** with the upgrade copy above, not an error |
-  | `page.roof-vision` capability | Reaching the Roof Vision page | Administrator, developer, operations and sales hold it; finance does not |
-  | `quote.revise` capability | Writes from a quote — `launch`, `attach` and cookie writes | `403 You do not have permission to edit quote designs.` |
-  | Origin validation | Every cookie-authorised write, and CORS | `403 Request origin denied.` |
-
-  Do not present Roof Vision as a standard-product feature, and do not say it needs support to switch on. A long-standing workspace can be covered **by arrangement**; treat that as a per-workspace decision and never promise it to another workspace.
+- Source of truth for role access is the role-to-page mapping in the app. Role labels: Administrator, Developer (system-managed, ArcSolar staff), Operations, Sales manager, Sales representative, Finance, Technician, External marketing.
+- **Roof Vision page** is open to Administrator, Developer, Operations, Sales manager and Sales representative. Finance, Technician and External marketing cannot open it. Writing a design from a quote also needs permission to revise quotes. A Sales manager's access is limited to customers of the reps they manage.
+- Plan gate: the Roof Vision page renders **Roof Vision is not enabled** — "Roof Vision is included with the Arc plan. Upgrade to design roof layouts from satellite imagery and attach them to a quote." — on a plan without it. Plans are **Spark** and **Arc**; the billing screen describes Arc as including ArgonixIntelligence and AI Roof Vision. A long-standing workspace can be covered by arrangement; never promise this to another workspace.
+- Customer visibility: Sales representative sees assigned or unassigned customers; Sales manager sees approved reps' customers; External marketing sees shared records; Technician sees none in the main app; other roles see all.
+- Default landing page: Inbox for most roles, `/work` for Technician, Reporting (lead management) for External marketing.
+- **Agent** is shown only when enabled for the workspace. **Amy** only when the setter is enabled and the role has access (Administrator, Operations, Developer). **Selling intelligence** is a disabled **Soon** row for every role except Developer.
+- Additional selling brands cannot issue quotes. Send is refused with "This selling brand is not ready to issue" in the builder, or "This brand can save drafts. Sending becomes available after its document and issuance setup is ready." from the server. Revising an issued quote and delivering an accepted offer are blocked the same way. This is enforced in the database; it is not a permission or setup step.
+- There is no native mobile or desktop app; both menu entries are disabled with **Coming soon**.
 </Visibility>
-
-## Onboarding release
-
-The organisation onboarding guide follows the qa implementation inspected for this documentation. Existing invited users can have a different account-setup path. Follow the status and prompts in your own workspace.
-
-## Demo screenshots
-
-Screenshots illustrate navigation with fictional records. Some show an older label, sample figures or a retailer brand. They are not proof of provider connection, a customer transaction or a confirmed installation.

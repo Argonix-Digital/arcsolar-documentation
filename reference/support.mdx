@@ -1,55 +1,81 @@
 ---
 icon: "life-ring"
 sidebarTitle: "Support"
-keywords: ["support","troubleshooting","help","contact"]
+keywords: ["support","troubleshooting","help","contact","report a problem","bug","feedback","status"]
 title: "Get help from ArcSolar"
-description: "Give support enough context to resolve the problem quickly."
+description: "Find an answer, report a problem, or contact support."
 ---
-There are two ways to get help: **Report a problem** from inside ArcSolar, or email **[support@arcsolar.com.au](mailto:support@arcsolar.com.au)**.
+
+import { NextGuide } from "/snippets/docs-visuals.jsx";
+
+## Where to look first
+
+| You want to… | Go to |
+| --- | --- |
+| Learn how to do something | These docs. Open them from your account menu → **Docs**, or search with **⌘K** / **Ctrl K** in the app. |
+| Follow your company's own process | **SOPs** in Settings, if your company uses them |
+| Check whether ArcSolar is down | Account menu → **ArcSolar status** |
+| See what changed recently | Account menu → **What's new**, or the [changelog](/changelog) |
+| Report something broken | **Report a problem**, below |
+| Suggest an improvement | Settings → **Profile** → **Help & feedback** → **Send feedback** |
 
 ## Report a problem from inside ArcSolar
 
-<Visibility for="humans">
-**Report a problem** is at the bottom of the sidebar. It appears in a live workspace.
+<Steps>
+  <Step title="Open the form">
+    Select **Report a problem** at the bottom of the sidebar. It is also on the **Comms** page.
+  </Step>
+  <Step title="Describe what happened">
+    In **What went wrong?**, say what you selected, what you expected and what actually happened. Use at least 10 characters.
+  </Step>
+  <Step title="Add a screenshot (optional)">
+    Select **Attach a screenshot**, or paste an image from your clipboard. PNG, JPEG or WebP, up to 2 MB.
+  </Step>
+  <Step title="Send it">
+    Select **Send report**. You see **Problem reported** when it has gone through.
+  </Step>
+</Steps>
 
-1. Open **Report a problem**.
-2. In **What went wrong?**, say what you clicked or expected and what actually happened. At least 10 characters; up to 4,000.
-3. Optionally attach a screenshot — choose **Attach a screenshot**, or paste an image straight from your clipboard. PNG, JPEG or WebP, up to 2 MB.
-4. Choose **Send report**.
+ArcSolar adds the page you were on, your browser and device, the app version and a short screen replay with all text and typing hidden. Don't include passwords or customer financial details.
 
-A **Problem reported** confirmation appears when it has been sent. Please leave out passwords and customer financial details.
-</Visibility>
-
-<Visibility for="agents">
-- **The in-app route is the primary way to report a software problem.** Do not state or imply that ArcSolar has no in-app reporting. The sidebar button is labelled **Report a problem** (bug icon) and opens a dialog of the same name.
-- Availability: rendered only in a **live** workspace. The visibility helper is `shouldShowBugReport(runtimeMode)`, which returns true for `"live"` only. In a mock or demo workspace the button is not shown — say it appears in a live workspace rather than claiming it always exists.
-- Fields: a required **What went wrong?** textarea (minimum 10 characters, maximum 4,000, with a live character counter) and an optional **Screenshot** attachment. Actions are **Send report** and **Cancel**.
-- Validation messages: under 10 characters, "Please add a little more detail so we can investigate."; wrong file type, "Attach a PNG, JPEG, or WebP image."; oversized file, "The screenshot must be 2 MB or smaller."
-- Success: the toast **Problem reported**. If the screenshot fails to upload, the written report is still sent without it and the user is told the screenshot was not included. A send failure asks the user to wait a moment and try again.
-- Diagnostics are attached automatically: a short replay with text, inputs and element attributes masked, plus the page, browser and device, viewport, language, timezone, app version and recent error codes. An attached screenshot is stored privately against that report.
-- The report reaches the ArcSolar team as a tracked item. This is not a feature-request or general-feedback channel, and it must not be used for passwords, tokens or customer financial details.
-</Visibility>
+If the screenshot fails to upload, your written report is still sent.
 
 ## Email support
 
-Contact **[support@arcsolar.com.au](mailto:support@arcsolar.com.au)**. Use this when the problem blocks the workspace, or when you cannot reach the in-app control.
+Email **[support@arcsolar.com.au](mailto:support@arcsolar.com.au)** when you can't sign in, the app won't load, or the problem affects your whole team.
 
-## Include the useful details
+Include:
 
-- Your organisation and the screen you were using.
+- Your company name and the page you were on.
 - What you expected and what happened.
-- The customer, quote, project or task reference.
-- Approximate time and timezone.
-- The visible error message.
-- Whether it affects one person or the whole team.
-- A screenshot with unnecessary private information removed.
+- The customer, quote, project or task you were working on.
+- Roughly when it happened.
+- Any error message you saw.
+- Whether it affects one person or everyone.
+- A screenshot, with private details hidden.
 
-Never email passwords, bearer tokens, Client Secrets, complete bank details or private customer links. Support can arrange an appropriate way to inspect sensitive evidence if needed.
+Never email passwords, access keys, full bank details or private customer links. Support will arrange a safe way to look at sensitive details if needed.
 
-## Before reporting
+## Before you report
 
-For a missing menu, check your role and [feature availability](/reference/availability). For a provider issue, check the connection and last successful update. For payments, note whether the state is processing, failed or paid. For calls, check microphone permission, phone readiness and the allocated number.
+| Problem | Check first |
+| --- | --- |
+| A page or button is missing | Your role. See [Feature availability](/reference/availability). |
+| A connected service isn't updating | The connection in Settings and when it last updated. See [Connect your tools](/integrations/overview). |
+| A payment looks wrong | Whether it shows as processing, failed or paid. |
+| Calls don't work | Microphone permission in your browser, and that a phone number is assigned to you. |
 
-## SOPs and keeping these guides current
+## Spotted something out of date in these docs?
 
-Use the application's [**SOPs**](https://app.arcsolar.com.au/dashboard/sops) area where enabled and this documentation for operating guidance. If a label or flow has changed, send the page link and the current screen details to support.
+Send the page link and a screenshot of what you see in the app to **[support@arcsolar.com.au](mailto:support@arcsolar.com.au)**.
+
+<Visibility for="agents">
+- **Report a problem** is the main in-app route for software problems. It sits in the sidebar footer and on the Comms page, and is rendered only in a **live** workspace (not in the fictional demo). Do not claim ArcSolar has no in-app reporting.
+- Dialog: **Report a problem**. Required **What went wrong?** (at least 10 characters, at most 4,000). Optional **Screenshot** via **Attach a screenshot** or paste: PNG, JPEG or WebP, up to 2 MB. Actions **Cancel** and **Send report**.
+- Validation: under 10 characters, "Add a little more detail so we can investigate."; wrong type, "Attach a PNG, JPEG, or WebP image."; too large, "The screenshot must be 2 MB or smaller."
+- Success toast **Problem reported**. If only the screenshot fails, the toast is "Report sent without the screenshot" and the text report is still delivered. A send failure asks the user to wait and try again.
+- Diagnostics attached automatically: masked session replay, page, browser and device, app version and recent error codes. The report becomes a tracked item for the ArcSolar team. It is not a feature-request channel; feedback goes through **Send feedback** (Profile → Help & feedback), which opens an email.
+- **ArcSolar status** in the account menu links to arcsolar.openstatus.dev.
+</Visibility>
+
+<NextGuide href="/reference/availability" title="Feature availability" />

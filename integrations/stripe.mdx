@@ -1,44 +1,64 @@
 ---
 icon: "credit-card"
 sidebarTitle: "Stripe payments"
-keywords: ["Stripe Connect","customer payments","payouts"]
+keywords: ["Stripe Connect","customer payments","deposits","payouts","bank transfer"]
 title: "Stripe payments"
-description: "Connect your business so customers can pay against their issued quote."
+description: "Connect Stripe so customers can pay deposits and project payments."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="stripe" />
 
-**Open:** **Set up customer payments** during onboarding, or the Stripe card under [**Retailer Settings → Integrations**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations), where available.
+Stripe takes your customers' quote deposits and project payments and pays them into your business's Stripe account. Your own ArcSolar subscription and [phone payments](/setup/payto) are separate.
 
-## Complete setup
+## Set up Stripe
 
-1. Use the Stripe setup action for your organisation.
-2. Open the secure Stripe page.
-3. Submit the requested business, representative, identity and payout-bank details.
-4. Return to ArcSolar and check the account status.
-5. Finish any outstanding verification requirements.
-6. Confirm customer collection is enabled before asking a customer to pay.
+The business owner sets this up, in one of two places:
 
-Submitting information can allow you into the workspace while Stripe reviews the account. It does not necessarily enable charges or payouts immediately.
+- **During onboarding:** the **Set up customer payments** step. Select **Continue to Stripe**, or **Skip for now** to do it later.
+- **Later:** [**Settings → Billing**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-billing), open **Customer payment collection** and select **Manage Stripe business details**.
 
-## How customer payment works
+<Steps>
+<Step title="Open Stripe">
+Use one of the buttons above. Sign in to your existing Stripe account or create one.
+</Step>
+<Step title="Submit your business details">
+Enter the business, representative, identity and payout bank details Stripe asks for.
+</Step>
+<Step title="Return to ArcSolar">
+Stripe sends you back. While Stripe checks your details, you see: "Stripe is reviewing your payment account."
+</Step>
+<Step title="Wait for collection to turn on">
+When Stripe approves you, **Customer payment collection** says "Your organisation can receive customer payments through its Stripe account." Do not ask a customer to pay before this.
+</Step>
+</Steps>
 
-The customer opens the secure quote, reviews the agreement and follows its acceptance/payment steps. The amount comes from the issued payment schedule. Available methods are those presented by the checkout.
+## Check or reconnect
 
-The organisation's subscription and [VoIP PayTo mandate](/setup/payto) are separate from this customer transaction.
+Open [**Retailer Settings → Integrations → Stripe**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations). The card shows **Connected** or **Not connected**, and the account name and ID.
 
-| Status or event | Meaning |
-| --- | --- |
-| Quote accepted or agreement signed | Customer agreed to the offer |
-| Checkout opened | Customer started payment |
-| Processing | Payment is not yet confirmed as settled |
-| Paid or successful payment | Provider confirmation has been recorded |
-| Refund | Money returned; it does not automatically unlock the quote |
+If Stripe needs more details, an Administrator or Operations user can select **Reconnect Stripe account** to open Stripe again. If the link has expired, select it again for a fresh one.
 
-## Resolve problems
+There is no disconnect button. To change the account your payments go to, contact ArcSolar support.
 
-If collection is disabled, finish Stripe's outstanding requirements. If the customer returned from checkout but ArcSolar still shows processing, check the payment record before sending a second link. Do not create a duplicate charge to resolve a display delay.
+## How a customer pays
 
-For reconciliation, use [Finance](/delivery/finance), the customer record and the provider payment reference together.
+1. The customer opens the quote link, accepts the offer and signs the agreement.
+2. They pay the amount set by the quote's payment schedule, using the methods Stripe Checkout offers.
+3. ArcSolar records the payment against the quote or project when Stripe confirms it.
+
+A payment is only paid once Stripe confirms it. A refund returns money but does not reopen the quote.
+
+If a payment still shows as processing, check the payment record before sending a second link. Never charge twice to fix a delay. Reconcile in [Finance](/delivery/finance).
+
+## Bank transfer fallback
+
+For customers who cannot use card checkout, you can show your bank details instead. Administrators and Finance set this up.
+
+1. Open [**Settings → Customer payments**](https://app.arcsolar.com.au/dashboard/settings?tab=customer-payments).
+2. Under **Customer bank transfer**, enter **Account name**, **BSB** and **Account number**.
+3. Select **Save bank details**.
+4. Check the saved details, tick the confirmation box and select **Confirm saved destination**. Customers only see the details after this step.
+
+Changing the details clears the confirmation. **Disable bank transfer** stops new instructions. A shown bank transfer instruction never marks a deposit as paid. Record the payment once it arrives.

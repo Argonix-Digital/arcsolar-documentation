@@ -1,69 +1,87 @@
 ---
 title: "Sales availability"
 sidebarTitle: "Sales availability"
-description: "Set onsite and remote hours, block time off, and keep booking readiness current."
+description: "Set your onsite and phone/video hours, the postcodes you visit, and confirm them every 28 days."
 icon: "calendar-check"
-keywords: ["sales availability", "onboarding", "holidays", "buffers", "incoming calendars"]
+keywords: ["sales availability", "my availability", "onboarding", "holidays", "buffers", "incoming calendars", "site visits", "postcodes"]
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="calendar" />
 
-Sales availability tells ArcSolar when you can accept onsite and phone/video consultations. Your calendar's busy appointments, holidays and subscribed busy time further restrict those hours.
+Your availability tells ArcSolar when customers can book you. It is for **Sales** reps.
 
-**Open:** [**Availability**](https://app.arcsolar.com.au/dashboard/sales-availability), **Calendar → My availability**, or [**Profile Settings → Availability**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=availability). These self-service settings are available to Sales reps.
+**Open:** [**My availability**](https://app.arcsolar.com.au/dashboard/sales-availability) in the sidebar, or [**Settings → Availability**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=availability).
 
-## Complete first sign-in setup
+On your first sign-in, ArcSolar asks you to do this before you start.
 
-Before initial CRM access, confirm your availability in the setup step. Account setup, sign-out and recovery remain available while you complete it.
+## Set your weekly hours
 
-1. Choose the timezone in which your weekly hours should repeat.
-2. Review **Onsite appointments** and **Phone or video appointments** separately.
-3. Use **Add period** for each available day and enter the start and end times. Add another period if you have a break or split shift.
-4. Review the weekly preview. Suggested weekday hours must be checked against your actual schedule.
-5. Select the confirmation checkbox and **Save and confirm**.
+1. Check **Timezone**. All your hours use it.
+2. Under **Onsite appointments**, add the times you can visit customers in person.
+3. Under **Phone or video appointments**, add the times you can take remote appointments.
+4. For each day, select **Add period** and choose **From** and **Until**. Add a second period for a break. Leave a day empty if you don't work it.
 
-**Save draft** keeps work in progress; it does not replace the required confirmation. You can deliberately confirm an empty schedule when you are unavailable for both channels. That completes initial setup while leaving you unavailable for automatic bookings.
+**Use weekday hours** fills empty weekdays with 09:00–17:00. Check them before you save.
 
-## Keep availability current
+<Frame caption="My availability: timezone and the two appointment types. Sample data.">
+  <img src="/images/v2/st-availability-schedule.png" alt="The My availability screen with the Timezone menu, a Time off and holidays note, and Onsite appointments and Phone or video appointments sections each with a Use weekday hours button." />
+</Frame>
 
-Confirm your schedule every **28 days**, even when the hours remain the same. Update the periods before confirming if your working pattern changes.
+## Confirm your hours
 
-An overdue review pauses automatic bookings. You keep CRM access and existing appointments. Saving new availability does not silently move appointments that were already booked.
+1. Under **Review and confirm**, tick **My availability is still correct**.
+2. Select **Save and confirm**.
 
-Changing the weekly availability timezone requires a review of future appointments and explicit reconfirmation. Merely changing the calendar's display timezone does not change appointment times.
+<Frame caption="Review and confirm. Sample data.">
+  <img src="/images/v2/st-availability-confirm.png" alt="Review and confirm section with the My availability is still correct checkbox and the Save and confirm and Save draft buttons." />
+</Frame>
 
-## Record holidays and other commitments
+**Save draft** keeps your work without confirming it.
 
-Use busy time blocks in [Calendar](/delivery/calendar#block-holidays-and-busy-time) for leave, holidays, travel and one-off commitments. Recurring weekly hours describe when you are generally free; busy blocks remove specific times from that schedule.
+Confirm again every **28 days**, even if nothing changed. Until you do, you can still use ArcSolar, but your status shows **Review overdue**. Any edit needs a new confirmation.
 
-Check existing appointments before taking time off. Resolve a conflict explicitly with the responsible manager rather than expecting a time block to cancel it.
+Not taking appointments? Confirm an empty schedule. You won't be booked.
 
-## Adjust appointment buffers
+If you change your timezone, ArcSolar shows your future appointments so you can check them before saving.
 
-The **Booking buffers** controls let you adjust your channel defaults within the manager's minimums. Phone/video defaults are 10 minutes; in-person defaults are 30 minutes. Existing saved policies retain their values.
+## Choose the postcodes you visit
 
-Between adjacent appointments, the larger requirement applies once. Verified travel can require a longer interval. An authorized manual exception records its reason, but cannot bypass actual busy time, leave or manager minimums.
+Under **Site visits**:
 
-## Connect a subscribed busy calendar
+1. Turn on **In person visits**.
+2. Choose how your postcodes are picked:
+   - **Use map radius**: drop a pin where you usually start and set how far you travel.
+   - **Select manually**: type postcodes, paste a list, or enter a range like `3000-3207`.
+3. Select **Save site visits**.
 
-Open **Incoming calendars**, enter a calendar name and HTTPS or webcal feed URL, and choose the feed timezone. Mark a calendar as required when it must be checked before automatic bookings.
+Turn **In person visits** off to stop site-visit bookings. Your postcodes are kept for later.
 
-Only busy intervals are imported. Authorized calendar views show **External busy**, with no personal event title or contents. Saved feed URLs are encrypted and are not returned to the calendar.
+## Add time between appointments
 
-Feeds refresh every five minutes. A required feed becomes unavailable after ten minutes without successful validation, and booking checks refresh snapshots older than one minute. Publisher delays can still apply. Fix failed feeds or use **Refresh busy time**; a failed refresh does not erase the last busy snapshot.
+Under **Appointment buffers**, set the minutes you need **Before** and **After** each appointment type, then save. Your manager sets the minimum. When two appointments are back to back, the larger buffer applies.
 
-See [calendar subscriptions](/delivery/calendar#subscribe-and-import-calendars) for the separate outgoing ArcSolar subscription and one-time download.
+If a channel says your manager must save its booking policy first, ask them to set it up.
 
-## Check notification readiness
+## Block holidays and time off
 
-Keep your private notification mobile current in **Profile Settings → Profile**, and review your notification preferences. Appointment SMS for you goes to that mobile, rather than back to the sending work number. Your authorized work line and work email identify you to the customer.
+Recurring hours are when you're usually free. For leave, travel or a one-off commitment, add a busy block in [Calendar](/delivery/calendar). **Open calendar for holidays and time off** takes you there.
 
-Managers review sender and destination readiness in **Booking settings**. Missing contacts, unavailable senders, opt-outs and delivery failures need follow-up; availability confirmation alone does not resolve them.
+Existing appointments keep their times. Sort out any clash with your manager.
 
-## What your manager controls
+## Connect your own calendar
 
-Managers approve service-area postcodes, channel eligibility, minimum buffers and automatic booking enablement. They also enable appointment messaging for the workspace. You cannot enable your own automation policy.
+Stop customers booking you when your personal calendar is busy.
 
-An assigned customer stays with their rep unless authorized staff explicitly change ownership. For unassigned leads, the booking service chooses among approved, available reps and assigns the customer only after a successful booking.
+1. Under **Incoming calendars**, select **Add incoming calendar**.
+2. Enter a **Calendar name** and paste the **Calendar feed URL** (an HTTPS or webcal link).
+3. Choose the **Timezone for events without one**.
+4. Choose **Required for automatic bookings** or **Optional busy calendar**.
+5. Select **Save incoming calendar**.
+
+Only busy time is imported. Your event titles and details stay private. Select **Refresh busy time** to update it now.
+
+## Notifications
+
+Appointment texts for you go to the personal mobile in [**Settings → Profile**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=profile). Choose your channels in [Notifications](/setup/notifications).

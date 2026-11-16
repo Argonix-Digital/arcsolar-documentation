@@ -35,6 +35,8 @@
               "customers/import-leads",
               "customers/intake-form",
               "customers/pipeline",
+              "customers/inbox",
+              "customers/comms",
               "customers/calls-sms",
               "customers/call-intelligence",
               "customers/tasks",
@@ -73,10 +75,14 @@
             "expanded": false,
             "pages": [
               "delivery/projects",
+              "delivery/installers",
               "delivery/calendar",
               "delivery/field-operations",
               "delivery/job-portal",
+              "delivery/grid-connections",
+              "delivery/customer-portal",
               "delivery/catalogue",
+              "delivery/promo-bundles",
               "delivery/inventory",
               "delivery/rebates",
               "delivery/finance"
@@ -90,6 +96,7 @@
               "reporting/sales",
               "reporting/overview",
               "reporting/sales-pipeline",
+              "reporting/lead-management",
               "reporting/accountability",
               "reporting/operations-platform"
             ]
@@ -105,13 +112,15 @@
               "setup/roles",
               "setup/sales-availability",
               "setup/payto",
+              "setup/billing",
               "setup/settings-screens",
               "setup/retailer-settings",
               "setup/selling-brands",
               "setup/branding",
               "setup/price-books",
               "setup/selling-contract",
-              "setup/notifications"
+              "setup/notifications",
+              "setup/your-account"
             ]
           },
           {
@@ -120,6 +129,7 @@
             "pages": [
               "integrations/overview",
               "integrations/stripe",
+              "integrations/google-sheets",
               "integrations/meta",
               "integrations/greendeal",
               "integrations/formbay",
@@ -145,6 +155,7 @@
             "expanded": false,
             "pages": [
               "reference/support",
+              "reference/training-videos",
               "reference/availability",
               "reference/glossary",
               "reference/selling-brands-faq",

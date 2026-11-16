@@ -1,41 +1,74 @@
 ---
 icon: "clock"
-sidebarTitle: "Follow-up journeys"
-keywords: ["cadence","follow-ups","automated SMS","STOP"]
-title: "Follow-up journeys"
-description: "Coordinate automatic quote SMS with the rep's conversation."
+sidebarTitle: "Follow-up messages"
+keywords: ["cadence","follow-ups","automated SMS","STOP","quote follow-ups","quote sent text","reminders"]
+title: "Follow-up messages"
+description: "Send automatic SMS when a quote is sent, not opened, opened or accepted."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="comms" />
 
-**Open:** [**Retailer Settings → Customer journeys**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=quote-sms). Individual upcoming messages appear in the customer's **Activity** area and the **Automated follow-ups** Comms mailbox.
+ArcSolar can text your customer after you send a quote. It stops by itself when the customer accepts.
 
-## Configure future journeys
+Set it up in [**Retailer Settings → Automated messages**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=quote-sms) → **Quote follow-ups**. You need admin access.
 
-Review step names, timing, enabled state and message templates. Authorised administrators can pause/remove steps and add timed reminders. Save the intended journey and confirm whether outbound automation is active for your workspace.
+## The default steps
 
-| Default step | Trigger |
+| Step | When it sends |
 | --- | --- |
-| Quote sent | Successful quote send |
-| Not viewed | 72 hours after sending, if still unviewed |
-| Viewed, not accepted | 48 hours after first viewing |
-| Final follow-up | 168 hours after sending |
-| Accepted | First acceptance |
+| **Quote sent** | Straight away when you send the quote |
+| **Quote not opened** | 3 days after sending, only if the customer hasn't opened it |
+| **Final follow-up** | 7 days after sending, only if they haven't accepted or replied |
+| **Viewed but unsigned** | 2 days after they first open it, only if they haven't accepted |
+| **Quote accepted** | When they accept. This also stops any remaining reminders |
 
-These are defaults, not a promise that your workspace uses them. Sending is adjusted to the configured local business window; the inspected default is weekdays, 9 am–6 pm.
+Each step sends at most once per quote.
 
-## Review an individual customer
+<Frame caption="Each step has a timing, an on/off switch and its message. Sample data.">
+  <img src="/images/v2/qt-followup-steps.png" alt="Cadence steps list showing Step 1 Quote sent with its message, placeholders and an example, and Step 2 Quote not opened." />
+</Frame>
 
-Open **Automated follow-ups** in Activity. Check the quote reference, scheduled local time, preview and status. An authorised rep can edit an unsent message or reschedule it within allowed limits.
+## Change the steps
 
-**Unsent**, **Dry run**, **Sending**, **Sent**, **Delivered** and **Not sent** describe different outcomes. A dry run never proves a customer received a message.
+1. Rename a step with the pencil icon.
+2. Turn a step off with its switch, or delete it with the bin icon.
+3. Select **Add timed reminder** to add another step. Steps sort by their day delay.
+4. Edit the **Message**. You can use these placeholders: `{{customer_first_name}}`, `{{rep_first_name}}`, `{{business_name}}`, `{{quote_reference}}` and `{{quote_link}}`. The **Example** box shows how it will read.
+5. Select **Save SMS journey**.
 
-## How conversation changes the schedule
+A "Reply STOP to opt out" line is added to every message for you. Saving an empty list stops quote texts for future quotes.
 
-Customer replies and rep-written SMS retain remaining timed steps but can move near-term reminders beyond the conversation quiet period. The inspected rule uses 24 hours. Check the actual rescheduled item before contacting the customer again.
+Changes only apply to quotes sent after you save. Messages already scheduled keep their wording and time.
 
-Acceptance cancels obsolete sales reminders. Replacement, expiry, withdrawal of consent, STOP/do-not-contact, disabling customer automation or failed sender checks can cancel pending work.
+## Set sending hours
 
-Changes to the journey affect future campaigns. Existing scheduled wording is preserved. Turning automation back on does not resurrect cancelled messages.
+Set **Send from** and **Send until**. Turn on **Weekdays only** to move weekend follow-ups to Monday.
+
+These hours only apply to follow-ups. The **Quote sent** text goes straight away.
+
+<Frame caption="Follow-ups only send inside these hours. Sample data.">
+  <img src="/images/v2/qt-followup-window.png" alt="Send from 9:00 AM and Send until 6:00 PM time pickers with the Weekdays only switch turned on." />
+</Frame>
+
+## Which number sends them
+
+Texts come from the quote owner's business SMS number. If they don't have one, the longest-serving active Administrator's number is used. If neither exists, nothing is sent and the failed attempt is recorded.
+
+If the page says **Automatic sending is paused**, you can prepare the steps, but no texts go out until live sending is turned on for your business.
+
+## Check one customer
+
+Open the customer's record and go to **Activity**. Each automatic text shows its quote and its outcome:
+
+| Outcome | Meaning |
+| --- | --- |
+| **Scheduled** | Waiting for its send time |
+| **Sending automatically** | On its way |
+| **Sent automatically** / **Delivered automatically** | Sent, or confirmed delivered |
+| **Skipped** / **Unsent · Cancelled** | No longer needed, for example the customer accepted |
+| **Unsent · Dry run** | Test mode. Nothing was sent |
+| **Not sent** | The attempt failed |
+
+To stop automatic texts for one customer, turn off **Automatic quote SMS** on their record. Customers who reply STOP are not texted again.

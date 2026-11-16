@@ -20,27 +20,52 @@ description: "Design the panel layout, stringing and single line diagram for the
 import { RoofPreview } from "/snippets/docs-visuals.jsx";
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-Roof Vision turns a saved draft quote into a roof design. It is included with the **Arc** plan.
+Roof Vision is where you draw the solar design on the roof. It is included with the **Arc** plan.
 
 <RoofPreview />
 
-## Open and design
+## Open Roof Vision
 
-1. Save the quote as a draft. In its solar step, choose **Open Roof Vision**.
-2. Use **Build** and **Catalogue → Solar panel** to choose the exact model and place panels.
-3. Adjust orientation, gaps, rotation and tilt. Mark existing panels **Existing**.
-4. Use **Strings** to choose the inverter, connect panels in order and assign MPPT inputs.
-5. Choose **Open SLD** to review the seeded diagram, phases and wiring.
+1. In the quote builder, go to the **Solar** step. ArcSolar saves the quote as a draft.
+2. In the **Roof Vision** section, choose **Open Roof Vision**. Choose **Open in new tab** to work in a separate window.
 
-## Check the drawings
+<Frame caption="The Roof Vision section in the quote's Solar step. Demo shown.">
+  <img src="/images/v2/dl-rv-quote-panel.png" alt="The Roof Vision section of the quote builder with Open Roof Vision and Open in new tab buttons." />
+</Frame>
 
-Roof Vision saves as you work. The quote picks up the latest saved design. Confirm **Latest saved design included in this quote.** If the design changed, wait for the save and choose **Refresh**.
+You can also open saved designs from the [**Roof Vision**](https://app.arcsolar.com.au/dashboard/roof-vision) page in the sidebar. It lists every design, newest first. Designs linked to a customer are offered to that customer's quotes.
 
-Check address, panel model, count and stringing before issuing. The customer receives **Solar panel layout** and **Stringing and component layout**. The customer record also receives the current exported design PDFs when linked.
+## Design the system
 
-## Continue the design
+<Steps>
+<Step title="Place the panels">
+Choose a module under **Panels & layout**, then **Build on the roof** and drag across the roof. See [The design editor](/roof-design/editor).
+</Step>
+<Step title="String the panels">
+Choose **Strings**, pick the inverter and drag across the panels in wiring order. See [Stringing](/roof-design/stringing).
+</Step>
+<Step title="Check the single line diagram">
+Choose **Open SLD**. The diagram is drawn from your panels, strings and inverter. See [Single line diagram](/roof-design/sld).
+</Step>
+</Steps>
 
-Read [the editor](/roof-design/editor), [stringing](/roof-design/stringing) and [the single line diagram](/roof-design/sld). Review the technical design with the responsible people; ArcSolar stores the editor's document without recalculating its electrical content.
+<Frame caption="Panels placed on a roof in the design editor. Demo shown.">
+  <img src="/images/v2/dl-rv-editor.jpg" alt="The Roof Vision editor with a panel array placed on a roof, the tool rail on the left and the Panels & layout panel on the right." />
+</Frame>
+
+## Add the design to the quote
+
+Roof Vision saves as you work. The quote picks up the latest saved design by itself. When the line under the drawings reads **Latest saved design included in this quote.**, you're done. If the design changed, wait for it to save and choose **Refresh**.
+
+Before you send the quote, check the address, panel model, panel count and stringing. A solar quote can't be sent without a roof design.
+
+The customer sees two drawings: **Solar panel layout** and **Stringing and component layout**. The design's PDFs are also filed on the customer record.
+
+## After the sale
+
+The project keeps the design. Its **Internal handover PDF** adds the design pages for the installer. See [Field operations](/delivery/field-operations#hand-the-job-to-the-installer).
+
+Every Roof Vision drawing is a preliminary design. A qualified person must check it against the real site.
 
 
 ## Details
@@ -96,12 +121,12 @@ Roof Vision files these PDFs against the customer by itself as the design is wor
 
 <Accordion title={"Who produces the design"}>
 
-The single line diagram and the stringing design are produced in **Roof Vision**, not by ArcSolar. ArcSolar stores the editor's document exactly as the editor saved it and presents the two layout drawings the editor renders. ArcSolar never reads, recalculates or reproduces the electrical content of that document.
+The single line diagram and the stringing design are produced in **Roof Vision**, not by ArcSolar. ArcSolar stores the editor's document as saved and shows the two layout drawings to the customer. For the installer, the project's handover PDF reprints the design's strings and equipment as reference pages.
 
 
-  Roof Vision draws the design; ArcSolar stores it and shows the result. ArcSolar does not size strings, work out voltages or cable lengths, or check the design against the equipment. If a figure is not drawn on the drawings, ArcSolar does not hold it.
+  Roof Vision draws the design; ArcSolar stores it and shows the result. ArcSolar does not size strings or check the design against the equipment. For the installer handover, ArcSolar prints the design's own strings, inverter and racking runs as reference pages.
 
-  Installers do not get a separate design screen. They receive the issued quote — the same two drawings the customer sees — with the exported reports and the project's work orders in [field operations](/delivery/field-operations). The API-level contract is on [the Roof Vision integration contract](/reference/roof-design-contract).
+  Installers do not get a design screen. They receive the project's **Internal handover PDF**, which adds the design pages, plus the issued quote and the job in the [Work app](/delivery/job-portal). See [field operations](/delivery/field-operations). The API-level contract is on [the Roof Vision integration contract](/reference/roof-design-contract).
 
 </Accordion>
 
@@ -126,7 +151,7 @@ Roof Vision is included with the **Arc** plan. Administrators, developers, opera
   | Refresh | **Refresh** | Shown with a saved design; asks for the newest drawings |
   | Editor overlay | Title **Roof Vision design editor** (`aria-label`) | Hidden rather than unmounted while closed so a snapshot can finish |
 
-  **Editor chrome.** The editor is the separate Roof Vision application at the configured origin, not a screen inside the app. Its workspace navigation is **Home**, **Map**, **Library** and **Settings**, plus the member's account button. On **Map** the project bar carries the address, **Open another project**, **Link customer / site** and **Local export**. The canvas tools are **Select**, **Hand**, **Build**, **Eraser**, **Measurement Add**, **Measurement Edit**, **String Editor**, **Cabling**, **Annotations** and **Floor plan**. The inspector carries the **Catalogue** tab — with the **Solar panel** and **Solar batteries** tabs, the `Search manufacturer or model` field, filters and **Add custom panel** — plus a tab for each tool with settings. The design downloads are **Download Panel Design**, **Download Annotation Design**, **Open SLD**, **Download site plan**, **Download Battery Site Plan** and the disabled **Voltage rise report (Coming Soon)**. **Images and plans** and **Solar production** sit under the image and solar tools.
+  **Editor chrome (verified on the demo editor, 2026-11-16).** The editor is the separate Roof Vision application at the configured origin, not a screen inside the app. The canvas tool rail shows **Select**, **Pan**, **Build**, **Erase**, **Measure**, **Edit**, **Strings**, **Cabling**, **Annot.** and **Floor plan** (accessible names Select, Hand, Build, Eraser, Measurement Add, Measurement Edit, String Editor, Cabling, Annotations, Floor plan), then icon buttons **Open SLD**, **Images and plans**, **Sun exposure** and **Export design**. The inspector is titled **Panels & layout** with **Panels** and **Batteries** tabs: `Choose a module`, the `Search manufacturer or model` field, filters and **Add custom panel**; once a module is chosen it shows **Selected module**, **Change module**, kW and panel count, **Layout** (**Portrait** / **Landscape**), **Row spacing**, **Column spacing**, **Rotation**, **Roof pitch**, **Roof helpers**, **Existing** and **Build on the roof** (`B`). **Export design** opens a **Download design** panel with **Panel design**, **Annotation design**, **Site plan** and **Battery site plan** (disabled until a floor plan exists). No voltage rise report control is shown.
 
   **Ordering an agent must respect.**
 
@@ -225,12 +250,12 @@ Roof Vision is included with the **Arc** plan. Administrators, developers, opera
   **Ownership boundary. Read this before answering any SLD, stringing or installer-design question.**
 
   - Single line diagrams, stringing design and panel geometry are produced by the **Roof Vision editor** (internal engine literal `simple-designer`). Its printed reports and sheets are branded **Roof Vision**. ArcSolar does not author them.
-  - ArcSolar receives the editor document and stores it as an **opaque, lossless payload**: `payload: z.record(z.string(), z.unknown())`, annotated in `src/lib/roof-design/contract.ts` as "Opaque, lossless editor state: the integration never reconstructs geometry." The integration persists measurement and cable-class discriminators, annotations, plan imagery references and electrical snapshots — it never interprets them.
-  - **No ArcSolar screen, report, export or API produces, edits, validates or calculates an SLD, a string size, a string voltage, a current, a cable length or a voltage drop.** There is no SLD module, route, table, column or report in the ArcSolar application.
-  - The only design artefacts ArcSolar holds are the two rendered PNGs. What ArcSolar owns is their **label and placement**, never their electrical content. They are opaque bitmaps: nothing in the product can read a string size out of one, and nothing measures or verifies what they depict.
+  - ArcSolar receives the editor document and stores it as an **opaque, lossless payload**: `payload: z.record(z.string(), z.unknown())`, annotated in `src/lib/roof-design/contract.ts` as "Opaque, lossless editor state: the integration never reconstructs geometry." The integration persists measurement and cable-class discriminators, annotations, plan imagery references and electrical snapshots. The only consumer that reads them is the internal handover derivation (`src/lib/quotes/bill-of-materials/roof-vision.ts`), which builds the installer reference pages.
+  - **No ArcSolar screen edits or approves an SLD or a stringing design.** The exception is the project's **Internal handover PDF** (`/api/projects/<id>/internal-handover`): when a design is available it prints the panel-layout and stringing images, a print single-line diagram ArcSolar draws from the design's own strings and equipment (`roofVisionSingleLineSvg`), a per-string table (MPPT, panel count, module, Voc at STC and at the design's cold temperature, Vmp, Isc) with warnings when a value exceeds the inverter's recorded limits, and racking run quantities. These are derived reference pages for the installer, not an engineering approval.
+  - The customer-facing design artefacts are the two rendered PNGs. What ArcSolar owns is their **label and placement**. They are opaque bitmaps: nothing reads a string size out of an image. The handover pack's string figures come from the stored design document, not from the images.
   - ArcSolar does expose **read-only reference data** to the editor at `GET /api/roof-design/v1/catalogue`, drawn from the shared `solar_catalogue_*` rows: panel `voc_v`, `isc_a`, `impp_a`, `vmpp_v`, `max_system_voltage_v`, `max_series_fuse_a`, plus inverter and per-tracker MPPT rows (`mppt_voltage_min_v`, `mppt_voltage_max_v`, `max_input_current_per_mppt_max_a`, `max_isc_per_mppt_max_a`, `strings_per_mppt_max`). These rows carry no `workspace_id` and are returned as stored with every measurement as text. **Serving a specification is not evaluating it.** ArcSolar does not size strings or check a design against those limits.
 
-  **Prohibited conclusions.** Never state or imply that ArcSolar can generate, draw, edit, validate, recalculate, size, approve or export a single line diagram or a stringing design; that ArcSolar holds string sizes, string voltages, cable lengths, voltage drop or per-string counts; or that an SLD is available in an ArcSolar report or export. If asked how to make an SLD, the accurate answer is that the design is produced in Roof Vision, opened from a quote or from the Roof Vision page, and that ArcSolar stores and displays the result only.
+  **Prohibited conclusions.** Never state or imply that ArcSolar can edit, approve or certify a single line diagram or a stringing design, or that a design check is a compliance sign-off. If asked how to make an SLD, the accurate answer is that the design is produced in Roof Vision (**Open SLD**), opened from a quote or from the Roof Vision page. ArcSolar stores the result, shows the two drawings to the customer and prints derived reference pages in the internal handover PDF.
 
   **Stringing semantics are outside what ArcSolar can verify.** The only description ArcSolar itself commits to is the image label **Stringing and component layout** and the portal alt text `Roof imagery showing string assignments, connection order and components`. Do not describe string architecture, per-string module counts, string voltages or MPPT allocation as ArcSolar behaviour or as an ArcSolar field.
 
@@ -243,7 +268,7 @@ Roof Vision is included with the **Arc** plan. Administrators, developers, opera
   | Customer | Estimate portal `#portal-roof` | The two labelled drawings, address, attribution |
   | Customer | Issued PDF | One appended page per drawing: label, address, attribution, revision footer. No metrics. |
   | Customer | Customer record documents | The five Roof Vision PDFs, replaced on re-publish |
-  | Installer | **No design surface** | The issued quote and its PDF, plus project work orders in field operations. |
+  | Installer | **No design-editing surface** | The project's Internal handover PDF (with the Roof Vision pages), the issued quote and its PDF, and the job in the Work app. |
 
   Do not invent an installer design view, an installer-specific SLD, or a design hand-off screen.
 </Visibility>

@@ -16,18 +16,25 @@ import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="brand" />
 
-Open **Retailer Settings → Appearance defaults** for workspace branding. The original selling brand uses these defaults; additional brands keep their own appearance with their document settings.
+**Open:** [**Settings → Appearance defaults**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=branding). Administrators and developers.
 
-## Set the identity
+These are the names, logos and colours your customers see. Your original selling brand uses them. Additional brands set their own in their agreement. See [Selling brands](/setup/selling-brands).
 
-Review customer-facing names, website and sending address. Upload the appropriate logos, choose the colours, and set heading and body fonts for contracts.
+<Frame caption="Settings → Appearance defaults. Sample data.">
+  <img src="/images/v2/st-appearance-defaults.png" alt="Appearance defaults showing the Names section with Brand name and Communications name, and the Logos section with light and dark background slots." />
+</Frame>
 
-## Check the result
+## Set it up
 
-Open the branded contract preview. Check both document variants, text wrapping and logo legibility. Save through the controls shown. Updating appearance does not rewrite an already issued offer.
+1. Under **Names**, enter a **Brand name** and **Communications name**, or leave them blank to use your business name.
+2. Under **Logos**, upload a logo for **Light background** and **Dark background**.
+3. Under **Colours**, choose **Primary**, **Secondary** and **Tertiary**.
+4. Set your **Website URL** and **Sending address** if shown.
+5. Select **Save branding**.
+6. Under **Contract appearance**, choose a **Heading font** and **Body font**, then **Save contract fonts**.
+7. Open **Preview customer branding** and **Preview contract** to check the result.
 
-Keep legal identity, agreement wording and payment rules in their owning settings. The sections below cover the exact fields and font options.
-
+Changing branding never changes a quote or contract already sent.
 
 ## Details
 
@@ -51,7 +58,7 @@ Under each field the page shows what the current value resolves to, for example 
 You can type a bare host such as `example.com.au`; ArcSolar adds `https` for you. The line under the field confirms what customers will see, or says *"Blank shows no website link."*
 
 <Info>
-  The **Website** card is only shown when your workspace's database supports the field. If you cannot find it, that part of branding is not part of your database yet — ask support rather than entering the address somewhere else.
+  Can't see the **Website** card? It isn't available in your workspace yet. Ask support rather than entering the address somewhere else.
 </Info>
 
 </Accordion>
@@ -117,10 +124,10 @@ A live preview sits beside the cards so you can see the palette, logo and websit
 
 
 
-The saved fonts are stored against the brand's **draft** document, so the card needs a saved draft to exist. If none does, it says so and links you to the right place: *"No draft has been saved for this brand yet. Save the agreement in Retailer Settings → Documents first, then choose its fonts here."*
+The saved fonts are stored against the brand's **draft** document, so the card needs a saved draft to exist. If none does, it says so and links you to the right place: *"No draft has been saved for this brand yet. Save the agreement in Retailer Settings → Documents first, then choose its fonts here."* The **Documents** screen is now called **Agreements**.
 
 <Info>
-  **Additional-brand fonts** are chosen with that brand's own document, opened from **Edit documents** on the **Selling brands** card. For those brands the card points you there rather than offering a second editor for the same value.
+  **Additional-brand fonts** are chosen in that brand's own agreement. Open **Settings → Selling brands** and select **Agreement** on the brand's row.
 </Info>
 
 ### Picking a font, including Google Fonts
@@ -141,33 +148,24 @@ A family that does not publish all four required faces cannot be selected, and i
 
 **Approved documents keep the copies they were approved with.** Re-choosing a font creates fresh stored copies instead of changing the ones an approved contract points at, so an already-issued contract never changes under a customer's feet.
 
-If Google Fonts search returns nothing, either the search genuinely has no match, or the deployment has no Google Fonts search configured — the ArcSolar-hosted product has it configured, but a self-hosted or local deployment may not. In that case ArcSolar reports the deployment's own message rather than pretending there were no results. You can still upload a **licensed font file** through the assets control below the font fields.
+If Google Fonts search finds nothing, try another spelling, or upload a **licensed font file** below the font fields.
 
 </Accordion>
 
 <Accordion title={"Preview the branded contract"}>
 
-**Preview contract** is available on **Appearance defaults** (the **Contract appearance** card) and on **Agreements**.
+**Preview contract** is on the **Contract appearance** card in **Appearance defaults**. The agreement editor in **Agreements** has the same button.
 
 
-  The preview runs the **real renderer** against the brand's saved draft — its logo, colours, retained fonts and agreement wording — so it cannot drift from the contract a customer would receive. The customer and pricing blocks are the labelled layout sample, because a contract preview has no customer or accepted quote behind it.
+The preview builds the contract from the brand's saved draft: its logo, colours, fonts and wording. Customer and price details are sample text.
 
-  The dialog is titled **Contract preview for BRAND** and says *"A preview is never an approval."* You can choose **Render again** or **Download** the PDF.
+The dialog is titled **Contract preview for BRAND** and says *"A preview is never an approval."* You can choose **Render again** or **Download** the PDF.
 
 </Accordion>
 
-<Accordion title={"The Selling brands card"}>
+<Accordion title={"Where did the Selling brands card go?"}>
 
-Below the appearance cards, the **Selling brands** card lists the brands and, once multi-brand is enabled, lets you add one:
-
-- **Edit original documents** and **Select allowed users** on the original brand's row.
-- **Enable multi-brand** / **Disable multi-brand**.
-- **Additional brand name** plus **Create draft brand**.
-- Per additional brand: **Rename**, **Products and prices**, **Edit documents**, **Copy draft prices**, **Allow draft preparation**, **Archive**, **Select allowed users** and **Copy brand ID**.
-
-It closes with the two rules worth remembering: *"Manage and publish prices in Product catalogue, selecting the brand's price book. Copies stay draft until published. All brands use the workspace's existing connected payment account."*
-
-See [Selling brands](/setup/selling-brands) for the full walkthrough.
+It has its own screen now: [**Settings → Selling brands**](https://app.arcsolar.com.au/dashboard/settings?tab=selling-brands). Appearance defaults links to it at the bottom: *"To create or retire an identity, open Selling brands."* See [Selling brands](/setup/selling-brands).
 
 </Accordion>
 
@@ -175,10 +173,10 @@ See [Selling brands](/setup/selling-brands) for the full walkthrough.
 
 | Not here | Where it is |
 | --- | --- |
-| The contract's legal wording and consent text | Retailer Settings → **Agreements** — see [The NETCC contract](/setup/selling-contract) |
-| Deposit percentages and installation weeks | Retailer Settings → **Payments & finance** |
+| The contract's legal wording and consent text | **Settings → Agreements** — see [The NETCC contract](/setup/selling-contract) |
+| Deposit percentages and installation weeks | **Settings → Payments & finance** |
 | Per-brand prices | **Product Catalogue**, with the brand's price book selected — see [Prices per brand](/setup/price-books) |
-| Your own interface theme and dark mode | **Profile Settings** → **Appearance** — see [Which settings screen do I want?](/setup/settings-screens) |
+| Your own interface theme and dark mode | **Settings → Preferences**. See [Find the right settings](/setup/settings-screens) |
 
 </Accordion>
 

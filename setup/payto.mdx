@@ -1,35 +1,65 @@
 ---
 icon: "building-columns"
-sidebarTitle: "PayTo"
-keywords: ["PayTo","direct debit","usage billing","VoIP"]
-title: "PayTo"
-description: "Activate bank-authorised billing for calls, SMS and phone numbers."
+sidebarTitle: "Pay for calls and SMS"
+keywords: ["PayTo","BECS","direct debit","card","usage billing","VoIP","calls and SMS billing","phone billing"]
+title: "Pay for calls and SMS"
+description: "Choose how calls, SMS and phone numbers are paid: your plan's card or bank account, a PayTo agreement, or a separate card."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-Open the PayTo step during onboarding or organisation billing in **Settings**.
+Calls, SMS and number rentals are billed monthly for what you use, separately from your ArcSolar plan. Only the workspace owner can set this up.
 
-## Authorise the agreement
+**Open:** [**Settings → Billing**](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-billing) and expand **Phone billing**. You can also do it during [onboarding](/setup/onboarding).
 
-1. Open the PayTo setup action.
-2. Read the business name, payment purpose, limits and frequency.
-3. Enter the requested details in the secure payment flow.
-4. Approve the agreement in your banking app or online banking.
-5. Return to ArcSolar and wait for active status before calling or messaging.
+## Choose how to pay
 
-For pending approval, check your banking app. For a decline, check account authority, bank eligibility and agreement limits before repeating setup.
-
-## Keep billing arrangements separate
-
-| Arrangement | Purpose |
+| Option | How it works |
 | --- | --- |
-| Software subscription | Your ArcSolar plan |
-| Organisation PayTo | Calls, SMS segments and numbers |
-| Stripe customer payments | Collect payments from customers |
+| **Same method as your plan** | Calls and SMS go on the card or bank account (BECS Direct Debit or PayTo) you used for your subscription. Nothing more to enter |
+| **PayTo agreement** | A separate monthly PayTo agreement you approve in your banking app |
+| **Separate card** | A card used only for calls and SMS |
 
-An active mandate permits collection under its terms. It does not prove a particular charge succeeded. Check the payment and invoice for that.
+## Use the same method as your plan
 
-PayTo avoids card-expiry problems, but it does not make processing free. Fees and your agreed terms still apply.
+This is the simplest option. You agree to it when you choose your plan.
 
-<NextGuide href="/integrations/stripe" title="Customer payments with Stripe" />
+1. Open **Billing → Phone billing**.
+2. Select **Enable calls and SMS**.
+
+Calls and SMS turn on once the payment is confirmed. To change the card or bank account later, select **Manage payment method**. Both your plan and calls and SMS use the new one.
+
+## Set up a PayTo agreement
+
+1. Open **Billing → Phone billing**.
+2. Expand **Calls, SMS & number rates** and read the rates.
+3. Tick **I accept these rates and separate monthly VoIP billing.**
+4. Select **Continue to bank approval**.
+5. Approve the agreement in your banking app.
+
+The agreement allows one monthly debit of your actual usage, up to A$10,000. This is a limit your bank approves, not a fee. To change an active agreement, select **Replace mandate with bank approval**.
+
+If a PayTo debit fails, the owner can retry it under **Outstanding phone payments**.
+
+## Use a separate card instead
+
+If PayTo doesn't work for you:
+
+1. Under the PayTo form, select **Having trouble with PayTO?**
+2. Select **Continue with Card** and enter the card in the secure payment page.
+
+To change it later, select **Update VoIP billing card**.
+
+## Before you call
+
+Numbers can't be given out until phone billing is active. On **Calls & SMS** you'll see **Complete billing setup** until it is.
+
+Keep these separate:
+
+| Arrangement | Pays for |
+| --- | --- |
+| Your plan | ArcSolar software. See [Billing](/setup/billing) |
+| Phone billing | Calls, SMS and numbers |
+| [Stripe customer payments](/integrations/stripe) | Money your customers pay you |
+
+<NextGuide href="/setup/team" title="Invite your team" />

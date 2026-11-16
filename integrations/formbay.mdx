@@ -1,34 +1,56 @@
 ---
 icon: "file-circle-check"
 sidebarTitle: "Formbay"
-keywords: ["Formbay","token","compliance","company"]
+keywords: ["Formbay","token","rebate applications","evidence","import"]
 title: "Formbay"
-description: "Bring application progress and evidence into Projects & Jobs."
+description: "Connect Formbay to see rebate applications and evidence beside your projects."
 ---
 
 import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="formbay" />
 
-**Open:** [**Retailer Settings → Integrations → Formbay**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations).
+Formbay is in **Beta**. Administrators and Operations can connect it.
 
-1. Obtain an authorised Formbay bearer token for your business.
-2. Choose **Connect account** and paste it into **Auth bearer token**.
-3. Select **Verify token**.
-4. Confirm the company returned by verification.
-5. Choose **Connect** for that company.
-6. Open the relevant project and associate the correct Formbay application.
+## What syncs
 
-Verify the company identity before connecting. If verification fails, check token validity and access with your Formbay administrator; do not post the token in a support message.
+- Formbay application status and evidence, shown on the linked project.
+- You can create ArcSolar projects from Formbay applications that aren't linked yet.
+- Claim lodgement still happens in Formbay.
 
-## Link or import the right application
+## Connect Formbay
 
-When using the import controls, choose the scheme and inspect the available installation/application details. Search existing projects first. Review the provider reference and installation address before importing or associating a record.
+<Steps>
+<Step title="Get your token">
+Get your business's Formbay bearer token from your Formbay administrator.
+</Step>
+<Step title="Open the form">
+Open [**Retailer Settings → Integrations → Formbay**](https://app.arcsolar.com.au/dashboard/quoting-settings?tab=integrations) and select **Connect account**.
+</Step>
+<Step title="Verify">
+Paste the token into **Auth bearer token** and select **Verify credentials**.
+</Step>
+<Step title="Confirm">
+Check the company name, group and permissions shown. Then select **Connect verified account**.
+</Step>
+</Steps>
 
-Open the linked application's details to inspect application status, Formbay job status and reported evidence. **Missing**, **Unknown** and **Complete** have different meanings. Unknown evidence is not proof that a requirement was met.
+<Frame caption="The Connect Formbay form. Sample data.">
+  <img src="/images/v2/ri-formbay-connect.png" alt="Connect Formbay form with an Auth bearer token field and a Verify credentials button." />
+</Frame>
 
-## Maintain the connection
+After connecting, the card shows a badge for each scheme: **Awaiting sync**, **Details syncing**, **Synced** or **Needs verification**.
 
-Use **Replace token** when credentials change. Check the company again. Disconnecting stops sync and removes the saved token; previously synced information and projects are retained as described by the confirmation.
+## Link or import applications
 
-If a status looks old, check its observation time and the last successful sync. Complete the provider-side work in Formbay when ArcSolar does not offer that action.
+- **Link to an existing project:** open the project in [Projects & Jobs](/delivery/projects), go to its Formbay section and use **Find an existing application**. Search by address, NMI or reference, and check the details before you link.
+- **Create a project from Formbay:** on the Formbay card, use **Create a project from Formbay**. Search by address, customer or reference.
+
+## Manage the connection
+
+- **Refresh now** fetches the latest information.
+- **Open Formbay** opens the Formbay portal.
+- **Update credentials** replaces the token.
+- **Disconnect** stops syncing and removes the saved token. Your projects and synced history stay.
+
+Never paste the token into notes or support messages.

@@ -31,89 +31,44 @@ keywords:
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-<figure className="docs-roof-figure"><img src="/images/roof-design-sld-diagram.png" alt="Single line diagram in Roof Vision, showing the actual editor and design controls." /></figure>
+Choose **Open SLD** in Roof Vision. When the design has an inverter, the diagram is drawn from your panels, strings and inverter. Without one, it opens empty.
 
-Choose **Open SLD** from Roof Vision. With an inverter configured, the roof's panels, strings and inverter seed the diagram; without one, it opens empty.
+<Frame caption="A diagram drawn from a 16-panel string and one inverter, with the component list on the right. Demo shown.">
+  <img src="/images/v2/dl-rv-sld.png" alt="The single line diagram editor showing the roof string, inverter, main switchboard and grid supply, with PV module and inverter schedules and a component list." />
+</Frame>
 
-## Review the drawing
+## Check and finish the diagram
 
-Check the equipment and phase setting, then use the editor’s component, wiring and layout controls. Review connectivity findings and missing design facts. A cable crossing alone does not create a connection.
+<Steps>
+<Step title="Set the supply">
+Choose **1Φ**, **2Φ** or **3Φ** next to **Phases**.
+</Step>
+<Step title="Add components">
+Drag a component onto the canvas, such as **Switchboard**, **Smart Gateway**, **Load**, **Protection Relay**, **C.O. Switch**, **Switch**, **Smart Meter** or **Meter Box**.
+</Step>
+<Step title="Connect them">
+Drag between two terminals to run a cable. A line that crosses another isn't a connection.
+</Step>
+<Step title="Review the checks">
+Choose **Checks** to open **Review findings**. Filter by **Errors**, **Unknown** or **Warnings**, and follow **Source guidance** for each one.
+</Step>
+<Step title="Download the PDF">
+Choose **Download PDF**. The PDF has the drawing and the **PV MODULES** and **INVERTERS** schedules.
+</Step>
+</Steps>
 
-When the roof equipment changes, the drawing updates to match. If **Please confirm this SLD** appears, review the marked inverter and its wiring before the drawing goes out. SLD editing does not change the roof layout.
+The diagram saves as you work (**Saved** shows at the bottom). Roof Vision files it on the linked customer.
 
-## Export and hand over
+## Keep it in step with the roof
 
-Use **Download PDF** in the editor header. The PDF has vector paths and selectable text, so use the exported drawing when sharing or inspecting detail.
+When you change panels, strings or the inverter, the diagram updates to match. Your own additions, such as protection, cables and labels, are kept. If **Please confirm this SLD** appears, review the marked inverter and its wiring.
 
-Available drawings are filed to the linked customer after saving. Review the current drawing before issue; automatic filing is not approval.
+Editing the diagram doesn't change the roof layout.
 
-An SLD is a draft drawing of declared connectivity. It carries no signed engineering approval and does not certify an installation. The responsible qualified person must review the real site and design evidence.
+<Note>
+The diagram shows the connections you drew. It has no signed engineering approval and doesn't certify an installation. A qualified person must check it against the site.
+</Note>
 
-
-## Details
-
-<Accordion title={"What the roof design does for you"}>
-
-The diagram is not a copy you maintain by hand. Roof Vision rebuilds it from the roof design and merges the result into what you have drawn, so the symbols, counts and connections follow the roof.
-
-| Change on the roof design | What happens on the diagram |
-| --- | --- |
-| Panels added or removed in a string | The module group updates its count; any cable you routed along it is kept |
-| A new string assigned to an inverter | The string, its module group and its MPPT wiring are added |
-| A battery chosen in the catalogue | The battery is added with its connections |
-| Equipment removed from the design | Its symbols and circuits go with it — only an explicit archive is retained |
-| A string moved to a different MPPT | Cables are mapped to the new input, keeping the route you drew |
-| A replacement inverter — another model, another kind, another phase count, more or fewer MPPT inputs | The new model replaces the old one and keeps its position, label and every cable its terminals still match |
-| A cable on a terminal the replacement does not list — a battery input on a PV-only model, a backup output with no backup | The cable stays anchored to that terminal and is marked as carried, so you can re-map it to another device or remove it |
-| Your own edits — moved objects, added protection, cables and labels | Preserved |
-
-Nothing is refused and nothing waits for a manual apply. A drawing the roof design has moved past still saves and files; when a cable needs your eye, **Please confirm this SLD** sits above the drawing until that cable is re-mapped or removed.
-
-</Accordion>
-
-<Accordion title={"Draw the diagram"}>
-
-<Visibility for="humans">
-  Opening from a roof design loads the inverter you configured, its MPPT inputs and the strings you built. With no inverter configured, the canvas opens empty.
-
-  <Steps>
-  <Step title="Set the supply">
-  Use the **Phases** buttons for one, two or three phases.
-  </Step>
-  <Step title="Place the components">
-  Drag a component from **Components** onto the canvas, or click it and then click where it goes.
-  </Step>
-  <Step title="Run the cables">
-  Drag between two terminals to run a cable. Select a cable to edit its route or rename it.
-  </Step>
-  <Step title="Label the equipment">
-  Select a component to open **Object properties** — label it, set its model and rating, and open its **INTERNAL COMPONENTS**.
-  </Step>
-  <Step title="Export the drawing">
-  Choose **Download PDF**. From a roof design it produces a one-page A4 landscape project sheet with the **PV MODULES** and **INVERTERS** schedules.
-  </Step>
-  </Steps>
-
-
-
-
-
-  **What to check**
-
-  - Every cable joins a terminal on one symbol to a terminal on another. A line that crosses another line is not a connection — only a dot is.
-  - DC and AC are kept apart. An AC terminal will not accept a DC cable, and a communications or metering terminal will not accept a power cable.
-  - Every circuit you need has been drawn. The editor checks what you declared; it does not know what the site actually needs.
-
-  The export is a real vector drawing with selectable text, named `single-line-diagram.pdf`. Larger drawings are exported to A3, and a drawing too big for one A3 page is split across pages.
-
-
-
-  **The PDF is the record of the drawing** — **Download PDF** is how a drawing leaves the editor, and the `single-line-diagram.pdf` file it produces is the one you file with the job.
-
-  This is a design drawing, not a certified one. It shows the connectivity you declared. It does not certify that a real switchboard is safe or correct, and it does not simulate how a manufacturer's protection device behaves.
-</Visibility>
-
-</Accordion>
 
 <Visibility for="agents">
   ### Entry points
@@ -320,7 +275,7 @@ Nothing is refused and nothing waits for a manual apply. A drawing the roof desi
   | --- | --- |
   | The SLD PDF, defaulting to an A4-landscape project sheet with `PV MODULES` and `INVERTERS` schedules when opened from a roof design with an inverter | Yes, via **Download PDF** in the SLD editor header |
   | The roof reports — `Panel Design`, `Annotation Design`, `Site Plan` and `Battery Site Plan` | Yes, via the Roof Vision editor's `Design downloads` toolbar |
-  | The `Voltage Rise Calculation` report | **Not reachable.** The report exists in the editing code and the toolbar carries a disabled **Voltage rise report (Coming Soon)** control. |
+  | The `Voltage Rise Calculation` report | **Not reachable.** The current editor shows no voltage rise report control (checked on the demo editor, 2026-11-16). |
   | The fixed A3 installation sheet with its `EQUIPMENT SCHEDULE`, `PV STRING CHECK`, `WIRING + OPERATING NOTES` and `CABLE SCHEDULE` regions | Layout exists in the export code, but the control that selects it has no UI, so it is not reachable from the deployed editor |
 
   The A3 sheet's worked example is a **worked design drawing, not an as-built record**, and says so: `Site, NMI, DNSP approval, actual installation method, fault levels, serial numbers, installer and commissioning evidence have not been supplied.` Its issuing instruction is the standard to hold to: a real issue must **replace the worked assumptions with the installed values** and accompany the array layout, cable-route record, shutdown instructions and commissioning documentation. A real switchboard issue must also be signed off by whoever is qualified to do it.

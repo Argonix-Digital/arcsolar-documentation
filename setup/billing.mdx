@@ -1,0 +1,76 @@
+---
+icon: "credit-card"
+sidebarTitle: "Billing and plan"
+keywords: ["billing","plan","subscription","Spark","Arc","upgrade","downgrade","cancel","invoice","payment method"]
+title: "Billing and your plan"
+description: "Change your ArcSolar plan, update your card, download invoices or cancel."
+---
+
+import { NextGuide } from "/snippets/docs-visuals.jsx";
+
+**Open:** **Settings** → **Billing** ([open in ArcSolar](https://app.arcsolar.com.au/dashboard/settings?tab=organisation-billing)).
+
+Only the organisation owner can change the plan, the payment method or the subscription. Other people with access see the page but the buttons are turned off, with the note *"Your organisation owner manages payment methods and subscriptions."*
+
+## What the page shows
+
+| Area | What you see |
+| --- | --- |
+| **Current plan** | Your plan, its monthly price, what it includes and your billing cycle |
+| Payment arrangement | The card or account on file and upcoming charges |
+| **Invoice history** | Every ArcSolar invoice, with its status and a link to view it |
+
+## Plans
+
+| Plan | Price | Includes |
+| --- | --- | --- |
+| **Spark** | $399 a month + GST | Standard features, without ArgonixIntelligence or AI Roof Vision |
+| **Arc** | $699 a month + GST | Everything in Spark, plus ArgonixIntelligence and AI Roof Vision |
+
+## Change your plan
+
+1. Open **Manage subscription**.
+2. Pick the plan you want:
+   - **Upgrade with prorated payment** moves you to **Arc** now. You pay the difference for the rest of this month.
+   - **Downgrade at next renewal** moves you to **Spark** when your current month ends.
+3. Wait a moment. Stripe confirms the change, then the page updates. If it doesn't, select **Refresh billing**.
+
+## Update your payment method
+
+Select **Manage payment method**. Stripe opens in the same tab. Change your card there, then return to ArcSolar.
+
+If your calls and SMS are billed to the same card, this one change covers both.
+
+## View or download an invoice
+
+1. Scroll to **Invoice history**.
+2. Select **View invoice** (or **Invoice PDF**) on the row you want. It opens in a new tab.
+
+| Status | Meaning |
+| --- | --- |
+| **Paid** | Paid in full |
+| **Open** | Not paid yet. The due date shows under the status. |
+| **Void** | Cancelled. Not counted in totals. |
+| **Uncollectible** | Payment failed and was written off |
+
+## Cancel your subscription
+
+1. Open **Manage subscription** and select **Cancel subscription**.
+2. Read the dialog, then select **Confirm cancellation**. Select **Keep subscription** to back out.
+
+Cancelling takes effect at the end of the month you've paid for. Until then you keep full access.
+
+<Warning>
+When the paid month ends, software and phone access stop. Your rented phone numbers are released and may not be recoverable. Usage you've already incurred is still payable. Your business records are kept.
+</Warning>
+
+Changed your mind before the month ends? Open **Manage subscription** and select **Resume subscription**.
+
+## Other billing sections
+
+| Section | Use it to |
+| --- | --- |
+| **Phone billing** | See how calls, SMS and numbers are billed, view **Calls, SMS & number rates**, and set up or replace your [PayTo agreement](/setup/payto) |
+| **Customer payment collection** | Select **Manage Stripe business details** to finish or update the Stripe account that takes your customers' payments. See [Stripe](/integrations/stripe). |
+
+<NextGuide href="/setup/payto" title="PayTo" />
