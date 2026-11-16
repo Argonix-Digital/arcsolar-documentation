@@ -10,7 +10,7 @@ import { ProductPreview } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="catalogue" />
 
-**Open:** [**Product Catalogue**](https://app.arcsolar.com.au/dashboard/product-catalogue) in the Delivery section.
+**Open:** [**Product Catalogue**](https://app.arcsolar.com.au/dashboard/product-catalogue) under **Operations** in the sidebar.
 
 ## Review a product
 
@@ -50,16 +50,15 @@ A **Priced in BRAND** badge is not an error. It is the normal state of a correct
 
 A brand's own **Products and prices** list words the same states in book terms — **Published**, **Draft only**, **Missing price**, **No price book** — because that surface is about one book.
 
-The product's dialog carries the same story in two labels: the price field is named **Additional brand price** for a brand other than the original, and the history note reads _"Currency amount this product costs for the selected selling brand."_
-
 ### Set a price for the selected brand
 
 1. Open the product while the correct brand is selected, or filter the catalogue to that brand.
 2. Enter the price for the brand you are looking at, with its effective date.
-3. Save, then confirm the row's label changes from **Missing price** to **Priced in BRAND**.
-4. Price a sample quote under that brand and check the sell price and margin.
+3. Choose **Set price now** or **Schedule for a date**, then save.
+4. Check the row now shows **Current** (or **Draft price** if you saved a draft).
+5. Make a sample quote under that brand and check the price.
 
-If you are preparing a batch of a new brand's prices, Retailer Settings' **Selling brands** card can copy prices from the original brand into the new book **as drafts** — see [Prices per brand](/setup/price-books). Nothing is published by the copy itself, so every copied price is still reviewed before it reaches a quote.
+If you are preparing a batch of a new brand's prices, the **Selling brands** page in Settings can copy prices from the original brand into the new book **as drafts** — see [Prices per brand](/setup/price-books). Nothing is published by the copy itself, so every copied price is still reviewed before it reaches a quote.
 
 ### Which brand a product row is priced in
 
@@ -71,10 +70,11 @@ Confirm the replacement price, effective date and impacted packages. Preview a q
 
 ## Bulk and imports
 
-Use a CSV import only with approved templates and the correct brand's price list. Validate duplicates and errors before publishing, and confirm the imported prices landed in the intended price book.
+Select **Import Products** (under **Tools**) to add or update many products from an XLSX or CSV file. Imported prices are drafts unless `publish_price` is `TRUE`. See [Set up your pricing](/setup/pricing#import-from-a-spreadsheet) for the steps and rules.
 
 ## Related
 
+- [Set up your pricing](/setup/pricing)
 - [Prices per brand](/setup/price-books)
 - [Sell under more than one selling brand](/setup/selling-brands)
 - [Create and send a quote](/quoting/walkthrough)

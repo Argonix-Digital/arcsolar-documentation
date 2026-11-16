@@ -1,29 +1,62 @@
 ---
 icon: "users"
-sidebarTitle: "Team and access"
-keywords: ["roles","permissions","invitations","team","compensation","commission","member profile"]
+sidebarTitle: "Invite your team"
+keywords: ["roles","permissions","invitations","invite","team","suspend","offboard","remove user","compensation","commission","member profile"]
 title: "Team and access"
-description: "Give each person the account and permissions needed for their work."
+description: "Invite your team, change roles and remove access."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
-Open [**Team & Access**](https://app.arcsolar.com.au/dashboard/team-access). Member administration depends on your role.
+Open [**Team & Access**](https://app.arcsolar.com.au/dashboard/team-access). Only **Administrators** can invite people or change roles. Not sure which role to pick? See [Roles and permissions](/setup/roles).
 
-## Invite a member
+## Invite someone
 
-Check existing members first. Invite the person using their own email and the right role. Ask them to finish account setup, sign in and confirm their menus and records. Check active status and phone allocation when needed.
+1. Select **Invite team member**.
+2. Enter their name and **Login email**. Use their own work email.
+3. Choose a **Role**.
+4. Answer **Does this user need a phone number?** Choose **Yes** for anyone who calls or texts customers.
+5. Optional: add a **Personal mobile for call alerts**. ArcSolar texts this number when a customer calls them.
+6. Select **Send invitation**.
 
-| Role | Main responsibility |
-| --- | --- |
-| Sales | Assigned customers, quotes, conversations and tasks |
-| Sales manager | Their own customers and those of the sales reps approved for them |
-| Technician | Assigned field visits in Work |
-| Operations | Projects, installers and delivery |
-| Administrator | Workspace settings, staff and reporting |
-| Developer | System-managed platform access |
+<Frame caption="Invite team member. Sample data.">
+  <img src="/images/v2/invite.png" alt="The Invite team member window with allowed selling brands, name, login email, role, primary team, phone number and call alert mobile." />
+</Frame>
 
-The on-screen permissions apply; access to a page does not necessarily allow every change.
+Some roles ask one more thing:
+
+- **Sales manager**: tick the **Sales reps they manage**.
+- **External marketing**: choose **Lead data access**. Pick **Only leads they've imported** or **All leads and customer records**.
+
+## What they receive
+
+1. An email from ArcSolar with an **Accept invitation** button.
+2. They select it and create a password.
+3. They sign in and see the menus for their role.
+
+Installers (Technician role) don't set a password. They sign in from the email link each time.
+
+The invitation lasts **30 days**. Track it under the **Invitations** tab. To cancel one, select **Revoke**. If a link has expired, they can select **Request a new setup link**.
+
+## Change a role
+
+1. Open the person in **Team & Access** and select **Manage**.
+2. Under **Role assignment**, pick the new **Effective role**.
+3. Select **Update role**.
+
+Only Administrators can do this. You can't switch someone into Technician or External marketing. Invite a new account for those.
+
+## Pause someone's access
+
+Select **Suspend**, give a reason and confirm **Suspend access**. They lose access straight away, but keep their customers and tasks. Select **Reactivate** to bring them back.
+
+Administrators and Operations can do this.
+
+## When someone leaves
+
+Select **Offboard**. Pick who takes over their sales and operations work, then select **Reassign and offboard**. Their customers and tasks move in the same step.
+
+Only Administrators can offboard. You can't suspend or offboard yourself.
 
 ## Set up a sales manager
 
@@ -60,7 +93,6 @@ Administrator, Operations, Sales manager, Developer and Finance roles cover ever
 Profiles separate Overview, Personal, Employment and Compensation. People administrators also have Admin management. Compensation is private to the member and authorised people administrators. **Edit compensation** records salary, commission or both, effective dates and the configured rule. Leave inapplicable amounts blank rather than entering zero.
 </Accordion>
 
-Before someone leaves, reassign their customers and open work explicitly, then review access and phone allocation.
 
 <NextGuide href="/setup/sales-availability" title="Sales availability" />
 

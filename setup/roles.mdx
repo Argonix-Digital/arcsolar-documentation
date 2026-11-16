@@ -1,0 +1,56 @@
+---
+icon: "shield-halved"
+sidebarTitle: "Roles and permissions"
+keywords: ["roles","permissions","access","administrator","operations","sales manager","sales representative","finance","technician","external marketing","who can"]
+title: "Roles and permissions"
+description: "What each role can see and do."
+---
+
+import { NextGuide } from "/snippets/docs-visuals.jsx";
+
+Every person has one role. The role decides what they see and what they can change.
+
+## The roles
+
+| Role | Best for |
+| --- | --- |
+| **Administrator** | Owners and managers who run the whole workspace |
+| **Operations** | Office staff who run projects, installs and settings |
+| **Sales manager** | Leads a sales team. Sees their own customers and their reps' customers |
+| **Sales representative** | Sells. Sees their own customers and unassigned leads |
+| **Finance** | Accounts. Can see everything but changes very little |
+| **Technician** | Installers. Only sees their own jobs in the **Work** app |
+| **External marketing** | Outside lead suppliers. Adds leads and sees their own results |
+
+<Note>
+  **Developer** is a role used only by ArcSolar staff. You can't invite or edit it.
+</Note>
+
+## Who can do what
+
+| Task | Admin | Ops | Sales mgr | Sales rep | Finance | Ext. marketing |
+| --- | :-: | :-: | :-: | :-: | :-: | :-: |
+| Add customers and leads | ✓ | ✓ | ✓ | ✓ | – | ✓ |
+| [Import leads](/customers/import-leads) and copy the [intake form](/customers/intake-form) | ✓ | ✓ | ✓ | ✓ | – | ✓ |
+| Assign customers to reps | ✓ | ✓ | ✓ | – | ✓ | – |
+| Create and send quotes | ✓ | ✓ | ✓ | ✓ | – | – |
+| Change [pricing](/setup/pricing) | ✓ | ✓ | – | – | If allowed | – |
+| Take and adjust payments | ✓ | ✓ | View only | – | ✓ | – |
+| Run projects and installs | ✓ | ✓ | – | – | View only | – |
+| See reports | ✓ | ✓ | Their team | Their own | ✓ | Their leads |
+| Invite people and change roles | ✓ | – | – | – | – | – |
+| Suspend and reactivate people | ✓ | ✓ | – | – | – | – |
+| Remove people (offboard) | ✓ | – | – | – | – | – |
+| Open **Team & Access** | ✓ | ✓ | – | – | View only | – |
+
+Sales reps can only import leads for themselves. External marketing sees either only the leads they added or all records. You choose this when you invite them.
+
+## Agent follows the same rules
+
+[Agent](/agent) can only do what your role allows. A sales rep can't use Agent to change pricing, for example.
+
+## Change someone's role
+
+Only **Administrators** can change roles. See [Team and access](/setup/team#change-a-role).
+
+<NextGuide href="/setup/team" title="Invite your team" />

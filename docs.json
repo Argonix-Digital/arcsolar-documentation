@@ -23,6 +23,7 @@
               "index",
               "start-guide",
               "quickstart",
+              "agent",
               "reference/workspace"
             ]
           },
@@ -31,6 +32,8 @@
             "expanded": false,
             "pages": [
               "customers/records",
+              "customers/import-leads",
+              "customers/intake-form",
               "customers/pipeline",
               "customers/calls-sms",
               "customers/call-intelligence",
@@ -97,7 +100,9 @@
             "pages": [
               "setup/onboarding",
               "setup/checklist",
+              "setup/pricing",
               "setup/team",
+              "setup/roles",
               "setup/sales-availability",
               "setup/payto",
               "setup/settings-screens",
