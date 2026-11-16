@@ -1,38 +1,83 @@
 ---
 icon: "building"
-sidebarTitle: "Organisation setup"
-keywords: ["signup","onboarding","business profile","subscription"]
-title: "Organisation setup"
-description: "Create the workspace and complete its separate billing arrangements."
+sidebarTitle: "Set up your company"
+keywords: ["signup","sign up","onboarding","new company","business details","subscription","plan","spark","arc","get started"]
+title: "Set up your company"
+description: "Create your ArcSolar account and get your business ready to quote."
 ---
 
 import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
 
 <ProductPreview type="settings" />
 
-The organisation owner completes the setup. Have the ABN, business details, billing email, phone, address and bank details ready.
+This guide is for the **business owner**. It takes about 15 minutes, plus time to load your prices.
 
-This guide follows the documented qa onboarding flow. If your workspace uses an invitation or different prompts, follow those and ask support if you cannot continue.
+## Before you start
 
-## Create the workspace
+Have these ready:
 
-1. Create your account and verify your email.
-2. Complete the business profile: identity, address, timezone, services, operating states and team information.
-3. Choose **Create organisation**, then review the **Spark** and **Arc** plans and their inclusions.
+- Your ABN and legal business name
+- Your business address, phone and billing email
+- A card for your ArcSolar subscription
+- Your price list (products and system prices)
 
-## Complete billing
+## The steps at a glance
 
-| Step | What to do |
-| --- | --- |
-| Communications rates | Choose **Review VoIP rates**, read them and accept separate usage billing |
-| Software subscription | Choose **Open Stripe in new tab**, complete checkout and return to ArcSolar |
-| Calls and SMS | [Authorise PayTo](/setup/payto) in your banking app and wait for active status; **Skip for now** leaves communications unavailable |
-| Customer payments | Complete [Stripe business verification](/integrations/stripe); collection starts when Stripe enables it |
+<Steps>
+  <Step title="Create your account">
+    Go to [app.arcsolar.com.au/signup](https://app.arcsolar.com.au/signup). Enter your **Work email** and a **Password** (12 characters or more). Tick the terms box and select **Create account**.
 
-At **Your workspace is ready**, review outstanding items and choose **Enter workspace**.
+    Open the email from ArcSolar and confirm your address. Then select **Continue**.
+  </Step>
+  <Step title="Add your business details">
+    Answer four short screens:
 
-## If setup stops
+    - **Your name** and date of birth
+    - **Your organisation**: name, ABN and legal business name
+    - **Where you're based**: your address. ArcSolar sets your timezone from your state
+    - **How to reach you**: billing email, business phone, business type and website (optional)
 
-Return to the same organisation rather than creating another. Subscription, PayTo and customer-payment setup have separate statuses. Stripe review or bank confirmation can take time. Enter financial and identity details only in the secure setup flow.
+    Select **Create organisation**.
+  </Step>
+  <Step title="Choose a plan">
+    Pick **Spark** or **Arc**. Arc includes Intelligence and Roof Vision. Open **Calls, SMS and number rates** to see call and SMS pricing.
+
+    Tick the payment authorisation box, then select **Continue**.
+  </Step>
+  <Step title="Pay for your plan">
+    Select **Continue to Stripe** and finish checkout. You'll come back to ArcSolar when it's done.
+  </Step>
+  <Step title="Turn on calls and SMS (optional)">
+    Select **Enable calls and SMS**, or **Skip for now**. You can do this later. See [Calls and SMS billing](/setup/payto).
+  </Step>
+  <Step title="Take customer payments (optional)">
+    Select **Continue to Stripe** to set up deposits and payments from customers, or **Skip for now**. See [Stripe](/integrations/stripe).
+  </Step>
+  <Step title="Enter your workspace">
+    At **Your workspace is ready**, select **Enter workspace**. A short tour shows you around.
+  </Step>
+</Steps>
+
+<Note>
+  Only the owner can do these steps. If someone else signs in first, they'll see that the owner is still setting up.
+</Note>
+
+## What's next
+
+Your workspace exists, but **you can't quote or call yet**. Finish the four required tasks in the [setup checklist](/setup/checklist) first:
+
+1. STC and quote pricing
+2. Confirm your product catalogue
+3. Your services and fees
+4. Finance and deposits
+
+Then [invite your team](/setup/team) and [bring in your leads](/customers/import-leads).
+
+## If you get stuck
+
+- Closed the page? Sign in again. ArcSolar takes you back to where you stopped.
+- Don't create a second account for the same business.
+- Stripe checks can take a little while. You can keep setting up in the meantime.
+- Still stuck? [Contact support](/reference/support).
 
 <NextGuide href="/setup/checklist" title="Setup checklist" />

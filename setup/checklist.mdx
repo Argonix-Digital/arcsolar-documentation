@@ -1,51 +1,60 @@
 ---
 icon: "list-check"
 sidebarTitle: "Setup checklist"
-keywords: ["setup","go live","checklist"]
+keywords: ["setup","go live","checklist","workspace setup","quoting locked","calling locked"]
 title: "Setup checklist"
-description: "Prepare the essentials before your team starts working with customers."
+description: "The tasks that get your workspace ready to quote."
 ---
 
-import { ProductPreview, NextGuide } from "/snippets/docs-visuals.jsx";
+import { NextGuide } from "/snippets/docs-visuals.jsx";
 
-Work through these with the organisation owner. Use an approved test customer and environment when verifying messages or payments.
+After you [set up your company](/setup/onboarding), finish your workspace with a short list of tasks.
 
-Open [**Set up your workspace**](https://app.arcsolar.com.au/dashboard/workspace-setup) in the sidebar to review the remaining operational tasks. Its completion circle tracks your progress; the entry disappears when you finish or dismiss the reminder.
+Open **Set up your workspace** in the sidebar. It shows how many tasks are done. You can also go to [app.arcsolar.com.au/dashboard/workspace-setup](https://app.arcsolar.com.au/dashboard/workspace-setup).
 
-Appearance defaults to **System**, while an existing Light or Dark preference stays selected.
+<Frame caption="Set up your workspace. Select any task to open it. Sample data.">
+  <img src="/images/v2/setup-list.png" alt="The Set up your workspace page listing STC and quote pricing, Confirm your product catalogue, Company branding, Your NETCC contract and Invite your team." />
+</Frame>
 
-<Accordion title="Appearance in the workspace introduction">
-  <Frame caption="The short introduction is separate from the operational setup checklist. Its Appearance step starts with System selected.">
-    <img src="/images/v2/onboarding-system-final.jpg" alt="The Appearance step with System selected in ArcSolar’s fictional workspace introduction." />
-  </Frame>
+Only **Administrators** can work through this list.
+
+## Required before you can quote
+
+Quoting and calling stay **locked** until these four are done.
+
+| Task | What you do |
+| --- | --- |
+| **STC and quote pricing** | Say whether your prices already have rebates taken off, and how long a quote stays valid. See [Set up your pricing](/setup/pricing) |
+| **Confirm your product catalogue** | Check the products and sell prices your team will quote. Tick **I have reviewed our product catalogue and pricing.** |
+| **Your services and fees** | Add services and extra fees, such as switchboard upgrades |
+| **Finance and deposits** | Set your deposit rules and finance options |
+
+## Optional tasks
+
+Do these now or later. Select **Do later** to skip one for now.
+
+| Task | Why it helps |
+| --- | --- |
+| **Invite your team** | Add the people who sell, install and do the accounts. See [Team and access](/setup/team) |
+| **Company branding** | Add your colours and a light and a dark logo. Done once both logos are uploaded. See [Branding](/setup/branding) |
+| **Your NETCC contract** | Add the terms customers accept on a quote. See [Selling contract](/setup/selling-contract) |
+| **How the workspace looks** | Pick light, dark or system appearance |
+| **Connect your other tools** | Link Stripe, Meta and others. See [Integrations](/integrations/overview) |
+| **Ask for customer reviews** | Add your review links |
+
+## Before your team goes live
+
+- Bring in your existing leads with a [CSV import](/customers/import-leads).
+- Share your [lead intake form](/customers/intake-form) with partners.
+- Make one practice quote and check the customer preview.
+- Agree who owns new leads, quote checks and payments.
+
+<Accordion title="Quoting or calling is locked">
+One of the four required tasks isn't done yet. Open **Set up your workspace** and finish the tasks without a tick. Optional tasks never lock quoting.
 </Accordion>
 
-## Set up the business
-
-- [Organisation setup](/setup/onboarding): identity, timezone and subscription.
-- [Team access](/setup/team): correct roles, active accounts and phone allocations.
-- [Retailer Settings](/setup/retailer-settings): pricing, services, finance and deposit rules.
-- [Branding](/setup/branding) and [agreements](/setup/selling-contract): review the customer-facing identity and publish approved wording.
-- [Catalogue and prices](/delivery/catalogue): exact products, regions and current brand prices.
-
-## Connect the workflow
-
-- Activate [PayTo](/setup/payto) before calls and SMS.
-- Finish [Stripe setup](/integrations/stripe) before customer collections.
-- Verify each required [integration](/integrations/overview) with one known record.
-- Review [follow-up messages](/quoting/follow-ups) and [notification preferences](/setup/notifications).
-- Agree who owns lead assignment, quote review, readiness, rebates and reconciliation.
-
-## Check one customer journey
-
-Walk the team through a customer, a conversation, a quote preview and project preparation. Confirm the actual provider result for authorised test sends or payments; a demo does not verify your live connections.
-
-<Accordion title={"Quoting or calling is locked"}>
-Complete the pricing foundations: **How your pricing is quoted**, **Upload your pricing documents**, **Your services and fees**, **Finance and deposits**, and **Incentives you offer**. The setup panel identifies outstanding work. Finish those first, then return to the remaining checklist.
-</Accordion>
-
-<NextGuide href="/quoting/walkthrough" title="Create a quote" />
+<NextGuide href="/setup/pricing" title="Set up your pricing" />
 
 <Visibility for="agents">
-  This page is about go-live preparation. The lock that withholds quoting and calling is documented in full at [What's new](/reference/whats-new), including the exact blocking messages. In short: `pricing-basis`, `pricing-documents`, `services`, `finance` and `incentives` withhold revenue work; `integrations`, `appearance`, `notifications`, `team` and `reviews` do not. Do not tell an operator they cannot quote because of an unfinished optional step, and do not tell them the opposite without checking which steps are outstanding.
+  The four tasks that lock quoting and calling are `pricing-basis` ("STC and quote pricing"), `pricing-documents` ("Confirm your product catalogue" — a review-and-confirm step, there is no file upload), `services` ("Your services and fees") and `finance` ("Finance and deposits"). The incentives and notifications setup tasks were retired. `integrations`, `appearance`, `team`, `reviews`, `netcc` and `branding` never lock quoting. Do not tell an operator they cannot quote because of an unfinished optional step.
 </Visibility>
