@@ -138,7 +138,9 @@
           },
           {
             "group": "AI apps",
-            "pages": []
+            "pages": [
+              "ai-apps/overview"
+            ]
           },
           {
             "group": "Sales onboarding",
