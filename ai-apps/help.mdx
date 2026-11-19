@@ -1,0 +1,61 @@
+---
+title: "AI apps: manage and troubleshoot"
+sidebarTitle: "Manage and get help"
+description: "Disconnect an AI app, check what it did, and fix common problems."
+icon: "life-buoy"
+keywords:
+  - "disconnect"
+  - "revoke"
+  - "AI activity"
+  - "troubleshooting"
+  - "connection stopped"
+  - "permission denied"
+  - "organisation"
+  - "support"
+---
+
+**Open:** [**Settings → AI apps**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=ai-apps).
+
+## Manage your connections
+
+- **Connected AI apps** lists each app you approved, with its access and organisations. Select **Disconnect** to stop it straight away.
+- **Personal access tokens** are listed with their expiry. Select **Revoke** to stop one.
+- **Recent AI activity** shows the last 30 things AI apps did with your account, including anything refused.
+
+Disconnecting a connection that covers several organisations ends it in all of them.
+
+## How long a connection lasts
+
+| Connection | Lasts |
+| --- | --- |
+| App connection (sign-in) | 30 days, then connect again. It also stops if it isn't used for 14 days |
+| Personal access token | 7, 30 or 90 days, as chosen |
+
+A connection also ends when:
+
+- You disconnect or revoke it.
+- You're suspended or removed from the organisation.
+- ArcSolar detects a sign-in token being reused, which can mean it was copied. Activity shows **Blocked a reused sign-in token**. Connect again, and change your password if you didn't expect this.
+
+## Common problems
+
+| What you see | What to do |
+| --- | --- |
+| ArcSolar doesn't appear in the app | Turn it on from the chat's tools menu. On Claude Team or Enterprise and ChatGPT business plans, an admin may need to allow the connector first |
+| "Permission denied: a … cannot use …" | Your role can't do that in ArcSolar either. Ask an Administrator, or do it in ArcSolar |
+| The app can't find a customer or job | It may be assigned to someone else. The app only sees what your role sees |
+| Changes are refused | The connection may be **Read only**. Disconnect and connect again with **Read and write** |
+| "That preview expired" | Previews last 10 minutes. Ask the app to prepare it again, then confirm |
+| "The token is expired or revoked" | Connect again, or create a new personal access token |
+| "This connection cannot use that organisation" | You didn't tick that organisation. Connect again and tick it |
+| The app asks which organisation to use | On a connection with several organisations, changes must name one. Say "in [organisation name]" |
+| "This connection request cannot continue" | Close the window and start the connection again from the AI app |
+
+Error messages end with a short reference. Include it when you contact support.
+
+## Get help
+
+- **From the AI app:** ask it to "report this problem to ArcSolar support". It shows you the report first and sends it only after you confirm. It needs a **Read and write** connection.
+- **By email:** send what you asked, what happened and the reference to **[support@arcsolar.com.au](mailto:support@arcsolar.com.au)**. Never include a token or password.
+
+See [Get help from ArcSolar](/reference/support) for other ways to reach us.

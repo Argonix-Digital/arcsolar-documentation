@@ -1,0 +1,156 @@
+---
+title: "Connect an AI app"
+sidebarTitle: "Connect an AI app"
+description: "Set up ArcSolar in Claude, ChatGPT, Claude Code, Cursor, VS Code, Grok or any MCP app."
+icon: "plug"
+keywords:
+  - "MCP server URL"
+  - "connector"
+  - "Claude"
+  - "ChatGPT"
+  - "Claude Code"
+  - "Cursor"
+  - "VS Code"
+  - "Grok"
+  - "personal access token"
+  - "OAuth"
+  - "several organisations"
+---
+
+import { NextGuide } from "/snippets/docs-visuals.jsx";
+
+**Open:** [**Settings → AI apps**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=ai-apps). It has the server URL, one-click buttons for each app, and your connections.
+
+The ArcSolar MCP server URL is:
+
+```text
+https://app.arcsolar.com.au/mcp
+```
+
+Paste it into any app that supports remote MCP servers. You'll sign in to ArcSolar in your browser to approve the connection.
+
+## Set up your app
+
+<Tabs>
+  <Tab title="Claude">
+    Works in Claude on the web, desktop and mobile. Custom connectors are on every Claude plan (one connector on Free).
+
+    1. Select [**Add ArcSolar to Claude**](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=ArcSolar&connectorUrl=https%3A%2F%2Fapp.arcsolar.com.au%2Fmcp). Or in Claude, open **Customize → Connectors → Add custom connector** and paste the server URL.
+    2. Confirm the connector, then select **Connect**.
+    3. ArcSolar opens. [Approve the connection](#approve-the-connection).
+    4. In a chat, turn on ArcSolar from the tools menu and ask, for example, "Which of my quotes are waiting on the customer?"
+
+    On Claude Team and Enterprise, an owner may need to add the connector for the organisation first, in **Admin settings → Connectors**.
+  </Tab>
+  <Tab title="ChatGPT">
+    Custom MCP servers are added in ChatGPT on the web. Your ChatGPT plan or workspace admin may need to allow custom apps first.
+
+    1. In ChatGPT on the web, open [**Plugins**](https://chatgpt.com/plugins) and select **+ → Add custom MCP server**.
+    2. Paste the server URL, choose **OAuth** authentication and create the plugin.
+    3. ArcSolar opens. [Approve the connection](#approve-the-connection).
+    4. In a chat, turn on ArcSolar from the tools (**+**) menu.
+  </Tab>
+  <Tab title="Claude Code">
+    Run this in a terminal:
+
+    ```bash
+    claude mcp add --transport http arcsolar https://app.arcsolar.com.au/mcp
+    ```
+
+    Start Claude Code, run `/mcp`, choose **arcsolar** and authenticate in the browser. Then [approve the connection](#approve-the-connection).
+
+    To use a [personal access token](#personal-access-tokens) instead:
+
+    ```bash
+    claude mcp add --transport http arcsolar https://app.arcsolar.com.au/mcp --header "Authorization: Bearer arcs_pat_YOUR_TOKEN"
+    ```
+  </Tab>
+  <Tab title="Cursor">
+    Select **Add to Cursor** in [Settings → AI apps](https://app.arcsolar.com.au/dashboard/profile-settings?tab=ai-apps), or add this to `~/.cursor/mcp.json`:
+
+    ```json
+    {
+      "mcpServers": {
+        "arcsolar": { "url": "https://app.arcsolar.com.au/mcp" }
+      }
+    }
+    ```
+
+    In **Cursor Settings → MCP**, select ArcSolar and choose **Connect**. Then [approve the connection](#approve-the-connection).
+  </Tab>
+  <Tab title="VS Code">
+    Select **Add to VS Code** in [Settings → AI apps](https://app.arcsolar.com.au/dashboard/profile-settings?tab=ai-apps), or add this to `.vscode/mcp.json`:
+
+    ```json
+    {
+      "servers": {
+        "arcsolar": { "type": "http", "url": "https://app.arcsolar.com.au/mcp" }
+      }
+    }
+    ```
+
+    Start the server from the MCP view, then [approve the connection](#approve-the-connection).
+  </Tab>
+  <Tab title="Grok">
+    1. On grok.com, open [**Connectors**](https://grok.com/connectors) → **New Connector → Custom**.
+    2. Paste the server URL and choose OAuth sign-in.
+    3. [Approve the connection](#approve-the-connection) in ArcSolar.
+
+    On Grok Business and Enterprise, an admin adds the connector first in the xAI console. To use ArcSolar through the xAI API, create a [personal access token](#personal-access-tokens) and pass it as the remote MCP tool's authorization.
+  </Tab>
+  <Tab title="Other apps">
+    Any MCP app that supports Streamable HTTP can use the server URL with OAuth sign-in, or with a [personal access token](#personal-access-tokens) sent as `Authorization: Bearer arcs_pat_…`.
+
+    Apps that only run local (stdio) servers can use ArcSolar's bridge. It needs Node.js 18 or later and nothing else:
+
+    ```bash
+    curl -O https://app.arcsolar.com.au/downloads/arcsolar-mcp-stdio.mjs
+    ARCSOLAR_MCP_TOKEN=arcs_pat_YOUR_TOKEN ARCSOLAR_API_BASE_URL=https://app.arcsolar.com.au node arcsolar-mcp-stdio.mjs
+    ```
+
+    The bridge also lets the app attach PDFs, photos and videos (up to 3 MB) from one folder, `~/Downloads` by default. Set `ARCSOLAR_MCP_FILE_ROOT` to use another folder. Hidden files are never read.
+  </Tab>
+</Tabs>
+
+## Approve the connection
+
+When you connect, ArcSolar opens a page called **Connect … to ArcSolar**. If you're not signed in, sign in first.
+
+1. Check you're signed in as the right person. If not, select **Use another account**.
+2. Under **Organisation**, check the organisation. If you belong to several, tick each one to use. See [Several organisations](#several-organisations).
+3. Under **Access**, choose **Read and write** or **Read only**.
+4. Enter your ArcSolar password under **Confirm your ArcSolar password**. Installers who sign in with an email link don't need one.
+5. Select **Allow**. Select **Deny** to cancel.
+
+You're sent back to the AI app, which can now use ArcSolar.
+
+<Warning>
+If the page says **ArcSolar does not recognise this app**, only continue if you started this connection yourself. Check the app name and the address it returns you to.
+</Warning>
+
+## Personal access tokens
+
+Use a token for apps without browser sign-in, for the local bridge, or for scripts.
+
+1. Open [**Settings → AI apps**](https://app.arcsolar.com.au/dashboard/profile-settings?tab=ai-apps) and select **Create token**.
+2. Give it a name, such as "Laptop CLI".
+3. Choose **Read only** or **Read and make changes**.
+4. Choose when it expires: 7, 30 or 90 days.
+5. Confirm your ArcSolar password and select **Create token**.
+6. Copy the token. It's shown **once**.
+
+A token works exactly like a connection: same permissions, same confirmations, same activity log. Keep it in a password manager or secret store. Never paste it into notes, chats or support emails. If it leaks, select **Revoke** in Settings → AI apps.
+
+## Several organisations
+
+If you're an installer working for several retailers, one connection can cover each of your organisations.
+
+- On the approval page, tick each organisation. The **first one you tick is the default**. You can tick up to 10.
+- The app works in one organisation at a time and says which one it used.
+- Questions use the default organisation unless you name another: "In Sunrise Solar, show my jobs this week."
+- **Changes must name the organisation.** If you don't say which one, the app asks you.
+- To add an organisation later, connect again and tick it. Each approval is a separate connection.
+
+The connection belongs to your default organisation. If you leave it, the whole connection ends. Leaving another organisation only stops the connection there.
+
+<NextGuide href="/ai-apps/help" title="Manage connections and get help" />

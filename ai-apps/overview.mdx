@@ -1,0 +1,100 @@
+---
+title: "Use ArcSolar in AI apps"
+sidebarTitle: "Overview"
+description: "Work with ArcSolar from Claude, ChatGPT, Cursor and other AI apps, with exactly your own permissions."
+icon: "bot"
+keywords:
+  - "AI apps"
+  - "MCP"
+  - "model context protocol"
+  - "Claude"
+  - "ChatGPT"
+  - "Cursor"
+  - "Grok"
+  - "VS Code"
+  - "connector"
+  - "AI assistant"
+---
+
+import { NextGuide } from "/snippets/docs-visuals.jsx";
+
+Connect ArcSolar to an AI app such as Claude or ChatGPT. Then ask about your customers, quotes and jobs, or ask the app to do a task, without opening ArcSolar.
+
+ArcSolar uses the **Model Context Protocol (MCP)**, the standard way AI apps connect to other software. Any app that supports remote MCP servers can connect.
+
+<Info>
+AI apps are available to every role in every ArcSolar workspace. There's nothing for an administrator to turn on. To connect, see [Connect an AI app](/ai-apps/connect).
+</Info>
+
+## It acts as you
+
+- The app can only do what **your role** allows. If you can't see a customer in ArcSolar, the app can't either. See [Roles and permissions](/setup/roles).
+- You sign in **in ArcSolar**, never in the AI app. The app never sees your password.
+- It works in **one organisation at a time**.
+- Every action is recorded against your name. You can see the last 30 in **Settings → AI apps → Recent AI activity**.
+
+## You confirm anything that matters
+
+Looking things up happens straight away. For anything that contacts a customer or a team member, or can't easily be undone, the app first shows you a preview. It only goes ahead after you say yes.
+
+- Previews expire after 10 minutes. Ask again if one expires.
+- Bulk price changes run as a dry run first, so you see every change before it's saved.
+- A **Read only** connection can look things up but can't change anything.
+
+## What you can ask
+
+| Area | Examples |
+| --- | --- |
+| Customers and leads | "Find Jane Citizen", "Add a solar and battery lead for Sam in Geelong", "Import the leads in this spreadsheet and assign them to me" |
+| Quotes | "Where is the deal for Jane Citizen at?", "Did she open the quote?", "Why didn't the quote send?" |
+| Payments | "Has the deposit been paid?" (read only) |
+| Projects and jobs | "Is this job ready to install?", "Book the install for Friday", "Upload these site photos to the job" |
+| Tasks and calendar | "What's on my calendar tomorrow?", "Create a follow-up task for Monday" |
+| Products and pricing | "Export my price list", "Update prices from this supplier price list" |
+| Reports | "Give me my weekly sales summary", "Show team activity this week" |
+| Amy | "Why hasn't Amy called this lead?", "Show Amy's calls from yesterday" |
+| Team (Administrators) | "Invite a new sales rep", "Resend Sam's invitation" |
+| Help | "How do I import leads?" (answered from these docs), "Report this problem to ArcSolar support" |
+
+## What AI apps can never do
+
+- Change your plan, billing or subscription
+- Collect, refund or void a payment
+- Change anyone's role, or invite another Administrator
+- Buy or release phone numbers
+- Change Amy's settings
+- Show passwords, tokens or keys
+- Send free-form texts or emails to customers
+- Permanently delete records
+- Anything in ArcLeads
+
+Do these in ArcSolar itself.
+
+## What each role can reach
+
+| Role | What AI apps can do |
+| --- | --- |
+| Administrator, Operations | Work across your organisation, within your role's permissions |
+| Finance | Look across your organisation, including financials. No creating or sending quotes |
+| Sales manager | Your own records and your approved team's. No company financials |
+| Sales representative | Your own and unassigned customers, your quotes, tasks, calendar and messages, and your own reports. No company financials |
+| Installer | Your assigned jobs and uploading site photos. No customers, quotes, messages or financials |
+| External marketing | Shared lead outcomes only |
+
+If the app says it can't find a record, it may exist but be outside what your role can see. ArcSolar never confirms records you can't reach.
+
+## Your data
+
+- What the app reads from ArcSolar is sent to the AI app's provider (for example Anthropic or OpenAI) under your agreement with them. Check your company's policy before you connect.
+- ArcSolar records which action ran, when and whether it worked. It doesn't store your chat.
+- Each connection lasts 30 days. Disconnect it at any time in **Settings → AI apps**.
+
+<Note>
+Agent, the chat built into ArcSolar, works the same way inside the app. See [Agent](/agent).
+</Note>
+
+<NextGuide href="/ai-apps/connect" title="Connect an AI app" />
+
+<Visibility for="agents">
+  **Facts for assistants.** Server URL: `https://app.arcsolar.com.au/mcp` (Streamable HTTP, OAuth 2.1 with PKCE, or a personal access token as a Bearer header). Settings: Profile settings → AI apps, `https://app.arcsolar.com.au/dashboard/profile-settings?tab=ai-apps`. Available to every role; not plan-gated; not available on the demo site. OAuth connections last 30 days; personal tokens 7, 30 or 90 days. Writes that contact people or can't be undone need a preview and confirmation token (10 minutes). On a connection granted several organisations, every change must name its `organisation`; reads default to the default organisation.
+</Visibility>

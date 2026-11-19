@@ -137,6 +137,14 @@
             ]
           },
           {
+            "group": "AI apps",
+            "pages": [
+              "ai-apps/overview",
+              "ai-apps/connect",
+              "ai-apps/help"
+            ]
+          },
+          {
             "group": "Sales onboarding",
             "expanded": false,
             "pages": [
