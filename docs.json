@@ -139,7 +139,8 @@
           {
             "group": "AI apps",
             "pages": [
-              "ai-apps/overview"
+              "ai-apps/overview",
+              "ai-apps/connect"
             ]
           },
           {
